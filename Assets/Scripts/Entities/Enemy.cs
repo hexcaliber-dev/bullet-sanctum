@@ -6,6 +6,7 @@ public abstract class Enemy : LivingEntity {
     public EnemyType enemyType;
     public int DMG;
     public Player player;
+    public Transform playerObj;
     public Boolean playerFound;
 
     // Runs on Update(). 
