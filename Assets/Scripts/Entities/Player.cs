@@ -12,16 +12,19 @@ public class Player : LivingEntity {
 
     Rigidbody2D rb2D;
 
-    public float accelStrength, decelMultiplier, jumpStrength, strafeStrength, strafeFallStrength, maxSpeed, deadzone, strafeTime; // assign in inspector
-    bool strafeCooldown;
+    BoxCollider2D thisCol;
 
-    enum MoveState { Ground, Falling, Jumping, Strafing }
-    MoveState currState;
+    public float accelStrength, decelMultiplier, jumpStrength, strafeStrength, strafeFallStrength, maxSpeed, deadzone, strafeTime, coyoteTime; // assign in inspector
+    public bool strafeCooldown;
+
+    public enum MoveState { Ground, Falling, Jumping, Strafing }
+    public MoveState currState;
 
     float currVelocity, currVelocityJump;
 
     override protected void Start () {
         base.Start ();
+        thisCol = GetComponent<BoxCollider2D> ();
         rb2D = GetComponent<Rigidbody2D> ();
         maxHealth = STARTING_HEALTH;
         health = STARTING_HEALTH;
@@ -34,6 +37,18 @@ public class Player : LivingEntity {
         Vector3 mouse = Camera.main.ScreenToWorldPoint (Input.mousePosition);
         Vector2 direction = mouse - transform.position;
         Vector2 strafeDir = Vector2.zero;
+
+        // Check if player is grounded
+
+        if (Physics2D.Raycast (transform.position + Vector3.down * (thisCol.bounds.extents.y), Vector2.down, 0.1f) ||
+            Physics2D.Raycast (transform.position + Vector3.down * (thisCol.bounds.extents.y) + Vector3.left * (thisCol.bounds.extents.x), Vector2.down, 0.1f) ||
+            Physics2D.Raycast (transform.position + Vector3.down * (thisCol.bounds.extents.y) + Vector3.right * (thisCol.bounds.extents.x), Vector2.down, 0.1f)) {
+            print ("GROUNDED");
+            currState = MoveState.Ground;
+            strafeCooldown = false;
+        } else if (currState == MoveState.Ground) {
+            StartCoroutine (CoyoteTime ());
+        }
 
         // Flip player if mouse is pointed left
         if (direction.x < 0) {
@@ -78,12 +93,11 @@ public class Player : LivingEntity {
         if (Input.GetKey (KeyCode.LeftShift)) {
             if (currState != MoveState.Strafing && !strafeCooldown) {
                 currState = MoveState.Strafing;
-                if (strafeDir.Equals(Vector2.zero)) {
+                if (strafeDir.Equals (Vector2.zero)) {
                     // Mouse pointer direction strafing
-                    rb2D.velocity = strafeStrength * Vector3.Normalize(direction);
-                    print(direction);
+                    rb2D.velocity = new Vector2 (strafeStrength * ((direction.x < 0) ? -1 : 1), 0);
                 } else {
-                    rb2D.velocity = strafeStrength * Vector3.Normalize(strafeDir);
+                    rb2D.velocity = strafeStrength * Vector3.Normalize (strafeDir);
                 }
                 strafeCooldown = true;
                 StartCoroutine (StopStrafe (strafeTime));
@@ -99,7 +113,7 @@ public class Player : LivingEntity {
 
         // Old debug print statements
         // print (currVelocity);
-        // print (currState);
+        print (currState);
 
         // Velocity handling for horizontal movement
         if (currState != MoveState.Strafing) {
@@ -128,30 +142,20 @@ public class Player : LivingEntity {
 
     }
 
-    void OnCollisionEnter2D (Collision2D col) {
-        if (col.gameObject.tag.Equals ("Ground")) {
-            currState = MoveState.Ground;
-            strafeCooldown = false;
-        }
-    }
-
-    void OnCollisionExit2D (Collision2D col) {
-        if (col.gameObject.tag.Equals ("Ground")) {
-            StartCoroutine (coyoteTime (0.25f));
-        }
-    }
-
-    IEnumerator coyoteTime (float seconds) {
-        // yield return new WaitForSeconds (seconds);
-        // currState = MoveState.Falling;
-        yield return null;
-    }
+    // Collision is handled in PlayerFeet
 
     IEnumerator StopStrafe (float seconds) {
         yield return new WaitForSeconds (seconds);
-        currState = MoveState.Falling;
+        if (currState == MoveState.Strafing) {
+            currState = MoveState.Falling;
+        }
         rb2D.inertia = 0f;
         rb2D.velocity = Vector2.zero;
         // rb2D.velocity = Vector2.down * strafeFallStrength;
+    }
+
+    IEnumerator CoyoteTime () {
+        yield return new WaitForSeconds(coyoteTime);
+        currState = MoveState.Falling;
     }
 }
