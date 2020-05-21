@@ -1,11 +1,16 @@
 using UnityEngine;
+using System.Collections;
 
 public class Pistol : Weapon {
 
     // Bullet projectile is inherited from Weapon.
 
+    private bool onCooldown;
+    public float cooldownTime; // in seconds
+
     protected override void Start() {
-        // TODO
+        base.Start();
+        onCooldown = false;
     }
     protected override void Update() {
         base.Update();
@@ -13,7 +18,19 @@ public class Pistol : Weapon {
     }
 
     public override void UseWeapon() {
-        // Bullet b = GameObject.Instantiate()
+        if (!onCooldown) {
+            StartCoroutine(Shoot());
+        }
     }
+
+    IEnumerator Shoot() {
+        onCooldown = true;
+        base.UseWeapon();
+        yield return new WaitForSeconds(cooldownTime);
+        onCooldown = false;
+    }
+
+
+
 
 }

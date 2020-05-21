@@ -1363,7 +1363,7 @@ GameObject:
   - component: {fileID: 1459415355}
   - component: {fileID: 1459415356}
   - component: {fileID: 1459415357}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Test Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1443,11 +1443,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1459415354}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2834df267fc8f8498f116507c549468, type: 3}
+  m_Script: {fileID: 11500000, guid: 8149528292b071d409e53bb11b2ed395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 1113937722154595736, guid: 918d60a8c3a9eed4cb4b4d55bf8362a1,
     type: 3}
+  cooldownTime: 0.25
 --- !u!1 &1465238854
 GameObject:
   m_ObjectHideFlags: 0
@@ -1769,10 +1770,11 @@ MonoBehaviour:
   accelStrength: 20
   decelMultiplier: 0.5
   jumpStrength: 10
-  strafeStrength: 50
+  strafeStrength: 25
   strafeFallStrength: 10
   maxSpeed: 4
   deadzone: 0.15
+  strafeTime: 0.08
 --- !u!212 &1959878262
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2060,6 +2062,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1113937722154595736, guid: 918d60a8c3a9eed4cb4b4d55bf8362a1,
+        type: 3}
+      propertyPath: speed
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 1113937722154595737, guid: 918d60a8c3a9eed4cb4b4d55bf8362a1,
         type: 3}

@@ -12,7 +12,7 @@ public class Player : LivingEntity {
 
     Rigidbody2D rb2D;
 
-    public float accelStrength, decelMultiplier, jumpStrength, strafeStrength, strafeFallStrength, maxSpeed, deadzone; // assign in inspector
+    public float accelStrength, decelMultiplier, jumpStrength, strafeStrength, strafeFallStrength, maxSpeed, deadzone, strafeTime; // assign in inspector
     bool strafeCooldown;
 
     enum MoveState { Ground, Falling, Jumping, Strafing }
@@ -21,7 +21,7 @@ public class Player : LivingEntity {
     float currVelocity, currVelocityJump;
 
     override protected void Start () {
-        base.Start();
+        base.Start ();
         rb2D = GetComponent<Rigidbody2D> ();
         maxHealth = STARTING_HEALTH;
         health = STARTING_HEALTH;
@@ -32,11 +32,12 @@ public class Player : LivingEntity {
 
         // Get mouse direction
         Vector3 mouse = Camera.main.ScreenToWorldPoint (Input.mousePosition);
-        Vector2 direction = Vector3.Normalize (mouse - transform.position);
+        Vector2 direction = mouse - transform.position;
+        Vector2 strafeDir = Vector2.zero;
 
         // Flip player if mouse is pointed left
         if (direction.x < 0) {
-            transform.rotation = Quaternion.Euler(0, 180, 0);
+            transform.rotation = Quaternion.Euler (0, 180, 0);
         } else {
             transform.rotation = Quaternion.identity;
         }
@@ -47,6 +48,7 @@ public class Player : LivingEntity {
                 currVelocity -= accelStrength * Time.deltaTime;
                 decel = false;
             }
+            strafeDir += Vector2.left;
         }
         // Moving right
         if (Input.GetKey (KeyCode.D)) {
@@ -54,23 +56,37 @@ public class Player : LivingEntity {
                 currVelocity += accelStrength * Time.deltaTime;
                 decel = false;
             }
+            strafeDir += Vector2.right;
         }
+
+        if (Input.GetKey (KeyCode.W)) {
+            strafeDir += Vector2.up;
+        }
+        if (Input.GetKey (KeyCode.S)) {
+            strafeDir += Vector2.down;
+        }
+
         // Jumping
         if (Input.GetKey (KeyCode.Space)) {
             if (currState == MoveState.Ground) {
                 //currVelocityJump = 10f; //starting velocity going up, delete if not needed
                 rb2D.velocity = jumpStrength * Vector2.up;
                 currState = MoveState.Jumping;
-
             }
         }
         // Strafe
         if (Input.GetKey (KeyCode.LeftShift)) {
             if (currState != MoveState.Strafing && !strafeCooldown) {
                 currState = MoveState.Strafing;
-                rb2D.velocity = strafeStrength * direction;
+                if (strafeDir.Equals(Vector2.zero)) {
+                    // Mouse pointer direction strafing
+                    rb2D.velocity = strafeStrength * Vector3.Normalize(direction);
+                    print(direction);
+                } else {
+                    rb2D.velocity = strafeStrength * Vector3.Normalize(strafeDir);
+                }
                 strafeCooldown = true;
-                StartCoroutine (StopStrafe (0.1f));
+                StartCoroutine (StopStrafe (strafeTime));
             }
         }
         // Deceleration mechanic
@@ -91,8 +107,8 @@ public class Player : LivingEntity {
         }
 
         // Shooting
-        if (Input.GetKeyDown(KeyCode.Mouse0)) {
-            currWeapon.UseWeapon();
+        if (Input.GetKey (KeyCode.Mouse0)) {
+            currWeapon.UseWeapon ();
         }
     }
 
