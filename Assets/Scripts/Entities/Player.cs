@@ -20,60 +20,79 @@ public class Player : LivingEntity {
 
     float currVelocity, currVelocityJump;
 
-    void Start () {
+    override protected void Start () {
+        base.Start();
         rb2D = GetComponent<Rigidbody2D> ();
         maxHealth = STARTING_HEALTH;
         health = STARTING_HEALTH;
     }
 
     void FixedUpdate () {
-        bool decel = true;
-        
+        bool decel = true; // True if player is decelerating
+
+        // Get mouse direction
+        Vector3 mouse = Camera.main.ScreenToWorldPoint (Input.mousePosition);
+        Vector2 direction = Vector3.Normalize (mouse - transform.position);
+
+        // Flip player if mouse is pointed left
+        if (direction.x < 0) {
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+        } else {
+            transform.rotation = Quaternion.identity;
+        }
+
+        // Moving left
         if (Input.GetKey (KeyCode.A)) {
             if (currVelocity <= 0) {
                 currVelocity -= accelStrength * Time.deltaTime;
                 decel = false;
             }
         }
+        // Moving right
         if (Input.GetKey (KeyCode.D)) {
             if (currVelocity >= 0) {
                 currVelocity += accelStrength * Time.deltaTime;
                 decel = false;
             }
         }
-
+        // Jumping
         if (Input.GetKey (KeyCode.Space)) {
             if (currState == MoveState.Ground) {
                 //currVelocityJump = 10f; //starting velocity going up, delete if not needed
                 rb2D.velocity = jumpStrength * Vector2.up;
                 currState = MoveState.Jumping;
-                
+
             }
         }
-
         // Strafe
         if (Input.GetKey (KeyCode.LeftShift)) {
             if (currState != MoveState.Strafing && !strafeCooldown) {
                 currState = MoveState.Strafing;
-                Vector3 mouse = Camera.main.ScreenToWorldPoint (Input.mousePosition);
-                Vector2 direction = Vector3.Normalize(mouse - transform.position);
                 rb2D.velocity = strafeStrength * direction;
                 strafeCooldown = true;
                 StartCoroutine (StopStrafe (0.1f));
             }
         }
-
+        // Deceleration mechanic
         if (decel) {
             currVelocity *= decelMultiplier;
             if (Math.Abs (currVelocity) < deadzone) {
                 currVelocity = 0f;
             }
         }
-        // print (currVelocity);
-        print (currState);
 
+        // Old debug print statements
+        // print (currVelocity);
+        // print (currState);
+
+        // Velocity handling for horizontal movement
         if (currState != MoveState.Strafing) {
             rb2D.velocity = new Vector2 (Mathf.Clamp (currVelocity, -maxSpeed, maxSpeed), rb2D.velocity.y);
+        }
+
+        // Shooting
+        if (Input.GetKeyDown(KeyCode.Mouse0)) {
+            currWeapon.UseWeapon();
         }
     }
 
