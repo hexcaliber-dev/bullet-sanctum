@@ -32,8 +32,12 @@ public class RoomSwitch : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log("RoomSwitch Collision Detected...");
-        StartCoroutine(fadeOut());
+        Debug.Log(col.gameObject.tag);
+        if (col.gameObject.tag == "Player")
+        {
+            Debug.Log("RoomSwitch Collision Detected...");
+            StartCoroutine(fadeOut());
+        }
     }
 
     void loadScene()
