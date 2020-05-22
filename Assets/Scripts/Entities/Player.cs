@@ -9,6 +9,8 @@ public class Player : LivingEntity {
     public int maxHealth; // current health is inherited from LivingEntity
 
     public Weapon currWeapon;
+    public GameObject trailObj;
+    public Color trailColor;
 
     Rigidbody2D rb2D;
 
@@ -39,11 +41,10 @@ public class Player : LivingEntity {
         Vector2 strafeDir = Vector2.zero;
 
         // Check if player is grounded
-
         if (Physics2D.Raycast (transform.position + Vector3.down * (thisCol.bounds.extents.y), Vector2.down, 0.1f) ||
             Physics2D.Raycast (transform.position + Vector3.down * (thisCol.bounds.extents.y) + Vector3.left * (thisCol.bounds.extents.x), Vector2.down, 0.1f) ||
             Physics2D.Raycast (transform.position + Vector3.down * (thisCol.bounds.extents.y) + Vector3.right * (thisCol.bounds.extents.x), Vector2.down, 0.1f)) {
-            print ("GROUNDED");
+            // print ("GROUNDED");
             currState = MoveState.Ground;
             strafeCooldown = false;
         } else if (currState == MoveState.Ground) {
@@ -100,6 +101,7 @@ public class Player : LivingEntity {
                     rb2D.velocity = strafeStrength * Vector3.Normalize (strafeDir);
                 }
                 strafeCooldown = true;
+                GetComponent<SpriteRenderer> ().color = new Color (1, 1, .62f, 0.25f); // temp transparency effect
                 StartCoroutine (StopStrafe (strafeTime));
             }
         }
@@ -113,7 +115,7 @@ public class Player : LivingEntity {
 
         // Old debug print statements
         // print (currVelocity);
-        print (currState);
+        // print (currState);
 
         // Velocity handling for horizontal movement
         if (currState != MoveState.Strafing) {
@@ -145,17 +147,28 @@ public class Player : LivingEntity {
     // Collision is handled in PlayerFeet
 
     IEnumerator StopStrafe (float seconds) {
-        yield return new WaitForSeconds (seconds);
+        for (int i = 0; i < 5; i += 1) {
+            StartCoroutine(CreateTrail(0.15f, trailColor.a * (1f - (0.1f * i))));
+            yield return new WaitForSeconds(seconds / 10);
+        }
         if (currState == MoveState.Strafing) {
             currState = MoveState.Falling;
         }
         rb2D.inertia = 0f;
         rb2D.velocity = Vector2.zero;
+        GetComponent<SpriteRenderer> ().color = Color.white;
         // rb2D.velocity = Vector2.down * strafeFallStrength;
     }
 
     IEnumerator CoyoteTime () {
-        yield return new WaitForSeconds(coyoteTime);
+        yield return new WaitForSeconds (coyoteTime);
         currState = MoveState.Falling;
+    }
+
+    IEnumerator CreateTrail (float duration, float alpha) {
+        GameObject trail = GameObject.Instantiate(trailObj, transform.position, transform.rotation);
+        trail.GetComponent<SpriteRenderer>().color = new Color(trailColor.r, trailColor.g, trailColor.b, alpha);    
+        yield return new WaitForSeconds(duration);
+        Destroy(trail);
     }
 }
