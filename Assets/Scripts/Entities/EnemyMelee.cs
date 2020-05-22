@@ -3,6 +3,8 @@ using System;
 
 public class EnemyMelee : Enemy {
 
+    private Vector3 startPos;
+
     public override void OnSpawn() {
         enemyType = EnemyType.Melee;
         PlayerLookout();
@@ -16,9 +18,9 @@ public class EnemyMelee : Enemy {
     }
     public override void MovePattern() {
         if (playerFound) {
-            // transform.position = Vector3.MoveTowards(...)
+            transform.position = Vector3.MoveTowards(transform.position, playerObj.position, speed*Time.deltaTime);
         } else {
-            // Random movement?
+            // Nothing lol.
         }
     }
 }

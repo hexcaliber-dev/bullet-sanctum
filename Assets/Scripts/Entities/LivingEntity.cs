@@ -11,6 +11,7 @@ public abstract class LivingEntity : MonoBehaviour {
     public Type entityType;
     // LET IT GOOOOOOOO
     public bool frozen = false;
+    public float speed;
 
     public int health;
 

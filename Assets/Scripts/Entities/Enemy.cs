@@ -19,10 +19,20 @@ public abstract class Enemy : LivingEntity {
         }
     }
 
+    public void PlayerFound(Boolean state) {
+        playerFound = state;
+    }
+
     void Update() {
         // if... AI Stuff & MinMax trees
-        PlayerLookout();
         MovePattern();
+        if (playerFound) {
+            if (playerObj.position.x < transform.position.x) {
+                transform.rotation = Quaternion.Euler (0, 180, 0);
+            } else {
+                transform.rotation = Quaternion.identity;
+            }
+        }
     }
 
     public override void TakeDamage(Bullet b) {
