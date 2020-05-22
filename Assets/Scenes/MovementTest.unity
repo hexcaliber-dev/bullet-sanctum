@@ -1419,7 +1419,7 @@ MonoBehaviour:
   currWeapon: {fileID: 1459415357}
   trailObj: {fileID: 3410146957408013786, guid: 73a7ba96ac205844ca0f1cb56195abdd,
     type: 3}
-  trailColor: {r: 0.9900834, g: 1, b: 0.7971698, a: 0.6431373}
+  trailColor: {r: 0.9900834, g: 1, b: 0.7971698, a: 0.39607844}
   accelStrength: 20
   decelMultiplier: 0.5
   jumpStrength: 9.5
@@ -1429,6 +1429,7 @@ MonoBehaviour:
   deadzone: 0.15
   strafeTime: 0.08
   coyoteTime: 0.2
+  strafeCooldownTime: 1.5
   strafeCooldown: 0
   currState: 0
 --- !u!212 &1959878262

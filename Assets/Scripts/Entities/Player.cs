@@ -16,7 +16,7 @@ public class Player : LivingEntity {
 
     BoxCollider2D thisCol;
 
-    public float accelStrength, decelMultiplier, jumpStrength, strafeStrength, strafeFallStrength, maxSpeed, deadzone, strafeTime, coyoteTime; // assign in inspector
+    public float accelStrength, decelMultiplier, jumpStrength, strafeStrength, strafeFallStrength, maxSpeed, deadzone, strafeTime, coyoteTime, strafeCooldownTime; // assign in inspector
     public bool strafeCooldown;
 
     public enum MoveState { Ground, Falling, Jumping, Strafing }
@@ -46,7 +46,7 @@ public class Player : LivingEntity {
             Physics2D.Raycast (transform.position + Vector3.down * (thisCol.bounds.extents.y) + Vector3.right * (thisCol.bounds.extents.x), Vector2.down, 0.1f)) {
             // print ("GROUNDED");
             currState = MoveState.Ground;
-            strafeCooldown = false;
+            // strafeCooldown = false;
         } else if (currState == MoveState.Ground) {
             StartCoroutine (CoyoteTime ());
         }
@@ -157,6 +157,8 @@ public class Player : LivingEntity {
         rb2D.inertia = 0f;
         rb2D.velocity = Vector2.zero;
         GetComponent<SpriteRenderer> ().color = Color.white;
+        yield return new WaitForSeconds(strafeCooldownTime);
+        strafeCooldown = false;
         // rb2D.velocity = Vector2.down * strafeFallStrength;
     }
 
