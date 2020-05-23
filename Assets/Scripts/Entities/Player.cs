@@ -16,7 +16,7 @@ public class Player : LivingEntity {
 
     BoxCollider2D thisCol;
 
-    public float accelStrength, decelMultiplier, jumpStrength, strafeStrength, strafeFallStrength, maxSpeed, deadzone, strafeTime, coyoteTime, strafeCooldownTime; // assign in inspector
+    public float accelStrength, decelMultiplier, jumpStrength, strafeStrength, strafeFallStrength, maxSpeed, deadzone, strafeTime, coyoteTime, strafeCooldownTime, crouchSpeed, normalScale, crouchScale; // assign in inspector
     public bool strafeCooldown;
 
     public enum MoveState { Ground, Falling, Jumping, Strafing }
@@ -117,9 +117,19 @@ public class Player : LivingEntity {
         // print (currVelocity);
         // print (currState);
 
+
+
         // Velocity handling for horizontal movement
         if (currState != MoveState.Strafing) {
-            rb2D.velocity = new Vector2 (Mathf.Clamp (currVelocity, -maxSpeed, maxSpeed), rb2D.velocity.y);
+            // Crouching
+            if (Input.GetKey (KeyCode.LeftControl)) {
+                rb2D.velocity = new Vector2 (Mathf.Clamp (currVelocity, -crouchSpeed, crouchSpeed), rb2D.velocity.y);
+                transform.localScale = new Vector2 (normalScale, crouchScale); // TEMP get rid when crouch sprite is added
+            }
+            else {
+                rb2D.velocity = new Vector2 (Mathf.Clamp (currVelocity, -maxSpeed, maxSpeed), rb2D.velocity.y);
+                transform.localScale = new Vector2(1,1) * normalScale;
+            }
         }
 
         // Shooting
@@ -148,8 +158,8 @@ public class Player : LivingEntity {
 
     IEnumerator StopStrafe (float seconds) {
         for (int i = 0; i < 5; i += 1) {
-            StartCoroutine(CreateTrail(0.15f, trailColor.a * (1f - (0.1f * i))));
-            yield return new WaitForSeconds(seconds / 10);
+            StartCoroutine (CreateTrail (0.15f, trailColor.a * (1f - (0.1f * i))));
+            yield return new WaitForSeconds (seconds / 10);
         }
         if (currState == MoveState.Strafing) {
             currState = MoveState.Falling;
@@ -157,7 +167,7 @@ public class Player : LivingEntity {
         rb2D.inertia = 0f;
         rb2D.velocity = Vector2.zero;
         GetComponent<SpriteRenderer> ().color = Color.white;
-        yield return new WaitForSeconds(strafeCooldownTime);
+        yield return new WaitForSeconds (strafeCooldownTime);
         strafeCooldown = false;
         // rb2D.velocity = Vector2.down * strafeFallStrength;
     }
@@ -168,9 +178,9 @@ public class Player : LivingEntity {
     }
 
     IEnumerator CreateTrail (float duration, float alpha) {
-        GameObject trail = GameObject.Instantiate(trailObj, transform.position, transform.rotation);
-        trail.GetComponent<SpriteRenderer>().color = new Color(trailColor.r, trailColor.g, trailColor.b, alpha);    
-        yield return new WaitForSeconds(duration);
-        Destroy(trail);
+        GameObject trail = GameObject.Instantiate (trailObj, transform.position, transform.rotation);
+        trail.GetComponent<SpriteRenderer> ().color = new Color (trailColor.r, trailColor.g, trailColor.b, alpha);
+        yield return new WaitForSeconds (duration);
+        Destroy (trail);
     }
 }
