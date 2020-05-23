@@ -9,6 +9,7 @@ public class RoomSwitch : MonoBehaviour
 
     public byte transitionSpeed;
     public Image fadeImage;
+    public GameObject player; 
 
     bool switchNow;
     public string sceneName;
@@ -50,11 +51,14 @@ public class RoomSwitch : MonoBehaviour
     {
         Debug.Log("Fading Out... Start");
 
+        player.GetComponent<Player>().enabled = false;
         for (byte i = 0; i < 255; i += transitionSpeed)
         {
             fadeImage.color = new Color32(0, 0, 0, i);
             yield return null;
         }
+        player.GetComponent<Player>().enabled = true;
+        
         switchNow = true;
         Debug.Log("Fading Out... End");
     }
@@ -63,12 +67,14 @@ public class RoomSwitch : MonoBehaviour
     {
         Debug.Log("Fading In... Start");
 
+        player.GetComponent<Player>().enabled = false;
         for (byte i = 255; i > 0; i -= transitionSpeed)
         {
             fadeImage.color = new Color32(0, 0, 0, i);
             yield return null;
         }
-
+        player.GetComponent<Player>().enabled = true;
+        
         Debug.Log("Fading In... End");
     }
 
