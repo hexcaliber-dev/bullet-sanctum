@@ -11,18 +11,26 @@ public class Player : LivingEntity {
     public Weapon currWeapon;
     public GameObject trailObj;
     public Color trailColor;
+    public HUD hud;
 
-    Rigidbody2D rb2D;
+    // Basic movement variables
+    public float accelStrength, decelMultiplier, jumpStrength, maxSpeed, deadzone, coyoteTime, crouchSpeed, normalScale, crouchScale;
 
-    BoxCollider2D thisCol;
-
-    public float accelStrength, decelMultiplier, jumpStrength, strafeStrength, maxSpeed, deadzone, strafeTime, coyoteTime, strafeCooldownTime, crouchSpeed, normalScale, crouchScale; // assign in inspector
+    // Strafing variables
+    public float strafeStrength, strafeTime, strafeCooldownTime, strafeRechargeTime;
+    public int strafeCost;
     public bool strafeCooldown;
 
+    // Move state
     public enum MoveState { Ground, Falling, Jumping, Strafing }
     public MoveState currState;
 
+    // Hidden variables
+    const int MAX_STRAFE_BARS = 6;
     float currVelocity, currVelocityJump;
+    int strafesRemaining;
+    Rigidbody2D rb2D;
+    BoxCollider2D thisCol;
 
     override protected void Start () {
         base.Start ();
@@ -30,6 +38,8 @@ public class Player : LivingEntity {
         rb2D = GetComponent<Rigidbody2D> ();
         maxHealth = STARTING_HEALTH;
         health = STARTING_HEALTH;
+        strafesRemaining = MAX_STRAFE_BARS;
+        StartCoroutine(RechargeStrafe());
     }
 
     void FixedUpdate () {
@@ -43,8 +53,8 @@ public class Player : LivingEntity {
         // Check if player is grounded
         if (currState != MoveState.Strafing &&
             (Physics2D.Raycast (transform.position + Vector3.down * (thisCol.bounds.extents.y), Vector2.down, 0.1f) ||
-            Physics2D.Raycast (transform.position + Vector3.down * (thisCol.bounds.extents.y) + Vector3.left * (thisCol.bounds.extents.x), Vector2.down, 0.1f) ||
-            Physics2D.Raycast (transform.position + Vector3.down * (thisCol.bounds.extents.y) + Vector3.right * (thisCol.bounds.extents.x), Vector2.down, 0.1f))) {
+                Physics2D.Raycast (transform.position + Vector3.down * (thisCol.bounds.extents.y) + Vector3.left * (thisCol.bounds.extents.x), Vector2.down, 0.1f) ||
+                Physics2D.Raycast (transform.position + Vector3.down * (thisCol.bounds.extents.y) + Vector3.right * (thisCol.bounds.extents.x), Vector2.down, 0.1f))) {
             // print ("GROUNDED");
             currState = MoveState.Ground;
             // strafeCooldown = false;
@@ -93,7 +103,7 @@ public class Player : LivingEntity {
         }
         // Strafe
         if (Input.GetKey (KeyCode.LeftShift)) {
-            if (currState != MoveState.Strafing && !strafeCooldown) {
+            if (currState != MoveState.Strafing && !strafeCooldown && strafesRemaining >= strafeCost) {
                 currState = MoveState.Strafing;
                 if (strafeDir.Equals (Vector2.zero)) {
                     // Mouse pointer direction strafing
@@ -102,6 +112,8 @@ public class Player : LivingEntity {
                     rb2D.velocity = strafeStrength * Vector3.Normalize (strafeDir);
                 }
                 strafeCooldown = true;
+                strafesRemaining -= strafeCost;
+                hud.SetStrafeAmount(strafesRemaining);
                 GetComponent<SpriteRenderer> ().color = new Color (1, 1, .62f, 0.25f); // temp transparency effect
                 StartCoroutine (StopStrafe (strafeTime));
             }
@@ -124,10 +136,9 @@ public class Player : LivingEntity {
             if (Input.GetKey (KeyCode.LeftControl)) {
                 rb2D.velocity = new Vector2 (Mathf.Clamp (currVelocity, -crouchSpeed, crouchSpeed), rb2D.velocity.y);
                 transform.localScale = new Vector2 (normalScale, crouchScale); // TEMP get rid when crouch sprite is added
-            }
-            else {
+            } else {
                 rb2D.velocity = new Vector2 (Mathf.Clamp (currVelocity, -maxSpeed, maxSpeed), rb2D.velocity.y);
-                transform.localScale = new Vector2(1,1) * normalScale;
+                transform.localScale = new Vector2 (1, 1) * normalScale;
             }
         }
 
@@ -178,9 +189,19 @@ public class Player : LivingEntity {
 
     IEnumerator CreateTrail (float duration, float alpha) {
         GameObject trail = GameObject.Instantiate (trailObj, transform.position, transform.rotation);
-        trail.transform.localScale = new Vector2(1,1) * normalScale;
+        trail.transform.localScale = new Vector2 (1, 1) * normalScale;
         trail.GetComponent<SpriteRenderer> ().color = new Color (trailColor.r, trailColor.g, trailColor.b, alpha);
         yield return new WaitForSeconds (duration);
         Destroy (trail);
+    }
+
+    IEnumerator RechargeStrafe () {
+        while (true) {
+            if (currState == MoveState.Ground) {
+                strafesRemaining = Math.Min(MAX_STRAFE_BARS, strafesRemaining + 1);
+                hud.SetStrafeAmount(strafesRemaining);
+            }
+            yield return new WaitForSeconds(strafeRechargeTime);
+        }
     }
 }

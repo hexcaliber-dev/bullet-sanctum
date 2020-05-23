@@ -3,10 +3,7 @@ using System.Collections;
 
 public class Pistol : Weapon {
 
-    // Bullet projectile is inherited from Weapon.
-
-    private bool onCooldown;
-    public float cooldownTime; // in seconds
+    // Bullet projectile, cooldown, and cooldown time is inherited from Weapon.
 
     protected override void Start() {
         base.Start();
