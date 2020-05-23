@@ -20,8 +20,12 @@ public class HUD : MonoBehaviour {
     IEnumerator ReloadWeapon(Weapon weapon) {
         for (int step = 0; step < reloadSprites.Count; step += 1) {
             reloadMeter.sprite = reloadSprites[step];
-            yield return new WaitForSeconds (weapon.cooldownTime / step);
+            yield return new WaitForSeconds (weapon.cooldownTime / reloadSprites.Count);
         }
+    }
+
+    public void UpdateRechargeMeter(Weapon weapon) {
+        StartCoroutine(ReloadWeapon(weapon));
     }
 
     public void SetStrafeAmount(int amt) {

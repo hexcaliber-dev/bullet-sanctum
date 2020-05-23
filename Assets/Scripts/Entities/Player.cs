@@ -39,7 +39,7 @@ public class Player : LivingEntity {
         maxHealth = STARTING_HEALTH;
         health = STARTING_HEALTH;
         strafesRemaining = MAX_STRAFE_BARS;
-        StartCoroutine(RechargeStrafe());
+        StartCoroutine (RechargeStrafe ());
     }
 
     void FixedUpdate () {
@@ -113,7 +113,7 @@ public class Player : LivingEntity {
                 }
                 strafeCooldown = true;
                 strafesRemaining -= strafeCost;
-                hud.SetStrafeAmount(strafesRemaining);
+                hud.SetStrafeAmount (strafesRemaining);
                 GetComponent<SpriteRenderer> ().color = new Color (1, 1, .62f, 0.25f); // temp transparency effect
                 StartCoroutine (StopStrafe (strafeTime));
             }
@@ -144,7 +144,10 @@ public class Player : LivingEntity {
 
         // Shooting
         if (Input.GetKey (KeyCode.Mouse0)) {
-            currWeapon.UseWeapon ();
+            if (!currWeapon.onCooldown) {
+                hud.UpdateRechargeMeter (currWeapon);
+                currWeapon.UseWeapon ();
+            }
         }
     }
 
@@ -198,10 +201,10 @@ public class Player : LivingEntity {
     IEnumerator RechargeStrafe () {
         while (true) {
             if (currState == MoveState.Ground) {
-                strafesRemaining = Math.Min(MAX_STRAFE_BARS, strafesRemaining + 1);
-                hud.SetStrafeAmount(strafesRemaining);
+                strafesRemaining = Math.Min (MAX_STRAFE_BARS, strafesRemaining + 1);
+                hud.SetStrafeAmount (strafesRemaining);
             }
-            yield return new WaitForSeconds(strafeRechargeTime);
+            yield return new WaitForSeconds (strafeRechargeTime);
         }
     }
 }

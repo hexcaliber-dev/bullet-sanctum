@@ -4,7 +4,7 @@ public class Weapon : MonoBehaviour {
 
     public Bullet projectile;
 
-    protected bool onCooldown;
+    public bool onCooldown;
     public float cooldownTime; // in seconds
 
     // Default weapon behavior: spawn a bullet
