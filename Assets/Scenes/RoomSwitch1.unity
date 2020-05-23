@@ -194,16 +194,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3592231846050750060, guid: 3b647151b76cf0645ab90ffcc21bc490,
-        type: 3}
-      propertyPath: normalScale
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 3592231846050750060, guid: 3b647151b76cf0645ab90ffcc21bc490,
-        type: 3}
-      propertyPath: crouchScale
-      value: 0.1
-      objectReference: {fileID: 0}
     - target: {fileID: 3592231846050750061, guid: 3b647151b76cf0645ab90ffcc21bc490,
         type: 3}
       propertyPath: m_Name

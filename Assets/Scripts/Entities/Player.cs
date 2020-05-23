@@ -16,7 +16,7 @@ public class Player : LivingEntity {
 
     BoxCollider2D thisCol;
 
-    public float accelStrength, decelMultiplier, jumpStrength, strafeStrength, strafeFallStrength, maxSpeed, deadzone, strafeTime, coyoteTime, strafeCooldownTime, crouchSpeed, normalScale, crouchScale; // assign in inspector
+    public float accelStrength, decelMultiplier, jumpStrength, strafeStrength, maxSpeed, deadzone, strafeTime, coyoteTime, strafeCooldownTime, crouchSpeed, normalScale, crouchScale; // assign in inspector
     public bool strafeCooldown;
 
     public enum MoveState { Ground, Falling, Jumping, Strafing }
@@ -41,9 +41,10 @@ public class Player : LivingEntity {
         Vector2 strafeDir = Vector2.zero;
 
         // Check if player is grounded
-        if (Physics2D.Raycast (transform.position + Vector3.down * (thisCol.bounds.extents.y), Vector2.down, 0.1f) ||
+        if (currState != MoveState.Strafing &&
+            (Physics2D.Raycast (transform.position + Vector3.down * (thisCol.bounds.extents.y), Vector2.down, 0.1f) ||
             Physics2D.Raycast (transform.position + Vector3.down * (thisCol.bounds.extents.y) + Vector3.left * (thisCol.bounds.extents.x), Vector2.down, 0.1f) ||
-            Physics2D.Raycast (transform.position + Vector3.down * (thisCol.bounds.extents.y) + Vector3.right * (thisCol.bounds.extents.x), Vector2.down, 0.1f)) {
+            Physics2D.Raycast (transform.position + Vector3.down * (thisCol.bounds.extents.y) + Vector3.right * (thisCol.bounds.extents.x), Vector2.down, 0.1f))) {
             // print ("GROUNDED");
             currState = MoveState.Ground;
             // strafeCooldown = false;
@@ -117,8 +118,6 @@ public class Player : LivingEntity {
         // print (currVelocity);
         // print (currState);
 
-
-
         // Velocity handling for horizontal movement
         if (currState != MoveState.Strafing) {
             // Crouching
@@ -179,6 +178,7 @@ public class Player : LivingEntity {
 
     IEnumerator CreateTrail (float duration, float alpha) {
         GameObject trail = GameObject.Instantiate (trailObj, transform.position, transform.rotation);
+        trail.transform.localScale = new Vector2(1,1) * normalScale;
         trail.GetComponent<SpriteRenderer> ().color = new Color (trailColor.r, trailColor.g, trailColor.b, alpha);
         yield return new WaitForSeconds (duration);
         Destroy (trail);
