@@ -1757,6 +1757,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transitionSpeed: 3
   fadeImage: {fileID: 789120468}
+  player: {fileID: 504764633}
   sceneName: RoomSwitch2
 --- !u!61 &1396265108
 BoxCollider2D:
