@@ -1526,6 +1526,7 @@ MonoBehaviour:
   strafeMeter: {fileID: 1513224161}
   reloadMeter: {fileID: 900150009}
   healthMeter: {fileID: 1503788591}
+  crosshairImage: {fileID: 2800000, guid: 4799a1f195548c24882b5a4fce079c64, type: 3}
 --- !u!1 &1503788590
 GameObject:
   m_ObjectHideFlags: 0

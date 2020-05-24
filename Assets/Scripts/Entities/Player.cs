@@ -52,11 +52,11 @@ public class Player : LivingEntity {
         Vector2 strafeDir = Vector2.zero;
 
         // Rotate weapon to point at mouse
-        Vector2 diff = Vector3.Normalize(direction);
-        float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
-        shoulder.transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90);
+        Vector2 diff = Vector3.Normalize (direction);
+        float rot_z = Mathf.Atan2 (diff.y, diff.x) * Mathf.Rad2Deg;
+        shoulder.transform.rotation = Quaternion.Euler (0f, 0f, rot_z - 90);
 
-        LayerMask groundMask = LayerMask.GetMask("Ground");
+        LayerMask groundMask = LayerMask.GetMask ("Ground");
         // Check if player is grounded
         if (currState != MoveState.Strafing &&
             (Physics2D.Raycast (transform.position + Vector3.down * (thisCol.bounds.extents.y + 0.01f), Vector2.down, 0.1f, groundMask) ||
@@ -71,11 +71,11 @@ public class Player : LivingEntity {
         // Flip player if mouse is pointed left
         if (direction.x < 0) {
             transform.rotation = Quaternion.Euler (0, 180, 0);
-            currWeapon.GetComponent<SpriteRenderer>().sprite = weaponSpriteFlipped;
+            currWeapon.GetComponent<SpriteRenderer> ().sprite = weaponSpriteFlipped;
             currWeapon.transform.localRotation = Quaternion.Euler (0, 0, 0);
         } else {
             transform.rotation = Quaternion.identity;
-            currWeapon.GetComponent<SpriteRenderer>().sprite = weaponSprite;
+            currWeapon.GetComponent<SpriteRenderer> ().sprite = weaponSprite;
             currWeapon.transform.localRotation = Quaternion.identity;
         }
 
@@ -145,10 +145,12 @@ public class Player : LivingEntity {
             // Crouching
             if (Input.GetKey (KeyCode.LeftControl)) {
                 rb2D.velocity = new Vector2 (Mathf.Clamp (currVelocity, -crouchSpeed, crouchSpeed), rb2D.velocity.y);
-                GetComponent<SpriteRenderer>().sprite = crouchSprite;
+                GetComponent<SpriteRenderer> ().sprite = crouchSprite;
+                shoulder.transform.localPosition = new Vector2(-0.03f, 0f);
             } else {
                 rb2D.velocity = new Vector2 (Mathf.Clamp (currVelocity, -maxSpeed, maxSpeed), rb2D.velocity.y);
-                GetComponent<SpriteRenderer>().sprite = playerSprite;
+                GetComponent<SpriteRenderer> ().sprite = playerSprite;
+                shoulder.transform.localPosition = new Vector2(-0.03f, 0.04f);
             }
         }
 
