@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEditor;
+using UnityEditor.Animations;
 
 public class Player : LivingEntity {
 
@@ -33,6 +35,8 @@ public class Player : LivingEntity {
     Rigidbody2D rb2D;
     BoxCollider2D thisCol;
 
+    Animator animator;
+
     override protected void Start () {
         base.Start ();
         thisCol = GetComponent<BoxCollider2D> ();
@@ -41,6 +45,7 @@ public class Player : LivingEntity {
         health = STARTING_HEALTH;
         strafesRemaining = MAX_STRAFE_BARS;
         StartCoroutine (RechargeStrafe ());
+        animator = GetComponent<Animator>();
     }
 
     void FixedUpdate () {
@@ -81,6 +86,7 @@ public class Player : LivingEntity {
 
         // Moving left
         if (Input.GetKey (KeyCode.A)) {
+            animator.SetBool("moving", true);
             if (currVelocity <= 0) {
                 currVelocity -= accelStrength * Time.deltaTime;
                 decel = false;
@@ -89,6 +95,7 @@ public class Player : LivingEntity {
         }
         // Moving right
         if (Input.GetKey (KeyCode.D)) {
+            animator.SetBool("moving", true);
             if (currVelocity >= 0) {
                 currVelocity += accelStrength * Time.deltaTime;
                 decel = false;
@@ -134,6 +141,7 @@ public class Player : LivingEntity {
             if (Math.Abs (currVelocity) < deadzone) {
                 currVelocity = 0f;
             }
+            animator.SetBool("moving", false);
         }
 
         // Old debug print statements

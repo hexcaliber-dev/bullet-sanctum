@@ -22,7 +22,7 @@ public class HUD : MonoBehaviour {
     void OnGUI () {
         float xMin = (Input.mousePosition.x) - (crosshairImage.width / 2);
         float yMin = (Screen.height - Input.mousePosition.y) - (crosshairImage.height / 2);
-        print (new Vector2 (xMin, yMin));
+        // print (new Vector2 (xMin, yMin));
         GUI.DrawTexture (new Rect (xMin, yMin, crosshairImage.width, crosshairImage.height), crosshairImage);
     }
 
