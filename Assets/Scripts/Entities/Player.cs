@@ -9,12 +9,13 @@ public class Player : LivingEntity {
     public int maxHealth; // current health is inherited from LivingEntity
 
     public Weapon currWeapon;
-    public GameObject trailObj;
+    public GameObject trailObj, shoulder;
     public Color trailColor;
     public HUD hud;
+    public Sprite playerSprite, crouchSprite, weaponSprite, weaponSpriteFlipped;
 
     // Basic movement variables
-    public float accelStrength, decelMultiplier, jumpStrength, maxSpeed, deadzone, coyoteTime, crouchSpeed, normalScale, crouchScale;
+    public float accelStrength, decelMultiplier, jumpStrength, maxSpeed, deadzone, coyoteTime, crouchSpeed;
 
     // Strafing variables
     public float strafeStrength, strafeTime, strafeCooldownTime, strafeRechargeTime;
@@ -50,12 +51,16 @@ public class Player : LivingEntity {
         Vector2 direction = mouse - transform.position;
         Vector2 strafeDir = Vector2.zero;
 
+        // Rotate weapon to point at mouse
+        Vector2 diff = Vector3.Normalize(direction);
+        float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
+        shoulder.transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90);
+
         // Check if player is grounded
         if (currState != MoveState.Strafing &&
-            (Physics2D.Raycast (transform.position + Vector3.down * (thisCol.bounds.extents.y), Vector2.down, 0.1f) ||
-                Physics2D.Raycast (transform.position + Vector3.down * (thisCol.bounds.extents.y) + Vector3.left * (thisCol.bounds.extents.x), Vector2.down, 0.1f) ||
-                Physics2D.Raycast (transform.position + Vector3.down * (thisCol.bounds.extents.y) + Vector3.right * (thisCol.bounds.extents.x), Vector2.down, 0.1f))) {
-            // print ("GROUNDED");
+            (Physics2D.Raycast (transform.position + Vector3.down * (thisCol.bounds.extents.y + 0.01f), Vector2.down, 0.1f) ||
+                Physics2D.Raycast (transform.position + Vector3.down * (thisCol.bounds.extents.y + 0.01f) + Vector3.left * (thisCol.bounds.extents.x), Vector2.down, 0.1f) ||
+                Physics2D.Raycast (transform.position + Vector3.down * (thisCol.bounds.extents.y + 0.01f) + Vector3.right * (thisCol.bounds.extents.x), Vector2.down, 0.1f))) {
             currState = MoveState.Ground;
             // strafeCooldown = false;
         } else if (currState == MoveState.Ground) {
@@ -65,8 +70,12 @@ public class Player : LivingEntity {
         // Flip player if mouse is pointed left
         if (direction.x < 0) {
             transform.rotation = Quaternion.Euler (0, 180, 0);
+            currWeapon.GetComponent<SpriteRenderer>().sprite = weaponSpriteFlipped;
+            currWeapon.transform.localRotation = Quaternion.Euler (0, 0, 0);
         } else {
             transform.rotation = Quaternion.identity;
+            currWeapon.GetComponent<SpriteRenderer>().sprite = weaponSprite;
+            currWeapon.transform.localRotation = Quaternion.identity;
         }
 
         // Moving left
@@ -135,10 +144,10 @@ public class Player : LivingEntity {
             // Crouching
             if (Input.GetKey (KeyCode.LeftControl)) {
                 rb2D.velocity = new Vector2 (Mathf.Clamp (currVelocity, -crouchSpeed, crouchSpeed), rb2D.velocity.y);
-                transform.localScale = new Vector2 (normalScale, crouchScale); // TEMP get rid when crouch sprite is added
+                GetComponent<SpriteRenderer>().sprite = crouchSprite;
             } else {
                 rb2D.velocity = new Vector2 (Mathf.Clamp (currVelocity, -maxSpeed, maxSpeed), rb2D.velocity.y);
-                transform.localScale = new Vector2 (1, 1) * normalScale;
+                GetComponent<SpriteRenderer>().sprite = playerSprite;
             }
         }
 
@@ -192,7 +201,6 @@ public class Player : LivingEntity {
 
     IEnumerator CreateTrail (float duration, float alpha) {
         GameObject trail = GameObject.Instantiate (trailObj, transform.position, transform.rotation);
-        trail.transform.localScale = new Vector2 (1, 1) * normalScale;
         trail.GetComponent<SpriteRenderer> ().color = new Color (trailColor.r, trailColor.g, trailColor.b, alpha);
         yield return new WaitForSeconds (duration);
         Destroy (trail);

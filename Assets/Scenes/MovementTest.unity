@@ -1270,10 +1270,10 @@ RectTransform:
   m_Father: {fileID: 1116982435}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -473.5, y: -262.9}
-  m_SizeDelta: {x: 158.20737, y: 100}
+  m_AnchorMin: {x: 0.04954088, y: 0.06427226}
+  m_AnchorMax: {x: 0.17176394, y: 0.19154453}
+  m_AnchoredPosition: {x: -1.0002441, y: -2.4299927}
+  m_SizeDelta: {x: -1.792633, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &592779993
 MonoBehaviour:
@@ -1294,7 +1294,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: e327fa0a6c4a0bed58e1105dd731e770, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1346,7 +1346,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.2055532, y: 0.125402}
   m_AnchorMax: {x: 0.2055532, y: 0.125402}
-  m_AnchoredPosition: {x: -0.8999634, y: -0.8999634}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 63.38571, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &900150009
@@ -1509,20 +1509,18 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2e02b1443f1ccb845b300d74ed541f2c, type: 3}
   - {fileID: 21300000, guid: dd18e5d7dec3bfb4b9106cd829c10f95, type: 3}
   reloadSprites:
-  - {fileID: 21300000, guid: dbb1dbaee2800e1418cae8ea303eaf96, type: 3}
-  - {fileID: 21300000, guid: 65a0a5546aaf49641b6c94121b18f8ad, type: 3}
-  - {fileID: 21300000, guid: 798ec1a30375d5a4989e57f34e649fdd, type: 3}
-  - {fileID: 21300000, guid: 25ec223cdaaf82b4888c6210b4a21aa9, type: 3}
-  - {fileID: 21300000, guid: f12855afe8eb4184fb138288f3f1ed35, type: 3}
-  - {fileID: 21300000, guid: 4e0a7f27585fa064a9970dc49166d1aa, type: 3}
-  - {fileID: 21300000, guid: ae626d729de149342b41d9a886986cf4, type: 3}
-  - {fileID: 21300000, guid: 6b12ae48ea1d9f24f924dd211d03cb4b, type: 3}
-  - {fileID: 21300000, guid: 6953370a578ac8e4898c102911ab7d4f, type: 3}
-  - {fileID: 21300000, guid: 7d8b4c04ab5bd274aad9674f88c81d75, type: 3}
-  - {fileID: 21300000, guid: 67b7e1639e5d3de44abed6ccb68284fc, type: 3}
-  - {fileID: 21300000, guid: 0e8363950bbe3db4aaabc3e6378512d9, type: 3}
-  - {fileID: 21300000, guid: 655dd734c1503354580c510cab07e711, type: 3}
-  - {fileID: 21300000, guid: 8736b27aa613b054ab5697796eee9d34, type: 3}
+  - {fileID: 21300000, guid: 9a87a9761c1852714a9e45890feb8a91, type: 3}
+  - {fileID: 21300000, guid: c52d34dacb563569b91a379ab35d075f, type: 3}
+  - {fileID: 21300000, guid: 3f22f35615b6a3d179445c56ed9c8b1b, type: 3}
+  - {fileID: 21300000, guid: 0ad4c0d23bbc2a3eca8ce0caa821f8bd, type: 3}
+  - {fileID: 21300000, guid: 61521a4926b9ba16396783bbcb830881, type: 3}
+  - {fileID: 21300000, guid: f272495847cc9d8b29db920c3f83579d, type: 3}
+  - {fileID: 21300000, guid: da1dcfdfa08103b8391e8760f43fab67, type: 3}
+  - {fileID: 21300000, guid: c8530dd64708b266b938c97ac2c3d160, type: 3}
+  - {fileID: 21300000, guid: 6351d8ae3300f90d0a5c8539b777b4c7, type: 3}
+  - {fileID: 21300000, guid: 169fdeef710eb56d9bc4d7382c30aa4a, type: 3}
+  - {fileID: 21300000, guid: bf82216400bd16b4e86d82f7d1d028c0, type: 3}
+  - {fileID: 21300000, guid: 689a00bdd30dcfe9a8bfb57a990edabb, type: 3}
   strafeMeter: {fileID: 1513224161}
   reloadMeter: {fileID: 900150009}
 --- !u!1 &1513224160
@@ -1803,31 +1801,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3592231846050750060, guid: 3b647151b76cf0645ab90ffcc21bc490,
         type: 3}
-      propertyPath: strafeStrength
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 3592231846050750060, guid: 3b647151b76cf0645ab90ffcc21bc490,
-        type: 3}
-      propertyPath: jumpStrength
-      value: 8.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 3592231846050750060, guid: 3b647151b76cf0645ab90ffcc21bc490,
-        type: 3}
-      propertyPath: strafeCooldownTime
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3592231846050750060, guid: 3b647151b76cf0645ab90ffcc21bc490,
-        type: 3}
-      propertyPath: strafeRechargeTime
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 3592231846050750060, guid: 3b647151b76cf0645ab90ffcc21bc490,
-        type: 3}
-      propertyPath: strafeCost
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3592231846050750060, guid: 3b647151b76cf0645ab90ffcc21bc490,
-        type: 3}
       propertyPath: hud
       value: 
       objectReference: {fileID: 1116982436}
@@ -1839,12 +1812,12 @@ PrefabInstance:
     - target: {fileID: 3592231846050750062, guid: 3b647151b76cf0645ab90ffcc21bc490,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.69
+      value: 2.8168
       objectReference: {fileID: 0}
     - target: {fileID: 3592231846050750062, guid: 3b647151b76cf0645ab90ffcc21bc490,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.17
+      value: -1.4005
       objectReference: {fileID: 0}
     - target: {fileID: 3592231846050750062, guid: 3b647151b76cf0645ab90ffcc21bc490,
         type: 3}
