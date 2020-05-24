@@ -62,6 +62,10 @@ public class Player : LivingEntity {
         shoulder.transform.rotation = Quaternion.Euler (0f, 0f, rot_z - 90);
 
         LayerMask groundMask = LayerMask.GetMask ("Ground");
+        
+        // Ceiling detection
+        bool hittingCeiling = Physics2D.Raycast(transform.position + Vector3.up * (thisCol.bounds.extents.y + 0.01f), Vector2.up, 0.1f, groundMask);
+
         // Check if player is grounded
         if (currState != MoveState.Strafing &&
             (Physics2D.Raycast (transform.position + Vector3.down * (thisCol.bounds.extents.y + 0.01f), Vector2.down, 0.1f, groundMask) ||
@@ -112,7 +116,7 @@ public class Player : LivingEntity {
 
         // Jumping
         if (Input.GetKey (KeyCode.Space)) {
-            if (currState == MoveState.Ground) {
+            if (currState == MoveState.Ground && !hittingCeiling) {
                 //currVelocityJump = 10f; //starting velocity going up, delete if not needed
                 rb2D.velocity = jumpStrength * Vector2.up;
                 currState = MoveState.Jumping;
@@ -155,10 +159,15 @@ public class Player : LivingEntity {
                 rb2D.velocity = new Vector2 (Mathf.Clamp (currVelocity, -crouchSpeed, crouchSpeed), rb2D.velocity.y);
                 GetComponent<SpriteRenderer> ().sprite = crouchSprite;
                 shoulder.transform.localPosition = new Vector2(-0.03f, 0f);
+                GetComponent<BoxCollider2D>().size = new Vector2(.18f, .3f);
             } else {
                 rb2D.velocity = new Vector2 (Mathf.Clamp (currVelocity, -maxSpeed, maxSpeed), rb2D.velocity.y);
-                GetComponent<SpriteRenderer> ().sprite = playerSprite;
                 shoulder.transform.localPosition = new Vector2(-0.03f, 0.04f);
+
+                if (!hittingCeiling) {
+                    GetComponent<SpriteRenderer> ().sprite = playerSprite;
+                    GetComponent<BoxCollider2D>().size = new Vector2(.18f, .4f);
+                }
             }
         }
 
