@@ -56,11 +56,12 @@ public class Player : LivingEntity {
         float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
         shoulder.transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90);
 
+        LayerMask groundMask = LayerMask.GetMask("Ground");
         // Check if player is grounded
         if (currState != MoveState.Strafing &&
-            (Physics2D.Raycast (transform.position + Vector3.down * (thisCol.bounds.extents.y + 0.01f), Vector2.down, 0.1f) ||
-                Physics2D.Raycast (transform.position + Vector3.down * (thisCol.bounds.extents.y + 0.01f) + Vector3.left * (thisCol.bounds.extents.x), Vector2.down, 0.1f) ||
-                Physics2D.Raycast (transform.position + Vector3.down * (thisCol.bounds.extents.y + 0.01f) + Vector3.right * (thisCol.bounds.extents.x), Vector2.down, 0.1f))) {
+            (Physics2D.Raycast (transform.position + Vector3.down * (thisCol.bounds.extents.y + 0.01f), Vector2.down, 0.1f, groundMask) ||
+                Physics2D.Raycast (transform.position + Vector3.down * (thisCol.bounds.extents.y + 0.01f) + Vector3.left * (thisCol.bounds.extents.x), Vector2.down, 0.1f, groundMask) ||
+                Physics2D.Raycast (transform.position + Vector3.down * (thisCol.bounds.extents.y + 0.01f) + Vector3.right * (thisCol.bounds.extents.x), Vector2.down, 0.1f, groundMask))) {
             currState = MoveState.Ground;
             // strafeCooldown = false;
         } else if (currState == MoveState.Ground) {

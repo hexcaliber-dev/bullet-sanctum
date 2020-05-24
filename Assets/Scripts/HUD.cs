@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class HUD : MonoBehaviour {
 
-    public List<Sprite> strafeSprites, reloadSprites;
-    public Image strafeMeter, reloadMeter;
+    public List<Sprite> strafeSprites, reloadSprites, healthSprites;
+    public Image strafeMeter, reloadMeter, healthMeter;
     // Start is called before the first frame update
     void Start () {
 
@@ -30,5 +30,9 @@ public class HUD : MonoBehaviour {
 
     public void SetStrafeAmount(int amt) {
         strafeMeter.sprite = strafeSprites[amt];
+    }
+
+    public void SetHealthAmount(int health) {
+        healthMeter.sprite = healthSprites[health];
     }
 }
