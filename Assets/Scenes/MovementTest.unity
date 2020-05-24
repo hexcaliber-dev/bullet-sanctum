@@ -504,6 +504,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 169fdeef710eb56d9bc4d7382c30aa4a, type: 3}
   - {fileID: 21300000, guid: bf82216400bd16b4e86d82f7d1d028c0, type: 3}
   - {fileID: 21300000, guid: 689a00bdd30dcfe9a8bfb57a990edabb, type: 3}
+  - {fileID: 21300000, guid: 588a553710ab0acaaac0a2e831be1017, type: 3}
   healthSprites: []
   strafeMeter: {fileID: 1513224161}
   reloadMeter: {fileID: 900150009}
