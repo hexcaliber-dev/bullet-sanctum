@@ -9,6 +9,10 @@ public abstract class Enemy : LivingEntity {
     public Transform playerObj;
     public Boolean playerFound;
 
+    override protected void Start() {
+        OnSpawn();
+    }
+
     // Runs on Update(). 
     public abstract void MovePattern();
 
