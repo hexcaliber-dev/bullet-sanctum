@@ -1,8 +1,8 @@
 using System;
 using System.Collections;
-using UnityEngine;
 using UnityEditor;
 using UnityEditor.Animations;
+using UnityEngine;
 
 public class Player : LivingEntity {
 
@@ -17,7 +17,7 @@ public class Player : LivingEntity {
     public Sprite playerSprite, crouchSprite, weaponSprite, weaponSpriteFlipped;
 
     // Basic movement variables
-    public float accelStrength, decelMultiplier, jumpStrength, maxSpeed, deadzone, coyoteTime, crouchSpeed;
+    public float accelStrength, decelMultiplier, jumpStrength, jumpTime, maxSpeed, deadzone, coyoteTime, crouchSpeed;
 
     // Strafing variables
     public float strafeStrength, strafeTime, strafeCooldownTime, strafeRechargeTime;
@@ -45,7 +45,7 @@ public class Player : LivingEntity {
         health = STARTING_HEALTH;
         strafesRemaining = MAX_STRAFE_BARS;
         StartCoroutine (RechargeStrafe ());
-        animator = GetComponent<Animator>();
+        animator = GetComponent<Animator> ();
     }
 
     void FixedUpdate () {
@@ -54,7 +54,6 @@ public class Player : LivingEntity {
         // Get mouse direction
         Vector3 mouse = Camera.main.ScreenToWorldPoint (Input.mousePosition);
         Vector2 direction = mouse - transform.position;
-        Vector2 strafeDir = Vector2.zero;
 
         // Rotate weapon to point at mouse
         Vector2 diff = Vector3.Normalize (direction);
@@ -62,9 +61,9 @@ public class Player : LivingEntity {
         shoulder.transform.rotation = Quaternion.Euler (0f, 0f, rot_z - 90);
 
         LayerMask groundMask = LayerMask.GetMask ("Ground");
-        
+
         // Ceiling detection
-        bool hittingCeiling = Physics2D.Raycast(transform.position + Vector3.up * (thisCol.bounds.extents.y + 0.01f), Vector2.up, 0.1f, groundMask);
+        bool hittingCeiling = Physics2D.Raycast (transform.position + Vector3.up * (thisCol.bounds.extents.y + 0.01f), Vector2.up, 0.1f, groundMask);
 
         // Check if player is grounded
         if (currState != MoveState.Strafing &&
@@ -90,53 +89,31 @@ public class Player : LivingEntity {
 
         // Moving left
         if (Input.GetKey (KeyCode.A)) {
-            animator.SetBool("moving", true);
+            animator.SetBool ("moving", true);
             if (currVelocity <= 0) {
                 currVelocity -= accelStrength * Time.deltaTime;
                 decel = false;
             }
-            strafeDir += Vector2.left;
         }
         // Moving right
         if (Input.GetKey (KeyCode.D)) {
-            animator.SetBool("moving", true);
+            animator.SetBool ("moving", true);
             if (currVelocity >= 0) {
                 currVelocity += accelStrength * Time.deltaTime;
                 decel = false;
             }
-            strafeDir += Vector2.right;
-        }
-
-        if (Input.GetKey (KeyCode.W)) {
-            strafeDir += Vector2.up;
-        }
-        if (Input.GetKey (KeyCode.S)) {
-            strafeDir += Vector2.down;
         }
 
         // Jumping
         if (Input.GetKey (KeyCode.Space)) {
             if (currState == MoveState.Ground && !hittingCeiling) {
-                //currVelocityJump = 10f; //starting velocity going up, delete if not needed
-                rb2D.velocity = jumpStrength * Vector2.up;
-                currState = MoveState.Jumping;
+                StartCoroutine (Jump ());
             }
         }
         // Strafe
         if (Input.GetKey (KeyCode.LeftShift)) {
             if (currState != MoveState.Strafing && !strafeCooldown && strafesRemaining >= strafeCost) {
-                currState = MoveState.Strafing;
-                if (strafeDir.Equals (Vector2.zero)) {
-                    // Mouse pointer direction strafing
-                    rb2D.velocity = new Vector2 (strafeStrength * ((direction.x < 0) ? -1 : 1), 0);
-                } else {
-                    rb2D.velocity = strafeStrength * Vector3.Normalize (strafeDir);
-                }
-                strafeCooldown = true;
-                strafesRemaining -= strafeCost;
-                hud.SetStrafeAmount (strafesRemaining);
-                GetComponent<SpriteRenderer> ().color = new Color (1, 1, .62f, 0.25f); // temp transparency effect
-                StartCoroutine (StopStrafe (strafeTime));
+                StartCoroutine (StartStrafe (0.025f, direction.x < 0));
             }
         }
         // Deceleration mechanic
@@ -145,12 +122,12 @@ public class Player : LivingEntity {
             if (Math.Abs (currVelocity) < deadzone) {
                 currVelocity = 0f;
             }
-            animator.SetBool("moving", false);
+            animator.SetBool ("moving", false);
         }
 
         // Old debug print statements
         // print (currVelocity);
-        // print (currState);
+        print (currState);
 
         // Velocity handling for horizontal movement
         if (currState != MoveState.Strafing) {
@@ -158,15 +135,15 @@ public class Player : LivingEntity {
             if (Input.GetKey (KeyCode.LeftControl)) {
                 rb2D.velocity = new Vector2 (Mathf.Clamp (currVelocity, -crouchSpeed, crouchSpeed), rb2D.velocity.y);
                 GetComponent<SpriteRenderer> ().sprite = crouchSprite;
-                shoulder.transform.localPosition = new Vector2(-0.03f, 0f);
-                GetComponent<BoxCollider2D>().size = new Vector2(.18f, .3f);
+                shoulder.transform.localPosition = new Vector2 (-0.03f, 0f);
+                GetComponent<BoxCollider2D> ().size = new Vector2 (.18f, .3f);
             } else {
                 rb2D.velocity = new Vector2 (Mathf.Clamp (currVelocity, -maxSpeed, maxSpeed), rb2D.velocity.y);
-                shoulder.transform.localPosition = new Vector2(-0.03f, 0.04f);
+                shoulder.transform.localPosition = new Vector2 (-0.03f, 0.04f);
 
                 if (!hittingCeiling) {
                     GetComponent<SpriteRenderer> ().sprite = playerSprite;
-                    GetComponent<BoxCollider2D>().size = new Vector2(.18f, .4f);
+                    GetComponent<BoxCollider2D> ().size = new Vector2 (.18f, .4f);
                 }
             }
         }
@@ -175,7 +152,7 @@ public class Player : LivingEntity {
         if (Input.GetKey (KeyCode.Mouse0)) {
             if (!currWeapon.onCooldown) {
                 hud.UpdateRechargeMeter (currWeapon);
-                currWeapon.UseWeapon ();
+                currWeapon.UseWeapon();
             }
         }
     }
@@ -198,6 +175,26 @@ public class Player : LivingEntity {
 
     // Collision is handled in PlayerFeet
 
+    IEnumerator StartStrafe (float delay, bool inverted) {
+        currState = MoveState.Strafing;
+        strafeCooldown = true;
+        strafesRemaining -= strafeCost;
+        Vector2 strafeDir = Vector2.zero;
+        hud.SetStrafeAmount (strafesRemaining);
+
+        yield return new WaitForSeconds (delay);
+        if (Input.GetKey (KeyCode.W)) strafeDir += Vector2.up;
+        if (Input.GetKey (KeyCode.A)) strafeDir += Vector2.left;
+        if (Input.GetKey (KeyCode.S)) strafeDir += Vector2.down;
+        if (Input.GetKey (KeyCode.D)) strafeDir += Vector2.right;
+
+        if (!strafeDir.Equals (Vector2.zero)) {
+            rb2D.velocity = strafeStrength * Vector3.Normalize (strafeDir);
+        }
+        GetComponent<SpriteRenderer> ().color = new Color (1, 1, .62f, 0.25f); // temp transparency effect
+        StartCoroutine (StopStrafe (strafeTime));
+    }
+
     IEnumerator StopStrafe (float seconds) {
         for (int i = 0; i < 5; i += 1) {
             StartCoroutine (CreateTrail (0.15f, trailColor.a * (1f - (0.1f * i))));
@@ -216,7 +213,9 @@ public class Player : LivingEntity {
 
     IEnumerator CoyoteTime () {
         yield return new WaitForSeconds (coyoteTime);
-        currState = MoveState.Falling;
+        if (currState != MoveState.Jumping) {
+            currState = MoveState.Falling;
+        }
     }
 
     IEnumerator CreateTrail (float duration, float alpha) {
@@ -234,5 +233,15 @@ public class Player : LivingEntity {
             }
             yield return new WaitForSeconds (strafeRechargeTime);
         }
+    }
+
+    IEnumerator Jump () {
+        const int RESOLUTION = 10;
+        currState = MoveState.Jumping;
+        for (int i = 0; i < RESOLUTION && Input.GetKey (KeyCode.Space); i += 1) {
+            rb2D.velocity = new Vector2 (rb2D.velocity.x, jumpStrength);
+            yield return new WaitForSeconds (jumpTime / RESOLUTION);
+        }
+        currState = MoveState.Falling;
     }
 }

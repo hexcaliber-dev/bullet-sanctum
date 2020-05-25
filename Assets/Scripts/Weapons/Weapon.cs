@@ -9,13 +9,16 @@ public class Weapon : MonoBehaviour {
 
     // Default weapon behavior: spawn a bullet
     public virtual void UseWeapon () {
-        Bullet b = GameObject.Instantiate (projectile, transform.position, Quaternion.identity);
         Vector3 mousePoint = Camera.main.ScreenToWorldPoint (Input.mousePosition);
-        b.SetTarget (new Vector3 (mousePoint.x, mousePoint.y, 0));
+        ShootAt(mousePoint);
     }
 
     protected virtual void Start () { }
 
-    protected virtual void Update () {
+    protected virtual void Update () { }
+
+    protected void ShootAt (Vector2 target) {
+        Bullet b = GameObject.Instantiate (projectile, transform.position, Quaternion.identity);
+        b.SetTarget (new Vector3 (target.x, target.y, 0));
     }
 }

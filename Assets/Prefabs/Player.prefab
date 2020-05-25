@@ -215,7 +215,7 @@ MonoBehaviour:
     type: 3}
   accelStrength: 20
   decelMultiplier: 0.5
-  jumpStrength: 8.25
+  jumpStrength: 11
   maxSpeed: 4
   deadzone: 0.15
   coyoteTime: 0.2
