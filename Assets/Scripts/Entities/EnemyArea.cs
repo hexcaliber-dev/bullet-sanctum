@@ -20,4 +20,10 @@ public class EnemyArea : MonoBehaviour
             SendMessageUpwards("PlayerFound", true);
         }
     }
+
+    void OnTriggerExit2D(Collider2D other) {
+        if (other.tag == "Player") {
+            // SendMessageUpwards("PlayerFound", false);
+        }
+    }
 }
