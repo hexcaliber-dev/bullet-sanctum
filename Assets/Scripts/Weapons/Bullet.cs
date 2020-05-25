@@ -3,6 +3,7 @@ using UnityEngine;
 // Generic Bullet object that can be used for both players and enemy bullets.
 public class Bullet : MonoBehaviour {
     public float speed;
+    public float deleteTime;
     protected Vector3 target;
 
     public void SetTarget (Vector3 target) {
@@ -25,7 +26,7 @@ public class Bullet : MonoBehaviour {
 
     // REMEMBER TO SET COLLISION LAYERS FOR THE PREFAB! (so it doesn't collide with the sender)
     void OnCollisionEnter2D (Collision2D col) {
-        print("COL");
+        print ("COL");
         LivingEntity entity = col.gameObject.GetComponent<LivingEntity> ();
         if (entity != null) {
             entity.TakeDamage (this);
@@ -33,4 +34,10 @@ public class Bullet : MonoBehaviour {
         // TODO Play destroy animation
         Destroy (gameObject);
     }
+    void Start () {
+        // delete bullet after a certain amount of time
+        Destroy (gameObject, deleteTime); //
+    }
 }
+
+    
