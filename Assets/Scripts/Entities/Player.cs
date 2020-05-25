@@ -34,6 +34,7 @@ public class Player : LivingEntity {
     int strafesRemaining;
     Rigidbody2D rb2D;
     BoxCollider2D thisCol;
+    Vector3 respawnPoint;
 
     Animator animator;
 
@@ -66,9 +67,10 @@ public class Player : LivingEntity {
         // Ceiling detection
         bool hittingCeiling = Physics2D.Raycast (transform.position + Vector3.up * (thisCol.bounds.extents.y + 0.01f), Vector2.up, 0.1f, groundMask);
 
+        bool centerRaycast = Physics2D.Raycast (transform.position + Vector3.down * (thisCol.bounds.extents.y + 0.01f), Vector2.down, 0.1f, groundMask);
         // Check if player is grounded
         if (currState != MoveState.Strafing &&
-            (Physics2D.Raycast (transform.position + Vector3.down * (thisCol.bounds.extents.y + 0.01f), Vector2.down, 0.1f, groundMask) ||
+            (centerRaycast ||
                 Physics2D.Raycast (transform.position + Vector3.down * (thisCol.bounds.extents.y + 0.01f) + Vector3.left * (thisCol.bounds.extents.x), Vector2.down, 0.1f, groundMask) ||
                 Physics2D.Raycast (transform.position + Vector3.down * (thisCol.bounds.extents.y + 0.01f) + Vector3.right * (thisCol.bounds.extents.x), Vector2.down, 0.1f, groundMask))) {
             currState = MoveState.Ground;
@@ -77,7 +79,11 @@ public class Player : LivingEntity {
             StartCoroutine (CoyoteTime ());
         }
 
-        
+        // Set last valid respawn point
+        if (centerRaycast) {
+            respawnPoint = transform.position;
+        }
+
         // Disable player updates when in menu, died, etc
         if (doPlayerUpdates) {
             // Flip player if mouse is pointed left
@@ -248,5 +254,19 @@ public class Player : LivingEntity {
             yield return new WaitForSeconds (jumpTime / RESOLUTION);
         }
         currState = MoveState.Falling;
+    }
+
+    void OnTriggerExit2D (Collider2D col) {
+        // Player fell out of the world
+        if (col.gameObject.layer == LayerMask.NameToLayer("BoundingBox")) {
+            print("RESPAWN");
+            Respawn();
+        }
+    }
+
+    public void Respawn () {
+        // TODO death screen or something
+        rb2D.velocity = Vector2.zero;
+        transform.position = respawnPoint;
     }
 }
