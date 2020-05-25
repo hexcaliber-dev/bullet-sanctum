@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8a84c80bf82969641888e9cfa055a616
+guid: 5c3a251f307634d55be1fc5de2b1a9c0
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -13,7 +13,7 @@ TrueTypeFontImporter:
   - Eightbitron
   fallbackFontReferences: []
   customCharacters: 
-  fontRenderingMode: 0
+  fontRenderingMode: 3
   ascentCalculationMode: 1
   useLegacyBoundsCalculation: 0
   shouldRoundAdvanceValue: 1

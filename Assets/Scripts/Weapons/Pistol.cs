@@ -20,14 +20,12 @@ public class Pistol : Weapon {
         }
     }
 
+
     IEnumerator Shoot() {    //cool down time
         onCooldown = true;
         base.UseWeapon();
         yield return new WaitForSeconds(cooldownTime);
         onCooldown = false;
     }
-
-
-
 
 }

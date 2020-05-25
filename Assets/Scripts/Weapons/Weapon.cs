@@ -22,3 +22,4 @@ public class Weapon : MonoBehaviour {
         b.SetTarget (new Vector3 (target.x, target.y, 0));
     }
 }
+
