@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class Player : LivingEntity {
 
+    public bool doPlayerUpdates;
     const int STARTING_HEALTH = 20;
-
     public int maxHealth; // current health is inherited from LivingEntity
 
     public Weapon currWeapon;
@@ -46,6 +46,7 @@ public class Player : LivingEntity {
         strafesRemaining = MAX_STRAFE_BARS;
         StartCoroutine (RechargeStrafe ());
         animator = GetComponent<Animator> ();
+        doPlayerUpdates = true;
     }
 
     void FixedUpdate () {
@@ -76,53 +77,56 @@ public class Player : LivingEntity {
             StartCoroutine (CoyoteTime ());
         }
 
-        // Flip player if mouse is pointed left
-        if (direction.x < 0) {
-            transform.rotation = Quaternion.Euler (0, 180, 0);
-            currWeapon.GetComponent<SpriteRenderer> ().sprite = weaponSpriteFlipped;
-            currWeapon.transform.localRotation = Quaternion.Euler (0, 0, 0);
-        } else {
-            transform.rotation = Quaternion.identity;
-            currWeapon.GetComponent<SpriteRenderer> ().sprite = weaponSprite;
-            currWeapon.transform.localRotation = Quaternion.identity;
-        }
+        
+        // Disable player updates when in menu, died, etc
+        if (doPlayerUpdates) {
+            // Flip player if mouse is pointed left
+            if (direction.x < 0) {
+                transform.rotation = Quaternion.Euler (0, 180, 0);
+                currWeapon.GetComponent<SpriteRenderer> ().sprite = weaponSpriteFlipped;
+                currWeapon.transform.localRotation = Quaternion.Euler (0, 0, 0);
+            } else {
+                transform.rotation = Quaternion.identity;
+                currWeapon.GetComponent<SpriteRenderer> ().sprite = weaponSprite;
+                currWeapon.transform.localRotation = Quaternion.identity;
+            }
 
-        // Moving left
-        if (Input.GetKey (KeyCode.A)) {
-            animator.SetBool ("moving", true);
-            if (currVelocity <= 0) {
-                currVelocity -= accelStrength * Time.deltaTime;
-                decel = false;
+            // Moving left
+            if (Input.GetKey (KeyCode.A)) {
+                animator.SetBool ("moving", true);
+                if (currVelocity <= 0) {
+                    currVelocity -= accelStrength * Time.deltaTime;
+                    decel = false;
+                }
             }
-        }
-        // Moving right
-        if (Input.GetKey (KeyCode.D)) {
-            animator.SetBool ("moving", true);
-            if (currVelocity >= 0) {
-                currVelocity += accelStrength * Time.deltaTime;
-                decel = false;
+            // Moving right
+            if (Input.GetKey (KeyCode.D)) {
+                animator.SetBool ("moving", true);
+                if (currVelocity >= 0) {
+                    currVelocity += accelStrength * Time.deltaTime;
+                    decel = false;
+                }
             }
-        }
 
-        // Jumping
-        if (Input.GetKey (KeyCode.Space)) {
-            if (currState == MoveState.Ground && !hittingCeiling) {
-                StartCoroutine (Jump ());
+            // Jumping
+            if (Input.GetKey (KeyCode.Space)) {
+                if (currState == MoveState.Ground && !hittingCeiling) {
+                    StartCoroutine (Jump ());
+                }
             }
-        }
-        // Strafe
-        if (Input.GetKey (KeyCode.LeftShift)) {
-            if (currState != MoveState.Strafing && !strafeCooldown && strafesRemaining >= strafeCost) {
-                StartCoroutine (StartStrafe (0.025f, direction.x < 0));
+            // Strafe
+            if (Input.GetKey (KeyCode.LeftShift)) {
+                if (currState != MoveState.Strafing && !strafeCooldown && strafesRemaining >= strafeCost) {
+                    StartCoroutine (StartStrafe (0.025f, direction.x < 0));
+                }
             }
-        }
-        // Deceleration mechanic
-        if (decel) {
-            currVelocity *= decelMultiplier;
-            if (Math.Abs (currVelocity) < deadzone) {
-                currVelocity = 0f;
+            // Shooting
+            if (Input.GetKey (KeyCode.Mouse0)) {
+                if (!currWeapon.onCooldown) {
+                    hud.UpdateRechargeMeter (currWeapon);
+                    currWeapon.UseWeapon ();
+                }
             }
-            animator.SetBool ("moving", false);
         }
 
         // Old debug print statements
@@ -148,12 +152,13 @@ public class Player : LivingEntity {
             }
         }
 
-        // Shooting
-        if (Input.GetKey (KeyCode.Mouse0)) {
-            if (!currWeapon.onCooldown) {
-                hud.UpdateRechargeMeter (currWeapon);
-                currWeapon.UseWeapon();
+        // Deceleration mechanic
+        if (decel) {
+            currVelocity *= decelMultiplier;
+            if (Math.Abs (currVelocity) < deadzone) {
+                currVelocity = 0f;
             }
+            animator.SetBool ("moving", false);
         }
     }
 

@@ -5,21 +5,20 @@ public class Pistol : Weapon {
 
     // Bullet projectile, cooldown, and cooldown time is inherited from Weapon.
 
-    protected override void Start() {   //just having no cooldown
+    protected override void Start() {   
         base.Start();
         onCooldown = false;
     }
-    protected override void Update() {   //nothing here yet
+    protected override void Update() {   
         base.Update();
         // TODO
     }
 
-    public override void UseWeapon() {   //shoot bullet
+    public override void UseWeapon() {   
         if (!onCooldown) {
             StartCoroutine(Shoot());
         }
     }
-
 
     IEnumerator Shoot() {    //cool down time
         onCooldown = true;
@@ -27,5 +26,8 @@ public class Pistol : Weapon {
         yield return new WaitForSeconds(cooldownTime);
         onCooldown = false;
     }
+
+
+
 
 }
