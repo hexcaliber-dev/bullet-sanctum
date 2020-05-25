@@ -208,12 +208,12 @@ PrefabInstance:
     - target: {fileID: 3592231846050750062, guid: 3b647151b76cf0645ab90ffcc21bc490,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9
+      value: 3.15
       objectReference: {fileID: 0}
     - target: {fileID: 3592231846050750062, guid: 3b647151b76cf0645ab90ffcc21bc490,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2
+      value: -1.09
       objectReference: {fileID: 0}
     - target: {fileID: 3592231846050750062, guid: 3b647151b76cf0645ab90ffcc21bc490,
         type: 3}
@@ -322,6 +322,8 @@ MonoBehaviour:
   player: {fileID: 1269753605}
   playerObj: {fileID: 1269753607}
   playerFound: 0
+  facingRight: 0
+  STEP_MAX: 1
 --- !u!50 &1515197425
 Rigidbody2D:
   serializedVersion: 4
@@ -427,7 +429,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1515197423}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.662, y: -1.515, z: 9.604572}
+  m_LocalPosition: {x: -2.6, y: -0.93, z: 9.604572}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1704749809}

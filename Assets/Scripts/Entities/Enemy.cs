@@ -8,8 +8,10 @@ public abstract class Enemy : LivingEntity {
     public Player player;
     public Transform playerObj;
     public Boolean playerFound;
+    public Boolean facingRight;
 
     override protected void Start() {
+        facingRight = transform.localScale.x > 0;
         OnSpawn();
     }
 
@@ -31,15 +33,19 @@ public abstract class Enemy : LivingEntity {
         // if... AI Stuff & MinMax trees
         MovePattern();
         if (playerFound) {
-            if (playerObj.position.x < transform.position.x) {
-                transform.rotation = Quaternion.Euler (0, 180, 0);
-            } else {
-                transform.rotation = Quaternion.identity;
+            if ((playerObj.position.x < transform.position.x && facingRight) ||
+                (playerObj.position.x > transform.position.x && !facingRight)) {
+                Flip();
             }
         }
     }
 
     public override void TakeDamage(Bullet b) {
         // Take damage.
+    }
+
+    public void Flip() {
+        transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+        facingRight = transform.localScale.x > 0;
     }
 }
