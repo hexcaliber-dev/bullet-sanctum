@@ -127,7 +127,7 @@ public class Player : LivingEntity {
 
         // Old debug print statements
         // print (currVelocity);
-        print (currState);
+        // print (currState);
 
         // Velocity handling for horizontal movement
         if (currState != MoveState.Strafing) {
