@@ -74,7 +74,7 @@ public class Player : LivingEntity {
                 Physics2D.Raycast (transform.position + Vector3.down * (thisCol.bounds.extents.y + 0.01f) + Vector3.left * (thisCol.bounds.extents.x), Vector2.down, 0.1f, groundMask) ||
                 Physics2D.Raycast (transform.position + Vector3.down * (thisCol.bounds.extents.y + 0.01f) + Vector3.right * (thisCol.bounds.extents.x), Vector2.down, 0.1f, groundMask))) {
             currState = MoveState.Ground;
-            // strafeCooldown = false;
+            animator.SetInteger ("jumpState", 0);
         } else if (currState == MoveState.Ground) {
             StartCoroutine (CoyoteTime ());
         }
@@ -91,10 +91,12 @@ public class Player : LivingEntity {
                 transform.rotation = Quaternion.Euler (0, 180, 0);
                 currWeapon.GetComponent<SpriteRenderer> ().sprite = weaponSpriteFlipped;
                 currWeapon.transform.localRotation = Quaternion.Euler (0, 0, 0);
+                animator.SetFloat ("walkSpeed", -1f);
             } else {
                 transform.rotation = Quaternion.identity;
                 currWeapon.GetComponent<SpriteRenderer> ().sprite = weaponSprite;
                 currWeapon.transform.localRotation = Quaternion.identity;
+                animator.SetFloat ("walkSpeed", 1f);
             }
 
             // Moving left
@@ -143,11 +145,13 @@ public class Player : LivingEntity {
         if (currState != MoveState.Strafing) {
             // Crouching
             if (Input.GetKey (KeyCode.LeftControl)) {
+                animator.SetBool ("crouching", true);
                 rb2D.velocity = new Vector2 (Mathf.Clamp (currVelocity, -crouchSpeed, crouchSpeed), rb2D.velocity.y);
                 GetComponent<SpriteRenderer> ().sprite = crouchSprite;
                 shoulder.transform.localPosition = new Vector2 (-0.03f, 0f);
                 GetComponent<BoxCollider2D> ().size = new Vector2 (.18f, .3f);
             } else {
+                animator.SetBool ("crouching", false);
                 rb2D.velocity = new Vector2 (Mathf.Clamp (currVelocity, -maxSpeed, maxSpeed), rb2D.velocity.y);
                 shoulder.transform.localPosition = new Vector2 (-0.03f, 0.04f);
 
@@ -247,6 +251,7 @@ public class Player : LivingEntity {
     }
 
     IEnumerator Jump () {
+        animator.SetInteger ("jumpState", 1);
         const int RESOLUTION = 10;
         currState = MoveState.Jumping;
         for (int i = 0; i < RESOLUTION && Input.GetKey (KeyCode.Space); i += 1) {
@@ -254,13 +259,14 @@ public class Player : LivingEntity {
             yield return new WaitForSeconds (jumpTime / RESOLUTION);
         }
         currState = MoveState.Falling;
+        animator.SetInteger ("jumpState", 2);
     }
 
     void OnTriggerExit2D (Collider2D col) {
         // Player fell out of the world
-        if (col.gameObject.layer == LayerMask.NameToLayer("BoundingBox")) {
-            print("RESPAWN");
-            Respawn();
+        if (col.gameObject.layer == LayerMask.NameToLayer ("BoundingBox")) {
+            print ("RESPAWN");
+            Respawn ();
         }
     }
 

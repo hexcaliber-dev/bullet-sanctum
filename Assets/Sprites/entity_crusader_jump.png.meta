@@ -1,31 +1,16 @@
 fileFormatVersion: 2
-guid: 46182246c3863e58dae264065a3c91e3
+guid: 0d2f7795869e989f1970ec6e2e5c00b6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3054729771496534638
-    second: entity_crusader_run_0
+      213: -5697535923275196343
+    second: entity_crusader_jump_0
   - first:
-      213: -4791819565216419876
-    second: entity_crusader_run_1
+      213: -6521385516671645377
+    second: entity_crusader_jump_1
   - first:
-      213: 4536113027835560690
-    second: entity_crusader_run_2
-  - first:
-      213: 7501716007836265004
-    second: entity_crusader_run_3
-  - first:
-      213: 3403641217249142401
-    second: entity_crusader_run_4
-  - first:
-      213: -9152334161196411245
-    second: entity_crusader_run_5
-  - first:
-      213: 7832248866464802966
-    second: entity_crusader_run_6
-  - first:
-      213: -5614947375308379757
-    second: entity_crusader_run_7
+      213: 8122402582093025483
+    second: entity_crusader_jump_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -123,7 +108,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: entity_crusader_run_0
+      name: entity_crusader_jump_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +122,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e627cd2ea84946a20800000000000000
-      internalID: 3054729771496534638
+      spriteID: 948972eb3494ee0b0800000000000000
+      internalID: -5697535923275196343
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: entity_crusader_run_1
+      name: entity_crusader_jump_1
       rect:
         serializedVersion: 2
         x: 32
@@ -158,14 +143,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cdf228b5e79008db0800000000000000
-      internalID: -4791819565216419876
+      spriteID: f39c863ac626f75a0800000000000000
+      internalID: -6521385516671645377
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: entity_crusader_run_2
+      name: entity_crusader_jump_2
       rect:
         serializedVersion: 2
         x: 64
@@ -179,113 +164,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f20925f3c283fe30800000000000000
-      internalID: 4536113027835560690
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: entity_crusader_run_3
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 32
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c2a21fc96f27b1860800000000000000
-      internalID: 7501716007836265004
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: entity_crusader_run_4
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 32
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 186630167a92c3f20800000000000000
-      internalID: 3403641217249142401
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: entity_crusader_run_5
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 0
-        width: 32
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 396173052906cf080800000000000000
-      internalID: -9152334161196411245
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: entity_crusader_run_6
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 32
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6982716d8dcb1bc60800000000000000
-      internalID: 7832248866464802966
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: entity_crusader_run_7
-      rect:
-        serializedVersion: 2
-        x: 224
-        y: 0
-        width: 32
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3996b368c13b312b0800000000000000
-      internalID: -5614947375308379757
+      spriteID: bc0de543d1298b070800000000000000
+      internalID: 8122402582093025483
       vertices: []
       indices: 
       edges: []
