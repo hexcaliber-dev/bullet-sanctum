@@ -151,11 +151,11 @@ public class Player : LivingEntity {
                 shoulder.transform.localPosition = new Vector2 (-0.03f, 0f);
                 GetComponent<BoxCollider2D> ().size = new Vector2 (.18f, .3f);
             } else {
-                animator.SetBool ("crouching", false);
                 rb2D.velocity = new Vector2 (Mathf.Clamp (currVelocity, -maxSpeed, maxSpeed), rb2D.velocity.y);
                 shoulder.transform.localPosition = new Vector2 (-0.03f, 0.04f);
 
                 if (!hittingCeiling) {
+                    animator.SetBool ("crouching", false);
                     GetComponent<SpriteRenderer> ().sprite = playerSprite;
                     GetComponent<BoxCollider2D> ().size = new Vector2 (.18f, .4f);
                 }
