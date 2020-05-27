@@ -1,8 +1,12 @@
 using UnityEngine;
 using System;
 
-public class EnemyMelee : Enemy {
+// Basic ranged enemy that requires players to be on the same level to attack.
+// Cannot go through walls.
+public class EnemyRanged : Enemy {
 
+    public float xRange, yRange;
+    
     private Rigidbody2D rb;
     public float STEP_MAX = 5;
     private bool movingRight;
