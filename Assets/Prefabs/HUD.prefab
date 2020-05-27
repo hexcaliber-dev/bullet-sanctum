@@ -462,5 +462,9 @@ MonoBehaviour:
   reloadMeter: {fileID: 7386347512342403352}
   healthMeter: {fileID: 7386347513751836110}
   weaponDisplay: {fileID: 7386347512567722296}
-  crosshairImage: {fileID: 2800000, guid: 4799a1f195548c24882b5a4fce079c64, type: 3}
+  crosshairImages:
+  - {fileID: 2800000, guid: 4799a1f195548c24882b5a4fce079c64, type: 3}
+  - {fileID: 2800000, guid: 84af0a9a04af5714594f243eea18e732, type: 3}
+  - {fileID: 2800000, guid: ac180c7a9507714458880aff60e43602, type: 3}
+  - {fileID: 2800000, guid: 953149b9f5d9a9b4e8faab4f067d32f5, type: 3}
   doCursorDraw: 0

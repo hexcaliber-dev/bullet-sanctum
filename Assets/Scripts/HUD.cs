@@ -8,7 +8,8 @@ public class HUD : MonoBehaviour {
     public List<Sprite> strafeSprites, reloadSprites, healthSprites, weaponSprites;
     public Image strafeMeter, reloadMeter, healthMeter, weaponDisplay;
 
-    public Texture2D crosshairImage;
+    public List<Texture2D> crosshairImages;
+    int currCrosshair;
 
     public bool doCursorDraw;
 
@@ -24,10 +25,10 @@ public class HUD : MonoBehaviour {
     // Make custom cursor
     void OnGUI () {
         if (doCursorDraw) {
-            float xMin = (Input.mousePosition.x) - (crosshairImage.width / 2);
-            float yMin = (Screen.height - Input.mousePosition.y) - (crosshairImage.height / 2);
+            float xMin = (Input.mousePosition.x) - (crosshairImages[currCrosshair].width / 2);
+            float yMin = (Screen.height - Input.mousePosition.y) - (crosshairImages[currCrosshair].height / 2);
             // print (new Vector2 (xMin, yMin));
-            GUI.DrawTexture (new Rect (xMin, yMin, crosshairImage.width, crosshairImage.height), crosshairImage);
+            GUI.DrawTexture (new Rect (xMin, yMin, crosshairImages[currCrosshair].width, crosshairImages[currCrosshair].height), crosshairImages[currCrosshair]);
         }
     }
 
@@ -52,5 +53,6 @@ public class HUD : MonoBehaviour {
 
     public void SwitchWeapon (int weapon) {
         weaponDisplay.sprite = weaponSprites[weapon];
+        currCrosshair = weapon;
     }
 }
