@@ -7,9 +7,10 @@ public class PlayerShoot : MonoBehaviour {
     public Weapon currWeapon;
     public List<Weapon> availableWeapons;
     HUD hud;
+    int index;
 
-    void Start() {
-        hud = GameObject.FindObjectOfType<HUD>();
+    void Start () {
+        hud = GameObject.FindObjectOfType<HUD> ();
     }
 
     void Update () {
@@ -22,23 +23,28 @@ public class PlayerShoot : MonoBehaviour {
         }
 
         // Swap weapons
-        if (Input.GetKeyDown(KeyCode.Alpha1)) {
-            EquipWeapon(0);
+        if (Input.GetKeyDown (KeyCode.Alpha1)) {
+            EquipWeapon (0);
         }
-        if (Input.GetKeyDown(KeyCode.Alpha2) && availableWeapons.Count > 1) {
-            EquipWeapon(1);
+        if (Input.GetKeyDown (KeyCode.Alpha2) && availableWeapons.Count > 1) {
+            EquipWeapon (1);
+        }
+        float scroll = Input.GetAxis ("Mouse ScrollWheel");
+        if (scroll != 0f) {
+            EquipWeapon((index + 1) % availableWeapons.Count);
         }
     }
 
-    public void AddWeapon(Weapon weapon) {
-        availableWeapons.Add(weapon);
-        EquipWeapon(1); // TODO Don't hard code when we add more weapons!!!!!!
+    public void AddWeapon (Weapon weapon) {
+        availableWeapons.Add (weapon);
+        EquipWeapon (1); // TODO Don't hard code when we add more weapons!!!!!!
     }
 
-    void EquipWeapon(int num) {
+    void EquipWeapon (int num) {
         if (availableWeapons.Count > num) {
             currWeapon = availableWeapons[num];
-            hud.SwitchWeapon(num);
+            hud.SwitchWeapon (num);
+            index = num;
         }
     }
 }

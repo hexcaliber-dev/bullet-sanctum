@@ -6,10 +6,10 @@ using UnityEditor.Animations;
 using UnityEngine;
 
 /** Handles movement and animation of player.
-  * For shooting, go to PlayerShoot.
-  * For Player HUD, go to HUD.
-  * For health and bounty systems, go to PlayerStats.
-  */
+ * For shooting, go to PlayerShoot.
+ * For Player HUD, go to HUD.
+ * For health and bounty systems, go to PlayerStats.
+ */
 public class Player : LivingEntity {
 
     public bool doPlayerUpdates;
@@ -109,7 +109,8 @@ public class Player : LivingEntity {
                 if (currState == MoveState.Ground)
                     animator.SetBool ("moving", true);
                 if (currVelocity <= 0) {
-                    currVelocity -= accelStrength * Time.deltaTime;
+                    if (currVelocity > ((animator.GetBool ("crouching")) ? -crouchSpeed : -maxSpeed))
+                        currVelocity -= accelStrength * Time.deltaTime;
                     decel = false;
                 }
             }
@@ -118,8 +119,8 @@ public class Player : LivingEntity {
                 if (currState == MoveState.Ground)
                     animator.SetBool ("moving", true);
                 if (currVelocity >= 0) {
-
-                    currVelocity += accelStrength * Time.deltaTime;
+                    if (currVelocity < ((animator.GetBool ("crouching")) ? crouchSpeed : maxSpeed))
+                        currVelocity += accelStrength * Time.deltaTime;
                     decel = false;
                 }
             }
@@ -147,12 +148,10 @@ public class Player : LivingEntity {
             // Crouching
             if (Input.GetKey (KeyCode.LeftControl)) {
                 animator.SetBool ("crouching", true);
-                rb2D.velocity = new Vector2 (Mathf.Clamp (currVelocity, -crouchSpeed, crouchSpeed), rb2D.velocity.y);
                 GetComponent<SpriteRenderer> ().sprite = crouchSprite;
                 shoulder.transform.localPosition = new Vector2 (-0.03f, 0f);
                 GetComponent<BoxCollider2D> ().size = new Vector2 (.18f, .3f);
             } else {
-                rb2D.velocity = new Vector2 (Mathf.Clamp (currVelocity, -maxSpeed, maxSpeed), rb2D.velocity.y);
                 shoulder.transform.localPosition = new Vector2 (-0.03f, 0.04f);
 
                 if (!hittingCeiling) {
@@ -165,11 +164,20 @@ public class Player : LivingEntity {
 
         // Deceleration mechanic
         if (decel) {
-            currVelocity *= decelMultiplier;
-            if (Math.Abs (currVelocity) < deadzone) {
+            currVelocity = rb2D.velocity.x;
+            print (currVelocity);
+            if (Mathf.Abs (currVelocity) > maxSpeed)
+                currVelocity *= 0.96f;
+            else
+                currVelocity *= decelMultiplier;
+            if (Math.Abs (rb2D.velocity.x) < deadzone) {
                 currVelocity = 0f;
             }
+            rb2D.velocity = new Vector2(currVelocity, rb2D.velocity.y);
             animator.SetBool ("moving", false);
+        } else {
+            if (Math.Abs(currVelocity) > Math.Abs(rb2D.velocity.x))
+                rb2D.velocity = new Vector2 (currVelocity, rb2D.velocity.y);
         }
     }
 
@@ -186,9 +194,9 @@ public class Player : LivingEntity {
     }
 
     public override void TakeDamage (Bullet b) {
-        base.TakeDamage(b);
-        GameObject.FindObjectOfType<CameraUtils>().Shake();
-        hud.SetHealthAmount(health);
+        base.TakeDamage (b);
+        GameObject.FindObjectOfType<CameraUtils> ().Shake ();
+        hud.SetHealthAmount (health);
     }
 
     IEnumerator StartStrafe (float delay, bool inverted) {
@@ -283,5 +291,4 @@ public class Player : LivingEntity {
 
     }
 
-    
 }

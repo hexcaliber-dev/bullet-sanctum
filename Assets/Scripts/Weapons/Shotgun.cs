@@ -4,6 +4,7 @@ using UnityEngine;
 public class Shotgun : Weapon {
 
     public int numBullets; //specifically number of bullets per shotgun shot
+    public float knockback;
 
     // Bullet projectile, cooldown, and cooldown time is inherited from Weapon.
 
@@ -27,13 +28,16 @@ public class Shotgun : Weapon {
         Vector3 originalTarget = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 
         // Shoot numBullets number of bullets
-        for (int i = 0; i <= numBullets; i++) {
-            float randomNum = Random.Range (-45f, 45f) / 10f;
-            print (randomNum);
-            print (originalTarget.x * randomNum + " , " + originalTarget.y * randomNum);
+        for (int i = 0; i <= numBullets; i += 1) {
+            float randomNum = Random.Range (-1.5f, 1.5f);
+            // print (randomNum);
+            // print (originalTarget.x + randomNum + " , " + originalTarget.y * randomNum);
             // for each, add a random amount to originalTarget to make it spread out
-            base.ShootAt (new Vector2 (originalTarget.x * randomNum, originalTarget.y * randomNum));
+            base.ShootAt (new Vector2 (originalTarget.x + randomNum, originalTarget.y + randomNum));
         }
+
+        // Knock back player
+        GameObject.FindGameObjectWithTag ("Player").GetComponent<Rigidbody2D> ().velocity += (Vector2) (-(Vector3.Normalize (originalTarget)) * knockback);
 
         yield return new WaitForSeconds (cooldownTime);
         onCooldown = false;
