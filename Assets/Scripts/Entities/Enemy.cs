@@ -11,14 +11,14 @@ public abstract class Enemy : LivingEntity {
 
     override protected void Start() {
         facingRight = transform.localScale.x > 0;
-        OnSpawn();
         player = GameObject.FindObjectOfType<Player>();
+        OnSpawn();
     }
 
     // Runs on Update(). 
     public abstract void MovePattern();
 
-    public void PlayerLookout() {
+    public virtual void PlayerLookout() {
         if (!playerFound) {
             // Code to see if player is visible by enemy.
             // playerFound = true;
@@ -31,6 +31,7 @@ public abstract class Enemy : LivingEntity {
 
     void Update() {
         // if... AI Stuff & MinMax trees
+        PlayerLookout();
         MovePattern();
         if (playerFound) {
             if ((player.transform.position.x < transform.position.x && facingRight) ||
@@ -40,9 +41,7 @@ public abstract class Enemy : LivingEntity {
         }
     }
 
-    public override void TakeDamage(Bullet b) {
-        // Take damage.
-    }
+    // takeDamage is inherited from LivingEntity
 
     public void Flip() {
         transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);

@@ -195,7 +195,11 @@ public class Player : LivingEntity {
     }
 
     public override void TakeDamage (Bullet b) {
-        base.TakeDamage (b);
+        TakeDamage(b.damage);
+    }
+
+    public override void TakeDamage (int damage) {
+        base.TakeDamage (damage);
         GameObject.FindObjectOfType<CameraUtils> ().Shake ();
         hud.SetHealthAmount (health);
     }
@@ -209,10 +213,10 @@ public class Player : LivingEntity {
         Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer ("Player"), LayerMask.NameToLayer ("Enemy"), true);
 
         foreach (GameObject enemy in GameObject.FindGameObjectsWithTag ("Enemy")) {
-                print (Vector2.Distance (enemy.transform.position, transform.position));
+            print (Vector2.Distance (enemy.transform.position, transform.position));
             if (Vector2.Distance (enemy.transform.position, transform.position) < bulletTimeDistance) {
                 Time.timeScale = bulletTimeMultiplier;
-                print(Time.timeScale);
+                print (Time.timeScale);
             }
         }
 

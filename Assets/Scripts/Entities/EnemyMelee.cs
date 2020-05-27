@@ -19,12 +19,13 @@ public class EnemyMelee : Enemy {
     }
 
     public override void Attack() {
-        player.health -= DMG;
+        player.TakeDamage(DMG);
     }
 
-    public override void OnDeath() {
-        // Fucking die.
-    }
+    // This is inherited from LivingEntity
+    // public override void OnDeath() {
+    //     // Fucking die.
+    // }
 
     public override void MovePattern() {
         if (playerFound) {
