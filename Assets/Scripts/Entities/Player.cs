@@ -28,6 +28,7 @@ public class Player : LivingEntity {
     public float strafeStrength, strafeTime, strafeCooldownTime, strafeRechargeTime;
     public int strafeCost;
     public bool strafeCooldown;
+    public float bulletTimeDistance, bulletTimeMultiplier;
 
     // Move state
     public enum MoveState { Ground, Falling, Jumping, Strafing }
@@ -165,7 +166,7 @@ public class Player : LivingEntity {
         // Deceleration mechanic
         if (decel) {
             currVelocity = rb2D.velocity.x;
-            print (currVelocity);
+            // print (currVelocity);
             if (Mathf.Abs (currVelocity) > maxSpeed)
                 currVelocity *= 0.96f;
             else
@@ -173,10 +174,10 @@ public class Player : LivingEntity {
             if (Math.Abs (rb2D.velocity.x) < deadzone) {
                 currVelocity = 0f;
             }
-            rb2D.velocity = new Vector2(currVelocity, rb2D.velocity.y);
+            rb2D.velocity = new Vector2 (currVelocity, rb2D.velocity.y);
             animator.SetBool ("moving", false);
         } else {
-            if (Math.Abs(currVelocity) > Math.Abs(rb2D.velocity.x))
+            if (Math.Abs (currVelocity) > Math.Abs (rb2D.velocity.x))
                 rb2D.velocity = new Vector2 (currVelocity, rb2D.velocity.y);
         }
     }
@@ -205,7 +206,17 @@ public class Player : LivingEntity {
         strafesRemaining -= strafeCost;
         Vector2 strafeDir = Vector2.zero;
         hud.SetStrafeAmount (strafesRemaining);
+        Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer ("Player"), LayerMask.NameToLayer ("Enemy"), true);
 
+        foreach (GameObject enemy in GameObject.FindGameObjectsWithTag ("Enemy")) {
+                print (Vector2.Distance (enemy.transform.position, transform.position));
+            if (Vector2.Distance (enemy.transform.position, transform.position) < bulletTimeDistance) {
+                Time.timeScale = bulletTimeMultiplier;
+                print(Time.timeScale);
+            }
+        }
+
+        GetComponent<SpriteRenderer> ().color = new Color (1, 1, .62f, 0.25f); // temp transparency effect
         yield return new WaitForSeconds (delay);
         if (Input.GetKey (KeyCode.W)) strafeDir += Vector2.up;
         if (Input.GetKey (KeyCode.A)) strafeDir += Vector2.left;
@@ -215,7 +226,6 @@ public class Player : LivingEntity {
         if (!strafeDir.Equals (Vector2.zero)) {
             rb2D.velocity = strafeStrength * Vector3.Normalize (strafeDir);
         }
-        GetComponent<SpriteRenderer> ().color = new Color (1, 1, .62f, 0.25f); // temp transparency effect
         StartCoroutine (StopStrafe (strafeTime));
     }
 
@@ -229,9 +239,11 @@ public class Player : LivingEntity {
         }
         rb2D.inertia = 0f;
         rb2D.velocity = Vector2.zero;
-        GetComponent<SpriteRenderer> ().color = Color.white;
         yield return new WaitForSeconds (strafeCooldownTime);
         strafeCooldown = false;
+        Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer ("Player"), LayerMask.NameToLayer ("Enemy"), false);
+        Time.timeScale = 1f;
+        GetComponent<SpriteRenderer> ().color = Color.white;
         // rb2D.velocity = Vector2.down * strafeFallStrength;
     }
 
