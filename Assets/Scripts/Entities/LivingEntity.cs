@@ -42,8 +42,21 @@ public abstract class LivingEntity : MonoBehaviour {
         return null;
     }
 
-    public abstract void TakeDamage(Bullet b);
+    public virtual void TakeDamage(Bullet b) {
+        health -= b.damage;
+        if (health <= 0) {
+            OnDeath();
+        }
+    }
     public abstract void Attack();
     public abstract void OnSpawn ();
-    public abstract void OnDeath ();
+    public virtual void OnDeath () {
+        Destroy(gameObject);
+    }
+
+    void OnCollisionEnter2D(Collision2D col) {
+        if (col.gameObject.tag.Equals("Bullet")) {
+            TakeDamage(col.gameObject.GetComponent<Bullet>());
+        }
+    }
 }

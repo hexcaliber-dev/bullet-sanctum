@@ -1,17 +1,22 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEditor.Animations;
 using UnityEngine;
 
+/** Handles movement and animation of player.
+  * For shooting, go to PlayerShoot.
+  * For Player HUD, go to HUD.
+  * For health and bounty systems, go to PlayerStats.
+  */
 public class Player : LivingEntity {
 
     public bool doPlayerUpdates;
     const int STARTING_HEALTH = 20;
     public int maxHealth; // current health is inherited from LivingEntity
 
-    public Weapon currWeapon;
-    public GameObject trailObj, shoulder;
+    public GameObject trailObj, shoulder, arm;
     public Color trailColor;
     public HUD hud;
     public Sprite playerSprite, crouchSprite, weaponSprite, weaponSpriteFlipped;
@@ -30,7 +35,7 @@ public class Player : LivingEntity {
 
     // Hidden variables
     const int MAX_STRAFE_BARS = 6;
-    float currVelocity, currVelocityJump;
+    float currVelocity;
     int strafesRemaining;
     Rigidbody2D rb2D;
     BoxCollider2D thisCol;
@@ -89,19 +94,20 @@ public class Player : LivingEntity {
             // Flip player if mouse is pointed left
             if (direction.x < 0) {
                 transform.rotation = Quaternion.Euler (0, 180, 0);
-                currWeapon.GetComponent<SpriteRenderer> ().sprite = weaponSpriteFlipped;
-                currWeapon.transform.localRotation = Quaternion.Euler (0, 0, 0);
+                arm.GetComponent<SpriteRenderer> ().sprite = weaponSpriteFlipped;
+                arm.transform.localRotation = Quaternion.Euler (0, 0, 0);
                 animator.SetFloat ("walkSpeed", -1f);
             } else {
                 transform.rotation = Quaternion.identity;
-                currWeapon.GetComponent<SpriteRenderer> ().sprite = weaponSprite;
-                currWeapon.transform.localRotation = Quaternion.identity;
+                arm.GetComponent<SpriteRenderer> ().sprite = weaponSprite;
+                arm.transform.localRotation = Quaternion.identity;
                 animator.SetFloat ("walkSpeed", 1f);
             }
 
             // Moving left
             if (Input.GetKey (KeyCode.A)) {
-                animator.SetBool ("moving", true);
+                if (currState == MoveState.Ground)
+                    animator.SetBool ("moving", true);
                 if (currVelocity <= 0) {
                     currVelocity -= accelStrength * Time.deltaTime;
                     decel = false;
@@ -109,8 +115,10 @@ public class Player : LivingEntity {
             }
             // Moving right
             if (Input.GetKey (KeyCode.D)) {
-                animator.SetBool ("moving", true);
+                if (currState == MoveState.Ground)
+                    animator.SetBool ("moving", true);
                 if (currVelocity >= 0) {
+
                     currVelocity += accelStrength * Time.deltaTime;
                     decel = false;
                 }
@@ -126,13 +134,6 @@ public class Player : LivingEntity {
             if (Input.GetKey (KeyCode.LeftShift)) {
                 if (currState != MoveState.Strafing && !strafeCooldown && strafesRemaining >= strafeCost) {
                     StartCoroutine (StartStrafe (0.025f, direction.x < 0));
-                }
-            }
-            // Shooting
-            if (Input.GetKey (KeyCode.Mouse0)) {
-                if (!currWeapon.onCooldown) {
-                    hud.UpdateRechargeMeter (currWeapon);
-                    currWeapon.UseWeapon ();
                 }
             }
         }
@@ -173,22 +174,22 @@ public class Player : LivingEntity {
     }
 
     public override void OnSpawn () {
-
+        // Do nothing?
     }
 
     public override void OnDeath () {
-
+        // TODO move player to last checkpoint and reset bounty
     }
 
     public override void Attack () {
-        currWeapon.UseWeapon ();
+        // Not implemented. Go to PlayerShoot for player attack behavior
     }
 
     public override void TakeDamage (Bullet b) {
-
+        base.TakeDamage(b);
+        GameObject.FindObjectOfType<CameraUtils>().Shake();
+        hud.SetHealthAmount(health);
     }
-
-    // Collision is handled in PlayerFeet
 
     IEnumerator StartStrafe (float delay, bool inverted) {
         currState = MoveState.Strafing;
@@ -270,9 +271,17 @@ public class Player : LivingEntity {
         }
     }
 
+    // Called when player goes out of bounds or gets killed by elemental hazards.
     public void Respawn () {
         // TODO death screen or something
         rb2D.velocity = Vector2.zero;
         transform.position = respawnPoint;
     }
+
+    // Picks up a weapon from the ground.
+    public void CollectWeapon (Weapon weapon) {
+
+    }
+
+    
 }

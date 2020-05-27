@@ -315,7 +315,7 @@ MonoBehaviour:
   entityName: Poggy
   entityType: 1
   frozen: 0
-  speed: 7
+  speed: 15
   health: 10
   enemyType: 0
   DMG: 1

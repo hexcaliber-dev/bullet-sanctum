@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class HUD : MonoBehaviour {
 
-    public List<Sprite> strafeSprites, reloadSprites, healthSprites;
-    public Image strafeMeter, reloadMeter, healthMeter;
+    public List<Sprite> strafeSprites, reloadSprites, healthSprites, weaponSprites;
+    public Image strafeMeter, reloadMeter, healthMeter, weaponDisplay;
 
     public Texture2D crosshairImage;
 
@@ -48,5 +48,9 @@ public class HUD : MonoBehaviour {
 
     public void SetHealthAmount (int health) {
         healthMeter.sprite = healthSprites[health];
+    }
+
+    public void SwitchWeapon (int weapon) {
+        weaponDisplay.sprite = weaponSprites[weapon];
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour {
     public float speed;
     public float deleteTime;
+    public int damage;
     protected Vector3 target;
 
     public void SetTarget (Vector3 target) {
@@ -36,7 +37,7 @@ public class Bullet : MonoBehaviour {
     }
     void Start () {
         // delete bullet after a certain amount of time
-        Destroy (gameObject, deleteTime); //
+        Destroy (gameObject, deleteTime);
     }
 }
 
