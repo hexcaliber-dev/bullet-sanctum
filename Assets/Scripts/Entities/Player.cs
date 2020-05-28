@@ -190,13 +190,17 @@ public class Player : LivingEntity {
     }
 
     public override void TakeDamage (Bullet b) {
-        TakeDamage (b.damage);
+        if (health > 0) {
+            TakeDamage (b.damage);
+        }
     }
 
     public override void TakeDamage (int damage) {
-        base.TakeDamage (damage);
-        GameObject.FindObjectOfType<CameraUtils> ().Shake ();
-        hud.SetHealthAmount (health);
+        if (health > 0) {
+            base.TakeDamage (damage);
+            hud.SetHealthAmount (health);
+        }
+        GameObject.FindObjectOfType<CameraUtils>().Shake();
     }
 
     IEnumerator StartStrafe (float delay, bool inverted) {
