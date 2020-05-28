@@ -210,9 +210,10 @@ public class Player : LivingEntity {
 
         foreach (GameObject enemy in GameObject.FindGameObjectsWithTag ("Enemy")) {
             print (Vector2.Distance (enemy.transform.position, transform.position));
+            // Bullet time
             if (Vector2.Distance (enemy.transform.position, transform.position) < bulletTimeDistance) {
                 Time.timeScale = bulletTimeMultiplier;
-                print (Time.timeScale);
+                StartCoroutine(hud.DoBulletTime(strafeTime));
             }
         }
 

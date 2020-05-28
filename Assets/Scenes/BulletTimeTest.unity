@@ -289,6 +289,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 749039678716180228, guid: d48691d86e6dea28888725c1f5d67fb9,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 749039678716180228, guid: d48691d86e6dea28888725c1f5d67fb9,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7386347514208102210, guid: d48691d86e6dea28888725c1f5d67fb9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -413,18 +423,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d497c34539011814a9db1755123281b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1269753605 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3592231846050750060, guid: 3b647151b76cf0645ab90ffcc21bc490,
-    type: 3}
-  m_PrefabInstance: {fileID: 578643881}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91a80d147cbd3c043adab36a82bbf457, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1269753607 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3592231846050750062, guid: 3b647151b76cf0645ab90ffcc21bc490,
@@ -470,10 +468,7 @@ MonoBehaviour:
   health: 10
   enemyType: 0
   DMG: 1
-  player: {fileID: 1269753605}
-  playerObj: {fileID: 1269753607}
-  playerFound: 0
-  facingRight: 0
+  rb: {fileID: 0}
   STEP_MAX: 1
 --- !u!50 &1515197425
 Rigidbody2D:
