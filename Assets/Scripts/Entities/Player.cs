@@ -18,7 +18,6 @@ public class Player : LivingEntity {
 
     public GameObject trailObj, shoulder, arm;
     public Color trailColor;
-    public HUD hud;
     public Sprite playerSprite, crouchSprite, weaponSprite, weaponSpriteFlipped;
 
     // Basic movement variables
@@ -41,11 +40,13 @@ public class Player : LivingEntity {
     Rigidbody2D rb2D;
     BoxCollider2D thisCol;
     Vector3 respawnPoint;
+    HUD hud;
 
     Animator animator;
 
     override protected void Start () {
         base.Start ();
+        hud = GameObject.FindObjectOfType<HUD>();
         thisCol = GetComponent<BoxCollider2D> ();
         rb2D = GetComponent<Rigidbody2D> ();
         maxHealth = STARTING_HEALTH;
@@ -111,7 +112,7 @@ public class Player : LivingEntity {
             if (horizMovement != 0 && currState == MoveState.Ground)
                 animator.SetBool ("moving", true);
 
-            print ("CV " + currVelocity + " HM " + horizMovement);
+            // print ("CV " + currVelocity + " HM " + horizMovement);
             if ((currVelocity <= 0 && horizMovement < 0) || (currVelocity >= 0 && horizMovement > 0)) {
                 if (Mathf.Abs (currVelocity) <= ((animator.GetBool ("crouching")) ? crouchSpeed : maxSpeed)) {
                     currVelocity = Mathf.Min (Mathf.Abs (currVelocity) + accelStrength * Time.deltaTime, ((animator.GetBool ("crouching")) ? crouchSpeed : maxSpeed)) * horizMovement;
