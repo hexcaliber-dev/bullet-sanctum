@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: 23c44a8e3ea65f75baf13209ef763c6a
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Eightbitron
+  fontNames:
+  - Eightbitron
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 8a84c80bf82969641888e9cfa055a616, type: 3}
+  - {fileID: 12800000, guid: 5c3a251f307634d55be1fc5de2b1a9c0, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
