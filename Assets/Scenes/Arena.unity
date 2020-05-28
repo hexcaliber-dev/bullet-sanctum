@@ -263,27 +263,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3592231846050750060, guid: 3b647151b76cf0645ab90ffcc21bc490,
-        type: 3}
-      propertyPath: trailObj
-      value: 
-      objectReference: {fileID: 3410146957408013786, guid: 73a7ba96ac205844ca0f1cb56195abdd,
-        type: 3}
-    - target: {fileID: 3592231846050750060, guid: 3b647151b76cf0645ab90ffcc21bc490,
-        type: 3}
-      propertyPath: bulletTimeDistance
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3592231846050750060, guid: 3b647151b76cf0645ab90ffcc21bc490,
-        type: 3}
-      propertyPath: bulletTimeMultiplier
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3592231846050750060, guid: 3b647151b76cf0645ab90ffcc21bc490,
-        type: 3}
-      propertyPath: hud
-      value: 
-      objectReference: {fileID: 851079869}
     - target: {fileID: 3592231846050750061, guid: 3b647151b76cf0645ab90ffcc21bc490,
         type: 3}
       propertyPath: m_Name
@@ -343,11 +322,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3592231846050750063, guid: 3b647151b76cf0645ab90ffcc21bc490,
-        type: 3}
-      propertyPath: m_Color.a
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b647151b76cf0645ab90ffcc21bc490, type: 3}
@@ -549,18 +523,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d48691d86e6dea28888725c1f5d67fb9, type: 3}
---- !u!114 &851079869 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7386347514208102213, guid: d48691d86e6dea28888725c1f5d67fb9,
-    type: 3}
-  m_PrefabInstance: {fileID: 851079868}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d497c34539011814a9db1755123281b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &860627317
 PrefabInstance:
   m_ObjectHideFlags: 0

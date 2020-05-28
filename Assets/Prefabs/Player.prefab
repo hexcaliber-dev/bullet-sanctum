@@ -95,7 +95,7 @@ MonoBehaviour:
   onCooldown: 0
   cooldownTime: 1
   numBullets: 5
-  knockback: 15
+  knockback: 10
 --- !u!1 &3582422662884861645
 GameObject:
   m_ObjectHideFlags: 0
@@ -311,8 +311,8 @@ MonoBehaviour:
   strafeRechargeTime: 0.25
   strafeCost: 3
   strafeCooldown: 0
-  bulletTimeDistance: 0
-  bulletTimeMultiplier: 0
+  bulletTimeDistance: 3
+  bulletTimeMultiplier: 0.5
   currState: 0
 --- !u!50 &3592231846050750049
 Rigidbody2D:
