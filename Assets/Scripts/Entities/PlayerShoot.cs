@@ -6,11 +6,15 @@ using UnityEngine;
 public class PlayerShoot : MonoBehaviour {
     public Weapon currWeapon;
     public List<Weapon> availableWeapons;
+    public List<Sprite> weaponArms, weaponArmsFlipped;
+    public List<Vector2> armPos;
     HUD hud;
     int index;
+    Player player;
 
     void Start () {
         hud = GameObject.FindObjectOfType<HUD> ();
+        player = GameObject.FindObjectOfType<Player> ();
     }
 
     void Update () {
@@ -31,7 +35,7 @@ public class PlayerShoot : MonoBehaviour {
         }
         float scroll = Input.GetAxis ("Mouse ScrollWheel");
         if (scroll != 0f) {
-            EquipWeapon((index + 1) % availableWeapons.Count);
+            EquipWeapon ((index + 1) % availableWeapons.Count);
         }
     }
 
@@ -45,6 +49,10 @@ public class PlayerShoot : MonoBehaviour {
             currWeapon = availableWeapons[num];
             hud.SwitchWeapon (num);
             index = num;
+            player.weaponSprite = weaponArms[num];
+            player.weaponSpriteFlipped = weaponArmsFlipped[num];
+            Vector2 origPos = player.arm.transform.localPosition;
+            player.arm.transform.localPosition = armPos[num];
         }
     }
 }

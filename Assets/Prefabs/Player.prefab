@@ -396,6 +396,12 @@ MonoBehaviour:
   availableWeapons:
   - {fileID: 210959265}
   - {fileID: 1255479305}
+  weaponArms:
+  - {fileID: 21300000, guid: 9841504eb383dfb7bbc71cd335c1e1ed, type: 3}
+  - {fileID: 21300000, guid: 2c328cb4e4b281c4e942eddda5171055, type: 3}
+  weaponArmsFlipped:
+  - {fileID: 21300000, guid: 4449195bc686012e6991be46e0475306, type: 3}
+  - {fileID: 21300000, guid: 8019cc7e0006e82479a7474b98db6921, type: 3}
 --- !u!1 &7953339394049079590
 GameObject:
   m_ObjectHideFlags: 0
