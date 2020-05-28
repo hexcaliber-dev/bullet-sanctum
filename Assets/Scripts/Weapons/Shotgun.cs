@@ -37,7 +37,7 @@ public class Shotgun : Weapon {
         }
 
         // Knock back player
-        GameObject.FindGameObjectWithTag ("Player").GetComponent<Rigidbody2D> ().velocity += (Vector2) (-(Vector3.Normalize (originalTarget)) * knockback);
+        GameObject.FindGameObjectWithTag ("Player").GetComponent<Rigidbody2D> ().velocity += (Vector2) (-(Vector3.Normalize ((Vector2) originalTarget - (Vector2) transform.position)) * knockback);
 
         yield return new WaitForSeconds (cooldownTime);
         onCooldown = false;

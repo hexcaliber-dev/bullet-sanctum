@@ -117,7 +117,7 @@ public class Player : LivingEntity {
                 if (Mathf.Abs (currVelocity) <= ((animator.GetBool ("crouching")) ? crouchSpeed : maxSpeed)) {
                     currVelocity = Mathf.Min (Mathf.Abs (currVelocity) + accelStrength * Time.deltaTime, ((animator.GetBool ("crouching")) ? crouchSpeed : maxSpeed)) * horizMovement;
                     decel = false;
-                    print(currVelocity);
+                    // print(currVelocity);
                 } else {
                     decel = true;
                 }
@@ -142,6 +142,7 @@ public class Player : LivingEntity {
         // Old debug print statements
         // print (currVelocity);
         // print (currState);
+        // print(animator.GetInteger("jumpState"));
 
         // Velocity handling for horizontal movement
         if (currState != MoveState.Strafing) {
