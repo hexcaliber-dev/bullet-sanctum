@@ -5,7 +5,7 @@ using UnityEngine;
 // Cannot go through walls.
 public class EnemyRanged : Enemy {
 
-    public float xRange, yRange;
+    public float detectRange, xRange, yRange;
     public EnemyWeapon weapon;
 
     private Rigidbody2D rb;
@@ -17,7 +17,6 @@ public class EnemyRanged : Enemy {
     public override void OnSpawn () {
         rb = gameObject.GetComponent<Rigidbody2D> ();
         enemyType = EnemyType.Melee;
-        PlayerLookout ();
         movingRight = facingRight;
         startPos = transform.position.x;
         endPos = startPos + STEP_MAX;
@@ -30,6 +29,7 @@ public class EnemyRanged : Enemy {
 
     // This is called once per update
     public override void PlayerLookout () {
+        // print (player.transform.position.x - transform.position.x);
         if (Mathf.Abs (player.transform.position.x - transform.position.x) < xRange &&
             Mathf.Abs (player.transform.position.y - transform.position.y) < yRange) {
             playerFound = true;
@@ -42,15 +42,14 @@ public class EnemyRanged : Enemy {
 
     // This is called once per update
     public override void MovePattern () {
+        print (playerFound);
         if (playerFound) {
-            var direction = Vector3.zero;
-            if (Vector3.Distance (transform.position, player.transform.position) > 0.1) {
-                direction = player.transform.position - transform.position;
-                rb.AddRelativeForce (direction.normalized * speed, ForceMode2D.Force);
-            }
+            rb.velocity = new Vector2 (0f, rb.velocity.y);
         } else {
+            if (Vector2.Distance(player.transform.position, transform.position) < detectRange)
+                rb.AddForce (Vector3.Normalize ((Vector2) (player.transform.position - transform.position)) * speed);
+            // print (Vector3.Normalize ((Vector2) (player.transform.position - transform.position)) * speed);
             if (movingRight) {
-                rb.AddForce (Vector2.right * speed * Time.deltaTime);
                 if (!facingRight) {
                     Flip ();
                 }
@@ -61,7 +60,6 @@ public class EnemyRanged : Enemy {
             }
 
             if (!movingRight) {
-                rb.AddForce (Vector2.left * speed * Time.deltaTime);
                 if (facingRight) {
                     Flip ();
                 }
