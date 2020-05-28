@@ -65,6 +65,7 @@ public class EnemyMelee : Enemy {
                 knockback.x = -knockback.x;
             }
             rb.AddForce(knockback, ForceMode2D.Impulse);
+            Attack();
         }
     }
 }
