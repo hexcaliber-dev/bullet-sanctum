@@ -8,7 +8,6 @@ public class EnemyRanged : Enemy {
     public float detectRange, xRange, yRange;
     public EnemyWeapon weapon;
 
-    private Rigidbody2D rb;
     public float STEP_MAX = 5;
     private bool movingRight;
     private float startPos;
