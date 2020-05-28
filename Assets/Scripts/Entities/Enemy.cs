@@ -8,6 +8,7 @@ public abstract class Enemy : LivingEntity {
     protected bool playerFound;
     protected bool facingRight;
     protected Player player;
+    public Rigidbody2D rb;
 
     override protected void Start() {
         facingRight = transform.localScale.x > 0;
@@ -27,6 +28,7 @@ public abstract class Enemy : LivingEntity {
 
     public void PlayerFound(bool state) {
         playerFound = state;
+        rb.velocity = Vector2.zero;
     }
 
     void Update() {
