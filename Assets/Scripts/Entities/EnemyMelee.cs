@@ -35,7 +35,7 @@ public class EnemyMelee : Enemy {
             }
         } else {
             if (movingRight) {
-                rb.velocity = new Vector2(Vector2.right.x, rb.velocity.y);
+                rb.AddRelativeForce(new Vector2(Vector2.right.x, rb.velocity.y), ForceMode2D.Force);
                 if (!facingRight) {
                     Flip();
                 }
@@ -43,10 +43,11 @@ public class EnemyMelee : Enemy {
 
             if (rb.position.x >= endPos) {
                 movingRight = false;
+                rb.velocity = Vector2.zero;
             }
 
             if (!movingRight) {
-                rb.velocity = new Vector2(-Vector2.right.x, rb.velocity.y);
+                rb.AddRelativeForce(new Vector2(-Vector2.right.x, rb.velocity.y), ForceMode2D.Force);
                 if (facingRight) {
                     Flip();
                 }
@@ -54,6 +55,7 @@ public class EnemyMelee : Enemy {
 
             if (rb.position.x <= startPos) {
                 movingRight = true;
+                rb.velocity = Vector2.zero;
             }
         }
     }
@@ -66,6 +68,10 @@ public class EnemyMelee : Enemy {
             }
             rb.AddForce(knockback, ForceMode2D.Impulse);
             Attack();
+        }
+        if (collision.gameObject.tag == "Bullet") {
+            startPos = transform.position.x;
+            endPos = startPos + STEP_MAX;
         }
     }
 }
