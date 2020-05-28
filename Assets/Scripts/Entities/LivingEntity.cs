@@ -12,7 +12,7 @@ public abstract class LivingEntity : MonoBehaviour {
     // LET IT GOOOOOOOO
     public bool frozen = false;
     public float speed;
-
+    public Material normalMaterial, flashMaterial;
     public int health;
 
     protected virtual void Start () {
@@ -48,6 +48,8 @@ public abstract class LivingEntity : MonoBehaviour {
 
     public virtual void TakeDamage (int damage) {
         health -= damage;
+        // Flash white
+        StartCoroutine(FlashWhite(0.1f));
         if (health <= 0) {
             OnDeath ();
         }
@@ -63,5 +65,11 @@ public abstract class LivingEntity : MonoBehaviour {
         if (col.gameObject.tag.Equals ("Bullet")) {
             TakeDamage (col.gameObject.GetComponent<Bullet> ());
         }
+    }
+
+    protected IEnumerator FlashWhite(float seconds) {
+        GetComponent<Renderer>().material = flashMaterial;
+        yield return new WaitForSeconds(seconds);
+        GetComponent<Renderer>().material = normalMaterial;
     }
 }

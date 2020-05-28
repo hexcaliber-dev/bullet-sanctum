@@ -282,6 +282,8 @@ MonoBehaviour:
   entityType: 0
   frozen: 0
   speed: 0
+  normalMaterial: {fileID: 2100000, guid: 6e99719ff47b1e14ea5997d390039c7f, type: 2}
+  flashMaterial: {fileID: 2100000, guid: 08ce23b2283c36e54a9092f0fedb0b1c, type: 2}
   health: 20
   doPlayerUpdates: 0
   maxHealth: 20
@@ -290,7 +292,6 @@ MonoBehaviour:
   shoulder: {fileID: 7953339394049079590}
   arm: {fileID: 3582422662884861645}
   trailColor: {r: 0.9900834, g: 1, b: 0.7971698, a: 0.39607844}
-  hud: {fileID: 0}
   playerSprite: {fileID: 21300000, guid: 54af37210d42dd08494bfc6badadd189, type: 3}
   crouchSprite: {fileID: 21300000, guid: b4377c958e0eb3a32bd9f218de4a7a2a, type: 3}
   weaponSprite: {fileID: 21300000, guid: 9841504eb383dfb7bbc71cd335c1e1ed, type: 3}
@@ -310,6 +311,8 @@ MonoBehaviour:
   strafeRechargeTime: 0.25
   strafeCost: 3
   strafeCooldown: 0
+  bulletTimeDistance: 0
+  bulletTimeMultiplier: 0
   currState: 0
 --- !u!50 &3592231846050750049
 Rigidbody2D:
