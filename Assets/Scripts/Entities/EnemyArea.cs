@@ -21,9 +21,9 @@ public class EnemyArea : MonoBehaviour
         }
     }
 
-    void OnTriggerExit2D(Collider2D other) {
-        if (other.tag == "Player") {
-            // SendMessageUpwards("PlayerFound", false);
-        }
-    }
+    // void OnTriggerExit2D(Collider2D other) {
+    //     if (other.tag == "Player") {
+    //        SendMessageUpwards("PlayerFound", false);
+    //     }
+    // }
 }
