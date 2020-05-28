@@ -3,7 +3,6 @@ using System;
 
 public class EnemyMelee : Enemy {
 
-    private Rigidbody2D rb;
     public float STEP_MAX = 5;
     private bool movingRight;
     private float startPos;
@@ -36,7 +35,7 @@ public class EnemyMelee : Enemy {
             }
         } else {
             if (movingRight) {
-                rb.AddForce(Vector2.right);
+                rb.velocity = new Vector2(Vector2.right.x, rb.velocity.y);
                 if (!facingRight) {
                     Flip();
                 }
@@ -47,7 +46,7 @@ public class EnemyMelee : Enemy {
             }
 
             if (!movingRight) {
-                rb.AddForce(-Vector2.right);
+                rb.velocity = new Vector2(-Vector2.right.x, rb.velocity.y);
                 if (facingRight) {
                     Flip();
                 }
