@@ -37634,8 +37634,6 @@ MonoBehaviour:
   player: {fileID: 0}
   smoothSpd: 5
   offset: {x: 0, y: 0, z: -10}
-  shakeDuration: 0.25
-  shakeAmount: 0.7
 --- !u!4 &1579479780 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4747245513625859705, guid: 5b759eafa3d4ed94599e8912afaf0bf0,
@@ -37693,7 +37691,7 @@ PrefabInstance:
     - target: {fileID: 4747245513625859704, guid: 5b759eafa3d4ed94599e8912afaf0bf0,
         type: 3}
       propertyPath: transitionSpeed
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4747245513625859704, guid: 5b759eafa3d4ed94599e8912afaf0bf0,
         type: 3}
@@ -37708,7 +37706,7 @@ PrefabInstance:
     - target: {fileID: 4747245513625859704, guid: 5b759eafa3d4ed94599e8912afaf0bf0,
         type: 3}
       propertyPath: alternate
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4747245513625859704, guid: 5b759eafa3d4ed94599e8912afaf0bf0,
         type: 3}
@@ -37728,7 +37726,7 @@ PrefabInstance:
     - target: {fileID: 4747245513625859704, guid: 5b759eafa3d4ed94599e8912afaf0bf0,
         type: 3}
       propertyPath: activeSwitcher
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4747245514922311706, guid: 5b759eafa3d4ed94599e8912afaf0bf0,
         type: 3}

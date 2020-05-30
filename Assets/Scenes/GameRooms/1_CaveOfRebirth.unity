@@ -185,8 +185,6 @@ MonoBehaviour:
   player: {fileID: 0}
   smoothSpd: 5
   offset: {x: 0, y: 0, z: -10}
-  shakeDuration: 0.25
-  shakeAmount: 0.7
 --- !u!81 &425129057
 AudioListener:
   m_ObjectHideFlags: 0
@@ -290,6 +288,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1261319314, guid: d48691d86e6dea28888725c1f5d67fb9, type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1261319314, guid: d48691d86e6dea28888725c1f5d67fb9, type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1261319314, guid: d48691d86e6dea28888725c1f5d67fb9, type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1261319314, guid: d48691d86e6dea28888725c1f5d67fb9, type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2077591343, guid: d48691d86e6dea28888725c1f5d67fb9, type: 3}
       propertyPath: m_textInfo.characterCount
       value: 0
@@ -37719,6 +37733,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3592231846050750061, guid: 3b647151b76cf0645ab90ffcc21bc490,
         type: 3}
+    - target: {fileID: 4747245513625859704, guid: 5b759eafa3d4ed94599e8912afaf0bf0,
+        type: 3}
+      propertyPath: transitionSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4747245513625859705, guid: 5b759eafa3d4ed94599e8912afaf0bf0,
         type: 3}
       propertyPath: m_LocalPosition.x
