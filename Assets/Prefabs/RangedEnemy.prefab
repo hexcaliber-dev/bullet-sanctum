@@ -153,6 +153,7 @@ MonoBehaviour:
   health: 8
   enemyType: 0
   DMG: 0
+  bounty: 8
   rb: {fileID: 0}
   detectRange: 10
   xRange: 5

@@ -416,6 +416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4ab1d101dd51e7f1bcdfddd2738b59e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bountyProgressMilestones: 0a0000001e00000064000000f4010000d0070000401f0000204e000050c3000040420f00
 --- !u!1 &7953339394049079590
 GameObject:
   m_ObjectHideFlags: 0

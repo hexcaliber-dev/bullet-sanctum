@@ -1,9 +1,13 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 // Handles bounty and bounty multiplier behavior.
 public class PlayerBounty : MonoBehaviour {
     int bountyMultiplier, savedBounty, unsavedBounty;
     int numFragments;
+    public List<int> bountyProgressMilestones;
+    int nextMultiplierProgress;
 
     HUD hud;
 
@@ -13,10 +17,21 @@ public class PlayerBounty : MonoBehaviour {
         unsavedBounty = 0;
         bountyMultiplier = 1;
         hud = GameObject.FindObjectOfType<HUD>();
+        collectBounty(0);
     }
 
     public void CollectFragment() {
         numFragments += 1;
         hud.fragmentText.text = "x" + numFragments;
+    }
+
+    public void collectBounty(int bounty) {
+        unsavedBounty += bounty * bountyMultiplier;
+        nextMultiplierProgress += bounty * bountyMultiplier;
+        if (nextMultiplierProgress >= bountyProgressMilestones[bountyMultiplier]) {
+            nextMultiplierProgress = 0;
+            bountyMultiplier += 1;
+        }
+        hud.UpdateBounty(savedBounty, unsavedBounty, (float)nextMultiplierProgress / bountyProgressMilestones[bountyMultiplier], bountyMultiplier);
     }
 }

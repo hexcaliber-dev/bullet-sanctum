@@ -421,6 +421,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1102918185, guid: d48691d86e6dea28888725c1f5d67fb9, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -95.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1102918186, guid: d48691d86e6dea28888725c1f5d67fb9, type: 3}
+      propertyPath: m_margin.z
+      value: -183.64856
+      objectReference: {fileID: 0}
     - target: {fileID: 749039678716180228, guid: d48691d86e6dea28888725c1f5d67fb9,
         type: 3}
       propertyPath: m_Material
@@ -864,8 +872,6 @@ MonoBehaviour:
   player: {fileID: 1269753607}
   smoothSpd: 5
   offset: {x: 0, y: 0, z: -10}
-  shakeDuration: 0.25
-  shakeAmount: 0.25
 --- !u!81 &1629629901
 AudioListener:
   m_ObjectHideFlags: 0

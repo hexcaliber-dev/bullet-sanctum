@@ -153,6 +153,7 @@ MonoBehaviour:
   health: 10
   enemyType: 0
   DMG: 1
+  bounty: 10
   rb: {fileID: 0}
   STEP_MAX: 3
 --- !u!1 &7828699060267971472
