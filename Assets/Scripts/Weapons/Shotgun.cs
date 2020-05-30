@@ -26,6 +26,7 @@ public class Shotgun : Weapon {
     IEnumerator Shoot () {
         onCooldown = true;
         Vector3 originalTarget = Camera.main.ScreenToWorldPoint (Input.mousePosition);
+        GameObject.FindObjectOfType<CameraUtils> ().Shake (0.15f, 0.15f);
 
         // Shoot numBullets number of bullets
         for (int i = 0; i <= numBullets; i += 1) {

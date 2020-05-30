@@ -35,7 +35,6 @@ public class Player : LivingEntity {
 
     // Hidden variables
     const int MAX_STRAFE_BARS = 6;
-    float currVelocity;
     int strafesRemaining;
     Rigidbody2D rb2D;
     BoxCollider2D thisCol;
@@ -46,7 +45,7 @@ public class Player : LivingEntity {
 
     override protected void Start () {
         base.Start ();
-        hud = GameObject.FindObjectOfType<HUD>();
+        hud = GameObject.FindObjectOfType<HUD> ();
         thisCol = GetComponent<BoxCollider2D> ();
         rb2D = GetComponent<Rigidbody2D> ();
         maxHealth = STARTING_HEALTH;
@@ -58,7 +57,8 @@ public class Player : LivingEntity {
     }
 
     void FixedUpdate () {
-        bool decel = true; // True if player is decelerating
+        bool decel = false; // True if player is decelerating
+        float newVX = rb2D.velocity.x; // New horizontal velocity value after movement calculations
 
         // Get mouse direction
         Vector3 mouse = Camera.main.ScreenToWorldPoint (Input.mousePosition);
@@ -109,18 +109,18 @@ public class Player : LivingEntity {
             // Horizontal movement
             float horizMovement = (Input.GetKey (KeyCode.A) ? -1 : (Input.GetKey (KeyCode.D) ? 1 : 0));
 
+            // No key was pressed - slow down player
+            if (horizMovement == 0)
+                decel = true;
+
+            // Stuff for animation
             if (horizMovement != 0 && currState == MoveState.Ground)
                 animator.SetBool ("moving", true);
 
-            // print ("CV " + currVelocity + " HM " + horizMovement);
-            if ((currVelocity <= 0 && horizMovement < 0) || (currVelocity >= 0 && horizMovement > 0)) {
-                if (Mathf.Abs (currVelocity) <= ((animator.GetBool ("crouching")) ? crouchSpeed : maxSpeed)) {
-                    currVelocity = Mathf.Min (Mathf.Abs (currVelocity) + accelStrength * Time.deltaTime, ((animator.GetBool ("crouching")) ? crouchSpeed : maxSpeed)) * horizMovement;
-                    decel = false;
-                    // print(currVelocity);
-                } else {
-                    decel = true;
-                }
+            // Adding velocity to player
+            if (Mathf.Sign (newVX) == Mathf.Sign (horizMovement) || Math.Abs (newVX) < deadzone) {
+                if (Mathf.Abs (newVX) <= ((animator.GetBool ("crouching")) ? crouchSpeed : maxSpeed))
+                    newVX = Mathf.Min (Mathf.Abs (newVX) + accelStrength * Time.deltaTime, ((animator.GetBool ("crouching")) ? crouchSpeed : maxSpeed)) * horizMovement;
             } else {
                 decel = true;
             }
@@ -139,14 +139,8 @@ public class Player : LivingEntity {
             }
         }
 
-        // Old debug print statements
-        // print (currVelocity);
-        // print (currState);
-        // print(animator.GetInteger("jumpState"));
-
-        // Velocity handling for horizontal movement
+        // Crouching
         if (currState != MoveState.Strafing) {
-            // Crouching
             if (Input.GetKey (KeyCode.LeftControl)) {
                 animator.SetBool ("crouching", true);
                 GetComponent<SpriteRenderer> ().sprite = crouchSprite;
@@ -154,7 +148,6 @@ public class Player : LivingEntity {
                 GetComponent<BoxCollider2D> ().size = new Vector2 (.18f, .3f);
             } else {
                 shoulder.transform.localPosition = new Vector2 (-0.03f, 0.04f);
-
                 if (!hittingCeiling) {
                     animator.SetBool ("crouching", false);
                     GetComponent<SpriteRenderer> ().sprite = playerSprite;
@@ -163,18 +156,17 @@ public class Player : LivingEntity {
             }
         }
 
-        // Deceleration mechanic
-        if (decel) {
-            currVelocity = rb2D.velocity.x;
-            currVelocity *= decelMultiplier;
-            if (Math.Abs (rb2D.velocity.x) < deadzone) {
-                currVelocity = 0f;
+        // Deceleration mechanic; apply changes to velocity
+        if (currState != MoveState.Strafing) {
+            if (Math.Abs (newVX) < Math.Abs (rb2D.velocity.x) || decel) {
+                newVX = rb2D.velocity.x;
+                newVX *= decelMultiplier;
+                animator.SetBool ("moving", false);
             }
-            rb2D.velocity = new Vector2 (currVelocity, rb2D.velocity.y);
-            animator.SetBool ("moving", false);
-        } else {
-            if (Math.Abs (currVelocity) > Math.Abs (rb2D.velocity.x))
-                rb2D.velocity = new Vector2 (currVelocity, rb2D.velocity.y);
+            if (Math.Abs (newVX) < deadzone) {
+                newVX = 0f;
+            }
+            rb2D.velocity = new Vector2 (newVX, rb2D.velocity.y);
         }
     }
 
@@ -201,7 +193,7 @@ public class Player : LivingEntity {
             base.TakeDamage (damage);
             hud.SetHealthAmount (health);
         }
-        GameObject.FindObjectOfType<CameraUtils>().Shake();
+        GameObject.FindObjectOfType<CameraUtils> ().Shake (0.25f, 0.25f);
     }
 
     IEnumerator StartStrafe (float delay, bool inverted) {
@@ -214,11 +206,10 @@ public class Player : LivingEntity {
         Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer ("Player"), LayerMask.NameToLayer ("EnemyBullet"), true);
 
         foreach (GameObject enemy in GameObject.FindGameObjectsWithTag ("Enemy")) {
-            print (Vector2.Distance (enemy.transform.position, transform.position));
             // Bullet time
             if (Vector2.Distance (enemy.transform.position, transform.position) < bulletTimeDistance) {
                 Time.timeScale = bulletTimeMultiplier;
-                StartCoroutine(hud.DoBulletTime(strafeTime));
+                StartCoroutine (hud.DoBulletTime (strafeTime));
             }
         }
 
