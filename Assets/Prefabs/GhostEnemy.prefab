@@ -152,6 +152,7 @@ MonoBehaviour:
   health: 10
   enemyType: 0
   DMG: 3
+  bounty: 5
   rb: {fileID: 0}
   detectRange: 10
   knockback: 10

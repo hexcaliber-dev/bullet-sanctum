@@ -5,6 +5,7 @@ public abstract class Enemy : LivingEntity {
     public enum EnemyType { Melee, Ranged, Swarm };
     public EnemyType enemyType;
     public int DMG;
+    public int bounty;
     protected bool playerFound;
     protected bool facingRight;
     protected Player player;
@@ -24,6 +25,11 @@ public abstract class Enemy : LivingEntity {
             // Code to see if player is visible by enemy.
             // playerFound = true;
         }
+    }
+
+    public override void OnDeath() {
+        GameObject.FindObjectOfType<PlayerBounty>().collectBounty(bounty);
+        base.OnDeath();
     }
 
     public void PlayerFound(bool state) {

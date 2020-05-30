@@ -6,12 +6,13 @@ using UnityEngine.UI;
 
 public class HUD : MonoBehaviour {
 
-    public List<Sprite> strafeSprites, reloadSprites, healthSprites, weaponSprites;
-    public Image strafeMeter, reloadMeter, healthMeter, weaponDisplay;
+    public List<Sprite> strafeSprites, reloadSprites, healthSprites, weaponSprites, bountySprites;
+    public Image strafeMeter, reloadMeter, healthMeter, weaponDisplay, bountyBar, bountyMultBack;
     public CanvasGroup bulletTimeCanvas;
-    public TMP_Text bulletTimeText, timer, fragmentText;
+    public TMP_Text bulletTimeText, timer, fragmentText, bountyMultiplierText, bountyText;
 
     public List<Texture2D> crosshairImages;
+    public List<Color> bountyColors;
     int currCrosshair;
 
     public bool doCursorDraw;
@@ -66,11 +67,11 @@ public class HUD : MonoBehaviour {
         bulletTimeText.color = Color.white;
         timer.color = Color.white;
         for (int i = 0; i < 100; i += 1) {
-            float dec = Mathf.Min(1f, 2f - (i / 50f));
+            float dec = Mathf.Min (1f, 2f - (i / 50f));
             bulletTimeCanvas.GetComponent<Image> ().color = new Color (1, 1, 1, dec / 1.5f);
             bulletTimeText.color = new Color (dec, dec, dec, dec);
             timer.color = new Color (dec, dec, dec, dec);
-            timer.text = "00:0" + (int)(seconds * i / 3f) + ":" + (((int)(seconds * i * 30f) % 90f + 10));
+            timer.text = "00:0" + (int) (seconds * i / 3f) + ":" + (((int) (seconds * i * 30f) % 90f + 10));
             if (i == 10)
                 bulletTimeText.text = "BULLET_";
             if (i == 30)
@@ -80,5 +81,21 @@ public class HUD : MonoBehaviour {
             yield return new WaitForSeconds (seconds / 100);
         }
         bulletTimeCanvas.alpha = 0f;
+    }
+
+    public void UpdateBounty (int savedBounty, int unsavedBounty, float bountyProgress, int multiplier) {
+        bountyMultiplierText.text = "x" + multiplier;
+        bountyBar.sprite = bountySprites[(int) (bountyProgress * bountySprites.Count)];
+        bountyText.text = savedBounty + "_(+" + unsavedBounty + ")";
+        Color bountyColor = bountyColors[multiplier - 1];
+        bountyMultBack.color = bountyColor;
+        bountyBar.color = bountyColor;
+        StartCoroutine (FlashBountyText (bountyColor));
+    }
+
+    IEnumerator FlashBountyText (Color col) {
+        bountyText.color = col;
+        yield return new WaitForSeconds (0.1f);
+        bountyText.color = Color.white;
     }
 }
