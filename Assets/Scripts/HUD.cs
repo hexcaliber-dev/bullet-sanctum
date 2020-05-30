@@ -9,7 +9,7 @@ public class HUD : MonoBehaviour {
     public List<Sprite> strafeSprites, reloadSprites, healthSprites, weaponSprites;
     public Image strafeMeter, reloadMeter, healthMeter, weaponDisplay;
     public CanvasGroup bulletTimeCanvas;
-    public TMP_Text bulletTimeText, timer;
+    public TMP_Text bulletTimeText, timer, fragmentText;
 
     public List<Texture2D> crosshairImages;
     int currCrosshair;

@@ -194,6 +194,7 @@ GameObject:
   - component: {fileID: 930609989}
   - component: {fileID: 1654360529}
   - component: {fileID: 704588991}
+  - component: {fileID: 208023416080127248}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -402,6 +403,19 @@ MonoBehaviour:
   weaponArmsFlipped:
   - {fileID: 21300000, guid: 4449195bc686012e6991be46e0475306, type: 3}
   - {fileID: 21300000, guid: 8019cc7e0006e82479a7474b98db6921, type: 3}
+  armPos: []
+--- !u!114 &208023416080127248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3592231846050750061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4ab1d101dd51e7f1bcdfddd2738b59e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7953339394049079590
 GameObject:
   m_ObjectHideFlags: 0
