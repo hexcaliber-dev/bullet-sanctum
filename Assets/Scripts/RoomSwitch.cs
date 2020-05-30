@@ -20,6 +20,7 @@ public class RoomSwitch : MonoBehaviour
     public bool alternate;
     public string sceneName;
     public bool activeSwitcher;
+    public bool debug;
 
 
 // To setup spawn locations for each room, you must do the following:
@@ -51,7 +52,7 @@ public class RoomSwitch : MonoBehaviour
             PlayerPrefs.SetString("LocationID", switcherID);
             activeSwitcher = true;
         }
-        if(activeSwitcher)
+        if(activeSwitcher || debug)
         {
             fadeImage.color = new Color32(0, 0, 0, 255);
             if (alternate)
@@ -137,7 +138,9 @@ public class RoomSwitch : MonoBehaviour
     void spawnPlayer(GameObject t)
     {
         Debug.Log("Player Spawned");
-        setCameraTarget(Instantiate(player, t.transform));
+        GameObject sp = Instantiate(player, t.transform);
+        sp.GetComponent<Player>().enabled = true;
+        setCameraTarget(sp);
 
     }
 
