@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class RoomSwitch : MonoBehaviour
 {
 
-    public byte transitionSpeed;
+    public float transitionSpeed;
     public Image fadeImage;
     public GameObject player; 
 
@@ -107,9 +107,9 @@ public class RoomSwitch : MonoBehaviour
         Debug.Log("Fading Out... Start");
 
         player.GetComponent<Player>().enabled = false;
-        for (byte i = 0; i < 255; i += transitionSpeed)
+        for (float i = 0; i < 255; i += transitionSpeed)
         {
-            fadeImage.color = new Color32(0, 0, 0, i);
+            fadeImage.color = new Color32(0, 0, 0, (byte)i);
             yield return null;
         }
         player.GetComponent<Player>().enabled = true;
@@ -123,9 +123,10 @@ public class RoomSwitch : MonoBehaviour
         Debug.Log("Fading In... Start");
 
         player.GetComponent<Player>().enabled = false;
-        for (byte i = 255; i > 0; i -= transitionSpeed)
+        for (float i = 255; i > 0; i -= transitionSpeed)
         {
-            fadeImage.color = new Color32(0, 0, 0, i);
+            
+            fadeImage.color = new Color32(0, 0, 0, (byte)i);
             yield return null;
         }
         player.GetComponent<Player>().enabled = true;
