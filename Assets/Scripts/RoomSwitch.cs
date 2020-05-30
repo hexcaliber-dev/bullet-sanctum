@@ -19,7 +19,7 @@ public class RoomSwitch : MonoBehaviour
     bool switchNow;
     public bool alternate;
     public string sceneName;
-    public bool activeSwitcher;
+    private bool activeSwitcher;
     public bool debug;
 
 
@@ -37,6 +37,7 @@ public class RoomSwitch : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        activeSwitcher = false;
         switchNow = false;
         if (PlayerPrefs.HasKey("LocationID"))
         {
