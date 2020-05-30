@@ -201,7 +201,7 @@ public class Player : LivingEntity {
             base.TakeDamage (damage);
             hud.SetHealthAmount (health);
         }
-        GameObject.FindObjectOfType<CameraUtils>().Shake();
+        GameObject.FindObjectOfType<CameraUtils>().Shake(0.25f, 0.25f);
     }
 
     IEnumerator StartStrafe (float delay, bool inverted) {

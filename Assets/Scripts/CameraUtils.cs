@@ -9,11 +9,6 @@ public class CameraUtils : MonoBehaviour {
     public Vector3 offset = new Vector3 (0, 0, -10);
 
     bool isShaking;
-
-    // How long the object should shake for.
-    public float shakeDuration = 0.25f;
-    // Amplitude of the shake. A larger value shakes the camera harder.
-    public float shakeAmount = 0.7f;
     Vector3 originalPos;
 
     // Start is called before the first frame update
@@ -38,10 +33,10 @@ public class CameraUtils : MonoBehaviour {
         transform.position = Vector3.Lerp (transform.position, desPos, smoothSpd * Time.deltaTime);
     }
 
-    public void Shake () {
+    public void Shake (float duration, float amount) {
         StopAllCoroutines ();
         originalPos = transform.position;
-        StartCoroutine (cShake (shakeDuration, shakeAmount));
+        StartCoroutine (cShake (duration, amount));
     }
 
     IEnumerator cShake (float duration, float amount) {
@@ -55,5 +50,4 @@ public class CameraUtils : MonoBehaviour {
 
         transform.localPosition = originalPos;
     }
-
 }
