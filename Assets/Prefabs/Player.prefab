@@ -209,7 +209,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3592231846050750061}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.69, y: -1.17, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3.0203757, z: 12.491535}
   m_Children:
   - {fileID: 2449334972071640101}
@@ -402,6 +402,7 @@ MonoBehaviour:
   weaponArmsFlipped:
   - {fileID: 21300000, guid: 4449195bc686012e6991be46e0475306, type: 3}
   - {fileID: 21300000, guid: 8019cc7e0006e82479a7474b98db6921, type: 3}
+  armPos: []
 --- !u!1 &7953339394049079590
 GameObject:
   m_ObjectHideFlags: 0
