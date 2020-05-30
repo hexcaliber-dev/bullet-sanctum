@@ -7,6 +7,7 @@ public class CameraUtils : MonoBehaviour {
     public GameObject player;
     public float smoothSpd = 5f;
     public Vector3 offset = new Vector3 (0, 0, -10);
+    public Transform bottomLeft, topRight; // Place empty gameObjects in the corners of the map
 
     bool isShaking;
     Vector3 originalPos;
@@ -28,7 +29,13 @@ public class CameraUtils : MonoBehaviour {
         // Destination vector.
         Vector3 desPos = player.GetComponent<Transform>().position + offset;
         // Add camera center offset.
+        float worldCamHeight = cam.orthographicSize;
+        float worldCamWidth = cam.orthographicSize * cam.aspect;
+
         desPos = new Vector3 (desPos.x + (cameraWidth / 2), desPos.y + (cameraHeight / 2), desPos.z);
+        desPos = new Vector3 (Mathf.Clamp(desPos.x, bottomLeft.position.x + worldCamWidth, topRight.position.x - worldCamWidth),
+                              Mathf.Clamp(desPos.y, bottomLeft.transform.position.y + worldCamHeight, topRight.transform.position.y - worldCamHeight),
+                              desPos.z);
         // Lerp the camera for extra smoothness.
         transform.position = Vector3.Lerp (transform.position, desPos, smoothSpd * Time.deltaTime);
     }
