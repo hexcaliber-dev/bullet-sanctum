@@ -1,6 +1,6 @@
-using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 // Handles bounty and bounty multiplier behavior.
 public class PlayerBounty : MonoBehaviour {
@@ -11,27 +11,35 @@ public class PlayerBounty : MonoBehaviour {
 
     HUD hud;
 
-    void Start() {
+    void Start () {
         numFragments = 0;
         savedBounty = 0;
         unsavedBounty = 0;
         bountyMultiplier = 1;
-        hud = GameObject.FindObjectOfType<HUD>();
-        collectBounty(0);
+        hud = GameObject.FindObjectOfType<HUD> ();
+        collectBounty (0);
     }
 
-    public void CollectFragment() {
+    public void CollectFragment () {
         numFragments += 1;
         hud.fragmentText.text = "x" + numFragments;
     }
 
-    public void collectBounty(int bounty) {
+    public void collectBounty (int bounty) {
         unsavedBounty += bounty * bountyMultiplier;
         nextMultiplierProgress += bounty * bountyMultiplier;
         if (nextMultiplierProgress >= bountyProgressMilestones[bountyMultiplier]) {
             nextMultiplierProgress = 0;
             bountyMultiplier += 1;
         }
-        hud.UpdateBounty(savedBounty, unsavedBounty, (float)nextMultiplierProgress / bountyProgressMilestones[bountyMultiplier], bountyMultiplier);
+        hud.UpdateBounty (savedBounty, unsavedBounty, (float) nextMultiplierProgress / bountyProgressMilestones[bountyMultiplier], bountyMultiplier);
+    }
+
+    public void BankBounty () {
+        savedBounty += unsavedBounty;
+        unsavedBounty = 0;
+        bountyMultiplier = 1;
+        nextMultiplierProgress = 0;
+        hud.UpdateBounty (savedBounty, unsavedBounty, (float) nextMultiplierProgress / bountyProgressMilestones[bountyMultiplier], bountyMultiplier);
     }
 }
