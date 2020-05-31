@@ -56,7 +56,7 @@ public class Player : LivingEntity {
         doPlayerUpdates = true;
     }
 
-    void FixedUpdate () {
+    void Update () {
         bool decel = false; // True if player is decelerating
         float newVX = rb2D.velocity.x; // New horizontal velocity value after movement calculations
 
@@ -297,8 +297,5 @@ public class Player : LivingEntity {
     }
 
     // Picks up a weapon from the ground.
-    public void CollectWeapon (Weapon weapon) {
-
-    }
-
+    public void CollectWeapon (Weapon weapon) {}
 }

@@ -403,7 +403,9 @@ MonoBehaviour:
   weaponArmsFlipped:
   - {fileID: 21300000, guid: 4449195bc686012e6991be46e0475306, type: 3}
   - {fileID: 21300000, guid: 8019cc7e0006e82479a7474b98db6921, type: 3}
-  armPos: []
+  armPos:
+  - {x: 0.01, y: 0.05}
+  - {x: 0.01, y: 0.11}
 --- !u!114 &208023416080127248
 MonoBehaviour:
   m_ObjectHideFlags: 0

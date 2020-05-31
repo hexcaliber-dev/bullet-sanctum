@@ -147,7 +147,7 @@ public class RoomSwitch : MonoBehaviour
 
     void setCameraTarget(GameObject p)
     {
-        cameraFollower.GetComponent<CameraUtils>().player = p;
+        cameraFollower.GetComponent<CameraUtils>().SetPlayer(p);
     }
 
 
