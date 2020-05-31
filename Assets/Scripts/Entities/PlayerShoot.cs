@@ -8,6 +8,8 @@ public class PlayerShoot : MonoBehaviour {
     public List<Weapon> availableWeapons;
     public List<Sprite> weaponArms, weaponArmsFlipped;
     public List<Vector2> armPos;
+    public List<Sprite> muzzleSprites;
+    public SpriteRenderer muzzle;
     HUD hud;
     int index;
     Player player;
@@ -15,6 +17,7 @@ public class PlayerShoot : MonoBehaviour {
     void Start () {
         hud = GameObject.FindObjectOfType<HUD> ();
         player = GameObject.FindObjectOfType<Player> ();
+        muzzle.enabled = false;
     }
 
     void Update () {
@@ -24,6 +27,7 @@ public class PlayerShoot : MonoBehaviour {
                 if (!currWeapon.onCooldown) {
                     hud.UpdateRechargeMeter (currWeapon);
                     currWeapon.UseWeapon ();
+                    StartCoroutine(MuzzleFlash());
                 }
             }
 
@@ -56,5 +60,16 @@ public class PlayerShoot : MonoBehaviour {
             Vector2 origPos = player.arm.transform.localPosition;
             player.arm.transform.localPosition = armPos[num];
         }
+    }
+
+    IEnumerator MuzzleFlash() {
+        muzzle.enabled = true;
+        muzzle.sprite = muzzleSprites[0];
+        yield return new WaitForSeconds(0.1f);
+        muzzle.sprite = muzzleSprites[1];
+        yield return new WaitForSeconds(0.1f);
+        muzzle.sprite = muzzleSprites[2];
+        yield return new WaitForSeconds(0.1f);
+        muzzle.enabled = false;
     }
 }
