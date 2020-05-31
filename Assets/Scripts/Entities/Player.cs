@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEditor.Animations;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /** Handles movement and animation of player.
  * For shooting, go to PlayerShoot.
@@ -14,7 +15,8 @@ public class Player : LivingEntity {
 
     public bool doPlayerUpdates;
     const int STARTING_HEALTH = 20;
-    public int maxHealth; // current health is inherited from LivingEntity
+    public static int maxHealth = STARTING_HEALTH;
+    public static int playerHealth = STARTING_HEALTH;
 
     public GameObject trailObj, shoulder, arm;
     public Color trailColor;
@@ -48,8 +50,6 @@ public class Player : LivingEntity {
         hud = GameObject.FindObjectOfType<HUD> ();
         thisCol = GetComponent<BoxCollider2D> ();
         rb2D = GetComponent<Rigidbody2D> ();
-        maxHealth = STARTING_HEALTH;
-        health = STARTING_HEALTH;
         strafesRemaining = MAX_STRAFE_BARS;
         StartCoroutine (RechargeStrafe ());
         animator = GetComponent<Animator> ();
@@ -176,6 +176,9 @@ public class Player : LivingEntity {
 
     public override void OnDeath () {
         // TODO move player to last checkpoint and reset bounty
+        GetComponent<PlayerBounty>().ResetBounty();
+        SceneManager.LoadScene(Checkpoint.lastCheckpoint);
+        playerHealth = maxHealth;
     }
 
     public override void Attack () {
@@ -183,17 +186,20 @@ public class Player : LivingEntity {
     }
 
     public override void TakeDamage (Bullet b) {
-        if (health > 0) {
+        if (playerHealth > 0) {
             TakeDamage (b.damage);
         }
     }
 
     public override void TakeDamage (int damage) {
-        if (health > 0) {
-            base.TakeDamage (damage);
-            hud.SetHealthAmount (health);
+        StartCoroutine (FlashWhite (0.1f));
+        playerHealth -= damage;
+        if (playerHealth <= 0) {
+            OnDeath();
+        } else {
+            hud.SetHealthAmount (playerHealth);
+            GameObject.FindObjectOfType<CameraUtils> ().Shake (0.25f, 0.25f);
         }
-        GameObject.FindObjectOfType<CameraUtils> ().Shake (0.25f, 0.25f);
     }
 
     IEnumerator StartStrafe (float delay, bool inverted) {
@@ -297,5 +303,5 @@ public class Player : LivingEntity {
     }
 
     // Picks up a weapon from the ground.
-    public void CollectWeapon (Weapon weapon) {}
+    public void CollectWeapon (Weapon weapon) { }
 }

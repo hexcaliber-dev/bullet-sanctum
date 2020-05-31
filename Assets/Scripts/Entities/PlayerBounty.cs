@@ -4,18 +4,14 @@ using UnityEngine;
 
 // Handles bounty and bounty multiplier behavior.
 public class PlayerBounty : MonoBehaviour {
-    int bountyMultiplier, savedBounty, unsavedBounty;
-    int numFragments;
+    public static int bountyMultiplier = 1, savedBounty = 0, unsavedBounty = 0;
+    public static int numFragments = 0;
     public List<int> bountyProgressMilestones;
-    int nextMultiplierProgress;
+    public static int nextMultiplierProgress = 0;
 
     HUD hud;
 
     void Start () {
-        numFragments = 0;
-        savedBounty = 0;
-        unsavedBounty = 0;
-        bountyMultiplier = 1;
         hud = GameObject.FindObjectOfType<HUD> ();
         collectBounty (0);
     }
@@ -37,6 +33,9 @@ public class PlayerBounty : MonoBehaviour {
 
     public void BankBounty () {
         savedBounty += unsavedBounty;
+        ResetBounty();
+    }
+    public void ResetBounty () {
         unsavedBounty = 0;
         bountyMultiplier = 1;
         nextMultiplierProgress = 0;

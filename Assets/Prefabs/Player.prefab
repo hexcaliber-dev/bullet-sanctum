@@ -287,7 +287,6 @@ MonoBehaviour:
   flashMaterial: {fileID: 2100000, guid: 08ce23b2283c36e54a9092f0fedb0b1c, type: 2}
   health: 20
   doPlayerUpdates: 0
-  maxHealth: 20
   trailObj: {fileID: 3410146957408013786, guid: 73a7ba96ac205844ca0f1cb56195abdd,
     type: 3}
   shoulder: {fileID: 7953339394049079590}
