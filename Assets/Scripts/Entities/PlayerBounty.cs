@@ -28,17 +28,21 @@ public class PlayerBounty : MonoBehaviour {
             nextMultiplierProgress = 0;
             bountyMultiplier += 1;
         }
-        hud.UpdateBounty (savedBounty, unsavedBounty, (float) nextMultiplierProgress / bountyProgressMilestones[bountyMultiplier], bountyMultiplier);
+        UpdateHudBounty();
     }
 
     public void BankBounty () {
         savedBounty += unsavedBounty;
-        ResetBounty();
+        ResetBounty ();
     }
     public void ResetBounty () {
         unsavedBounty = 0;
         bountyMultiplier = 1;
         nextMultiplierProgress = 0;
+        UpdateHudBounty();
+    }
+
+    public void UpdateHudBounty () {
         hud.UpdateBounty (savedBounty, unsavedBounty, (float) nextMultiplierProgress / bountyProgressMilestones[bountyMultiplier], bountyMultiplier);
     }
 }

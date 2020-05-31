@@ -4,19 +4,18 @@ using TMPro;
 using UnityEngine;
 
 // For signs, checkpoint pillars, store.
-public class Interactible : MonoBehaviour {
+public abstract class Interactible : MonoBehaviour {
     bool initialized = false;
     bool showingHover = false;
     public TMP_Text hoverText;
     public float hoverTime;
     public float range;
     Player player;
-    public CanvasGroup canvasShow;
 
     const int RESOLUTION = 30;
 
     // Start is called before the first frame update
-    void Start () {
+    protected virtual void Start () {
         hoverText.color = new Color (1f, 1f, 1f, 0f);
         StartCoroutine (FindPlayer ());
     }
@@ -39,9 +38,7 @@ public class Interactible : MonoBehaviour {
         }
     }
 
-    virtual protected void Activate () {
-        canvasShow.alpha = 1f;
-    }
+    abstract protected void Activate();
 
     IEnumerator FindPlayer () {
         yield return new WaitForSeconds (0.25f);

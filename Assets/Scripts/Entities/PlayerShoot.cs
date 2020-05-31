@@ -18,24 +18,26 @@ public class PlayerShoot : MonoBehaviour {
     }
 
     void Update () {
-        // Shooting
-        if (Input.GetKey (KeyCode.Mouse0)) {
-            if (!currWeapon.onCooldown) {
-                hud.UpdateRechargeMeter (currWeapon);
-                currWeapon.UseWeapon ();
+        if (player.doPlayerUpdates) {
+            // Shooting
+            if (Input.GetKey (KeyCode.Mouse0)) {
+                if (!currWeapon.onCooldown) {
+                    hud.UpdateRechargeMeter (currWeapon);
+                    currWeapon.UseWeapon ();
+                }
             }
-        }
 
-        // Swap weapons
-        if (Input.GetKeyDown (KeyCode.Alpha1)) {
-            EquipWeapon (0);
-        }
-        if (Input.GetKeyDown (KeyCode.Alpha2) && availableWeapons.Count > 1) {
-            EquipWeapon (1);
-        }
-        float scroll = Input.GetAxis ("Mouse ScrollWheel");
-        if (scroll != 0f) {
-            EquipWeapon ((index + 1) % availableWeapons.Count);
+            // Swap weapons
+            if (Input.GetKeyDown (KeyCode.Alpha1)) {
+                EquipWeapon (0);
+            }
+            if (Input.GetKeyDown (KeyCode.Alpha2) && availableWeapons.Count > 1) {
+                EquipWeapon (1);
+            }
+            float scroll = Input.GetAxis ("Mouse ScrollWheel");
+            if (scroll != 0f) {
+                EquipWeapon ((index + 1) % availableWeapons.Count);
+            }
         }
     }
 

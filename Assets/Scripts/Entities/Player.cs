@@ -137,28 +137,29 @@ public class Player : LivingEntity {
                     StartCoroutine (StartStrafe (0.025f, direction.x < 0));
                 }
             }
-        }
 
-        // Crouching
-        if (currState != MoveState.Strafing) {
-            if (Input.GetKey (KeyCode.LeftControl)) {
-                animator.SetBool ("crouching", true);
-                GetComponent<SpriteRenderer> ().sprite = crouchSprite;
-                shoulder.transform.localPosition = new Vector2 (-0.03f, 0f);
-                GetComponent<BoxCollider2D> ().size = new Vector2 (.18f, .3f);
-            } else {
-                shoulder.transform.localPosition = new Vector2 (-0.03f, 0.04f);
-                if (!hittingCeiling) {
-                    animator.SetBool ("crouching", false);
-                    GetComponent<SpriteRenderer> ().sprite = playerSprite;
-                    GetComponent<BoxCollider2D> ().size = new Vector2 (.18f, .4f);
+            // Crouching
+            if (currState != MoveState.Strafing) {
+                if (Input.GetKey (KeyCode.LeftControl)) {
+                    animator.SetBool ("crouching", true);
+                    GetComponent<SpriteRenderer> ().sprite = crouchSprite;
+                    shoulder.transform.localPosition = new Vector2 (-0.03f, 0f);
+                    GetComponent<BoxCollider2D> ().size = new Vector2 (.18f, .3f);
+                } else {
+                    shoulder.transform.localPosition = new Vector2 (-0.03f, 0.04f);
+                    if (!hittingCeiling) {
+                        animator.SetBool ("crouching", false);
+                        GetComponent<SpriteRenderer> ().sprite = playerSprite;
+                        GetComponent<BoxCollider2D> ().size = new Vector2 (.18f, .4f);
+                    }
                 }
             }
         }
 
+
         // Deceleration mechanic; apply changes to velocity
         if (currState != MoveState.Strafing) {
-            if (Math.Abs (newVX) < Math.Abs (rb2D.velocity.x) || decel) {
+            if (Math.Abs (newVX) < Math.Abs (rb2D.velocity.x) || decel || !doPlayerUpdates) {
                 newVX = rb2D.velocity.x;
                 newVX *= decelMultiplier;
                 animator.SetBool ("moving", false);
