@@ -210,6 +210,7 @@ public class Player : LivingEntity {
         Vector2 strafeDir = Vector2.zero;
         hud.SetStrafeAmount (strafesRemaining);
         Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer ("Player"), LayerMask.NameToLayer ("Enemy"), true);
+        Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer ("Player"), LayerMask.NameToLayer ("Ghost"), true);
         Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer ("Player"), LayerMask.NameToLayer ("EnemyBullet"), true);
 
         foreach (GameObject enemy in GameObject.FindGameObjectsWithTag ("Enemy")) {
@@ -246,6 +247,7 @@ public class Player : LivingEntity {
         yield return new WaitForSeconds (strafeCooldownTime);
         strafeCooldown = false;
         Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer ("Player"), LayerMask.NameToLayer ("Enemy"), false);
+        Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer ("Player"), LayerMask.NameToLayer ("Ghost"), false);
         Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer ("Player"), LayerMask.NameToLayer ("EnemyBullet"), false);
         Time.timeScale = 1f;
         GetComponent<SpriteRenderer> ().color = Color.white;
