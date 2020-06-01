@@ -13,7 +13,6 @@ public class Pistol : Weapon {
     float superchargedTimer;
 
     protected override void Start () {
-        print ("START");
         base.Start ();
         onCooldown = false;
         onSecondaryCooldown = Shop.currPistolUpgrade < 1;

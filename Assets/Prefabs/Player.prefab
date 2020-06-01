@@ -105,9 +105,14 @@ MonoBehaviour:
   onCooldown: 0
   onSecondaryCooldown: 0
   cooldownTime: 1
-  secondaryCooldownTime: 10
+  secondaryCooldownTime: 6
   numBullets: 5
   knockback: 10
+  numSecondaryShots: 14
+  repeaterDelay: 0.2
+  pierceyBullets: {fileID: 1113937722154595736, guid: 54079ab867437b53594f547a25e7dce2,
+    type: 3}
+  secondaryDelay: 0.1
 --- !u!1 &3582422662884861645
 GameObject:
   m_ObjectHideFlags: 0

@@ -309,4 +309,9 @@ public class Player : LivingEntity {
 
     // Picks up a weapon from the ground.
     public void CollectWeapon (Weapon weapon) { }
+
+    public void ResetVelocity() {
+        rb2D.velocity = Vector2.zero;
+        rb2D.AddForce(Vector2.up);
+    }
 }
