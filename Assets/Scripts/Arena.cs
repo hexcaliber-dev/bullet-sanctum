@@ -29,7 +29,7 @@ public class Arena : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         int numEnemies = GameObject.FindObjectsOfType<Enemy> ().Length;
-        if (numEnemies <= 1) {
+        if (numEnemies <= 2) {
             for (int i = 0; i < waves[currWave].GetLength (0); i += 1) {
                 Spawn (waves[currWave][i, 0], waves[currWave][i, 1]);
             }

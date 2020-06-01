@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 7828699059844582034}
   - component: {fileID: 7828699059844582033}
   - component: {fileID: 7828699059844582032}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: MeleePoggy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -155,6 +155,7 @@ MonoBehaviour:
   DMG: 1
   bounty: 10
   rb: {fileID: 0}
+  initialized: 0
   STEP_MAX: 3
 --- !u!1 &7828699060267971472
 GameObject:
@@ -167,7 +168,7 @@ GameObject:
   - component: {fileID: 7828699060267971473}
   - component: {fileID: 7828699060267971474}
   - component: {fileID: 7828699060267971475}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: ViewArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
