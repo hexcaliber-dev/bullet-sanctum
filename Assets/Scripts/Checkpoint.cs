@@ -7,7 +7,7 @@ public class Checkpoint : Interactible {
     public static int lastCheckpoint = 5; // TODO set to initial spawnpoint
     public int checkpointID; // Set to be the same as the room ID
 
-    private static string currentCheckpoint;
+    private static string currentCheckpoint = "CheckpointRoom";
     private static Vector3 spawnPosition;
     protected override void Activate () {
         GameObject.FindObjectOfType<PlayerBounty> ().BankBounty ();
