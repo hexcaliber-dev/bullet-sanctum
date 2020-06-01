@@ -54,6 +54,7 @@ public class Player : LivingEntity {
         StartCoroutine (RechargeStrafe ());
         animator = GetComponent<Animator> ();
         doPlayerUpdates = true;
+        hud.SetHealthAmount(playerHealth);
     }
 
     void Update () {
