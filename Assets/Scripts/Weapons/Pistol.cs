@@ -27,11 +27,11 @@ public class Pistol : Weapon {
 
     public override void UseWeapon () {
         if (!onCooldown) {
+            if (Shop.currPistolUpgrade > 2)
+                projectile = bouncyBullet;
             if (supercharged) {
                 StartCoroutine (SuperchargedShoot ());
             } else {
-                if (Shop.currPistolUpgrade > 2)
-                    projectile = bouncyBullet;
                 StartCoroutine (Shoot ());
             }
         }

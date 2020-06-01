@@ -48,9 +48,9 @@ MonoBehaviour:
   onCooldown: 0
   onSecondaryCooldown: 0
   cooldownTime: 0.15
-  secondaryCooldownTime: 5
-  numSecondaryShots: 5
-  secondaryDelay: 0.1
+  secondaryCooldownTime: 4
+  numSecondaryShots: 8
+  secondaryDelay: 0.07
   superchargedBullet: {fileID: 1113937722154595736, guid: 2c4e78a254879c1f484d7b118fe6d3ca,
     type: 3}
   bouncyBullet: {fileID: 1113937722154595736, guid: e814d8c85d3991d1eaba2ef68636d6ce,

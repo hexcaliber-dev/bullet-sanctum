@@ -120,7 +120,7 @@ MonoBehaviour:
   speed: 100
   deleteTime: 0.5
   damage: 8
-  pierceCount: 0
+  pierceCount: 1
   bounceCount: 0
 --- !u!58 &6216436940523338228
 CircleCollider2D:
