@@ -13,7 +13,7 @@ public class RoomSwitch : MonoBehaviour
 
     public GameObject playerSpawnPoint;
     public GameObject alternateSpawnPoint;
-    public GameObject cameraFollower;
+    // public GameObject cameraFollower;
     public string switcherID;
     public string nextSwitcherID;
     bool switchNow;
@@ -141,14 +141,14 @@ public class RoomSwitch : MonoBehaviour
         Debug.Log("Player Spawned");
         GameObject sp = Instantiate(player, t.transform);
         sp.GetComponent<Player>().enabled = true;
-        setCameraTarget(sp);
+        //setCameraTarget(sp);
 
     }
 
-    void setCameraTarget(GameObject p)
-    {
-        cameraFollower.GetComponent<CameraUtils>().SetPlayer(p);
-    }
+    // void setCameraTarget(GameObject p)
+    // {
+    //     cameraFollower.GetComponent<CameraUtils>().SetPlayer(p);
+    // }
 
 
 }
