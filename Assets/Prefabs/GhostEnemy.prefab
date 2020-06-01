@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2661772590937968410}
   - component: {fileID: 2661772590937968409}
   - component: {fileID: 2661772590937968390}
+  - component: {fileID: 5446036168991873488}
   m_Layer: 16
   m_Name: GhostEnemy
   m_TagString: Enemy
@@ -27,13 +28,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2661772590937968391}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.05, y: -0.811, z: 9.604572}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 5.3837, y: -1.2114, z: 9.604572}
+  m_LocalScale: {x: 3.5869534, y: 3.5869534, z: 14.347814}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!212 &2661772590937968411
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -73,7 +74,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 51d28df3914c91e488b7f3656fdc680f, type: 3}
+  m_Sprite: {fileID: 3236372559927785439, guid: 96ab51e93e0d169b297a1f6ad7a54610,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.49411765}
   m_FlipX: 0
   m_FlipY: 0
@@ -97,18 +99,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.03270054, y: -0.31065083}
+  m_Offset: {x: -0.017095879, y: 0.0027831271}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.8, y: 4.32}
+    oldSize: {x: 0.2, y: 0.24}
     newSize: {x: 1.01, y: 1.28}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.0563984, y: 3.274703}
+  m_Size: {x: 0.23805907, y: 0.3325888}
   m_EdgeRadius: 0
 --- !u!50 &2661772590937968409
 Rigidbody2D:
@@ -159,3 +161,22 @@ MonoBehaviour:
   knockback: 10
   STEP_MAX: 5
   decelMultiplier: 0.9
+--- !u!95 &5446036168991873488
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2661772590937968391}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c0daa338b858005f0b05d523a5f6a689, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

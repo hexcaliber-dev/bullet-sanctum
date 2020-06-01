@@ -7,7 +7,7 @@ public class Weapon : MonoBehaviour {
     public bool onCooldown;
     public float cooldownTime; // in seconds
 
-    // Default weapon behavior: spawn a bullet
+    // Default weapon behavior: spawn a bullet. Level is the upgrade level of this weapon.
     public virtual void UseWeapon () {
         Vector3 mousePoint = Camera.main.ScreenToWorldPoint (Input.mousePosition);
         ShootAt(mousePoint);
