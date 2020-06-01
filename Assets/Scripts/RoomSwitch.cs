@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class RoomSwitch : MonoBehaviour
 {
     private static string currentId = "";
+    private static Vector3 spawnPosition = new Vector3(0.0f, 0.0f, 0f);
+    private static string checkpointScene;
     public float transitionSpeed;
     public Image fadeImage;
     public GameObject player; 
@@ -39,6 +41,15 @@ public class RoomSwitch : MonoBehaviour
     {
         switchNow = false;
         activeSwitcher = false;
+
+        if(currentId == "death")
+        {
+            currentId = "justSpawned";
+            GameObject sp = Instantiate(new GameObject(), Checkpoint.getSpawnPosition(), Quaternion.identity);
+            // sp.transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+            spawnPlayer(sp);
+            StartCoroutine(fadeIn());
+        }
 
         if (currentId == "")
         {
@@ -81,6 +92,10 @@ public class RoomSwitch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(currentId == "death")
+        {
+            switchNow = true;
+        }
         if (switchNow)
         {
             loadScene();
@@ -93,12 +108,29 @@ public class RoomSwitch : MonoBehaviour
         if (col.gameObject.tag == "Player")
         {
             Debug.Log("RoomSwitch Collision Detected...");
-            StartCoroutine(fadeOut());
+            activateSwitch();
         }
+    }
+
+    void activateSwitch()
+    {
+        StartCoroutine(fadeOut());
+    }
+
+    public static void OnPlayerDeath()
+    {
+        currentId = "death";
+
     }
 
     void loadScene()
     {
+        if(currentId == "death")
+        {
+            Debug.Log("Scene Changing to... " + Checkpoint.getCurrentCheckpoint());
+            SceneManager.LoadScene(Checkpoint.getCurrentCheckpoint());
+            return;
+        }
         currentId = nextSwitcherID;
         Debug.Log("Scene Changing to... " + sceneName);
         SceneManager.LoadScene(sceneName);

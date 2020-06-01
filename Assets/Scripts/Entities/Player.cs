@@ -178,7 +178,8 @@ public class Player : LivingEntity {
     public override void OnDeath () {
         // TODO move player to last checkpoint and reset bounty
         GetComponent<PlayerBounty>().ResetBounty();
-        SceneManager.LoadScene(Checkpoint.lastCheckpoint);
+        // SceneManager.LoadScene(Checkpoint.lastCheckpoint);
+        RoomSwitch.OnPlayerDeath();
         playerHealth = maxHealth;
     }
 
