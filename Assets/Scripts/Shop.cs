@@ -83,7 +83,8 @@ public class Shop : Interactible {
         shopPanel.alpha = 0f;
         hud.doCursorDraw = true;
         shopPanel.blocksRaycasts = false;
-        player.doPlayerUpdates = true;
+        if (player != null)
+            player.doPlayerUpdates = true;
     }
 
     public void UpdateWeaponBars () {

@@ -19,7 +19,6 @@ public abstract class LivingEntity : MonoBehaviour {
         typeToString.Add (Type.Player, "player");
         typeToString.Add (Type.Enemy, "enemy");
         typeToString.Add (Type.Boss, "boss");
-        print ("test");
     }
 
     public List<LivingEntity> getEntities (string name) {

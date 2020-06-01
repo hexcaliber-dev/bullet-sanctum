@@ -8,7 +8,6 @@ public class CameraUtils : MonoBehaviour {
     public Vector3 offset = new Vector3 (0, 0, -10);
     public Transform bottomLeft, topRight; // Place empty gameObjects in the corners of the map
 
-    bool isShaking;
     Vector3 originalPos;
     GameObject player;
 
@@ -16,7 +15,6 @@ public class CameraUtils : MonoBehaviour {
     void Start () {
         // Get gameObject camera component.
         cam = GetComponent<Camera> ();
-        isShaking = false;
         player = GameObject.FindObjectOfType<Player>().gameObject;
         if (bottomLeft == null || topRight == null) {
             bottomLeft = GameObject.Find("BottomLeft").transform;

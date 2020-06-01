@@ -27,7 +27,7 @@ public class Bullet : MonoBehaviour {
 
     // REMEMBER TO SET COLLISION LAYERS FOR THE PREFAB! (so it doesn't collide with the sender)
     void OnCollisionEnter2D (Collision2D col) {
-        print ("COL");
+        // print ("COL");
         LivingEntity entity = col.gameObject.GetComponent<LivingEntity> ();
         if (entity != null) {
             entity.TakeDamage (this);
