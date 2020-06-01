@@ -833,6 +833,16 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3756125969488016560, guid: 67f625cebd46432a6b072a4e37b4fe55,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.97540283
+      objectReference: {fileID: 0}
+    - target: {fileID: 3756125969509066977, guid: 67f625cebd46432a6b072a4e37b4fe55,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -3.7103882
+      objectReference: {fileID: 0}
     - target: {fileID: 3756125969642704571, guid: 67f625cebd46432a6b072a4e37b4fe55,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -892,6 +902,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ShopPillar
+      objectReference: {fileID: 0}
+    - target: {fileID: 3756125970349698012, guid: 67f625cebd46432a6b072a4e37b4fe55,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -2.5999756
       objectReference: {fileID: 0}
     - target: {fileID: 3756125970616893059, guid: 67f625cebd46432a6b072a4e37b4fe55,
         type: 3}
