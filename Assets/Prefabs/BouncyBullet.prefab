@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1113937722154595736}
   - component: {fileID: 6216436940523338228}
   m_Layer: 8
-  m_Name: TestBullet
+  m_Name: BouncyBullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: cf9be06e39144ec4ab8fa463e44f3ed9, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5566038, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -100,11 +100,11 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 31dfc325caba83e6e9b245da642bb18e, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 0
 --- !u!114 &1113937722154595736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,10 +118,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  deleteTime: 0.5
+  deleteTime: 2
   damage: 2
   pierceCount: 0
-  bounceCount: 0
+  bounceCount: 1
 --- !u!58 &6216436940523338228
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ public class Shotgun : Weapon {
     protected override void Start () {
         base.Start ();
         onCooldown = false;
+        onSecondaryCooldown = Shop.currShotUpgrade < 1;
     }
     protected override void Update () {
         base.Update ();

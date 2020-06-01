@@ -49,9 +49,14 @@ public class Shop : Interactible {
                 GameObject.FindObjectOfType<PlayerBounty> ().UpdateHudBounty ();
                 if (weapon == 0) {
                     currPistolUpgrade += 1;
+                    GameObject.FindObjectOfType<Pistol> ().onSecondaryCooldown = false;
+                    print ("Upgraded pistol to " + currPistolUpgrade);
                 } else {
                     currShotUpgrade += 1;
+                    GameObject.FindObjectOfType<Shotgun> ().onSecondaryCooldown = false;
+                    print ("Upgraded shotgun to " + currShotUpgrade);
                 }
+                hud.SwitchWeapon (PlayerShoot.currWeapon);
             }
             UpdateWeaponBars ();
         }

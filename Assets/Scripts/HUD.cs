@@ -7,7 +7,8 @@ using UnityEngine.UI;
 public class HUD : MonoBehaviour {
 
     public List<Sprite> strafeSprites, reloadSprites, healthSprites, weaponSprites, bountySprites;
-    public Image strafeMeter, reloadMeter, healthMeter, weaponDisplay, bountyBar, bountyMultBack;
+    public Sprite overchargeReloadSprite;
+    public Image strafeMeter, reloadMeter, secondaryReloadMeter, healthMeter, weaponDisplay, bountyBar, bountyMultBack;
     public CanvasGroup bulletTimeCanvas;
     public TMP_Text bulletTimeText, timer, fragmentText, bountyMultiplierText, bountyText;
 
@@ -43,8 +44,27 @@ public class HUD : MonoBehaviour {
         }
     }
 
+    IEnumerator ReloadSecondary (Weapon weapon) {
+        for (int step = 0; step < reloadSprites.Count; step += 1) {
+            secondaryReloadMeter.sprite = reloadSprites[step];
+            yield return new WaitForSeconds (weapon.secondaryCooldownTime / reloadSprites.Count);
+        }
+    }
+
     public void UpdateRechargeMeter (Weapon weapon) {
         StartCoroutine (ReloadWeapon (weapon));
+    }
+    public void UpdateSecondaryMeter (Weapon weapon) {
+        StartCoroutine (ReloadSecondary (weapon));
+    }
+
+    public void OverchargeMeter () {
+        print ("OVERCHARGE");
+        reloadMeter.sprite = overchargeReloadSprite;
+    }
+
+    public void SetSecondary (bool shown) {
+        secondaryReloadMeter.enabled = shown;
     }
 
     public void SetStrafeAmount (int amt) {
@@ -58,6 +78,7 @@ public class HUD : MonoBehaviour {
     public void SwitchWeapon (int weapon) {
         weaponDisplay.sprite = weaponSprites[weapon];
         currCrosshair = weapon;
+        SetSecondary((weapon == 0) ? Shop.currPistolUpgrade > 0 : Shop.currShotUpgrade > 0); //TODO fix for more weapons
     }
 
     public IEnumerator DoBulletTime (float seconds) {

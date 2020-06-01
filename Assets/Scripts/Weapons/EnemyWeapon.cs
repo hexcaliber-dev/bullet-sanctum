@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class EnemyWeapon : Pistol {
+public class EnemyWeapon : Weapon {
 
     // Bullet projectile, cooldown, and cooldown time is inherited from Weapon.
     public bool canShoot = false; // Set to true when in range
@@ -30,8 +30,5 @@ public class EnemyWeapon : Pistol {
             onCooldown = false;
         }
     }
-
-
-
 
 }

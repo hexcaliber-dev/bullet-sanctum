@@ -17,7 +17,7 @@ public class PlayerShoot : MonoBehaviour {
         hud = GameObject.FindObjectOfType<HUD> ();
         player = GameObject.FindObjectOfType<Player> ();
         muzzle.enabled = false;
-        EquipWeapon(currWeapon);
+        EquipWeapon (currWeapon);
     }
 
     void Update () {
@@ -27,7 +27,16 @@ public class PlayerShoot : MonoBehaviour {
                 if (!availableWeapons[currWeapon].onCooldown) {
                     hud.UpdateRechargeMeter (availableWeapons[currWeapon]);
                     availableWeapons[currWeapon].UseWeapon ();
-                    StartCoroutine(MuzzleFlash());
+                    StartCoroutine (MuzzleFlash ());
+                }
+            }
+
+            // Secondary fire
+            if (Input.GetKey (KeyCode.Mouse1)) {
+                print (availableWeapons[currWeapon].onSecondaryCooldown);
+                if (!availableWeapons[currWeapon].onSecondaryCooldown) {
+                    availableWeapons[currWeapon].UseSecondary ();
+                    hud.UpdateSecondaryMeter (availableWeapons[currWeapon]);
                 }
             }
 
@@ -61,14 +70,14 @@ public class PlayerShoot : MonoBehaviour {
         }
     }
 
-    IEnumerator MuzzleFlash() {
+    IEnumerator MuzzleFlash () {
         muzzle.enabled = true;
         muzzle.sprite = muzzleSprites[0];
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds (0.1f);
         muzzle.sprite = muzzleSprites[1];
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds (0.1f);
         muzzle.sprite = muzzleSprites[2];
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds (0.1f);
         muzzle.enabled = false;
     }
 }
