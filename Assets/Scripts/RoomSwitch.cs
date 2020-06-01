@@ -6,21 +6,21 @@ using UnityEngine.UI;
 
 public class RoomSwitch : MonoBehaviour
 {
-
+    private static string currentId = "";
     public float transitionSpeed;
     public Image fadeImage;
     public GameObject player; 
 
     public GameObject playerSpawnPoint;
     public GameObject alternateSpawnPoint;
-    public GameObject cameraFollower;
+    // public GameObject cameraFollower;
     public string switcherID;
     public string nextSwitcherID;
     bool switchNow;
     public bool alternate;
     public string sceneName;
     private bool activeSwitcher;
-    public bool debug;
+    public bool defaultSpawn;
 
 
 // To setup spawn locations for each room, you must do the following:
@@ -35,30 +35,29 @@ public class RoomSwitch : MonoBehaviour
     
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        activeSwitcher = false;
         switchNow = false;
-        if (PlayerPrefs.HasKey("LocationID"))
+        activeSwitcher = false;
+
+        if (currentId == "")
         {
-            Debug.Log(PlayerPrefs.GetString("LocationID"));
-            if(PlayerPrefs.GetString("LocationID") == switcherID)
+            if (defaultSpawn == true)
             {
-                Debug.Log("Activating Active");
-                activeSwitcher = true;
+                currentId = switcherID;
             }
         }
-        else
+        if (currentId == switcherID)
         {
-            PlayerPrefs.SetString("LocationID", switcherID);
             activeSwitcher = true;
         }
-        if(activeSwitcher || debug)
+
+        if (activeSwitcher)
         {
             fadeImage.color = new Color32(0, 0, 0, 255);
             if (alternate)
             {
-                if(alternateSpawnPoint != null)
+                if (alternateSpawnPoint != null)
                     spawnPlayer(alternateSpawnPoint);
                 else
                     Debug.Log("Set Alternate SpawnPoint!");
@@ -75,6 +74,7 @@ public class RoomSwitch : MonoBehaviour
         }
 
         activeSwitcher = false;
+        
 
     }
 
@@ -99,7 +99,7 @@ public class RoomSwitch : MonoBehaviour
 
     void loadScene()
     {
-        PlayerPrefs.SetString("LocationID", nextSwitcherID);
+        currentId = nextSwitcherID;
         Debug.Log("Scene Changing to... " + sceneName);
         SceneManager.LoadScene(sceneName);
     }
@@ -141,14 +141,14 @@ public class RoomSwitch : MonoBehaviour
         Debug.Log("Player Spawned");
         GameObject sp = Instantiate(player, t.transform);
         sp.GetComponent<Player>().enabled = true;
-        setCameraTarget(sp);
+        //setCameraTarget(sp);
 
     }
 
-    void setCameraTarget(GameObject p)
-    {
-        cameraFollower.GetComponent<CameraUtils>().SetPlayer(p);
-    }
+    // void setCameraTarget(GameObject p)
+    // {
+    //     cameraFollower.GetComponent<CameraUtils>().SetPlayer(p);
+    // }
 
 
 }
