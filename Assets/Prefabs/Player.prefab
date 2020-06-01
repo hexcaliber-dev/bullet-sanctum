@@ -312,7 +312,7 @@ MonoBehaviour:
   strafeRechargeTime: 0.25
   strafeCost: 3
   strafeCooldown: 0
-  bulletTimeDistance: 3
+  bulletTimeDistance: 2
   bulletTimeMultiplier: 0.5
   currState: 0
 --- !u!50 &3592231846050750049
@@ -393,7 +393,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c2292014446969739fb8908811cd781, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currWeapon: {fileID: 210959265}
   availableWeapons:
   - {fileID: 210959265}
   - {fileID: 1255479305}
