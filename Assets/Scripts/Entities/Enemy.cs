@@ -37,7 +37,7 @@ public abstract class Enemy : LivingEntity {
         rb.velocity = Vector2.zero;
     }
 
-    void Update () {
+    void FixedUpdate () {
         if (initialized) {
             // if... AI Stuff & MinMax trees
             PlayerLookout ();
