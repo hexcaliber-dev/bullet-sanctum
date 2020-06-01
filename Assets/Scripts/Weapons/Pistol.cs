@@ -4,6 +4,7 @@ using System.Collections;
 public class Pistol : Weapon {
 
     // Bullet projectile, cooldown, and cooldown time is inherited from Weapon.
+    public static int upgradeLvl = 0;
 
     protected override void Start() {   
         base.Start();
@@ -27,7 +28,7 @@ public class Pistol : Weapon {
         onCooldown = false;
     }
 
-
-
-
+    IEnumerator SecondaryFire() {
+        yield return null;
+    }
 }

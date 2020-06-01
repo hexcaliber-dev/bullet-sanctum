@@ -7,7 +7,8 @@ using UnityEngine.UI;
 public class Shop : Interactible {
     public CanvasGroup shopPanel, upgradeInfoPanel;
     public TMP_Text upgradeInfoText, upgradeCostText, upgradeDescText;
-    public List<string> pistolNames, pistolDescs, shotNames, shotDescs;
+    public List<string> pistolNames, shotNames;
+    public List<TextAsset> pistolDescs, shotDescs;
     public List<int> pistolCosts, shotCosts;
     public List<Image> pistolBars, shotBars;
 
@@ -66,11 +67,11 @@ public class Shop : Interactible {
             if (weapon == 0) {
                 upgradeInfoText.text = pistolNames[currPistolUpgrade];
                 upgradeCostText.text = pistolCosts[currPistolUpgrade] + "_BOUNTY";
-                upgradeDescText.text = pistolDescs[currPistolUpgrade];
+                upgradeDescText.text = pistolDescs[currPistolUpgrade].text.Replace (' ', '_');
             } else {
                 upgradeInfoText.text = shotNames[currShotUpgrade];
                 upgradeCostText.text = shotCosts[currShotUpgrade] + "_BOUNTY";
-                upgradeDescText.text = shotDescs[currShotUpgrade];
+                upgradeDescText.text = shotDescs[currShotUpgrade].text.Replace (' ', '_');
             }
         }
     }
