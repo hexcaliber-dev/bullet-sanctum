@@ -41,7 +41,7 @@ public class EnemyRanged : Enemy {
 
     // This is called once per update
     public override void MovePattern () {
-        print (playerFound);
+        // print (playerFound);
         if (playerFound) {
             rb.velocity = new Vector2 (0f, rb.velocity.y);
         } else {

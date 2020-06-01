@@ -4,19 +4,22 @@ using UnityEngine;
 
 public class CameraUtils : MonoBehaviour {
     private Camera cam;
-    public GameObject player;
     public float smoothSpd = 5f;
     public Vector3 offset = new Vector3 (0, 0, -10);
     public Transform bottomLeft, topRight; // Place empty gameObjects in the corners of the map
 
-    bool isShaking;
     Vector3 originalPos;
+    GameObject player;
 
     // Start is called before the first frame update
     void Start () {
         // Get gameObject camera component.
         cam = GetComponent<Camera> ();
-        isShaking = false;
+        player = GameObject.FindObjectOfType<Player>().gameObject;
+        if (bottomLeft == null || topRight == null) {
+            bottomLeft = GameObject.Find("BottomLeft").transform;
+            topRight = GameObject.Find("TopRight").transform;
+        }
     }
 
     // Camera follow script
@@ -56,5 +59,10 @@ public class CameraUtils : MonoBehaviour {
         }
 
         transform.localPosition = originalPos;
+    }
+
+    // Set a player to another object. Used for room switching.
+    public void SetPlayer(GameObject newPlayer) {
+        player = newPlayer;
     }
 }

@@ -1,37 +1,48 @@
-using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 // Handles bounty and bounty multiplier behavior.
 public class PlayerBounty : MonoBehaviour {
-    int bountyMultiplier, savedBounty, unsavedBounty;
-    int numFragments;
+    public static int bountyMultiplier = 1, savedBounty = 0, unsavedBounty = 0;
+    public static int numFragments = 0;
     public List<int> bountyProgressMilestones;
-    int nextMultiplierProgress;
+    public static int nextMultiplierProgress = 0;
 
     HUD hud;
 
-    void Start() {
-        numFragments = 0;
-        savedBounty = 0;
-        unsavedBounty = 0;
-        bountyMultiplier = 1;
-        hud = GameObject.FindObjectOfType<HUD>();
-        collectBounty(0);
+    void Start () {
+        hud = GameObject.FindObjectOfType<HUD> ();
+        collectBounty (0);
     }
 
-    public void CollectFragment() {
+    public void CollectFragment () {
         numFragments += 1;
         hud.fragmentText.text = "x" + numFragments;
     }
 
-    public void collectBounty(int bounty) {
+    public void collectBounty (int bounty) {
         unsavedBounty += bounty * bountyMultiplier;
         nextMultiplierProgress += bounty * bountyMultiplier;
         if (nextMultiplierProgress >= bountyProgressMilestones[bountyMultiplier]) {
             nextMultiplierProgress = 0;
             bountyMultiplier += 1;
         }
-        hud.UpdateBounty(savedBounty, unsavedBounty, (float)nextMultiplierProgress / bountyProgressMilestones[bountyMultiplier], bountyMultiplier);
+        UpdateHudBounty();
+    }
+
+    public void BankBounty () {
+        savedBounty += unsavedBounty;
+        ResetBounty ();
+    }
+    public void ResetBounty () {
+        unsavedBounty = 0;
+        bountyMultiplier = 1;
+        nextMultiplierProgress = 0;
+        UpdateHudBounty();
+    }
+
+    public void UpdateHudBounty () {
+        hud.UpdateBounty (savedBounty, unsavedBounty, (float) nextMultiplierProgress / bountyProgressMilestones[bountyMultiplier], bountyMultiplier);
     }
 }

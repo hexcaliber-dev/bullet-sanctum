@@ -7,6 +7,7 @@ public class EnemyGhost : Enemy {
     public float detectRange;
     public float knockback;
     public float STEP_MAX = 5;
+    public float decelMultiplier;
     private bool movingRight;
     private float startPos;
     private float endPos;
@@ -36,9 +37,11 @@ public class EnemyGhost : Enemy {
 
     // This is called once per update
     public override void MovePattern () {
-        print (playerFound);
+        // print (playerFound);
         if (playerFound) {
             rb.AddForce (Vector3.Normalize ((Vector2) (player.transform.position - transform.position)) * speed);
+        } else {
+            rb.velocity *= decelMultiplier;
         }
         // if (Vector2.Distance (player.transform.position, transform.position) < detectRange)
         // print (Vector3.Normalize ((Vector2) (player.transform.position - transform.position)) * speed);

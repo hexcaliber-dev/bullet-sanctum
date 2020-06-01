@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEditor.Animations;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /** Handles movement and animation of player.
  * For shooting, go to PlayerShoot.
@@ -14,7 +15,8 @@ public class Player : LivingEntity {
 
     public bool doPlayerUpdates;
     const int STARTING_HEALTH = 20;
-    public int maxHealth; // current health is inherited from LivingEntity
+    public static int maxHealth = STARTING_HEALTH;
+    public static int playerHealth = STARTING_HEALTH;
 
     public GameObject trailObj, shoulder, arm;
     public Color trailColor;
@@ -48,15 +50,13 @@ public class Player : LivingEntity {
         hud = GameObject.FindObjectOfType<HUD> ();
         thisCol = GetComponent<BoxCollider2D> ();
         rb2D = GetComponent<Rigidbody2D> ();
-        maxHealth = STARTING_HEALTH;
-        health = STARTING_HEALTH;
         strafesRemaining = MAX_STRAFE_BARS;
         StartCoroutine (RechargeStrafe ());
         animator = GetComponent<Animator> ();
         doPlayerUpdates = true;
     }
 
-    void FixedUpdate () {
+    void Update () {
         bool decel = false; // True if player is decelerating
         float newVX = rb2D.velocity.x; // New horizontal velocity value after movement calculations
 
@@ -137,28 +137,29 @@ public class Player : LivingEntity {
                     StartCoroutine (StartStrafe (0.025f, direction.x < 0));
                 }
             }
-        }
 
-        // Crouching
-        if (currState != MoveState.Strafing) {
-            if (Input.GetKey (KeyCode.LeftControl)) {
-                animator.SetBool ("crouching", true);
-                GetComponent<SpriteRenderer> ().sprite = crouchSprite;
-                shoulder.transform.localPosition = new Vector2 (-0.03f, 0f);
-                GetComponent<BoxCollider2D> ().size = new Vector2 (.18f, .3f);
-            } else {
-                shoulder.transform.localPosition = new Vector2 (-0.03f, 0.04f);
-                if (!hittingCeiling) {
-                    animator.SetBool ("crouching", false);
-                    GetComponent<SpriteRenderer> ().sprite = playerSprite;
-                    GetComponent<BoxCollider2D> ().size = new Vector2 (.18f, .4f);
+            // Crouching
+            if (currState != MoveState.Strafing) {
+                if (Input.GetKey (KeyCode.LeftControl)) {
+                    animator.SetBool ("crouching", true);
+                    GetComponent<SpriteRenderer> ().sprite = crouchSprite;
+                    shoulder.transform.localPosition = new Vector2 (-0.03f, 0f);
+                    GetComponent<BoxCollider2D> ().size = new Vector2 (.18f, .3f);
+                } else {
+                    shoulder.transform.localPosition = new Vector2 (-0.03f, 0.04f);
+                    if (!hittingCeiling) {
+                        animator.SetBool ("crouching", false);
+                        GetComponent<SpriteRenderer> ().sprite = playerSprite;
+                        GetComponent<BoxCollider2D> ().size = new Vector2 (.18f, .4f);
+                    }
                 }
             }
         }
 
+
         // Deceleration mechanic; apply changes to velocity
         if (currState != MoveState.Strafing) {
-            if (Math.Abs (newVX) < Math.Abs (rb2D.velocity.x) || decel) {
+            if (Math.Abs (newVX) < Math.Abs (rb2D.velocity.x) || decel || !doPlayerUpdates) {
                 newVX = rb2D.velocity.x;
                 newVX *= decelMultiplier;
                 animator.SetBool ("moving", false);
@@ -176,6 +177,9 @@ public class Player : LivingEntity {
 
     public override void OnDeath () {
         // TODO move player to last checkpoint and reset bounty
+        GetComponent<PlayerBounty>().ResetBounty();
+        SceneManager.LoadScene(Checkpoint.lastCheckpoint);
+        playerHealth = maxHealth;
     }
 
     public override void Attack () {
@@ -183,17 +187,20 @@ public class Player : LivingEntity {
     }
 
     public override void TakeDamage (Bullet b) {
-        if (health > 0) {
+        if (playerHealth > 0) {
             TakeDamage (b.damage);
         }
     }
 
     public override void TakeDamage (int damage) {
-        if (health > 0) {
-            base.TakeDamage (damage);
-            hud.SetHealthAmount (health);
+        StartCoroutine (FlashWhite (0.1f));
+        playerHealth -= damage;
+        if (playerHealth <= 0) {
+            OnDeath();
+        } else {
+            hud.SetHealthAmount (playerHealth);
+            GameObject.FindObjectOfType<CameraUtils> ().Shake (0.25f, 0.25f);
         }
-        GameObject.FindObjectOfType<CameraUtils> ().Shake (0.25f, 0.25f);
     }
 
     IEnumerator StartStrafe (float delay, bool inverted) {
@@ -203,6 +210,7 @@ public class Player : LivingEntity {
         Vector2 strafeDir = Vector2.zero;
         hud.SetStrafeAmount (strafesRemaining);
         Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer ("Player"), LayerMask.NameToLayer ("Enemy"), true);
+        Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer ("Player"), LayerMask.NameToLayer ("Ghost"), true);
         Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer ("Player"), LayerMask.NameToLayer ("EnemyBullet"), true);
 
         foreach (GameObject enemy in GameObject.FindGameObjectsWithTag ("Enemy")) {
@@ -239,6 +247,7 @@ public class Player : LivingEntity {
         yield return new WaitForSeconds (strafeCooldownTime);
         strafeCooldown = false;
         Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer ("Player"), LayerMask.NameToLayer ("Enemy"), false);
+        Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer ("Player"), LayerMask.NameToLayer ("Ghost"), false);
         Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer ("Player"), LayerMask.NameToLayer ("EnemyBullet"), false);
         Time.timeScale = 1f;
         GetComponent<SpriteRenderer> ().color = Color.white;
@@ -297,8 +306,5 @@ public class Player : LivingEntity {
     }
 
     // Picks up a weapon from the ground.
-    public void CollectWeapon (Weapon weapon) {
-
-    }
-
+    public void CollectWeapon (Weapon weapon) { }
 }
