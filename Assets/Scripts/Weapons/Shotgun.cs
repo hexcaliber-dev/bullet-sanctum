@@ -10,6 +10,7 @@ public class Shotgun : Weapon {
     public float secondaryDelay;
     public bool supercharged;
     public float superchargedReloadTime;
+    public float spread;
     const float spamBuffer = 0.25f; // stops player from spamming
 
     // Bullet projectile, cooldown, and cooldown time is inherited from Weapon.
@@ -60,9 +61,11 @@ public class Shotgun : Weapon {
     }
 
     void Fire (Vector3 originalTarget) {
+        Vector2 diff = Vector3.Normalize((Vector2)originalTarget - (Vector2)transform.position) * 3f;
+        originalTarget = (Vector2)transform.position + diff;
         // Shoot numBullets number of bullets
         for (int i = 0; i <= numBullets; i += 1) {
-            float randomNum = Random.Range (-1.5f, 1.5f);
+            float randomNum = Random.Range (-spread, spread);
             // for each, add a random amount to originalTarget to make it spread out
             base.ShootAt (new Vector2 (originalTarget.x + randomNum, originalTarget.y + randomNum));
         }
