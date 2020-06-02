@@ -76,6 +76,8 @@ public class HUD : MonoBehaviour {
     }
 
     public void SwitchWeapon (int weapon) {
+        StopAllCoroutines();
+        secondaryReloadMeter.sprite = reloadSprites[reloadSprites.Count - 1];
         weaponDisplay.sprite = weaponSprites[weapon];
         currCrosshair = weapon;
         SetSecondary ((weapon == 0) ? Shop.currPistolUpgrade > 0 : Shop.currShotUpgrade > 0); //TODO fix for more weapons
