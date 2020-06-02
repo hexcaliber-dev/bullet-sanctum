@@ -76,7 +76,6 @@ public class HUD : MonoBehaviour {
     }
 
     public void SwitchWeapon (int weapon) {
-        StopAllCoroutines();
         secondaryReloadMeter.sprite = reloadSprites[reloadSprites.Count - 1];
         weaponDisplay.sprite = weaponSprites[weapon];
         currCrosshair = weapon;

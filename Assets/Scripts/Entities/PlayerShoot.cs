@@ -63,8 +63,6 @@ public class PlayerShoot : MonoBehaviour {
         if (availableWeapons.Count > num) {
             currWeapon = num;
             hud.SwitchWeapon (num);
-            hud.UpdateRechargeMeter (availableWeapons[num]);
-            hud.UpdateSecondaryMeter (availableWeapons[num]);
             player.weaponSprite = weaponArms[num];
             player.weaponSpriteFlipped = weaponArmsFlipped[num];
             Vector2 origPos = player.arm.transform.localPosition;

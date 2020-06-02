@@ -1302,7 +1302,7 @@ MonoBehaviour:
   - {fileID: 4900000, guid: f1eb60052d7178af6beb29a8725cd0fc, type: 3}
   - {fileID: 4900000, guid: f9c6e9aa997c5686da7a91774907c96d, type: 3}
   pistolCosts: 64000000e803000010270000
-  shotCosts: 64000000e803000010270000
+  shotCosts: 640000006400000010270000
   pistolBars:
   - {fileID: 3756125971002560565}
   - {fileID: 3756125971113632595}
