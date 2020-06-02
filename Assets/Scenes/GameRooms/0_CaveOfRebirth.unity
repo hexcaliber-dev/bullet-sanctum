@@ -37301,6 +37301,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2010589330, guid: d48691d86e6dea28888725c1f5d67fb9, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 749039678716180228, guid: d48691d86e6dea28888725c1f5d67fb9,
         type: 3}
       propertyPath: m_Material
@@ -37803,7 +37807,7 @@ PrefabInstance:
     - target: {fileID: 4747245513625859704, guid: 5b759eafa3d4ed94599e8912afaf0bf0,
         type: 3}
       propertyPath: nextSwitcherID
-      value: 1_0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4747245513625859704, guid: 5b759eafa3d4ed94599e8912afaf0bf0,
         type: 3}
@@ -37813,6 +37817,11 @@ PrefabInstance:
     - target: {fileID: 4747245513625859704, guid: 5b759eafa3d4ed94599e8912afaf0bf0,
         type: 3}
       propertyPath: debug
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4747245513625859704, guid: 5b759eafa3d4ed94599e8912afaf0bf0,
+        type: 3}
+      propertyPath: defaultSpawn
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4747245514922311706, guid: 5b759eafa3d4ed94599e8912afaf0bf0,
