@@ -88,18 +88,13 @@ public class HUD : MonoBehaviour {
         bulletTimeText.color = Color.white;
         timer.color = Color.white;
         float timeElapsed = 0f;
+        bulletTimeText.text = "<_BULLET_TIME";
         while (timeElapsed < seconds) {
-            float dec = Mathf.Min (1f, 2f - (timeElapsed / seconds / 2));
+            float dec = Mathf.Min (1f, 2f - (timeElapsed / seconds * 2));
             bulletTimeCanvas.GetComponent<Image> ().color = new Color (1, 1, 1, dec / 1.5f);
             bulletTimeText.color = new Color (dec, dec, dec, dec);
             timer.color = new Color (dec, dec, dec, dec);
             timer.text = "00:00:" + (100f - (int)(timeElapsed * 200f) % 100);
-            if (timeElapsed == seconds / 5)
-                bulletTimeText.text = "BULLET_";
-            if (timeElapsed == seconds / 5 * 2)
-                bulletTimeText.text += "TIME_";
-            if (timeElapsed == seconds / 5 * 3)
-                bulletTimeText.text += "<_";
             timeElapsed += Time.deltaTime;
             yield return new WaitForSeconds(Time.deltaTime);
         }
