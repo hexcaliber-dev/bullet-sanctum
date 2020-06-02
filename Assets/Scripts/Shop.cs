@@ -55,6 +55,7 @@ public class Shop : Interactible {
                 } else {
                     currShotUpgrade += 1;
                     GameObject.FindObjectOfType<Shotgun> ().onSecondaryCooldown = false;
+                    StartCoroutine(GameObject.FindObjectOfType<Shotgun> ().SuperchargeTimer());
                     print ("Upgraded shotgun to " + currShotUpgrade);
                 }
                 hud.SwitchWeapon (PlayerShoot.currWeapon);

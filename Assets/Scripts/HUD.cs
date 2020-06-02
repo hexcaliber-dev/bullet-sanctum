@@ -16,7 +16,7 @@ public class HUD : MonoBehaviour {
     public List<Color> bountyColors;
     int currCrosshair;
 
-    IEnumerator secondaryEnumerator;
+    IEnumerator primaryEnumerator, secondaryEnumerator;
 
     public bool doCursorDraw;
 
@@ -54,11 +54,17 @@ public class HUD : MonoBehaviour {
     }
 
     public void UpdateRechargeMeter (Weapon weapon) {
-        StartCoroutine (ReloadWeapon (weapon));
+        primaryEnumerator = ReloadWeapon(weapon);
+        StartCoroutine (primaryEnumerator);
     }
     public void UpdateSecondaryMeter (Weapon weapon) {
         secondaryEnumerator = ReloadSecondary (weapon);
         StartCoroutine (secondaryEnumerator);
+    }
+    public void ResetPrimaryMeter() {
+        if (primaryEnumerator != null)
+            StopCoroutine(primaryEnumerator);
+        reloadMeter.sprite = reloadSprites[reloadSprites.Count - 1];
     }
 
     public void OverchargeMeter () {

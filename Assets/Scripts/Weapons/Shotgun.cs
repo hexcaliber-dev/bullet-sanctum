@@ -10,15 +10,16 @@ public class Shotgun : Weapon {
     public float secondaryDelay;
     public bool supercharged;
     public float superchargedReloadTime;
+    const float spamBuffer = 0.25f; // stops player from spamming
 
     // Bullet projectile, cooldown, and cooldown time is inherited from Weapon.
 
     protected override void Start () {
         base.Start ();
-        StopAllCoroutines();
+        StopAllCoroutines ();
         onCooldown = false;
         onSecondaryCooldown = Shop.currShotUpgrade < 1;
-        StartCoroutine(SuperchargeTimer());
+        StartCoroutine (SuperchargeTimer ());
     }
     protected override void Update () {
         base.Update ();
@@ -38,26 +39,27 @@ public class Shotgun : Weapon {
             projectile = pierceyBullets;
         }
 
-        // Repeater upgrade
         Fire (originalTarget);
         GameObject.FindObjectOfType<CameraUtils> ().Shake (0.15f, 0.15f);
         // Knock back player
         GameObject.FindGameObjectWithTag ("Player").GetComponent<Rigidbody2D> ().velocity += (Vector2) (-(Vector3.Normalize ((Vector2) originalTarget - (Vector2) transform.position)) * knockback);
-        if (Shop.currShotUpgrade > 1) {
+        // Repeater upgrade
+        onCooldown = true;
+        if (Shop.currShotUpgrade > 1 && supercharged) {
             supercharged = false;
             StartCoroutine (SuperchargeTimer ());
+            GameObject.FindObjectOfType<HUD> ().ResetPrimaryMeter();
+            yield return new WaitForSeconds (0.25f);
+            onCooldown = false;
         } else {
-            onCooldown = true;
             yield return new WaitForSeconds (cooldownTime);
             onCooldown = false;
             StartCoroutine (SuperchargeTimer ());
         }
-        
 
     }
 
     void Fire (Vector3 originalTarget) {
-
         // Shoot numBullets number of bullets
         for (int i = 0; i <= numBullets; i += 1) {
             float randomNum = Random.Range (-1.5f, 1.5f);
@@ -86,7 +88,7 @@ public class Shotgun : Weapon {
         onSecondaryCooldown = false;
     }
 
-    IEnumerator SuperchargeTimer () {
+    public IEnumerator SuperchargeTimer () {
         yield return new WaitForSeconds (superchargedReloadTime);
         if (Shop.currShotUpgrade > 1 && !onCooldown) {
             supercharged = true;
