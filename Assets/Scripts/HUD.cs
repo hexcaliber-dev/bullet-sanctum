@@ -93,7 +93,7 @@ public class HUD : MonoBehaviour {
             bulletTimeCanvas.GetComponent<Image> ().color = new Color (1, 1, 1, dec / 1.5f);
             bulletTimeText.color = new Color (dec, dec, dec, dec);
             timer.color = new Color (dec, dec, dec, dec);
-            timer.text = "00:00:" + (100f - (int)(timeElapsed * 200uf) % 100);
+            timer.text = "00:00:" + (100f - (int)(timeElapsed * 200f) % 100);
             if (timeElapsed == seconds / 5)
                 bulletTimeText.text = "BULLET_";
             if (timeElapsed == seconds / 5 * 2)
