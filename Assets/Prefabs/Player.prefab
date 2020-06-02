@@ -323,8 +323,9 @@ MonoBehaviour:
   deadzone: 0.15
   coyoteTime: 0.2
   crouchSpeed: 2
+  bulletTime: 0.5
   strafeStrength: 30
-  strafeTime: 0.08
+  strafeTime: 0.05
   strafeCooldownTime: 0.2
   strafeRechargeTime: 0.4
   strafeCost: 3

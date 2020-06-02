@@ -78,7 +78,7 @@ public class HUD : MonoBehaviour {
     public void SwitchWeapon (int weapon) {
         weaponDisplay.sprite = weaponSprites[weapon];
         currCrosshair = weapon;
-        SetSecondary((weapon == 0) ? Shop.currPistolUpgrade > 0 : Shop.currShotUpgrade > 0); //TODO fix for more weapons
+        SetSecondary ((weapon == 0) ? Shop.currPistolUpgrade > 0 : Shop.currShotUpgrade > 0); //TODO fix for more weapons
     }
 
     public IEnumerator DoBulletTime (float seconds) {
@@ -87,21 +87,24 @@ public class HUD : MonoBehaviour {
         bulletTimeCanvas.GetComponent<Image> ().color = Color.white;
         bulletTimeText.color = Color.white;
         timer.color = Color.white;
-        for (int i = 0; i < 100; i += 1) {
-            float dec = Mathf.Min (1f, 2f - (i / 50f));
+        float timeElapsed = 0f;
+        while (timeElapsed < seconds) {
+            float dec = Mathf.Min (1f, 2f - (timeElapsed / seconds / 2));
             bulletTimeCanvas.GetComponent<Image> ().color = new Color (1, 1, 1, dec / 1.5f);
             bulletTimeText.color = new Color (dec, dec, dec, dec);
             timer.color = new Color (dec, dec, dec, dec);
-            timer.text = "00:0" + (int) (seconds * i / 3f) + ":" + (((int) (seconds * i * 30f) % 90f + 10));
-            if (i == 10)
+            timer.text = "00:00:" + (100f - (int)(timeElapsed * 200uf) % 100);
+            if (timeElapsed == seconds / 5)
                 bulletTimeText.text = "BULLET_";
-            if (i == 30)
+            if (timeElapsed == seconds / 5 * 2)
                 bulletTimeText.text += "TIME_";
-            if (i == 50)
+            if (timeElapsed == seconds / 5 * 3)
                 bulletTimeText.text += "<_";
-            yield return new WaitForSeconds (seconds / 100);
+            timeElapsed += Time.deltaTime;
+            yield return new WaitForSeconds(Time.deltaTime);
         }
         bulletTimeCanvas.alpha = 0f;
+        yield return null;
     }
 
     public void UpdateBounty (int savedBounty, int unsavedBounty, float bountyProgress, int multiplier) {

@@ -23,7 +23,7 @@ public class Player : LivingEntity {
     public Sprite playerSprite, crouchSprite, weaponSprite, weaponSpriteFlipped;
 
     // Basic movement variables
-    public float accelStrength, decelMultiplier, jumpStrength, jumpTime, maxSpeed, deadzone, coyoteTime, crouchSpeed;
+    public float accelStrength, decelMultiplier, jumpStrength, jumpTime, maxSpeed, deadzone, coyoteTime, crouchSpeed, bulletTime;
 
     // Strafing variables
     public float strafeStrength, strafeTime, strafeCooldownTime, strafeRechargeTime;
@@ -54,7 +54,8 @@ public class Player : LivingEntity {
         StartCoroutine (RechargeStrafe ());
         animator = GetComponent<Animator> ();
         doPlayerUpdates = true;
-        hud.SetHealthAmount(playerHealth);
+        hud.SetHealthAmount (playerHealth);
+        Time.timeScale = 1f;
     }
 
     void FixedUpdate () {
@@ -157,7 +158,6 @@ public class Player : LivingEntity {
             }
         }
 
-
         // Deceleration mechanic; apply changes to velocity
         if (currState != MoveState.Strafing) {
             if (Math.Abs (newVX) < Math.Abs (rb2D.velocity.x) || decel || !doPlayerUpdates) {
@@ -178,9 +178,9 @@ public class Player : LivingEntity {
 
     public override void OnDeath () {
         // TODO move player to last checkpoint and reset bounty
-        GetComponent<PlayerBounty>().ResetBounty();
+        GetComponent<PlayerBounty> ().ResetBounty ();
         // SceneManager.LoadScene(Checkpoint.lastCheckpoint);
-        RoomSwitch.OnPlayerDeath();
+        RoomSwitch.OnPlayerDeath ();
         playerHealth = maxHealth;
     }
 
@@ -198,7 +198,7 @@ public class Player : LivingEntity {
         StartCoroutine (FlashWhite (0.1f));
         playerHealth -= damage;
         if (playerHealth <= 0) {
-            OnDeath();
+            OnDeath ();
         } else {
             hud.SetHealthAmount (playerHealth);
             GameObject.FindObjectOfType<CameraUtils> ().Shake (0.25f, 0.25f);
@@ -206,6 +206,7 @@ public class Player : LivingEntity {
     }
 
     IEnumerator StartStrafe (float delay, bool inverted) {
+        bool doBulletTime = false;
         currState = MoveState.Strafing;
         strafeCooldown = true;
         strafesRemaining -= strafeCost;
@@ -215,14 +216,6 @@ public class Player : LivingEntity {
         Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer ("Player"), LayerMask.NameToLayer ("Ghost"), true);
         Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer ("Player"), LayerMask.NameToLayer ("EnemyBullet"), true);
 
-        foreach (GameObject enemy in GameObject.FindGameObjectsWithTag ("Enemy")) {
-            // Bullet time
-            if (Vector2.Distance (enemy.transform.position, transform.position) < bulletTimeDistance) {
-                Time.timeScale = bulletTimeMultiplier;
-                StartCoroutine (hud.DoBulletTime (strafeTime));
-            }
-        }
-
         GetComponent<SpriteRenderer> ().color = new Color (1, 1, .62f, 0.25f); // temp transparency effect
         yield return new WaitForSeconds (delay);
         if (Input.GetKey (KeyCode.W)) strafeDir += Vector2.up;
@@ -230,27 +223,35 @@ public class Player : LivingEntity {
         if (Input.GetKey (KeyCode.S)) strafeDir += Vector2.down;
         if (Input.GetKey (KeyCode.D)) strafeDir += Vector2.right;
 
-        if (!strafeDir.Equals (Vector2.zero)) {
-            rb2D.velocity = strafeStrength * Vector3.Normalize (strafeDir);
+        foreach (GameObject enemy in GameObject.FindGameObjectsWithTag ("Enemy")) {
+            // Bullet time
+            if (Vector2.Distance (enemy.transform.position, transform.position) < bulletTimeDistance && !doBulletTime) {
+                Time.timeScale = bulletTimeMultiplier;
+                StartCoroutine (hud.DoBulletTime (bulletTime));
+                doBulletTime = true;
+            }
         }
-        StartCoroutine (StopStrafe (strafeTime));
+        if (!strafeDir.Equals (Vector2.zero)) {
+            rb2D.velocity = ((doBulletTime) ? strafeStrength / 3f : strafeStrength) * Vector3.Normalize (strafeDir);
+        }
+        StartCoroutine ((doBulletTime) ? StopStrafe (bulletTime) : StopStrafe (strafeTime));
     }
 
     IEnumerator StopStrafe (float seconds) {
         for (int i = 0; i < 5; i += 1) {
             StartCoroutine (CreateTrail (0.15f, trailColor.a * (1f - (0.1f * i))));
-            yield return new WaitForSeconds (seconds / 10);
+            yield return new WaitForSeconds (seconds / 5);
         }
         if (currState == MoveState.Strafing) {
             currState = MoveState.Falling;
         }
         rb2D.inertia = 0f;
         rb2D.velocity = Vector2.zero;
-        yield return new WaitForSeconds (strafeCooldownTime);
-        strafeCooldown = false;
         Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer ("Player"), LayerMask.NameToLayer ("Enemy"), false);
         Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer ("Player"), LayerMask.NameToLayer ("Ghost"), false);
         Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer ("Player"), LayerMask.NameToLayer ("EnemyBullet"), false);
+        yield return new WaitForSeconds (strafeCooldownTime);
+        strafeCooldown = false;
         Time.timeScale = 1f;
         GetComponent<SpriteRenderer> ().color = Color.white;
         // rb2D.velocity = Vector2.down * strafeFallStrength;
@@ -310,8 +311,8 @@ public class Player : LivingEntity {
     // Picks up a weapon from the ground.
     public void CollectWeapon (Weapon weapon) { }
 
-    public void ResetVelocity() {
+    public void ResetVelocity () {
         rb2D.velocity = Vector2.zero;
-        rb2D.AddForce(Vector2.up);
+        rb2D.AddForce (Vector2.up);
     }
 }
