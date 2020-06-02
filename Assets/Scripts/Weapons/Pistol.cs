@@ -14,6 +14,7 @@ public class Pistol : Weapon {
 
     protected override void Start () {
         base.Start ();
+        StopAllCoroutines();
         onCooldown = false;
         onSecondaryCooldown = Shop.currPistolUpgrade < 1;
 
