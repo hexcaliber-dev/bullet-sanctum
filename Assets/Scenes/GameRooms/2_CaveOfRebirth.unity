@@ -1985,7 +1985,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.17642117}
+  m_Offset: {x: 0.022098541, y: -0.17642117}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1996,7 +1996,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 2.224575}
+  m_Size: {x: 2.325966, y: 2.224575}
   m_EdgeRadius: 0
 --- !u!114 &1096795253
 MonoBehaviour:
@@ -2015,8 +2015,8 @@ MonoBehaviour:
   player: {fileID: 3592231846050750061, guid: 3b647151b76cf0645ab90ffcc21bc490, type: 3}
   playerSpawnPoint: {fileID: 828508248}
   alternateSpawnPoint: {fileID: 0}
-  switcherID: 1_0
-  nextSwitcherID: 0
+  switcherID: 3
+  nextSwitcherID: 1
   alternate: 0
   sceneName: 0_CaveOfRebirth
   defaultSpawn: 0
@@ -2194,7 +2194,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1248939877}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.93, y: 0.48, z: 0}
+  m_LocalPosition: {x: 1.92, y: -0.51, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1265143053}
@@ -2276,10 +2276,10 @@ MonoBehaviour:
   player: {fileID: 3592231846050750061, guid: 3b647151b76cf0645ab90ffcc21bc490, type: 3}
   playerSpawnPoint: {fileID: 1248939877}
   alternateSpawnPoint: {fileID: 0}
-  switcherID: 1_0
+  switcherID: 2
   nextSwitcherID: 0
   alternate: 0
-  sceneName: 0_CaveOfRebirth
+  sceneName: 3_CaveOfRebirth
   defaultSpawn: 0
 --- !u!1001 &1347424627
 PrefabInstance:
