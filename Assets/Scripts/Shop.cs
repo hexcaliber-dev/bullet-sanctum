@@ -32,6 +32,7 @@ public class Shop : Interactible {
         hud.doCursorDraw = false;
         shopPanel.blocksRaycasts = true;
         player.doPlayerUpdates = false;
+        Cursor.visible = true;
     }
 
     // 0 is pistol, 1 is shotgun. Click behavior
@@ -91,6 +92,7 @@ public class Shop : Interactible {
         shopPanel.blocksRaycasts = false;
         if (player != null)
             player.doPlayerUpdates = true;
+        Cursor.visible = false;
     }
 
     public void UpdateWeaponBars () {
