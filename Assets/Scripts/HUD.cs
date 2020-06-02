@@ -16,6 +16,8 @@ public class HUD : MonoBehaviour {
     public List<Color> bountyColors;
     int currCrosshair;
 
+    IEnumerator secondaryEnumerator;
+
     public bool doCursorDraw;
 
     // Start is called before the first frame update
@@ -55,7 +57,8 @@ public class HUD : MonoBehaviour {
         StartCoroutine (ReloadWeapon (weapon));
     }
     public void UpdateSecondaryMeter (Weapon weapon) {
-        StartCoroutine (ReloadSecondary (weapon));
+        secondaryEnumerator = ReloadSecondary (weapon);
+        StartCoroutine (secondaryEnumerator);
     }
 
     public void OverchargeMeter () {
@@ -64,6 +67,8 @@ public class HUD : MonoBehaviour {
     }
 
     public void SetSecondary (bool shown) {
+        if (secondaryEnumerator != null)
+            StopCoroutine (secondaryEnumerator);
         secondaryReloadMeter.enabled = shown;
     }
 
@@ -95,9 +100,9 @@ public class HUD : MonoBehaviour {
             bulletTimeCanvas.GetComponent<Image> ().color = new Color (1, 1, 1, dec / 1.5f);
             bulletTimeText.color = new Color (dec, dec, dec, dec);
             timer.color = new Color (dec, dec, dec, dec);
-            timer.text = "00:00:" + (100f - (int)(timeElapsed * 200f) % 100);
+            timer.text = "00:00:" + (100f - (int) (timeElapsed * 200f) % 100);
             timeElapsed += Time.deltaTime;
-            yield return new WaitForSeconds(Time.deltaTime);
+            yield return new WaitForSeconds (Time.deltaTime);
         }
         bulletTimeCanvas.alpha = 0f;
         yield return null;
