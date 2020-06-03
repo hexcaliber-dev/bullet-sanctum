@@ -14,7 +14,7 @@ public class Pistol : Weapon {
 
     protected override void Start () {
         base.Start ();
-        StopAllCoroutines();
+        StopAllCoroutines ();
         onCooldown = false;
         onSecondaryCooldown = Shop.currPistolUpgrade < 1;
 
@@ -46,6 +46,7 @@ public class Pistol : Weapon {
         onCooldown = true;
         superchargedTimer = 0f;
         base.UseWeapon ();
+        AudioHelper.PlaySound ("pistol" + Random.Range (1, 5), 0.8f);
         yield return new WaitForSeconds (cooldownTime);
         onCooldown = false;
     }

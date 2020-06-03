@@ -10,10 +10,11 @@ public class AudioHelper : MonoBehaviour {
 
     private static AudioSource[] audioSources;
 
-    public static void PlaySound (string soundName, bool isLoop) {
+    public static void PlaySound (string soundName, bool isLoop, float volume) {
         foreach (AudioSource src in audioSources) {
             if (!src.isPlaying) {
                 src.loop = isLoop;
+                src.volume = volume;
                 src.clip = staticClips[soundName];
                 src.Play ();
                 return;
@@ -22,7 +23,10 @@ public class AudioHelper : MonoBehaviour {
     }
 
     public static void PlaySound (string soundName) {
-        PlaySound(soundName, false);
+        PlaySound(soundName, false, 1f);
+    }
+    public static void PlaySound (string soundName, float volume) {
+        PlaySound(soundName, false, volume);
     }
     public static void Stop () {
         foreach (AudioSource src in audioSources) {

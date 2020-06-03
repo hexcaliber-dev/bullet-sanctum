@@ -196,6 +196,7 @@ public class Player : LivingEntity {
 
     public override void TakeDamage (int damage) {
         StartCoroutine (FlashWhite (0.1f));
+        AudioHelper.PlaySound ("playerhurt");
         playerHealth -= damage;
         if (playerHealth <= 0) {
             OnDeath ();

@@ -25,8 +25,7 @@ public class Bullet : MonoBehaviour {
         SetTarget (target.transform.position);
     }
 
-    void Update () {
-    }
+    void Update () { }
 
     // REMEMBER TO SET COLLISION LAYERS FOR THE PREFAB! (so it doesn't collide with the sender)
     void OnCollisionEnter2D (Collision2D col) {
@@ -34,12 +33,16 @@ public class Bullet : MonoBehaviour {
         LivingEntity entity = col.gameObject.GetComponent<LivingEntity> ();
         if (entity != null) {
             entity.TakeDamage (this);
-            if (pierceCount == 0)
+            if (pierceCount == 0) {
+                AudioHelper.PlaySound ("bulletcollisionenemy", 0.7f);
                 Destroy (gameObject);
+            }
             pierceCount -= 1;
         } else {
-            if (bounceCount == 0)
+            if (bounceCount == 0) {
+                AudioHelper.PlaySound ("bulletcollision", 0.1f);
                 Destroy (gameObject);
+            }
             bounceCount -= 1;
         }
     }
