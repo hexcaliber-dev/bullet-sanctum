@@ -6,17 +6,14 @@ using UnityEngine;
 public class PlayerShoot : MonoBehaviour {
     public static int currWeapon = 0;
     public List<Weapon> availableWeapons;
-    public List<Sprite> weaponArms, weaponArmsFlipped;
+    public List<Sprite> pistolArms, shotArms, pistolArmsFlipped, shotArmsFlipped;
     public List<Vector2> armPos;
-    public List<Sprite> muzzleSprites;
-    public SpriteRenderer muzzle;
     HUD hud;
     Player player;
 
     void Start () {
         hud = GameObject.FindObjectOfType<HUD> ();
         player = GameObject.FindObjectOfType<Player> ();
-        muzzle.enabled = false;
         EquipWeapon (currWeapon);
     }
 
@@ -63,21 +60,26 @@ public class PlayerShoot : MonoBehaviour {
         if (availableWeapons.Count > num) {
             currWeapon = num;
             hud.SwitchWeapon (num);
-            player.weaponSprite = weaponArms[num];
-            player.weaponSpriteFlipped = weaponArmsFlipped[num];
+            player.weaponSprite = (num == 0) ? pistolArms[0] : shotArms[0];
+            player.weaponSpriteFlipped = (num == 0) ? pistolArmsFlipped[0] : shotArmsFlipped[0];
             Vector2 origPos = player.arm.transform.localPosition;
             player.arm.transform.localPosition = armPos[num];
         }
     }
 
     IEnumerator MuzzleFlash () {
-        muzzle.enabled = true;
-        muzzle.sprite = muzzleSprites[0];
+        List<Sprite> arms = (currWeapon == 0) ? pistolArms : shotArms;
+        List<Sprite> armsFlipped = (currWeapon == 0) ? pistolArmsFlipped : shotArmsFlipped;
+        player.weaponSprite = arms[1];
+        player.weaponSpriteFlipped = armsFlipped[1];
         yield return new WaitForSeconds (0.1f);
-        muzzle.sprite = muzzleSprites[1];
+        player.weaponSprite = arms[2];
+        player.weaponSpriteFlipped = armsFlipped[2];
         yield return new WaitForSeconds (0.1f);
-        muzzle.sprite = muzzleSprites[2];
+        player.weaponSprite = arms[3];
+        player.weaponSpriteFlipped = armsFlipped[3];
         yield return new WaitForSeconds (0.1f);
-        muzzle.enabled = false;
+        player.weaponSprite = arms[0];
+        player.weaponSpriteFlipped = armsFlipped[0];
     }
 }

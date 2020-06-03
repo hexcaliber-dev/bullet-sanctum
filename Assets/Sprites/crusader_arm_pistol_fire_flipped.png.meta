@@ -1,25 +1,25 @@
 fileFormatVersion: 2
-guid: f53e29af7ed576d6282d92098cd9eca5
+guid: 322d1c7ed246eb94e9f547f6cc761f41
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -9210326498439969196
-    second: crusader_arm_pistol_fire_0
+      213: 295681489742770808
+    second: crusader_arm_pistol_fire_flipped_0
   - first:
-      213: -7747879426919231325
-    second: crusader_arm_pistol_fire_1
+      213: -6795998333702527661
+    second: crusader_arm_pistol_fire_flipped_1
   - first:
-      213: 4409122839418361026
-    second: crusader_arm_pistol_fire_2
+      213: -599599229789362522
+    second: crusader_arm_pistol_fire_flipped_2
   - first:
-      213: -4545880243258100763
-    second: crusader_arm_pistol_fire_0
+      213: -625894229743134242
+    second: crusader_arm_pistol_fire_flipped_0
   - first:
-      213: 1968931377989966214
-    second: crusader_arm_pistol_fire_1
+      213: 3908153525672422857
+    second: crusader_arm_pistol_fire_flipped_1
   - first:
-      213: 8104039705595080675
-    second: crusader_arm_pistol_fire_2
+      213: -4193259045975500319
+    second: crusader_arm_pistol_fire_flipped_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -117,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: crusader_arm_pistol_fire_0
+      name: crusader_arm_pistol_fire_flipped_0
       rect:
         serializedVersion: 2
         x: 0
@@ -131,14 +131,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5e3722df00ac9e0c0800000000000000
-      internalID: -4545880243258100763
+      spriteID: ed99131a3806057f0800000000000000
+      internalID: -625894229743134242
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: crusader_arm_pistol_fire_1
+      name: crusader_arm_pistol_fire_flipped_1
       rect:
         serializedVersion: 2
         x: 0
@@ -152,14 +152,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 689563c08ac035b10800000000000000
-      internalID: 1968931377989966214
+      spriteID: 9cd2561ecec8c3630800000000000000
+      internalID: 3908153525672422857
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: crusader_arm_pistol_fire_2
+      name: crusader_arm_pistol_fire_flipped_2
       rect:
         serializedVersion: 2
         x: 0
@@ -173,8 +173,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3efe7a9dc25577070800000000000000
-      internalID: 8104039705595080675
+      spriteID: 1e9df615d1d8ec5c0800000000000000
+      internalID: -4193259045975500319
       vertices: []
       indices: 
       edges: []
