@@ -46,6 +46,7 @@ public class Shotgun : Weapon {
         GameObject.FindGameObjectWithTag ("Player").GetComponent<Rigidbody2D> ().velocity += (Vector2) (-(Vector3.Normalize ((Vector2) originalTarget - (Vector2) transform.position)) * knockback);
         // Repeater upgrade
         onCooldown = true;
+        AudioHelper.PlaySound("shotgun" + Random.Range(1, 5));
         if (Shop.currShotUpgrade > 1 && supercharged) {
             supercharged = false;
             StartCoroutine (SuperchargeTimer ());
