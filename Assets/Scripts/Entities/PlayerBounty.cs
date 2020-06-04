@@ -27,6 +27,7 @@ public class PlayerBounty : MonoBehaviour {
         if (nextMultiplierProgress >= bountyProgressMilestones[bountyMultiplier]) {
             nextMultiplierProgress = 0;
             bountyMultiplier += 1;
+            AudioHelper.PlaySound("multiplier");
         }
         UpdateHudBounty();
     }
