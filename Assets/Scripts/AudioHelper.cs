@@ -8,6 +8,9 @@ public class AudioHelper : MonoBehaviour {
     public static Dictionary<string, AudioClip> staticClips;
     public List<AudioClip> audioClips;
 
+    static AudioSource staticWalkingSrc;
+    public AudioSource walkingSource;
+
     private static AudioSource[] audioSources;
 
     public static void PlaySound (string soundName, bool isLoop, float volume) {
@@ -28,6 +31,16 @@ public class AudioHelper : MonoBehaviour {
     public static void PlaySound (string soundName, float volume) {
         PlaySound(soundName, false, volume);
     }
+
+    public static void SetWalking (bool isWalking) {
+        if (isWalking) {
+           staticWalkingSrc.volume = 1f;
+        } else if (staticWalkingSrc.volume == 1f) {
+            staticWalkingSrc.volume = 0f;
+            PlaySound("walkend");
+        }
+    }
+
     public static void Stop () {
         foreach (AudioSource src in audioSources) {
             src.Stop ();
@@ -43,6 +56,9 @@ public class AudioHelper : MonoBehaviour {
         }
 
         audioSources = GetComponentsInChildren<AudioSource> ();
+
+        if (walkingSource != null)
+            staticWalkingSrc = walkingSource;
     }
 
     // Update is called once per frame

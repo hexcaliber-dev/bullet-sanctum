@@ -157,6 +157,7 @@ public class Player : LivingEntity {
                 }
             }
         }
+        AudioHelper.SetWalking (animator.GetBool ("moving"));
 
         // Deceleration mechanic; apply changes to velocity
         if (currState != MoveState.Strafing) {
@@ -196,13 +197,17 @@ public class Player : LivingEntity {
 
     public override void TakeDamage (int damage) {
         StartCoroutine (FlashWhite (0.1f));
-        AudioHelper.PlaySound ("playerhurt");
         playerHealth -= damage;
         if (playerHealth <= 0) {
             OnDeath ();
         } else {
+            if (playerHealth > maxHealth) {
+                playerHealth = maxHealth;
+            } else {
+                AudioHelper.PlaySound ("playerhurt");
+                GameObject.FindObjectOfType<CameraUtils> ().Shake (0.25f, 0.25f);
+            }
             hud.SetHealthAmount (playerHealth);
-            GameObject.FindObjectOfType<CameraUtils> ().Shake (0.25f, 0.25f);
         }
     }
 

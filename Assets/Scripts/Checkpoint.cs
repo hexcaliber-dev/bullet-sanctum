@@ -11,17 +11,17 @@ public class Checkpoint : Interactible {
     private static Vector3 spawnPosition;
     protected override void Activate () {
         GameObject.FindObjectOfType<PlayerBounty> ().BankBounty ();
+        GameObject.FindObjectOfType<Player>().TakeDamage(-Player.maxHealth);
+        AudioHelper.PlaySound("checkpoint");
         lastCheckpoint = checkpointID;
-        currentCheckpoint = SceneManager.GetActiveScene().name;
+        currentCheckpoint = SceneManager.GetActiveScene ().name;
     }
 
-    public static string getCurrentCheckpoint()
-    {
+    public static string getCurrentCheckpoint () {
         return currentCheckpoint;
     }
 
-    public static Vector3 getSpawnPosition()
-    {
+    public static Vector3 getSpawnPosition () {
         return spawnPosition;
     }
 

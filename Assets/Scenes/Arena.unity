@@ -450,6 +450,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 267149235, guid: d48691d86e6dea28888725c1f5d67fb9, type: 3}
+      propertyPath: audioClips.Array.size
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 267149235, guid: d48691d86e6dea28888725c1f5d67fb9, type: 3}
+      propertyPath: audioClips.Array.data[11]
+      value: 
+      objectReference: {fileID: 8300000, guid: 34cdaa8c4492562499fb9773e0078ef0, type: 3}
     - target: {fileID: 749039678716180228, guid: d48691d86e6dea28888725c1f5d67fb9,
         type: 3}
       propertyPath: m_Material
@@ -459,6 +467,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_sharedMaterial
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7386347512567722297, guid: d48691d86e6dea28888725c1f5d67fb9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 7386347514208102210, guid: d48691d86e6dea28888725c1f5d67fb9,
         type: 3}
