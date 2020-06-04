@@ -58,6 +58,7 @@ public class Shop : Interactible {
                     StartCoroutine(GameObject.FindObjectOfType<Shotgun> ().SuperchargeTimer());
                     print ("Upgraded shotgun to " + currShotUpgrade);
                 }
+                AudioHelper.PlaySound("checkpoint");
                 hud.SwitchWeapon (PlayerShoot.currWeapon);
             }
             UpdateWeaponBars ();

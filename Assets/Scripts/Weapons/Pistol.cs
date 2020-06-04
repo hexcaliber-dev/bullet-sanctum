@@ -46,7 +46,7 @@ public class Pistol : Weapon {
         onCooldown = true;
         superchargedTimer = 0f;
         base.UseWeapon ();
-        AudioHelper.PlaySound ("pistol" + Random.Range (1, 5), 0.8f);
+        AudioHelper.PlaySound ("pistol" + Random.Range (1, 5), 0.5f);
         yield return new WaitForSeconds (cooldownTime);
         onCooldown = false;
     }
@@ -54,6 +54,7 @@ public class Pistol : Weapon {
     IEnumerator SecondaryFire () {
         onSecondaryCooldown = true;
         Vector2 mousePoint = Camera.main.ScreenToWorldPoint (Input.mousePosition);
+        AudioHelper.PlaySound("pistolmulti", 0.7f);
         for (int i = 0; i < numSecondaryShots; i += 1) {
             print (mousePoint);
             print (-mousePoint);
