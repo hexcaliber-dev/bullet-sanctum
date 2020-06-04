@@ -325,7 +325,7 @@ MonoBehaviour:
   coyoteTime: 0.2
   crouchSpeed: 2
   bulletTime: 0.5
-  strafeStrength: 20
+  strafeStrength: 25
   strafeTime: 0.05
   strafeCooldownTime: 0.2
   strafeRechargeTime: 0.4

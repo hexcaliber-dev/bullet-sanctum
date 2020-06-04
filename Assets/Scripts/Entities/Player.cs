@@ -145,7 +145,7 @@ public class Player : LivingEntity {
 
             // Crouching
             if (currState != MoveState.Strafing) {
-                if (Input.GetKey (KeyCode.LeftControl)) {
+                if (Input.GetKey (KeyCode.S)) {
                     animator.SetBool ("crouching", true);
                     GetComponent<SpriteRenderer> ().sprite = crouchSprite;
                     shoulder.transform.localPosition = new Vector2 (-0.03f, 0f);
