@@ -90,6 +90,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5fbfd311143531440bbca1509c82023a, type: 3}
   - {fileID: 8300000, guid: 81c8e35c8d099b547b07c56239359c39, type: 3}
   - {fileID: 8300000, guid: d02cd20ee5ba459428d87b09d2f49594, type: 3}
+  - {fileID: 8300000, guid: 705739636aa717f42ae02bb1a326e4b8, type: 3}
+  - {fileID: 8300000, guid: 99563a22b5630734bac2d14cd220fbb9, type: 3}
+  - {fileID: 8300000, guid: 5ec9312fce35080458eb806968693e12, type: 3}
+  - {fileID: 8300000, guid: fbf00f01863ab5248bdec84e8533886c, type: 3}
   walkingSource: {fileID: 5905332142308591451}
 --- !u!82 &267149234
 AudioSource:
