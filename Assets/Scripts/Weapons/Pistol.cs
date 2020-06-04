@@ -70,6 +70,7 @@ public class Pistol : Weapon {
         onCooldown = true;
         supercharged = false;
         superchargedTimer = 0f;
+        AudioHelper.PlaySound("pistolsilencer");
         GameObject.FindObjectOfType<CameraUtils> ().Shake (0.25f, 0.1f);
         Vector2 target = Camera.main.ScreenToWorldPoint (Input.mousePosition);
         Bullet b = GameObject.Instantiate (superchargedBullet, transform.position, Quaternion.identity);
