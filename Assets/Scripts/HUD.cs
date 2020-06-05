@@ -8,7 +8,7 @@ public class HUD : MonoBehaviour {
 
     public List<Sprite> strafeSprites, reloadSprites, healthSprites, weaponSprites, bountySprites;
     public Sprite overchargeReloadSprite;
-    public Image strafeMeter, reloadMeter, secondaryReloadMeter, healthMeter, weaponDisplay, bountyBar, bountyMultBack;
+    public Image strafeMeter, reloadMeter, secondaryReloadMeter, healthMeter, weaponDisplay, bountyBar, bountyMultBack, fadeImage;
     public CanvasGroup bulletTimeCanvas;
     public TMP_Text bulletTimeText, timer, fragmentText, bountyMultiplierText, bountyText;
 

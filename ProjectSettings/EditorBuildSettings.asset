@@ -24,7 +24,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Arena.unity
     guid: 646816e26969f5d0eb1d5ec5a9d692f4
   - enabled: 1
-    path: Assets/Scenes/CheckpointRoom.unity
+    path: Assets/Scenes/LavaTest.unity
     guid: 071f0e1053ac498caae8be52ff683759
   - enabled: 1
     path: Assets/Scenes/GameRooms/2_CaveOfRebirth.unity

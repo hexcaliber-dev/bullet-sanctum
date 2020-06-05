@@ -83,8 +83,8 @@ public class Player : LivingEntity {
                 Physics2D.Raycast (transform.position + Vector3.down * (thisCol.bounds.extents.y + 0.01f) + Vector3.left * (thisCol.bounds.extents.x), Vector2.down, 0.1f, groundMask) ||
                 Physics2D.Raycast (transform.position + Vector3.down * (thisCol.bounds.extents.y + 0.01f) + Vector3.right * (thisCol.bounds.extents.x), Vector2.down, 0.1f, groundMask))) {
             currState = MoveState.Ground;
-            if (animator.GetInteger("jumpState") != 0) {
-                AudioHelper.PlaySound("landing", 0.6f);
+            if (animator.GetInteger ("jumpState") != 0) {
+                AudioHelper.PlaySound ("landing", 0.6f);
                 animator.SetInteger ("jumpState", 0);
             }
         } else if (currState == MoveState.Ground) {
@@ -221,7 +221,7 @@ public class Player : LivingEntity {
         strafesRemaining -= strafeCost;
         Vector2 strafeDir = Vector2.zero;
         hud.SetStrafeAmount (strafesRemaining);
-        AudioHelper.PlaySound("dash");
+        AudioHelper.PlaySound ("dash");
         Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer ("Player"), LayerMask.NameToLayer ("Enemy"), true);
         Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer ("Player"), LayerMask.NameToLayer ("Ghost"), true);
         Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer ("Player"), LayerMask.NameToLayer ("EnemyBullet"), true);
@@ -238,7 +238,7 @@ public class Player : LivingEntity {
             if (Vector2.Distance (enemy.transform.position, transform.position) < bulletTimeDistance && !doBulletTime) {
                 Time.timeScale = bulletTimeMultiplier;
                 StartCoroutine (hud.DoBulletTime (bulletTime));
-                AudioHelper.PlaySound("bullettime");
+                AudioHelper.PlaySound ("bullettime");
                 doBulletTime = true;
             }
         }
@@ -296,7 +296,7 @@ public class Player : LivingEntity {
         animator.SetInteger ("jumpState", 1);
         const int RESOLUTION = 10;
         currState = MoveState.Jumping;
-        AudioHelper.PlaySound("jump");
+        AudioHelper.PlaySound ("jump");
         for (int i = 0; i < RESOLUTION && Input.GetKey (KeyCode.Space); i += 1) {
             rb2D.velocity = new Vector2 (rb2D.velocity.x, jumpStrength);
             yield return new WaitForSeconds (jumpTime / RESOLUTION);
@@ -314,10 +314,16 @@ public class Player : LivingEntity {
     }
 
     // Called when player goes out of bounds or gets killed by elemental hazards.
-    public void Respawn () {
+    public IEnumerator Respawn () {
+        hud.fadeImage.color = Color.red;
+        yield return new WaitForSeconds(0.25f);
         // TODO death screen or something
         rb2D.velocity = Vector2.zero;
         transform.position = respawnPoint;
+        for (float i = hud.fadeImage.color.a * 255; i > 0; i -= 5) {
+            hud.fadeImage.color = new Color (0, 0, 0, i / 255);
+            yield return null;
+        }
     }
 
     // Picks up a weapon from the ground.
@@ -326,5 +332,13 @@ public class Player : LivingEntity {
     public void ResetVelocity () {
         rb2D.velocity = Vector2.zero;
         rb2D.AddForce (Vector2.up);
+    }
+
+    void OnCollisionEnter2D (Collision2D col) {
+        if (col.gameObject.layer == LayerMask.NameToLayer ("Lava")) {
+            AudioHelper.PlaySound("playerhurt_alt");
+            TakeDamage(5);
+            StartCoroutine(Respawn ());
+        }
     }
 }
