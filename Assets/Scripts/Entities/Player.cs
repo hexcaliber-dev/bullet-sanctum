@@ -207,7 +207,7 @@ public class Player : LivingEntity {
             if (playerHealth > maxHealth) {
                 playerHealth = maxHealth;
             } else {
-                AudioHelper.PlaySound ("playerhurt_alt");
+                AudioHelper.PlaySound ("playerhurt_alt", 0.3f);
                 GameObject.FindObjectOfType<CameraUtils> ().Shake (0.25f, 0.25f);
             }
             hud.SetHealthAmount (playerHealth);
