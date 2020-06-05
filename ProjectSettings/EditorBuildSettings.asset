@@ -35,4 +35,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameRooms/3_CaveOfRebirth.unity
     guid: 5c51ec1a80e69424abfe2a58424e8e8f
+  - enabled: 1
+    path: Assets/Scenes/GameRooms/4_CaveOfRebirth.unity
+    guid: 31df4fcdb42f32b4fb065204403dbe4c
   m_configObjects: {}
