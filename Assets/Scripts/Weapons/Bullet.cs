@@ -35,16 +35,22 @@ public class Bullet : MonoBehaviour {
             entity.TakeDamage (this);
             if (pierceCount == 0) {
                 AudioHelper.PlaySound ("bulletcollisionenemy", 0.7f);
-                Destroy (gameObject);
+                destroyBullet();
             }
             pierceCount -= 1;
         } else {
             if (bounceCount == 0) {
                 AudioHelper.PlaySound ("bulletcollision", 0.1f);
-                Destroy (gameObject);
+                destroyBullet();
             }
             bounceCount -= 1;
         }
+    }
+
+    void destroyBullet () {
+        transform.GetComponentInChildren<ParticleSystem>().Stop();
+        transform.DetachChildren ();
+        Destroy(gameObject);
     }
 
     void Start () {
