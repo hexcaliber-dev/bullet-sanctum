@@ -316,7 +316,7 @@ public class Player : LivingEntity {
     // Called when player goes out of bounds or gets killed by elemental hazards.
     public IEnumerator Respawn () {
         hud.fadeImage.color = Color.red;
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds (0.25f);
         // TODO death screen or something
         rb2D.velocity = Vector2.zero;
         transform.position = respawnPoint;
@@ -326,9 +326,6 @@ public class Player : LivingEntity {
         }
     }
 
-    // Picks up a weapon from the ground.
-    public void CollectWeapon (Weapon weapon) { }
-
     public void ResetVelocity () {
         rb2D.velocity = Vector2.zero;
         rb2D.AddForce (Vector2.up);
@@ -336,9 +333,9 @@ public class Player : LivingEntity {
 
     void OnCollisionEnter2D (Collision2D col) {
         if (col.gameObject.layer == LayerMask.NameToLayer ("Lava")) {
-            AudioHelper.PlaySound("playerhurt_alt");
-            TakeDamage(5);
-            StartCoroutine(Respawn ());
+            AudioHelper.PlaySound ("playerhurt_alt");
+            TakeDamage (5);
+            StartCoroutine (Respawn ());
         }
     }
 }

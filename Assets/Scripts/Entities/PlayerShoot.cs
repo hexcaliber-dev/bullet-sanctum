@@ -5,7 +5,7 @@ using UnityEngine;
 // Handles player shooting and weapon upgrades.
 public class PlayerShoot : MonoBehaviour {
     public static int currWeapon = 0;
-    public List<Weapon> availableWeapons;
+    public List<Weapon> availableWeapons, allWeapons;
     public List<Sprite> pistolArms, shotArms, pistolArmsFlipped, shotArmsFlipped;
     public List<Vector2> armPos;
     HUD hud;
@@ -51,9 +51,14 @@ public class PlayerShoot : MonoBehaviour {
         }
     }
 
-    public void AddWeapon (Weapon weapon) {
-        availableWeapons.Add (weapon);
-        EquipWeapon (1); // TODO Don't hard code when we add more weapons!!!!!!
+    // Pick up a weapon from the ground.
+    public void GetNewWeapon (int weapon) {
+        if (weapon == availableWeapons.Count) {
+            availableWeapons.Add (allWeapons[weapon]);
+            EquipWeapon(weapon);
+        } else {
+            Debug.LogWarning("Picked up invalid weapon: " + weapon);
+        }
     }
 
     void EquipWeapon (int num) {

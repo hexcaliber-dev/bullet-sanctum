@@ -29,28 +29,37 @@ public class Bullet : MonoBehaviour {
 
     // REMEMBER TO SET COLLISION LAYERS FOR THE PREFAB! (so it doesn't collide with the sender)
     void OnCollisionEnter2D (Collision2D col) {
-        // print ("COL");
-        LivingEntity entity = col.gameObject.GetComponent<LivingEntity> ();
+        DoCollision (col.gameObject);
+    }
+
+    void OnTriggerEnter2D (Collider2D collider) {
+        if (collider.gameObject.tag.Equals("Player"))
+            DoCollision (collider.gameObject);
+    }
+
+    void DoCollision (GameObject obj) {
+        LivingEntity entity = obj.GetComponent<LivingEntity> ();
         if (entity != null) {
             entity.TakeDamage (this);
             if (pierceCount == 0) {
                 AudioHelper.PlaySound ("bulletcollisionenemy", 0.7f);
-                destroyBullet();
+                destroyBullet ();
             }
             pierceCount -= 1;
         } else {
             if (bounceCount == 0) {
                 AudioHelper.PlaySound ("bulletcollision", 0.1f);
-                destroyBullet();
+                destroyBullet ();
             }
             bounceCount -= 1;
         }
     }
 
     void destroyBullet () {
-        transform.GetComponentInChildren<ParticleSystem>().Stop();
+        if (transform.GetComponentInChildren<ParticleSystem> () != null)
+            transform.GetComponentInChildren<ParticleSystem> ().Stop ();
         transform.DetachChildren ();
-        Destroy(gameObject);
+        Destroy (gameObject);
     }
 
     void Start () {
