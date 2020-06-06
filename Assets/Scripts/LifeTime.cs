@@ -5,7 +5,7 @@ using UnityEngine;
 public class LifeTime : MonoBehaviour
 {
 
-    public int duration;
+    public float duration;
     // Start is called before the first frame update
     IEnumerator Start()
     {

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1113937722154595736}
   - component: {fileID: 6216436940523338228}
   m_Layer: 8
-  m_Name: TestBullet
+  m_Name: PistolBullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -123,6 +123,8 @@ MonoBehaviour:
   damage: 2
   pierceCount: 0
   bounceCount: 0
+  explodeAnim: {fileID: 1113937722154595737, guid: f92fb5d38b8956391b389d0ff3c11b3e,
+    type: 3}
 --- !u!58 &6216436940523338228
 CircleCollider2D:
   m_ObjectHideFlags: 0

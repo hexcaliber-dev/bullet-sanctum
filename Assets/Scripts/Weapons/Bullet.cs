@@ -8,6 +8,7 @@ public class Bullet : MonoBehaviour {
     protected Vector3 target;
     public int pierceCount, bounceCount;
     int currPierce, currBounce;
+    public GameObject explodeAnim;
 
     public void SetTarget (Vector3 target) {
         this.target = target;
@@ -58,6 +59,9 @@ public class Bullet : MonoBehaviour {
     void destroyBullet () {
         if (transform.GetComponentInChildren<ParticleSystem> () != null)
             transform.GetComponentInChildren<ParticleSystem> ().Stop ();
+        if (explodeAnim != null) {
+            GameObject.Instantiate(explodeAnim, transform.position, Quaternion.identity);
+        }
         transform.DetachChildren ();
         Destroy (gameObject);
     }
