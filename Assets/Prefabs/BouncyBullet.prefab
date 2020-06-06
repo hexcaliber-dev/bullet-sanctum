@@ -103,7 +103,7 @@ Rigidbody2D:
   m_Material: {fileID: 6200000, guid: 31dfc325caba83e6e9b245da642bb18e, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!114 &1113937722154595736
 MonoBehaviour:
@@ -122,6 +122,7 @@ MonoBehaviour:
   damage: 2
   pierceCount: 0
   bounceCount: 1
+  explodeAnim: {fileID: 0}
 --- !u!58 &6216436940523338228
 CircleCollider2D:
   m_ObjectHideFlags: 0
