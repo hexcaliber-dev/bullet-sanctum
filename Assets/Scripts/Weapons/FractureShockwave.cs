@@ -16,7 +16,6 @@ public class FractureShockwave : Weapon {
     }
 
     public override void UseWeapon () {
-        base.ShootAt ((Vector2) transform.position + Vector2.left);
-        base.ShootAt ((Vector2) transform.position + Vector2.right);
+        base.ShootAt ((Vector2) transform.position);
     }
 }

@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1113937722154595732}
   - component: {fileID: 1113937722154595733}
-  - component: {fileID: 1113937722154595739}
-  - component: {fileID: 1113937722154595736}
   - component: {fileID: 6216436940523338228}
+  - component: {fileID: 7159442742414968051}
+  - component: {fileID: 4121765180839198331}
   m_Layer: 15
   m_Name: Shockwave
   m_TagString: Untagged
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1545750598412041078, guid: 3b4199eccf9d3da4c92098e7505823a5,
+  m_Sprite: {fileID: -273554591360187741, guid: c476885d91e284143820a09849b5df0d,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -86,44 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &1113937722154595739
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1113937722154595737}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 0.1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
---- !u!114 &1113937722154595736
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1113937722154595737}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad2d32bca8cbcba4386f93fa67634b05, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  deleteTime: 2
-  damage: 3
-  pierceCount: 5
-  bounceCount: 0
 --- !u!58 &6216436940523338228
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -140,6 +102,45 @@ CircleCollider2D:
   m_Offset: {x: -0.0012541413, y: 0}
   serializedVersion: 2
   m_Radius: 0.07408887
+--- !u!114 &7159442742414968051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113937722154595737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25cb26cd9943c0f4c80f23018905d46a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  deleteTime: 3
+  damage: 2
+  pierceCount: 100
+  bounceCount: 0
+  growRate: 200
+--- !u!50 &4121765180839198331
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113937722154595737}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &5282102607621493660
 PrefabInstance:
   m_ObjectHideFlags: 0
