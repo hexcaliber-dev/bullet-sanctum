@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingOrder: 1
   m_Sprite: {fileID: 5493971765906002099, guid: d13c4315e064c86928fc138a6c3b7893,
     type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.49411765}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -181,6 +181,6 @@ MonoBehaviour:
   STEP_MAX: 5
   decelMultiplier: 0.9
   explodeDamage: 4
-  explodeRange: 5
+  explodeRange: 3
   explosionAnimation: {fileID: 1113937722154595737, guid: a9eb9af25e16a016dbb5eaf127b321ab,
     type: 3}
