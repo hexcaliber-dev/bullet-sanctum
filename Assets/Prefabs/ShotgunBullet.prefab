@@ -123,7 +123,8 @@ MonoBehaviour:
   damage: 5
   pierceCount: 0
   bounceCount: 0
-  explodeAnim: {fileID: 0}
+  explodeAnim: {fileID: 1113937722154595737, guid: 076d922d3d804f99da4771ad180a10a5,
+    type: 3}
 --- !u!58 &6216436940523338228
 CircleCollider2D:
   m_ObjectHideFlags: 0
