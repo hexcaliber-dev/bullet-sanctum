@@ -399,6 +399,7 @@ MonoBehaviour:
   - {fileID: 7828699059844582032, guid: c1cf2cd5b5f45fe4685ad40f787d43f3, type: 3}
   - {fileID: 7252799620837693208, guid: 7d85fb16b47bbf0d68f0e78b864cde99, type: 3}
   - {fileID: 2661772590937968390, guid: 8fbd3d8617b7136b58dc66b6acc11b97, type: 3}
+  - {fileID: -4622180599817320725, guid: 6d111817d7163d85e9a18adfb4bdf4f6, type: 3}
 --- !u!4 &777453581
 Transform:
   m_ObjectHideFlags: 0
@@ -450,6 +451,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1368472693, guid: d48691d86e6dea28888725c1f5d67fb9, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -29.496979
+      objectReference: {fileID: 0}
     - target: {fileID: 2010589330, guid: d48691d86e6dea28888725c1f5d67fb9, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -1
