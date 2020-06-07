@@ -1,5 +1,5 @@
-using UnityEngine;
 using System;
+using UnityEngine;
 
 public class EnemyMelee : Enemy {
 
@@ -8,17 +8,19 @@ public class EnemyMelee : Enemy {
     private float startPos;
     private float endPos;
 
-    public override void OnSpawn() {
-        rb = gameObject.GetComponent<Rigidbody2D>();
+    public override void OnSpawn () {
+        rb = gameObject.GetComponent<Rigidbody2D> ();
         enemyType = EnemyType.Melee;
-        PlayerLookout();
+        PlayerLookout ();
         movingRight = facingRight;
         startPos = transform.position.x;
         endPos = startPos + STEP_MAX;
+        GetComponent<SpriteRenderer> ().flipX = true;
+        GetComponent<SpriteRenderer> ().size = new Vector2(3f, 3f);
     }
 
-    public override void Attack() {
-        player.TakeDamage(DMG);
+    public override void Attack () {
+        player.TakeDamage (DMG);
     }
 
     // This is inherited from LivingEntity
@@ -26,18 +28,19 @@ public class EnemyMelee : Enemy {
     //     // Fucking die.
     // }
 
-    public override void MovePattern() {
+    public override void MovePattern () {
+        GetComponent<Animator> ().SetBool ("moving", playerFound);
         if (playerFound) {
             var direction = Vector3.zero;
-            if (Vector3.Distance(transform.position, player.transform.position) > 0.1) {
+            if (Vector3.Distance (transform.position, player.transform.position) > 0.1) {
                 direction = player.transform.position - transform.position;
-                rb.AddRelativeForce(direction.normalized * speed, ForceMode2D.Force);
+                rb.AddRelativeForce (direction.normalized * speed, ForceMode2D.Force);
             }
         } else {
             if (movingRight) {
-                rb.AddRelativeForce(new Vector2(Vector2.right.x, rb.velocity.y), ForceMode2D.Force);
+                rb.AddRelativeForce (new Vector2 (Vector2.right.x, rb.velocity.y), ForceMode2D.Force);
                 if (!facingRight) {
-                    Flip();
+                    Flip ();
                 }
             }
 
@@ -47,9 +50,9 @@ public class EnemyMelee : Enemy {
             }
 
             if (!movingRight) {
-                rb.AddRelativeForce(new Vector2(-Vector2.right.x, rb.velocity.y), ForceMode2D.Force);
+                rb.AddRelativeForce (new Vector2 (-Vector2.right.x, rb.velocity.y), ForceMode2D.Force);
                 if (facingRight) {
-                    Flip();
+                    Flip ();
                 }
             }
 
@@ -60,14 +63,14 @@ public class EnemyMelee : Enemy {
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision) {
+    void OnCollisionEnter2D (Collision2D collision) {
         if (collision.gameObject.tag == "Player" && playerFound) {
-            Vector2 knockback = new Vector2(8, 3);
+            Vector2 knockback = new Vector2 (8, 3);
             if (facingRight) {
                 knockback.x = -knockback.x;
             }
-            rb.AddForce(knockback, ForceMode2D.Impulse);
-            Attack();
+            rb.AddForce (knockback, ForceMode2D.Impulse);
+            Attack ();
         }
         if (collision.gameObject.tag == "Bullet") {
             startPos = transform.position.x;

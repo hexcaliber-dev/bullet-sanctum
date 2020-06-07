@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 7828699059844582034}
   - component: {fileID: 7828699059844582033}
   - component: {fileID: 7828699059844582032}
+  - component: {fileID: 5810246535703468040}
   m_Layer: 14
-  m_Name: MeleePoggy
+  m_Name: Vorpal
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 7828699059844582031}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.26, y: -0.9, z: 9.604572}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children:
   - {fileID: 7828699060267971473}
   m_Father: {fileID: 0}
@@ -74,7 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 85f4d2310329f0e41bae111981857049, type: 3}
+  m_Sprite: {fileID: 3236372559927785439, guid: 96ab51e93e0d169b297a1f6ad7a54610,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,18 +100,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0024073124, y: -0.02166617}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.01, y: 1.28}
+    oldSize: {x: 0.2, y: 0.24}
     newSize: {x: 1.01, y: 1.28}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.01, y: 1.28}
+  m_Size: {x: 0.25408602, y: 0.3700137}
   m_EdgeRadius: 0
 --- !u!50 &7828699059844582033
 Rigidbody2D:
@@ -144,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 645022baa10096248a5d077121b80eb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityName: Poggy
+  entityName: Vorpal
   entityType: 1
   frozen: 0
   speed: 15
@@ -157,6 +159,25 @@ MonoBehaviour:
   rb: {fileID: 0}
   initialized: 0
   STEP_MAX: 3
+--- !u!95 &5810246535703468040
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7828699059844582031}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c0daa338b858005f0b05d523a5f6a689, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7828699060267971472
 GameObject:
   m_ObjectHideFlags: 0
