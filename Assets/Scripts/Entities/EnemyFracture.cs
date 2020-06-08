@@ -32,12 +32,19 @@ public class EnemyFracture : Enemy {
     }
 
     public override void Attack () {
+        StartCoroutine (cAttack());
+    }
+
+    IEnumerator cAttack () {
+        GetComponent<Animator> ().SetBool ("attacking", true);
+        yield return new WaitForSeconds (1f);
         if (attackPattern == 1 && attack1 () ||
             attackPattern == 2 && attack2 () ||
             attackPattern == 3 && attack3 ()) {
             attackCooldown = baseCooldown + (health / 100f);
             attackPattern = 0;
         }
+        GetComponent<Animator> ().SetBool ("attacking", false);
     }
 
     public override void MovePattern () {
@@ -99,8 +106,8 @@ public class EnemyFracture : Enemy {
     }
 
     void OnCollisionEnter2D (Collision2D collision) {
-        if (collision.gameObject.tag.Equals("Player")) {
-            player.TakeDamage(DMG);
+        if (collision.gameObject.tag.Equals ("Player")) {
+            player.TakeDamage (DMG);
         }
     }
 }
