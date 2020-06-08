@@ -50,6 +50,7 @@ public class EnemyFracture : Enemy {
     public override void MovePattern () {
         playerFound = player != null;
         if (playerFound) {
+            GetComponent<SpriteRenderer>().flipX = (transform.position - player.transform.position).x < 0;
             if (attackCooldown > 0) {
                 attackCooldown -= Time.deltaTime;
             } else {
@@ -73,7 +74,6 @@ public class EnemyFracture : Enemy {
 
     // ground smash
     private bool attack1 () {
-        Debug.Log ("ATTAK1!");
         shockwave.UseWeapon ();
         return true;
     }

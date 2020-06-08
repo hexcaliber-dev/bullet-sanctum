@@ -5,6 +5,7 @@ public class EnemyWeapon : Weapon {
 
     // Bullet projectile, cooldown, and cooldown time is inherited from Weapon.
     public bool canShoot = false; // Set to true when in range
+    public bool manualControl;
 
     protected override void Start() {   
         base.Start();
@@ -17,11 +18,12 @@ public class EnemyWeapon : Weapon {
     }
 
     public override void UseWeapon() {   
-        // Do nothing. Shoot loop already established
+        if (manualControl)
+            base.UseWeapon();
     }
 
     IEnumerator ShootLoop() {    //cool down time
-        while (true) {
+        while (!manualControl) {
             if (canShoot) {
                 onCooldown = true;
                 ShootAt(GameObject.FindObjectOfType<Player>().transform.position);
