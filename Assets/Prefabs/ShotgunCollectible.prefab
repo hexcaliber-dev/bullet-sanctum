@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1116104416645677640}
   - component: {fileID: 223214691}
   - component: {fileID: -4483563294240140625}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: ShotgunCollectible
   m_TagString: Untagged
   m_Icon: {fileID: 0}
