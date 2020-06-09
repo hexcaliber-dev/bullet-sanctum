@@ -4855,7 +4855,7 @@ MonoBehaviour:
   weaponDisplay: {fileID: 7386347512567722296}
   bountyBar: {fileID: 989766945}
   bountyMultBack: {fileID: 497677035}
-  fadeImage: {fileID: 0}
+  fadeImage: {fileID: 852158886}
   bulletTimeCanvas: {fileID: 4594150248258962818}
   bulletTimeText: {fileID: 9190884387607527982}
   timer: {fileID: 2077591343}
