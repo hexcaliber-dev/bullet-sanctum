@@ -7,6 +7,7 @@ public class CameraUtils : MonoBehaviour {
     public float smoothSpd = 5f;
     public Vector3 offset = new Vector3 (0, 0, -10);
     public Transform bottomLeft, topRight; // Place empty gameObjects in the corners of the map
+    public bool scrolling = false;
 
     Vector3 originalPos;
     GameObject player;
@@ -25,6 +26,14 @@ public class CameraUtils : MonoBehaviour {
     // Camera follow script
     // TODO: Edge detection.
     void FixedUpdate () {
+        if (!scrolling) {
+            FollowPlayer();
+        } else {
+            ScrollView();
+        }
+    }
+
+    private void FollowPlayer() {
         // Get camera dimensions.
         float cameraWidth = cam.rect.width;
         float cameraHeight = cam.rect.height;
@@ -39,6 +48,24 @@ public class CameraUtils : MonoBehaviour {
         desPos = new Vector3 (Mathf.Clamp(desPos.x, bottomLeft.position.x + worldCamWidth, topRight.position.x - worldCamWidth),
                               Mathf.Clamp(desPos.y, bottomLeft.transform.position.y + worldCamHeight, topRight.transform.position.y - worldCamHeight),
                               desPos.z);
+        // Lerp the camera for extra smoothness.
+        transform.position = Vector3.Lerp (transform.position, desPos, smoothSpd * Time.deltaTime);
+    }
+
+    private void ScrollView() {
+        // Get camera dimensions.
+        float cameraWidth = cam.rect.width;
+        float cameraHeight = cam.rect.height;
+
+        // Destination vector.
+        Vector3 desPos = new Vector3(transform.position.x + offset.x, transform.position.y, transform.position.z);
+        // Add camera center offset.
+        float worldCamHeight = cam.orthographicSize;
+        float worldCamWidth = cam.orthographicSize * cam.aspect;
+
+        desPos = new Vector3 (desPos.x + (cameraWidth / 2), desPos.y, desPos.z);
+        desPos = new Vector3 (Mathf.Clamp(desPos.x, bottomLeft.position.x + worldCamWidth, topRight.position.x - worldCamWidth),
+                              desPos.y, desPos.z);
         // Lerp the camera for extra smoothness.
         transform.position = Vector3.Lerp (transform.position, desPos, smoothSpd * Time.deltaTime);
     }
