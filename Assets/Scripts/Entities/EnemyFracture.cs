@@ -13,6 +13,8 @@ public class EnemyFracture : Enemy {
     public Collectible shotgun;
     public GameObject spike;
     public float spikeSpeed, spikeDistance, spikeDelay;
+    public bool hasDoors;
+    public GameObject assignedDoors;
     const float GROUND = -2.5f;
     bool died = false;
 
@@ -23,6 +25,10 @@ public class EnemyFracture : Enemy {
     }
 
     public override void OnDeath () {
+        if(hasDoors)
+        {
+            assignedDoors.SetActive(false);
+        }
         if (!died) {
             died = true;
             GameObject newItem = GameObject.Instantiate (shotgun, transform.position, Quaternion.identity).gameObject;
