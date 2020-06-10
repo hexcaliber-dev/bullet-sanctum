@@ -6,8 +6,7 @@ using UnityEngine;
 public class PlayerShoot : MonoBehaviour {
     public static int currWeapon = 0;
     public List<Weapon> allWeapons;
-    public static List<Weapon> availableWeapons;
-    public static bool unitializedAvailableWeapons = true;
+    public static int availableWeaponCount = 1; // 1 = pistol only, 2 = shotgun ...
     public Weapon defaultWeapon;
     
     public List<Sprite> pistolArms, shotArms, pistolArmsFlipped, shotArmsFlipped;
@@ -16,12 +15,6 @@ public class PlayerShoot : MonoBehaviour {
     Player player;
 
     void Start () {
-        if (unitializedAvailableWeapons)
-        {
-            Debug.Log("Initialize Avaliable Weapons");
-            availableWeapons = new List<Weapon>() {defaultWeapon};
-            unitializedAvailableWeapons = false;
-        }
         hud = GameObject.FindObjectOfType<HUD> ();
         player = GameObject.FindObjectOfType<Player> ();
         EquipWeapon (currWeapon);
@@ -31,20 +24,20 @@ public class PlayerShoot : MonoBehaviour {
         if (player.doPlayerUpdates) {
             // Shooting
             if (Input.GetKey (KeyCode.Mouse0)) {
-                if (!availableWeapons[currWeapon].onCooldown) {
-                    Debug.Log(availableWeapons[currWeapon]);
-                    hud.UpdateRechargeMeter (availableWeapons[currWeapon]);
-                    availableWeapons[currWeapon].UseWeapon ();
+                if (!allWeapons[currWeapon].onCooldown) {
+                    Debug.Log(allWeapons[currWeapon]);
+                    hud.UpdateRechargeMeter (allWeapons[currWeapon]);
+                    allWeapons[currWeapon].UseWeapon ();
                     StartCoroutine (MuzzleFlash ());
                 }
             }
 
             // Secondary fire
             if (Input.GetKey (KeyCode.Mouse1)) {
-                print (availableWeapons[currWeapon].onSecondaryCooldown);
-                if (!availableWeapons[currWeapon].onSecondaryCooldown) {
-                    availableWeapons[currWeapon].UseSecondary ();
-                    hud.UpdateSecondaryMeter (availableWeapons[currWeapon]);
+                print (allWeapons[currWeapon].onSecondaryCooldown);
+                if (!allWeapons[currWeapon].onSecondaryCooldown) {
+                    allWeapons[currWeapon].UseSecondary ();
+                    hud.UpdateSecondaryMeter (allWeapons[currWeapon]);
                 }
             }
 
@@ -52,20 +45,20 @@ public class PlayerShoot : MonoBehaviour {
             if (Input.GetKeyDown (KeyCode.Alpha1)) {
                 EquipWeapon (0);
             }
-            if (Input.GetKeyDown (KeyCode.Alpha2) && availableWeapons.Count > 1) {
+            if (Input.GetKeyDown (KeyCode.Alpha2) && availableWeaponCount > 1) {
                 EquipWeapon (1);
             }
             float scroll = Input.GetAxis ("Mouse ScrollWheel");
             if (scroll != 0f) {
-                EquipWeapon ((currWeapon + 1) % availableWeapons.Count);
+                EquipWeapon ((currWeapon + 1) % availableWeaponCount);
             }
         }
     }
 
     // Pick up a weapon from the ground.
     public void GetNewWeapon (int weapon) {
-        if (weapon == availableWeapons.Count) {
-            availableWeapons.Add (allWeapons[weapon]);
+        if (weapon == availableWeaponCount) {
+            availableWeaponCount = weapon + 1;
             EquipWeapon(weapon);
         } else {
             Debug.LogWarning("Picked up invalid weapon: " + weapon);
@@ -73,7 +66,7 @@ public class PlayerShoot : MonoBehaviour {
     }
 
     void EquipWeapon (int num) {
-        if (availableWeapons.Count > num) {
+        if (availableWeaponCount > num) {
             currWeapon = num;
             hud.SwitchWeapon (num);
             player.weaponSprite = (num == 0) ? pistolArms[0] : shotArms[0];
