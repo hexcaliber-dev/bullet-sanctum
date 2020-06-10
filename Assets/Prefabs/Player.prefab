@@ -412,11 +412,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c2292014446969739fb8908811cd781, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  availableWeapons:
-  - {fileID: 210959265}
   allWeapons:
   - {fileID: 210959265}
   - {fileID: 1255479305}
+  defaultWeapon: {fileID: 210959265}
   pistolArms:
   - {fileID: 21300000, guid: 9841504eb383dfb7bbc71cd335c1e1ed, type: 3}
   - {fileID: -9210326498439969196, guid: f53e29af7ed576d6282d92098cd9eca5, type: 3}

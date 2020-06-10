@@ -5,13 +5,23 @@ using UnityEngine;
 // Handles player shooting and weapon upgrades.
 public class PlayerShoot : MonoBehaviour {
     public static int currWeapon = 0;
-    public List<Weapon> availableWeapons, allWeapons;
+    public List<Weapon> allWeapons;
+    public static List<Weapon> availableWeapons;
+    public static bool unitializedAvailableWeapons = true;
+    public Weapon defaultWeapon;
+    
     public List<Sprite> pistolArms, shotArms, pistolArmsFlipped, shotArmsFlipped;
     public List<Vector2> armPos;
     HUD hud;
     Player player;
 
     void Start () {
+        if (unitializedAvailableWeapons)
+        {
+            Debug.Log("Initialize Avaliable Weapons");
+            availableWeapons = new List<Weapon>() {defaultWeapon};
+            unitializedAvailableWeapons = false;
+        }
         hud = GameObject.FindObjectOfType<HUD> ();
         player = GameObject.FindObjectOfType<Player> ();
         EquipWeapon (currWeapon);
@@ -22,6 +32,7 @@ public class PlayerShoot : MonoBehaviour {
             // Shooting
             if (Input.GetKey (KeyCode.Mouse0)) {
                 if (!availableWeapons[currWeapon].onCooldown) {
+                    Debug.Log(availableWeapons[currWeapon]);
                     hud.UpdateRechargeMeter (availableWeapons[currWeapon]);
                     availableWeapons[currWeapon].UseWeapon ();
                     StartCoroutine (MuzzleFlash ());
