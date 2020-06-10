@@ -1,31 +1,31 @@
 fileFormatVersion: 2
-guid: d3bfc767559301c4a9c2b7213c5bbb49
+guid: 34108b31a047431c48ed2add9efa88ff
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7673545465959983592
-    second: ranger_pursuit_0
+      213: -8459497068867059725
+    second: warden_pursuit_0
   - first:
-      213: -1932696991101172274
-    second: ranger_pursuit_1
+      213: -411282880517785557
+    second: warden_pursuit_1
   - first:
-      213: -1807204275085858840
-    second: ranger_pursuit_2
+      213: 4279616726345426138
+    second: warden_pursuit_2
   - first:
-      213: 6715328170216215402
-    second: ranger_pursuit_3
+      213: -3590075799577103378
+    second: warden_pursuit_3
   - first:
-      213: -8089346348819082868
-    second: ranger_pursuit_4
+      213: -4612128359952833132
+    second: warden_pursuit_4
   - first:
-      213: -2322157090481155737
-    second: ranger_pursuit_5
+      213: 4000102583816476606
+    second: warden_pursuit_5
   - first:
-      213: -7252870000706096637
-    second: ranger_pursuit_6
+      213: 4541632807842506515
+    second: warden_pursuit_6
   - first:
-      213: -1743401135588624275
-    second: ranger_pursuit_7
+      213: -3048558838624589446
+    second: warden_pursuit_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ranger_pursuit_0
+      name: warden_pursuit_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +137,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8e9aa52f1f8ed7a60800000000000000
-      internalID: 7673545465959983592
+      spriteID: 3ff78b77c34d99a80800000000000000
+      internalID: -8459497068867059725
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ranger_pursuit_1
+      name: warden_pursuit_1
       rect:
         serializedVersion: 2
         x: 32
@@ -158,14 +158,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ec5c2f2935ead25e0800000000000000
-      internalID: -1932696991101172274
+      spriteID: b28b9843664da4af0800000000000000
+      internalID: -411282880517785557
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ranger_pursuit_2
+      name: warden_pursuit_2
       rect:
         serializedVersion: 2
         x: 64
@@ -179,14 +179,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8e7a0fa69458be6e0800000000000000
-      internalID: -1807204275085858840
+      spriteID: ad4a3acfcb0446b30800000000000000
+      internalID: 4279616726345426138
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ranger_pursuit_3
+      name: warden_pursuit_3
       rect:
         serializedVersion: 2
         x: 96
@@ -200,14 +200,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a6359e73463a13d50800000000000000
-      internalID: 6715328170216215402
+      spriteID: ee3fa71d41d7d2ec0800000000000000
+      internalID: -3590075799577103378
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ranger_pursuit_4
+      name: warden_pursuit_4
       rect:
         serializedVersion: 2
         x: 128
@@ -221,14 +221,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c81198dda5edcbf80800000000000000
-      internalID: -8089346348819082868
+      spriteID: 495a18651bd6effb0800000000000000
+      internalID: -4612128359952833132
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ranger_pursuit_5
+      name: warden_pursuit_5
       rect:
         serializedVersion: 2
         x: 160
@@ -242,14 +242,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7615735fd6a06cfd0800000000000000
-      internalID: -2322157090481155737
+      spriteID: eb7d0854b18338730800000000000000
+      internalID: 4000102583816476606
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ranger_pursuit_6
+      name: warden_pursuit_6
       rect:
         serializedVersion: 2
         x: 192
@@ -263,14 +263,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 30273d56921a85b90800000000000000
-      internalID: -7252870000706096637
+      spriteID: 31766b3e9fe170f30800000000000000
+      internalID: 4541632807842506515
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ranger_pursuit_7
+      name: warden_pursuit_7
       rect:
         serializedVersion: 2
         x: 224
@@ -284,8 +284,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d683a3477e13ec7e0800000000000000
-      internalID: -1743401135588624275
+      spriteID: a7967e263e751b5d0800000000000000
+      internalID: -3048558838624589446
       vertices: []
       indices: 
       edges: []
