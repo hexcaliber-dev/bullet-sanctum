@@ -1,4 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+guid: 30feadf94ec896741a9562d0625baf67
+TextureImporter:
+  internalIDToNameTable: []
+=======
 guid: 34108b31a047431c48ed2add9efa88ff
 TextureImporter:
   internalIDToNameTable:
@@ -26,6 +31,7 @@ TextureImporter:
   - first:
       213: -3048558838624589446
     second: warden_pursuit_7
+>>>>>>> 25e2b00d2fa949a96587804a8c08721588518703
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -55,7 +61,11 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
+<<<<<<< HEAD
+    filterMode: -1
+=======
     filterMode: 0
+>>>>>>> 25e2b00d2fa949a96587804a8c08721588518703
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -64,7 +74,11 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
+<<<<<<< HEAD
+  spriteMode: 1
+=======
   spriteMode: 2
+>>>>>>> 25e2b00d2fa949a96587804a8c08721588518703
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -95,6 +109,11 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+<<<<<<< HEAD
+  spriteSheet:
+    serializedVersion: 2
+    sprites: []
+=======
   - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
@@ -290,6 +309,7 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+>>>>>>> 25e2b00d2fa949a96587804a8c08721588518703
     outline: []
     physicsShape: []
     bones: []

@@ -299,7 +299,7 @@ MonoBehaviour:
   playerSpawnPoint: {fileID: 161201997}
   alternateSpawnPoint: {fileID: 568693025}
   switcherID: 2
-  nextSwitcherID: 1
+  nextSwitcherID: 2
   alternate: 0
   sceneName: 4_CaveOfRebirth
   defaultSpawn: 1
