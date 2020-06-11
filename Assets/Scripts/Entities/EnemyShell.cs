@@ -30,6 +30,7 @@ public class EnemyShell : EnemyGhost {
                     entity.TakeDamage (explodeDamage);
                 }
             }
+            GameObject.FindObjectOfType<CameraUtils>().Shake(0.25f, 0.25f);
             base.OnDeath ();
         }
     }
