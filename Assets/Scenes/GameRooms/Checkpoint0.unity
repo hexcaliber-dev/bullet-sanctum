@@ -376,6 +376,16 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7386347512342403353, guid: d48691d86e6dea28888725c1f5d67fb9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1.539917
+      objectReference: {fileID: 0}
+    - target: {fileID: 7386347513794829314, guid: d48691d86e6dea28888725c1f5d67fb9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.010009766
+      objectReference: {fileID: 0}
     - target: {fileID: 7386347514208102210, guid: d48691d86e6dea28888725c1f5d67fb9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -565,6 +575,7 @@ MonoBehaviour:
   offset: {x: 0, y: 0, z: -10}
   bottomLeft: {fileID: 894167862}
   topRight: {fileID: 288293343}
+  scrolling: 0
 --- !u!81 &1629629901
 AudioListener:
   m_ObjectHideFlags: 0
@@ -726,7 +737,7 @@ PrefabInstance:
     - target: {fileID: 4747245513625859704, guid: 5b759eafa3d4ed94599e8912afaf0bf0,
         type: 3}
       propertyPath: sceneName
-      value: Arena
+      value: 7_CaveOfRebirth
       objectReference: {fileID: 0}
     - target: {fileID: 4747245513625859704, guid: 5b759eafa3d4ed94599e8912afaf0bf0,
         type: 3}

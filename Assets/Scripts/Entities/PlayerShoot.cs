@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerShoot : MonoBehaviour {
     public static int currWeapon = 0;
     public List<Weapon> allWeapons;
-    public static int availableWeaponCount = 1; // 1 = pistol only, 2 = shotgun ...
+    public static int availableWeaponCount = 2; // 1 = pistol only, 2 = shotgun ...
     public Weapon defaultWeapon;
     
     public List<Sprite> pistolArms, shotArms, pistolArmsFlipped, shotArmsFlipped;
