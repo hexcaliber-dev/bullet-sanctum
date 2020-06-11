@@ -6,11 +6,14 @@ public class EnemyShell : EnemyGhost {
 
     public int explodeDamage, explodeRange;
     public GameObject explosionAnimation;
+    public bool toScaleExplosion;
     bool exploding = false;
 
     public override void OnSpawn () {
         base.OnSpawn();
         GetComponent<SpriteRenderer> ().flipX = false;
+        if(toScaleExplosion)
+            explodeRange *= (int)(transform.localScale.x/3);
     }
 
     public override void OnDeath () {
@@ -23,7 +26,9 @@ public class EnemyShell : EnemyGhost {
             GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
             GetComponent<Animator> ().SetBool ("exploding", true);
             yield return new WaitForSeconds (1f);
-            GameObject.Instantiate (explosionAnimation, transform.position, Quaternion.identity);
+            GameObject explosion = GameObject.Instantiate (explosionAnimation, transform.position, Quaternion.identity);
+            if(toScaleExplosion)
+                explosion.transform.localScale = new Vector3(transform.localScale.x * 3, transform.localScale.y * 3, transform.localScale.z * 3);
             foreach (LivingEntity entity in GameObject.FindObjectsOfType<LivingEntity> ()) {
                 if (!entity.entityName.Equals ("Shell") && Vector2.Distance (transform.position, entity.transform.position) < explodeRange) {
                     print ("DAMAGE" + entity.entityName);
