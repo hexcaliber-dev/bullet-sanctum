@@ -76,6 +76,7 @@ public class EnemyFracture : Enemy {
                 }
             }
         }
+        base.MovePattern();
     }
 
     // ground smash
