@@ -12,7 +12,7 @@ public class Arena : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start () {
-        waves.Add (new int[, ] { { 0, 0 }, { 1, 1 }, { 3, 2 } });
+        waves.Add (new int[, ] { { 4, 0 }, { 1, 1 }, { 3, 2 } });
         waves.Add (new int[, ] { { 0, 0 }, { 0, 1 }, { 3, 2 }, { 0, 3 }, { 0, 4 }, { 0, 5 } });
         waves.Add (new int[, ] { { 1, 0 }, { 1, 1 }, { 1, 2 } });
         waves.Add (new int[, ] { { 1, 0 }, { 1, 1 }, { 1, 2 }, { 1, 3 }, { 1, 4 }, { 1, 5 } });
