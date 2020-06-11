@@ -29,6 +29,7 @@ public abstract class Enemy : LivingEntity {
 
     public override void OnDeath () {
         GameObject.FindObjectOfType<PlayerBounty> ().collectBounty (bounty);
+        BountyNum.ShowNum(transform.position, bounty);
         base.OnDeath ();
     }
 
