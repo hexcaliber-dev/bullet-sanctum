@@ -7,6 +7,7 @@ public class EnemyRanged : Enemy {
 
     public float detectRange, xRange, yRange;
     public EnemyWeapon weapon;
+    public Transform arm;
 
     public float STEP_MAX = 5;
     private bool movingRight;
@@ -44,8 +45,16 @@ public class EnemyRanged : Enemy {
         // print (playerFound);
         if (playerFound) {
             rb.velocity = new Vector2 (0f, rb.velocity.y);
+            GetComponent<SpriteRenderer> ().flipX = false;
+            GetComponent<Animator> ().SetBool ("moving", false);
+            weapon.GetComponent<SpriteRenderer> ().enabled = true;
+            arm.LookAt (player.transform);
+            // weapon.GetComponent<SpriteRenderer> ().flipY = ((player.transform.position.x - transform.position.x) < 0);
         } else {
-            if (Vector2.Distance(player.transform.position, transform.position) < detectRange)
+            GetComponent<Animator> ().SetBool ("moving", true);
+            GetComponent<SpriteRenderer> ().flipX = true;
+            weapon.GetComponent<SpriteRenderer> ().enabled = false;
+            if (Vector2.Distance (player.transform.position, transform.position) < detectRange)
                 rb.AddForce (Vector3.Normalize ((Vector2) (player.transform.position - transform.position)) * speed);
             // print (Vector3.Normalize ((Vector2) (player.transform.position - transform.position)) * speed);
             if (movingRight) {
