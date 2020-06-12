@@ -877,6 +877,7 @@ MonoBehaviour:
   topRight: {fileID: 288293343}
   scrolling: 0
   followObject: {fileID: 0}
+  hitBoundsRight: 0
 --- !u!81 &1629629901
 AudioListener:
   m_ObjectHideFlags: 0
