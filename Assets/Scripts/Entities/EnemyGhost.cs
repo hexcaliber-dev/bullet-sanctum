@@ -19,8 +19,6 @@ public class EnemyGhost : Enemy {
         movingRight = facingRight;
         startPos = transform.position.x;
         endPos = startPos + STEP_MAX;
-        // TEMP
-        GetComponent<SpriteRenderer>().flipX = true;
     }
 
     public override void Attack () {
@@ -40,8 +38,6 @@ public class EnemyGhost : Enemy {
 
     // This is called once per update
     public override void MovePattern () {
-        // TODO move to enemy superclass
-        GetComponent<Animator>().SetBool("moving", playerFound);
         // print (playerFound);
         if (playerFound) {
             rb.AddForce (Vector3.Normalize ((Vector2) (player.transform.position - transform.position)) * speed);

@@ -8,7 +8,7 @@ public class EnemyWarden : Enemy {
     private float startPos;
     private float endPos;
     public float flipDelay, chargeDelay, chargeSpeed, chargeRange, chargeTime;
-    bool canCharge, isCharging;
+    bool canCharge, isCharging, isFlipping;
 
     public override void OnSpawn () {
         rb = gameObject.GetComponent<Rigidbody2D> ();
@@ -48,9 +48,6 @@ public class EnemyWarden : Enemy {
         } else {
             if (movingRight) {
                 rb.AddRelativeForce (new Vector2 (Vector2.right.x, rb.velocity.y), ForceMode2D.Force);
-                if (!facingRight) {
-                    StartCoroutine (cFlip ());
-                }
             }
 
             if (rb.position.x >= endPos) {
@@ -60,9 +57,6 @@ public class EnemyWarden : Enemy {
 
             if (!movingRight) {
                 rb.AddRelativeForce (new Vector2 (-Vector2.right.x, rb.velocity.y), ForceMode2D.Force);
-                if (facingRight) {
-                    StartCoroutine (cFlip ());
-                }
             }
 
             if (rb.position.x <= startPos) {
@@ -70,13 +64,22 @@ public class EnemyWarden : Enemy {
                 rb.velocity = Vector2.zero;
             }
         }
+        base.MovePattern();
     }
 
     IEnumerator cFlip () {
-        yield return new WaitForSeconds (flipDelay);
-        if (!isCharging) {
-            GetComponent<SpriteRenderer> ().flipX = !movingRight;
+        if (!isFlipping) {
+            isFlipping = true;
+            yield return new WaitForSeconds (flipDelay);
+            if (!isCharging) {
+                base.Flip();
+            }
+            isFlipping = false;
         }
+    }
+
+    public override void Flip() {
+        StartCoroutine(cFlip());
     }
 
     IEnumerator cCharge () {

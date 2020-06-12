@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 2661772590937968409}
   - component: {fileID: 2661772590937968390}
   - component: {fileID: 5446036168991873488}
-  m_Layer: 16
-  m_Name: GhostEnemy
+  m_Layer: 14
+  m_Name: Drone
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 2661772590937968391}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 5.3837, y: -1.2114, z: 9.604572}
-  m_LocalScale: {x: 3.5869534, y: 3.5869534, z: 14.347814}
+  m_LocalScale: {x: 2, y: 2, z: 14.347814}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -74,9 +74,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 3236372559927785439, guid: 96ab51e93e0d169b297a1f6ad7a54610,
+  m_Sprite: {fileID: -5712629930084328556, guid: fbcbfedee7edf1796bbcddd791368c8e,
     type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.49411765}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -103,7 +103,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.2, y: 0.24}
+    oldSize: {x: 0.32, y: 0.48}
     newSize: {x: 1.01, y: 1.28}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -145,13 +145,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ce2331b2a5934292932314b480c601c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityName: GhostEnemy
+  entityName: Drone
   entityType: 1
   frozen: 0
   speed: 7
   normalMaterial: {fileID: 2100000, guid: 6e99719ff47b1e14ea5997d390039c7f, type: 2}
   flashMaterial: {fileID: 2100000, guid: 08ce23b2283c36e54a9092f0fedb0b1c, type: 2}
-  health: 10
+  health: 5
   enemyType: 0
   DMG: 3
   bounty: 1000
@@ -171,7 +171,7 @@ Animator:
   m_GameObject: {fileID: 2661772590937968391}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c0daa338b858005f0b05d523a5f6a689, type: 2}
+  m_Controller: {fileID: 9100000, guid: ca899f4f258abdd69ba5ce6de9d08424, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

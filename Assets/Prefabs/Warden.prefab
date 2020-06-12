@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 7828699059844582031}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.26, y: -0.9, z: 9.604572}
-  m_LocalScale: {x: 4, y: 4, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children:
   - {fileID: 7828699060267971473}
   - {fileID: 3493102862207415840}
@@ -254,8 +254,8 @@ GameObject:
   - component: {fileID: 3493102862207415840}
   - component: {fileID: 8451034799638063614}
   - component: {fileID: 3057140234193743413}
-  - component: {fileID: 3719695712810013225}
   - component: {fileID: 7268183350174514216}
+  - component: {fileID: 4056875672927190523}
   m_Layer: 14
   m_Name: Shield
   m_TagString: Untagged
@@ -315,7 +315,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 8570364590564047800, guid: 1c2e1175d3d45d346bf302cb0ff97771,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -354,26 +354,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.08009127, y: 0.39628702}
   m_EdgeRadius: 0
---- !u!114 &3719695712810013225
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8942200573315640717}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e968bbc2516f93d6a9938c52d135e487, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entityName: Shield
-  entityType: 1
-  frozen: 0
-  speed: 0
-  normalMaterial: {fileID: 2100000, guid: 6e99719ff47b1e14ea5997d390039c7f, type: 2}
-  flashMaterial: {fileID: 2100000, guid: 08ce23b2283c36e54a9092f0fedb0b1c, type: 2}
-  health: 1000
-  drops: []
 --- !u!50 &7268183350174514216
 Rigidbody2D:
   serializedVersion: 4
@@ -395,3 +375,29 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &4056875672927190523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8942200573315640717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d99ad860a189d89fa635df0382770a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entityName: Shield
+  entityType: 1
+  frozen: 0
+  speed: 0
+  normalMaterial: {fileID: 2100000, guid: 6e99719ff47b1e14ea5997d390039c7f, type: 2}
+  flashMaterial: {fileID: 2100000, guid: 08ce23b2283c36e54a9092f0fedb0b1c, type: 2}
+  health: 10000
+  knockback: 2
+  minBreakSpeed: 25
+  damageSprites:
+  - {fileID: 8570364590564047800, guid: 1c2e1175d3d45d346bf302cb0ff97771, type: 3}
+  - {fileID: -7909048702955291785, guid: 1c2e1175d3d45d346bf302cb0ff97771, type: 3}
+  - {fileID: -3336742592359888790, guid: 1c2e1175d3d45d346bf302cb0ff97771, type: 3}
+  damage: 1
