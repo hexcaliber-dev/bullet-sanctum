@@ -16,12 +16,13 @@ public class EnemyWraith : Enemy {
         StartCoroutine (BehaviorLoop ());
     }
 
-    public void setTeleports(List<Transform> pos) {
-        teleportPositions = new List<Transform>(pos);
+    public void setTeleports (List<Transform> pos) {
+        teleportPositions = new List<Transform> (pos);
     }
 
     public override void Attack () {
         GetComponentInChildren<EnemyWeapon> ().UseWeapon ();
+        AudioHelper.PlaySound ("wraith_shoot");
     }
 
     // This is inherited from LivingEntity
@@ -43,6 +44,7 @@ public class EnemyWraith : Enemy {
             currPosition = newPosition;
 
             yield return new WaitForSeconds (teleportFrequency);
+            AudioHelper.PlaySound ("wraith_teleport");
             while (sprite.color.a < 1f) {
                 sprite.color = new Color (1, 1, 1, Mathf.Min (1, sprite.color.a + (fadeFrequency * Time.deltaTime)));
                 yield return new WaitForSeconds (Time.deltaTime);
@@ -58,11 +60,12 @@ public class EnemyWraith : Enemy {
             yield return new WaitForSeconds (preShootDelay);
             GetComponent<BoxCollider2D> ().enabled = false;
             rb.simulated = false;
+            AudioHelper.PlaySound ("wraith_teleport_out");
             while (sprite.color.a > 0f) {
                 sprite.color = new Color (1, 1, 1, Mathf.Max (0, sprite.color.a - (fadeFrequency * Time.deltaTime)));
                 yield return new WaitForSeconds (Time.deltaTime);
             }
         }
-        Debug.LogWarning("No Wraith teleporers assigned!!!");
+        Debug.LogWarning ("No Wraith teleporers assigned!!!");
     }
 }
