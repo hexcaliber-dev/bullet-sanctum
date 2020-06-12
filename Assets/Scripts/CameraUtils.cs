@@ -11,6 +11,7 @@ public class CameraUtils : MonoBehaviour {
 
     Vector3 originalPos;
     public GameObject followObject;
+    public bool hitBoundsRight = false;
 
     // Start is called before the first frame update
     void Start () {
@@ -47,6 +48,11 @@ public class CameraUtils : MonoBehaviour {
         float worldCamWidth = cam.orthographicSize * cam.aspect;
 
         desPos = new Vector3 (desPos.x + (cameraWidth / 2), desPos.y + (cameraHeight / 2), desPos.z);
+
+        if (desPos.x >= topRight.position.x - worldCamWidth) {
+            hitBoundsRight = true;
+        }
+
         desPos = new Vector3 (Mathf.Clamp(desPos.x, bottomLeft.position.x + worldCamWidth, topRight.position.x - worldCamWidth),
                               Mathf.Clamp(desPos.y, bottomLeft.transform.position.y + worldCamHeight, topRight.transform.position.y - worldCamHeight),
                               desPos.z);
