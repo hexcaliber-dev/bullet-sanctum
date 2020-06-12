@@ -10,13 +10,15 @@ public class CameraUtils : MonoBehaviour {
     public bool scrolling = false;
 
     Vector3 originalPos;
-    GameObject player;
+    public GameObject followObject;
 
     // Start is called before the first frame update
     void Start () {
         // Get gameObject camera component.
         cam = GetComponent<Camera> ();
-        player = GameObject.FindObjectOfType<Player>().gameObject;
+        if (!followObject && !scrolling) {
+            followObject = GameObject.FindObjectOfType<Player>().gameObject;
+        }
         if (bottomLeft == null || topRight == null) {
             bottomLeft = GameObject.Find("BottomLeft").transform;
             topRight = GameObject.Find("TopRight").transform;
@@ -39,7 +41,7 @@ public class CameraUtils : MonoBehaviour {
         float cameraHeight = cam.rect.height;
 
         // Destination vector.
-        Vector3 desPos = player.GetComponent<Transform>().position + offset;
+        Vector3 desPos = followObject.GetComponent<Transform>().position + offset;
         // Add camera center offset.
         float worldCamHeight = cam.orthographicSize;
         float worldCamWidth = cam.orthographicSize * cam.aspect;
@@ -90,6 +92,6 @@ public class CameraUtils : MonoBehaviour {
 
     // Set a player to another object. Used for room switching.
     public void SetPlayer(GameObject newPlayer) {
-        player = newPlayer;
+        followObject = newPlayer;
     }
 }
