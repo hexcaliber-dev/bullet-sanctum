@@ -97,8 +97,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  deleteTime: 3
-  damage: 2
+  deleteTime: 0.4
+  damage: 6
   pierceCount: 100
   bounceCount: 0
   explodeAnim: {fileID: 0}

@@ -315,4 +315,4 @@ MonoBehaviour:
   flashMaterial: {fileID: 2100000, guid: 08ce23b2283c36e54a9092f0fedb0b1c, type: 2}
   health: 10
   drops: []
-  damage: 3
+  damage: 4
