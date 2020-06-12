@@ -7,6 +7,8 @@ public class Jukebox : MonoBehaviour {
     public enum MusicState { Ambient, Intense, Boss }
     public List<AudioClip> ambientClips, intenseClips, bossClips;
     public static MusicState state = MusicState.Ambient;
+    public static float masterVolume = 1f;
+    
     AudioSource source;
     int currPlaying = 0;
 

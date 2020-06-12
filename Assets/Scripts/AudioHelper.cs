@@ -10,6 +10,7 @@ public class AudioHelper : MonoBehaviour {
 
     static AudioSource staticWalkingSrc;
     public AudioSource walkingSource;
+    public static float masterVolume = 1f;
 
     private static AudioSource[] audioSources;
 
@@ -17,7 +18,7 @@ public class AudioHelper : MonoBehaviour {
         foreach (AudioSource src in audioSources) {
             if (!src.isPlaying) {
                 src.loop = isLoop;
-                src.volume = volume;
+                src.volume = volume * masterVolume;
                 src.clip = staticClips[soundName];
                 src.Play ();
                 return;
@@ -34,8 +35,8 @@ public class AudioHelper : MonoBehaviour {
 
     public static void SetWalking (bool isWalking) {
         if (isWalking) {
-           staticWalkingSrc.volume = 1f;
-        } else if (staticWalkingSrc.volume == 1f) {
+           staticWalkingSrc.volume = masterVolume;
+        } else if (staticWalkingSrc.volume == masterVolume) {
             staticWalkingSrc.volume = 0f;
             PlaySound("walkend");
         }

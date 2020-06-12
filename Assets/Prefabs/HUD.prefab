@@ -2634,7 +2634,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3313,6 +3313,77 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &1528031359
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1528031360}
+  - component: {fileID: 1528031361}
+  - component: {fileID: 1528031362}
+  m_Layer: 5
+  m_Name: EventManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1528031360
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1528031359}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7386347514208102210}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1528031361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1528031359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
+--- !u!114 &1528031362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1528031359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
 --- !u!1 &1566213134
 GameObject:
   m_ObjectHideFlags: 0
@@ -3375,7 +3446,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -4056,7 +4127,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7272486388917737054}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8581279318963114127}
+        m_MethodName: AddMusicVolume
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: -0.1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &286175491582311351
 GameObject:
   m_ObjectHideFlags: 0
@@ -4176,7 +4258,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5478456683435708184}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8581279318963114127}
+        m_MethodName: Suicide
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &310535518092659841
 GameObject:
   m_ObjectHideFlags: 0
@@ -4600,7 +4693,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6822398122278262503}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8581279318963114127}
+        m_MethodName: HideAllPanels
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &609684345656574667
 GameObject:
   m_ObjectHideFlags: 0
@@ -4809,6 +4913,7 @@ GameObject:
   - component: {fileID: 7933503643717353440}
   - component: {fileID: 4666393763100681305}
   - component: {fileID: 4807032295277908206}
+  - component: {fileID: 3771723227651883087}
   m_Layer: 5
   m_Name: OptionsBtn
   m_TagString: Untagged
@@ -4916,7 +5021,83 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4666393763100681305}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8581279318963114127}
+        m_MethodName: ShowPanel
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3771723227651883087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 856122450613859408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8581279318963114127}
+          m_MethodName: SetHeaderText
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: ADJUST IN-GAME SETTINGS.
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 8581279318963114127}
+          m_MethodName: HoverOn
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 3012021954498157203}
+            m_ObjectArgumentAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8581279318963114127}
+          m_MethodName: SetHeaderText
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 8581279318963114127}
+          m_MethodName: HoverOff
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 3012021954498157203}
+            m_ObjectArgumentAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &884381650337592667
 GameObject:
   m_ObjectHideFlags: 0
@@ -5701,7 +5882,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 830517581537550601}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8581279318963114127}
+        m_MethodName: QuitToMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1461646187621937049
 GameObject:
   m_ObjectHideFlags: 0
@@ -5714,6 +5906,7 @@ GameObject:
   - component: {fileID: 1840736467975849503}
   - component: {fileID: 6662023022025150903}
   - component: {fileID: 317203138103488063}
+  - component: {fileID: 5267223069791136884}
   m_Layer: 5
   m_Name: ResumeBtn
   m_TagString: Untagged
@@ -5821,7 +6014,83 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6662023022025150903}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8581279318963114127}
+        m_MethodName: HideMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5267223069791136884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1461646187621937049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8581279318963114127}
+          m_MethodName: SetHeaderText
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: CONTINUE YOUR CRUSADE.
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 8581279318963114127}
+          m_MethodName: HoverOn
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 2751967208583938172}
+            m_ObjectArgumentAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8581279318963114127}
+          m_MethodName: SetHeaderText
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 8581279318963114127}
+          m_MethodName: HoverOff
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 2751967208583938172}
+            m_ObjectArgumentAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1475525698464454932
 GameObject:
   m_ObjectHideFlags: 0
@@ -6031,6 +6300,7 @@ GameObject:
   - component: {fileID: 5888400595567292222}
   - component: {fileID: 5637589663785560900}
   - component: {fileID: 9001317856856166170}
+  - component: {fileID: 5308227708228165300}
   m_Layer: 5
   m_Name: SuicideBtn
   m_TagString: Untagged
@@ -6138,7 +6408,83 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5637589663785560900}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8581279318963114127}
+        m_MethodName: ShowPanel
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5308227708228165300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2439928624196049679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8581279318963114127}
+          m_MethodName: SetHeaderText
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: RESPAWN AT THE LAST CHECKPOINT.
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 8581279318963114127}
+          m_MethodName: HoverOn
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1885252627235831480}
+            m_ObjectArgumentAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8581279318963114127}
+          m_MethodName: SetHeaderText
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 8581279318963114127}
+          m_MethodName: HoverOff
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1885252627235831480}
+            m_ObjectArgumentAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &2627997866676994728
 GameObject:
   m_ObjectHideFlags: 0
@@ -6331,7 +6677,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 741248463003267405}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8581279318963114127}
+        m_MethodName: QuitToDesktop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3263169648009004092
 GameObject:
   m_ObjectHideFlags: 0
@@ -6598,7 +6955,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.4735981, y: 0.5}
   m_AnchorMax: {x: 0.9554021, y: 0.5565653}
-  m_AnchoredPosition: {x: 0.72375, y: 0.0000060797}
+  m_AnchoredPosition: {x: 0.7237549, y: 0.000005722046}
   m_SizeDelta: {x: 1.4473267, y: -16.654327}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &510135946328520309
@@ -7283,6 +7640,7 @@ GameObject:
   - component: {fileID: 51820087338831494}
   - component: {fileID: 7942477862979941215}
   - component: {fileID: 8710616091797482260}
+  - component: {fileID: 8581279318963114127}
   m_Layer: 5
   m_Name: PauseMenu
   m_TagString: Untagged
@@ -7335,6 +7693,26 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
+--- !u!114 &8581279318963114127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3923299392479902056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf8871a2cff57214298d78fde29d4653, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panels:
+  - {fileID: 5559320547498831521}
+  - {fileID: 7842836567189436705}
+  - {fileID: 4770074379815650406}
+  menuPanel: {fileID: 8710616091797482260}
+  header: {fileID: 9050289275570954576}
+  musicNum: {fileID: 4099772631577434410}
+  effectsNum: {fileID: 4446321286154964413}
 --- !u!1 &3966810300998872234
 GameObject:
   m_ObjectHideFlags: 0
@@ -8463,7 +8841,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3538895876165297341}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8581279318963114127}
+        m_MethodName: AddMusicVolume
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0.1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6613077833405842923
 GameObject:
   m_ObjectHideFlags: 0
@@ -8583,7 +8972,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2623034616734520820}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8581279318963114127}
+        m_MethodName: AddVolume
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0.1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6855585060804945521
 GameObject:
   m_ObjectHideFlags: 0
@@ -9218,7 +9618,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.13919614, y: 0.030607244}
   m_AnchorMax: {x: 0.18721545, y: 0.15582176}
-  m_AnchoredPosition: {x: -1.539978, y: 0.099975586}
+  m_AnchoredPosition: {x: -1.539917, y: 0.099975586}
   m_SizeDelta: {x: -2.177765, y: -3.8477173}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7386347512342403355
@@ -9440,7 +9840,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.14678495, y: 0.28628728}
   m_AnchorMax: {x: 0.4457402, y: 0.6004283}
-  m_AnchoredPosition: {x: -0.009994507, y: 0.25}
+  m_AnchoredPosition: {x: -0.010009766, y: 0.25}
   m_SizeDelta: {x: 2, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7386347513794829315
@@ -9523,6 +9923,7 @@ RectTransform:
   - {fileID: 267149229}
   - {fileID: 1104656910}
   - {fileID: 51820087338831494}
+  - {fileID: 1528031360}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9873,6 +10274,7 @@ GameObject:
   - component: {fileID: 8121385246410684260}
   - component: {fileID: 8518548362087524692}
   - component: {fileID: 8319093183278059825}
+  - component: {fileID: 9033182423984156114}
   m_Layer: 5
   m_Name: ExitBtn
   m_TagString: Untagged
@@ -9980,7 +10382,83 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8518548362087524692}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8581279318963114127}
+        m_MethodName: ShowPanel
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &9033182423984156114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7811570995590607121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8581279318963114127}
+          m_MethodName: SetHeaderText
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: LEAVE THE PARTY BEHIND.
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 8581279318963114127}
+          m_MethodName: HoverOn
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 2652816238102077241}
+            m_ObjectArgumentAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8581279318963114127}
+          m_MethodName: SetHeaderText
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 8581279318963114127}
+          m_MethodName: HoverOff
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 2652816238102077241}
+            m_ObjectArgumentAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &7868085831026786221
 GameObject:
   m_ObjectHideFlags: 0
@@ -10720,7 +11198,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2493099661473907177}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8581279318963114127}
+        m_MethodName: AddVolume
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: -0.1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &9101735757848431892
 GameObject:
   m_ObjectHideFlags: 0
