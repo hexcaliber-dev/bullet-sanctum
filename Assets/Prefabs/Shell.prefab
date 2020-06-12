@@ -170,7 +170,7 @@ MonoBehaviour:
   speed: 5
   normalMaterial: {fileID: 2100000, guid: 6e99719ff47b1e14ea5997d390039c7f, type: 2}
   flashMaterial: {fileID: 2100000, guid: 08ce23b2283c36e54a9092f0fedb0b1c, type: 2}
-  health: 0
+  health: 10
   enemyType: 0
   DMG: 1
   bounty: 20
@@ -184,3 +184,5 @@ MonoBehaviour:
   explodeRange: 3
   explosionAnimation: {fileID: 1113937722154595737, guid: a9eb9af25e16a016dbb5eaf127b321ab,
     type: 3}
+  toScaleExplosion: 0
+  explodeDelay: 0.8
