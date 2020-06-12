@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour {
+    public string levelName;
     // Start is called before the first frame update
     void Start () {
         Application.targetFrameRate = 60;
@@ -15,6 +16,6 @@ public class MainMenu : MonoBehaviour {
     }
 
     public void LoadArena() {
-        SceneManager.LoadScene("CheckpointRoom");
+        SceneManager.LoadScene(levelName);
     }
 }
