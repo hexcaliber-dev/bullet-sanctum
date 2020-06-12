@@ -12,15 +12,16 @@ public class Arena : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start () {
-        waves.Add (new int[, ] { { 4, 0 }, { 1, 1 }, { 3, 2 } });
-        waves.Add (new int[, ] { { 0, 0 }, { 0, 1 }, { 3, 2 }, { 0, 3 }, { 0, 4 }, { 0, 5 } });
-        waves.Add (new int[, ] { { 1, 0 }, { 1, 1 }, { 1, 2 } });
-        waves.Add (new int[, ] { { 1, 0 }, { 1, 1 }, { 1, 2 }, { 1, 3 }, { 1, 4 }, { 1, 5 } });
-        waves.Add (new int[, ] { { 1, 0 }, { 1, 1 }, { 1, 2 }, { 0, 3 }, { 0, 4 }, { 0, 5 } });
-        waves.Add (new int[, ] { { 1, 0 }, { 1, 1 }, { 1, 2 }, { 1, 3 }, { 1, 4 }, { 1, 5 }, { 0, 6 }, { 0, 7 } });
-        waves.Add (new int[, ] { { 2, 0 }, { 2, 1 }, { 2, 2 } });
-        waves.Add (new int[, ] { { 2, 0 }, { 2, 1 }, { 2, 2 }, { 2, 3 }, { 2, 4 }, { 1, 5 }, { 1, 6 }, { 1, 7 } });
-        waves.Add (new int[, ] { { 2, 0 }, { 2, 1 }, { 2, 2 }, { 2, 3 }, { 2, 4 }, { 1, 5 }, { 1, 6 }, { 1, 7 }, { 0, 8 }, { 0, 9 } });
+        waves.Add (new int[, ] { { 5, 0 }, { 1, 1 }, { 3, 2 } });
+        waves.Add (new int[, ] { { 2, 0 } });
+        // waves.Add (new int[, ] { { 0, 0 }, { 4, 1 }, { 3, 2 }, { 2, 3 }, { 1, 4 }, { 5, 5 } });
+        // waves.Add (new int[, ] { { 1, 0 }, { 1, 1 }, { 1, 2 } });
+        // waves.Add (new int[, ] { { 1, 0 }, { 1, 1 }, { 1, 2 }, { 1, 3 }, { 1, 4 }, { 1, 5 } });
+        // waves.Add (new int[, ] { { 1, 0 }, { 1, 1 }, { 1, 2 }, { 0, 3 }, { 0, 4 }, { 0, 5 } });
+        // waves.Add (new int[, ] { { 1, 0 }, { 1, 1 }, { 1, 2 }, { 1, 3 }, { 1, 4 }, { 1, 5 }, { 0, 6 }, { 0, 7 } });
+        // waves.Add (new int[, ] { { 2, 0 }, { 2, 1 }, { 2, 2 } });
+        // waves.Add (new int[, ] { { 2, 0 }, { 2, 1 }, { 2, 2 }, { 2, 3 }, { 2, 4 }, { 1, 5 }, { 1, 6 }, { 1, 7 } });
+        // waves.Add (new int[, ] { { 2, 0 }, { 2, 1 }, { 2, 2 }, { 2, 3 }, { 2, 4 }, { 1, 5 }, { 1, 6 }, { 1, 7 }, { 0, 8 }, { 0, 9 } });
         for (int i = 0; i < waves[currWave].GetLength (0); i += 1) {
             Spawn (waves[currWave][i, 0], waves[currWave][i, 1]);
         }

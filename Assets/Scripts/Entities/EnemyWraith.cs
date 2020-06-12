@@ -30,7 +30,7 @@ public class EnemyWraith : Enemy {
     }
 
     IEnumerator BehaviorLoop () {
-        while (true) {
+        while (teleportPositions.Count > 0) {
             int newPosition = currPosition;
             while (newPosition == currPosition) {
                 newPosition = Random.Range (0, teleportPositions.Count);
@@ -59,5 +59,6 @@ public class EnemyWraith : Enemy {
                 yield return new WaitForSeconds (Time.deltaTime);
             }
         }
+        Debug.LogWarning("No Wraith teleporers assigned!!!");
     }
 }
