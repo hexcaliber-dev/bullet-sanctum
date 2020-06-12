@@ -293,6 +293,7 @@ GameObject:
   - component: {fileID: 813167166}
   - component: {fileID: 813167165}
   - component: {fileID: 813167164}
+  - component: {fileID: 813167167}
   m_Layer: 5
   m_Name: LogoAppearance
   m_TagString: Untagged
@@ -309,15 +310,15 @@ RectTransform:
   m_GameObject: {fileID: 813167162}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.9, z: 1}
   m_Children: []
   m_Father: {fileID: 1866270955}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.5, y: 20}
-  m_SizeDelta: {x: -451.4513, y: -540.03503}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &813167164
 MonoBehaviour:
@@ -371,6 +372,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 813167162}
   m_CullTransparentMesh: 0
+--- !u!114 &813167167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 813167162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86710e43de46f6f4bac7c8e50813a599, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AspectMode: 3
+  m_AspectRatio: 2.83
 --- !u!1 &1270036760
 GameObject:
   m_ObjectHideFlags: 0
@@ -645,6 +660,7 @@ GameObject:
   - component: {fileID: 1634952205}
   - component: {fileID: 1634952207}
   - component: {fileID: 1634952206}
+  - component: {fileID: 1634952208}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -661,14 +677,14 @@ RectTransform:
   m_GameObject: {fileID: 1634952204}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.48, z: 1}
   m_Children: []
   m_Father: {fileID: 1866270955}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1634952206
@@ -708,6 +724,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1634952204}
   m_CullTransparentMesh: 0
+--- !u!114 &1634952208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1634952204}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86710e43de46f6f4bac7c8e50813a599, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AspectMode: 3
+  m_AspectRatio: 1.7256728
 --- !u!1 &1646137595
 GameObject:
   m_ObjectHideFlags: 0
@@ -1004,6 +1034,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1866270955}
+  - component: {fileID: 1866270956}
   m_Layer: 5
   m_Name: SplashScreen
   m_TagString: Untagged
@@ -1020,7 +1051,7 @@ RectTransform:
   m_GameObject: {fileID: 1866270954}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.03, y: 1, z: 1}
   m_Children:
   - {fileID: 1634952205}
   - {fileID: 813167163}
@@ -1029,6 +1060,20 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.5, y: 0}
-  m_SizeDelta: {x: -1, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.0010375977}
+  m_SizeDelta: {x: 0, y: 0.0021972656}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1866270956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1866270954}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86710e43de46f6f4bac7c8e50813a599, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AspectMode: 3
+  m_AspectRatio: 1.7256728
