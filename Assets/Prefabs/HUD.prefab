@@ -97,6 +97,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c9ca772da5f68914bbdceccd43d5cf7a, type: 3}
   - {fileID: 8300000, guid: 16c99f78c6bd60c45a7bc2459b2274d6, type: 3}
   - {fileID: 8300000, guid: ea1df9cb9cf527f4297579ec0ff83797, type: 3}
+  - {fileID: 8300000, guid: 82904b930d23aaa4fa9a6ee4ac49145b, type: 3}
+  - {fileID: 8300000, guid: 9bf5383cd3da9024a8d70b714c3179f9, type: 3}
   walkingSource: {fileID: 5905332142308591451}
 --- !u!82 &267149234
 AudioSource:
@@ -2754,10 +2756,10 @@ RectTransform:
   m_Father: {fileID: 7386347514208102210}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.79819614, y: 0.9091784}
-  m_AnchorMax: {x: 0.9185884, y: 0.96939284}
-  m_AnchoredPosition: {x: 1.7999878, y: -1.6000061}
-  m_SizeDelta: {x: -16.53653, y: -11.977829}
+  m_AnchorMin: {x: 0.72169274, y: 0.91057116}
+  m_AnchorMax: {x: 0.96188086, y: 0.96939284}
+  m_AnchoredPosition: {x: 6, y: -8.09}
+  m_SizeDelta: {x: -6.7867737, y: -26.154045}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1102918187
 CanvasRenderer:
@@ -2815,7 +2817,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 20.3
+  m_fontSize: 18
   m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2832,7 +2834,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 0
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -3098,7 +3100,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 24.4
+  m_fontSize: 21.75
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3713,7 +3715,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 39.8
+  m_fontSize: 39.9
   m_fontSizeBase: 0
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4199,7 +4201,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 45.55
+  m_fontSize: 45.75
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
