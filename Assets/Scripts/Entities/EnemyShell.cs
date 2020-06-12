@@ -45,7 +45,7 @@ public class EnemyShell : EnemyGhost {
 
     void OnCollisionEnter2D (Collision2D col) {
         if (col.gameObject.tag.Equals ("Player")) {
-            player.TakeDamage (DMG);
+            // player.TakeDamage (DMG);
             StartCoroutine (Explode ());
         }
     }
