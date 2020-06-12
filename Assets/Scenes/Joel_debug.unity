@@ -200,6 +200,7 @@ GameObject:
   - component: {fileID: 322753652}
   - component: {fileID: 322753654}
   - component: {fileID: 322753653}
+  - component: {fileID: 322753655}
   m_Layer: 0
   m_Name: Kraid
   m_TagString: Untagged
@@ -246,12 +247,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e065d736a412e78458ae8640e3cd7bb8, type: 3}
+  m_Sprite: {fileID: 920440413246633081, guid: e065d736a412e78458ae8640e3cd7bb8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.92, y: 3.16}
+  m_Size: {x: 1, y: 1.6373057}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -265,8 +266,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 322753649}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10, y: -0.4, z: -5}
-  m_LocalScale: {x: 2.9272485, y: 2.9272485, z: 2.9272485}
+  m_LocalPosition: {x: -9.716, y: -0.867, z: -5}
+  m_LocalScale: {x: 3.2230792, y: 3.2230792, z: 3.2230792}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
@@ -333,8 +334,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.92, y: 3.16}
-    newSize: {x: 1.92, y: 3.16}
+    oldSize: {x: 1.93, y: 3.16}
+    newSize: {x: 1, y: 1.6373057}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -342,6 +343,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.92, y: 2.4263558}
   m_EdgeRadius: 0
+--- !u!95 &322753655
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 322753649}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 60589fd183c1f3d45b3fec93464dfc52, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &578643881
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -623,6 +643,7 @@ GameObject:
   - component: {fileID: 1629629902}
   - component: {fileID: 1629629901}
   - component: {fileID: 1629629900}
+  - component: {fileID: 1629629904}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -643,7 +664,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   smoothSpd: 5
-  offset: {x: 9, y: 0, z: -10}
+  offset: {x: 9, y: 0.35, z: -10}
   bottomLeft: {fileID: 6855752337301442307}
   topRight: {fileID: 6855752336687073755}
   scrolling: 0
@@ -713,6 +734,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1629629904
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629629899}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &1952967561340618870
 Transform:
   m_ObjectHideFlags: 0
