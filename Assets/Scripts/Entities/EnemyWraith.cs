@@ -16,6 +16,10 @@ public class EnemyWraith : Enemy {
         StartCoroutine (BehaviorLoop ());
     }
 
+    public void setTeleports(List<Transform> pos) {
+        teleportPositions = new List<Transform>(pos);
+    }
+
     public override void Attack () {
         GetComponentInChildren<EnemyWeapon> ().UseWeapon ();
     }
