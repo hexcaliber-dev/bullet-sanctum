@@ -41,6 +41,48 @@ TextureImporter:
   - first:
       213: 1183070337762169035
     second: terrain_stone_12
+  - first:
+      213: -7468059624497897965
+    second: terrain_stone_0
+  - first:
+      213: 7570919439576350403
+    second: terrain_stone_1
+  - first:
+      213: -9052526478930578418
+    second: terrain_stone_2
+  - first:
+      213: 478391594625736970
+    second: terrain_stone_3
+  - first:
+      213: 8161601483804135047
+    second: terrain_stone_4
+  - first:
+      213: -8666640321001560087
+    second: terrain_stone_5
+  - first:
+      213: -3811527569197346578
+    second: terrain_stone_6
+  - first:
+      213: 3640076406950246076
+    second: terrain_stone_7
+  - first:
+      213: 2085481249288004560
+    second: terrain_stone_8
+  - first:
+      213: 578504074188298305
+    second: terrain_stone_9
+  - first:
+      213: -7795443077383218053
+    second: terrain_stone_10
+  - first:
+      213: -8895437493239085097
+    second: terrain_stone_11
+  - first:
+      213: 2749780542016737619
+    second: terrain_stone_12
+  - first:
+      213: -4458773999995131233
+    second: terrain_stone_13
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -152,8 +194,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4b4df4e3e6fd72930800000000000000
-      internalID: 4118506048838423732
+      spriteID: 31e9d58c65f1c5890800000000000000
+      internalID: -7468059624497897965
       vertices: []
       indices: 
       edges: []
@@ -173,8 +215,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 039efdf6138e11000800000000000000
-      internalID: 5040373632067888
+      spriteID: 3ce3c0b2e1f411960800000000000000
+      internalID: 7570919439576350403
       vertices: []
       indices: 
       edges: []
@@ -194,8 +236,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6956fd71762e6eea0800000000000000
-      internalID: -5843734534056614506
+      spriteID: e0476873127fe5280800000000000000
+      internalID: -9052526478930578418
       vertices: []
       indices: 
       edges: []
@@ -215,8 +257,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d279764f61b4310f0800000000000000
-      internalID: -1147490918087551187
+      spriteID: a012335ee9693a600800000000000000
+      internalID: 478391594625736970
       vertices: []
       indices: 
       edges: []
@@ -236,8 +278,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0277b5389e5fc43f0800000000000000
-      internalID: -915086240983058656
+      spriteID: 78e4278be45d34170800000000000000
+      internalID: 8161601483804135047
       vertices: []
       indices: 
       edges: []
@@ -257,8 +299,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a8beb4c25ad092520800000000000000
-      internalID: 2677686456512408458
+      spriteID: 9e7ef9ebb88e9b780800000000000000
+      internalID: -8666640321001560087
       vertices: []
       indices: 
       edges: []
@@ -278,8 +320,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c4381e209bc0cb1c0800000000000000
-      internalID: -4486697140011039924
+      spriteID: ee05262cedbba1bc0800000000000000
+      internalID: -3811527569197346578
       vertices: []
       indices: 
       edges: []
@@ -299,8 +341,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 94660657437b7c350800000000000000
-      internalID: 6036995261448873545
+      spriteID: cb6bc87c436248230800000000000000
+      internalID: 3640076406950246076
       vertices: []
       indices: 
       edges: []
@@ -320,8 +362,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 422f9f884b9a8eff0800000000000000
-      internalID: -6568806583766492
+      spriteID: 0d3ac89952e11fc10800000000000000
+      internalID: 2085481249288004560
       vertices: []
       indices: 
       edges: []
@@ -341,8 +383,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ef439b1fcf0b9bb10800000000000000
-      internalID: 1997822510149219582
+      spriteID: 1481c13f362470800800000000000000
+      internalID: 578504074188298305
       vertices: []
       indices: 
       edges: []
@@ -362,8 +404,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 00a973ec616bbec90800000000000000
-      internalID: -7139412575200503296
+      spriteID: b7c9bc9b2d501d390800000000000000
+      internalID: -7795443077383218053
       vertices: []
       indices: 
       edges: []
@@ -383,8 +425,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 102963ccb6edb77a0800000000000000
-      internalID: -6378259892671180287
+      spriteID: 7d70bcddabe0d8480800000000000000
+      internalID: -8895437493239085097
       vertices: []
       indices: 
       edges: []
@@ -404,8 +446,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bc09d9a343c1b6010800000000000000
-      internalID: 1183070337762169035
+      spriteID: 351503185de292620800000000000000
+      internalID: 2749780542016737619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: terrain_stone_13
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9aea8caba04f12c0800000000000000
+      internalID: -4458773999995131233
       vertices: []
       indices: 
       edges: []
