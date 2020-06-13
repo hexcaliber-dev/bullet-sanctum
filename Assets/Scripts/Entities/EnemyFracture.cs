@@ -25,9 +25,8 @@ public class EnemyFracture : Enemy {
     }
 
     public override void OnDeath () {
-        if(hasDoors)
-        {
-            assignedDoors.SetActive(false);
+        if (hasDoors) {
+            assignedDoors.SetActive (false);
         }
         if (!died) {
             died = true;
@@ -38,11 +37,12 @@ public class EnemyFracture : Enemy {
     }
 
     public override void Attack () {
-        StartCoroutine (cAttack());
+        StartCoroutine (cAttack ());
     }
 
     IEnumerator cAttack () {
         GetComponent<Animator> ().SetBool ("attacking", true);
+        AudioHelper.PlaySound ("fracture_buildup");
         yield return new WaitForSeconds (1f);
         if (attackPattern == 1 && attack1 () ||
             attackPattern == 2 && attack2 () ||
@@ -56,7 +56,7 @@ public class EnemyFracture : Enemy {
     public override void MovePattern () {
         playerFound = player != null;
         if (playerFound) {
-            GetComponent<SpriteRenderer>().flipX = (transform.position - player.transform.position).x < 0;
+            GetComponent<SpriteRenderer> ().flipX = (transform.position - player.transform.position).x < 0;
             if (attackCooldown > 0) {
                 attackCooldown -= Time.deltaTime;
             } else {
@@ -76,11 +76,12 @@ public class EnemyFracture : Enemy {
                 }
             }
         }
-        base.MovePattern();
+        base.MovePattern ();
     }
 
     // ground smash
     private bool attack1 () {
+        AudioHelper.PlaySound ("fracture_shockwave");
         shockwave.UseWeapon ();
         return true;
     }
@@ -93,6 +94,7 @@ public class EnemyFracture : Enemy {
 
     // spike
     private bool attack3 () {
+        AudioHelper.PlaySound ("fracture_rumbling");
         StartCoroutine (MoveSpike (GameObject.Instantiate (spike, player.transform.position + (spikeDistance * Vector3.down), Quaternion.identity)));
         return true;
     }
