@@ -3,7 +3,7 @@ using UnityEngine;
 // Represents an item that the player can pick up.
 public class Collectible : MonoBehaviour {
 
-    public enum CollectibleType { Weapon, Fragment }
+    public enum CollectibleType { Weapon, Fragment, Scroll }
     public CollectibleType type;
     public int collectibleWeapon; // Does not need to be assigned if this is not a weapon
 
@@ -12,6 +12,8 @@ public class Collectible : MonoBehaviour {
             if (type == CollectibleType.Weapon) {
                 GameObject.FindObjectOfType<PlayerShoot>().GetNewWeapon(collectibleWeapon);
             } else if (type == CollectibleType.Fragment) {
+                GameObject.FindObjectOfType<PlayerBounty> ().CollectFragment ();
+            } else if (type == CollectibleType.Scroll) {
                 GameObject.FindObjectOfType<PlayerBounty> ().CollectFragment ();
             }
 

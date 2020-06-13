@@ -5,6 +5,11 @@ using UnityEngine;
 public class Arena : MonoBehaviour {
 
     public List<Transform> spawners;
+
+    public Transform scrollSpawn;
+    public GameObject scroll;
+    public GameObject assignedDoors;
+
     public List<Enemy> enemies;
     public static int currWave = 0;
 
@@ -17,13 +22,14 @@ public class Arena : MonoBehaviour {
         waves.Add (new int[, ] { { 5, 0 }, { 1, 1 }, { 3, 2 } });
         waves.Add (new int[, ] { { 2, 0 } });
         waves.Add (new int[, ] { { 0, 0 }, { 4, 1 }, { 3, 2 }, { 2, 3 }, { 1, 4 }, { 5, 5 } });
-        waves.Add (new int[, ] { { 1, 0 }, { 1, 1 }, { 1, 2 } });
         waves.Add (new int[, ] { { 1, 0 }, { 1, 1 }, { 1, 2 }, { 1, 3 }, { 1, 4 }, { 1, 5 } });
-        waves.Add (new int[, ] { { 1, 0 }, { 1, 1 }, { 1, 2 }, { 0, 3 }, { 0, 4 }, { 0, 5 } });
-        waves.Add (new int[, ] { { 1, 0 }, { 1, 1 }, { 1, 2 }, { 1, 3 }, { 1, 4 }, { 1, 5 }, { 0, 6 }, { 0, 7 } });
-        waves.Add (new int[, ] { { 2, 0 }, { 2, 1 }, { 2, 2 } });
-        waves.Add (new int[, ] { { 2, 0 }, { 2, 1 }, { 2, 2 }, { 2, 3 }, { 2, 4 }, { 1, 5 }, { 1, 6 }, { 1, 7 } });
+        waves.Add (new int[, ] { { 1, 0 }, { 3, 1 }, { 1, 2 }, { 0, 3 }, { 0, 4 }, { 3, 5 } });
+        waves.Add (new int[, ] { { 1, 0 }, { 2, 1 }, { 1, 2 }, { 1, 3 }, { 1, 4 }, { 1, 5 }, { 0, 6 }, { 0, 7 } });
+        waves.Add (new int[, ] { { 4, 0 }, { 4, 1 }, { 4, 2 } });
+        waves.Add (new int[, ] { { 3, 0 }, { 2, 1 }, { 4, 2 }, { 2, 3 }, { 3, 4 }, { 1, 5 }, { 1, 6 }, { 3, 7 } });
         waves.Add (new int[, ] { { 2, 0 }, { 2, 1 }, { 2, 2 }, { 2, 3 }, { 2, 4 }, { 1, 5 }, { 1, 6 }, { 1, 7 }, { 0, 8 }, { 0, 9 } });
+        waves.Add (new int[, ] { { 5, 0 }, { 5, 0 }, { 5, 0 }, { 5, 0 }, { 5, 0 }, { 5, 0 }, { 5, 1 }, { 5, 1 }, { 5, 1 }, { 5, 1 }, { 5, 1 }, { 5, 1 }, { 5, 2 }, { 5, 2 }, { 5, 2 }, { 5, 2 }, { 5, 2 }, { 5, 2 } });
+        waves.Add (new int[, ] { { 0, 0 }, { 4, 1 }, { 3, 2 }, { 2, 3 }, { 1, 4 }, { 5, 5 }, { 0, 0 }, { 4, 1 }, { 3, 2 }, { 2, 3 }, { 1, 4 }, { 5, 5 } });
         if (!debug) {
             for (int i = 0; i < waves[currWave].GetLength (0); i += 1) {
                 Spawn (waves[currWave][i, 0], waves[currWave][i, 1]);
@@ -36,12 +42,16 @@ public class Arena : MonoBehaviour {
         if (!debug) {
             int numEnemies = GameObject.FindObjectsOfType<Enemy> ().Length;
             if (numEnemies <= 2) {
-                for (int i = 0; i < waves[currWave].GetLength (0); i += 1) {
-                    Spawn (waves[currWave][i, 0], waves[currWave][i, 1]);
-                }
-
-                if (currWave < waves.Count - 1)
+                if (currWave < waves.Count - 1) {
                     currWave += 1;
+                    for (int i = 0; i < waves[currWave].GetLength (0); i += 1) {
+                        Spawn (waves[currWave][i, 0], waves[currWave][i, 1]);
+                    }
+                } else if (numEnemies == 0) {
+                    GameObject.Instantiate (scroll, scrollSpawn.position, Quaternion.identity);
+                    assignedDoors.SetActive(false);
+
+                }
             }
         }
     }
