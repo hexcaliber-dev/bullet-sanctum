@@ -650,7 +650,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 3
-      m_TileSpriteIndex: 5
+      m_TileSpriteIndex: 19
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -925,6 +925,15 @@ Tilemap:
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
       m_AllTileFlags: 1073741825
+  - first: {x: 21, y: 1, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 19
+      m_TileSpriteIndex: 3
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      m_AllTileFlags: 1073741825
   - first: {x: 40, y: 1, z: 0}
     second:
       serializedVersion: 2
@@ -938,7 +947,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 5
-      m_TileSpriteIndex: 3
+      m_TileSpriteIndex: 5
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -1172,6 +1181,8 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: bdf659135114dfb458d628d9b1392c3e, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 712e46057c7784e49b027164c5b25a33, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: b25f506f771602d4aa588f0af4d347d5, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 120
     m_Data: {fileID: 21300000, guid: 7138e2023dc70234b8eab344dd861247, type: 3}
@@ -1180,12 +1191,12 @@ Tilemap:
   - m_RefCount: 2
     m_Data: {fileID: 21300000, guid: 3d4b236f602c04f4a945ca81692e1624, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: 4118506048838423732, guid: 30239652a8d9b644987328d8cdcde514,
-      type: 3}
+    m_Data: {fileID: 21300000, guid: 081191f59e17cfc4e8a1825a0fe36d12, type: 3}
   - m_RefCount: 3
     m_Data: {fileID: 21300000, guid: dc5bb05e12a1d4744a5b091ade1824b1, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: 21300000, guid: eafd7fcca509e54bd8563d932faf7daf, type: 3}
+    m_Data: {fileID: 4118506048838423732, guid: 30239652a8d9b644987328d8cdcde514,
+      type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 5040373632067888, guid: 30239652a8d9b644987328d8cdcde514, type: 3}
   - m_RefCount: 1
@@ -1222,8 +1233,10 @@ Tilemap:
       type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: 191e4f6842883fc4e80918bb02ed9ddd, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300000, guid: eafd7fcca509e54bd8563d932faf7daf, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 142
+  - m_RefCount: 143
     m_Data:
       e00: 1
       e01: 0
@@ -1260,7 +1273,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 143
+  - m_RefCount: 144
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   - m_RefCount: 0
     m_Data: {r: 0.0000000015910366, g: 0.0000000015910366, b: 0.0000000015910366,
@@ -1437,14 +1450,6 @@ CompositeCollider2D:
         Y: -50000000
       - X: 225000000
         Y: -50000000
-    - - X: 190000000
-        Y: 15000000
-      - X: 145000000
-        Y: 15000000
-      - X: 145000000
-        Y: 10000000
-      - X: 190000000
-        Y: 10000000
     - - X: 40000000
         Y: 0
       - X: 55000000
@@ -1457,6 +1462,26 @@ CompositeCollider2D:
         Y: -5000000
       - X: 40000000
         Y: -5000000
+    - - X: 190000000
+        Y: 15000000
+      - X: 145000000
+        Y: 15000000
+      - X: 145000000
+        Y: 10000000
+      - X: 190000000
+        Y: 10000000
+    - - X: 90000000
+        Y: 625000
+      - X: 90000000
+        Y: 5000000
+      - X: 75000000
+        Y: 5000000
+      - X: 75000000
+        Y: 2187500
+      - X: 76875000
+        Y: 0
+      - X: 87812496
+        Y: 0
     - - X: 130000000
         Y: -24747986
       - X: 129981480
@@ -1531,6 +1556,12 @@ CompositeCollider2D:
       - {x: 5.499971, y: 1.5}
       - {x: 3.5, y: 1.4999707}
       - {x: 3.5000293, y: -0.5}
+    - - {x: 8.781245, y: 0}
+      - {x: 9, y: 0.0625211}
+      - {x: 8.99997, y: 0.5}
+      - {x: 7.5, y: 0.4999707}
+      - {x: 7.5000067, y: 0.2187428}
+      - {x: 7.687512, y: 0}
     - - {x: 12.99997, y: -2.5}
       - {x: 12.99997, y: -2.4747987}
       - {x: 12.998148, y: -2.474769}
