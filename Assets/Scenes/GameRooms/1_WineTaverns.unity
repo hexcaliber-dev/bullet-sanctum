@@ -31309,6 +31309,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 861622023}
     m_Modifications:
+    - target: {fileID: 5810246535703468040, guid: 0190b2b7700a840c4a4b1702ae8e3210,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 3fb196b0ecd19d6ddbe9fca779eae859, type: 2}
     - target: {fileID: 7782695239055680204, guid: 0190b2b7700a840c4a4b1702ae8e3210,
         type: 3}
       propertyPath: teleportPositions.Array.size

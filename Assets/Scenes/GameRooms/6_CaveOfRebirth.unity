@@ -692,7 +692,7 @@ MonoBehaviour:
   switcherID: 4
   nextSwitcherID: 2
   alternate: 0
-  sceneName: 7_CaveOfRebirth
+  sceneName: 0_WineTaverns
   defaultSpawn: 0
 --- !u!1 &568693025
 GameObject:
