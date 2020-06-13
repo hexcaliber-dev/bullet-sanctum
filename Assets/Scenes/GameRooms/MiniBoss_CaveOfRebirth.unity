@@ -7445,6 +7445,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 267149235, guid: d48691d86e6dea28888725c1f5d67fb9, type: 3}
+      propertyPath: audioClips.Array.size
+      value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: 267149235, guid: d48691d86e6dea28888725c1f5d67fb9, type: 3}
+      propertyPath: audioClips.Array.data[30]
+      value: 
+      objectReference: {fileID: 8300000, guid: 8eaf00735c0d7344994b31b5bb49db72, type: 3}
+    - target: {fileID: 267149235, guid: d48691d86e6dea28888725c1f5d67fb9, type: 3}
+      propertyPath: audioClips.Array.data[31]
+      value: 
+      objectReference: {fileID: 8300000, guid: 6e21658d4d7dbf8418cc49c7efdaeb4e, type: 3}
+    - target: {fileID: 267149235, guid: d48691d86e6dea28888725c1f5d67fb9, type: 3}
+      propertyPath: audioClips.Array.data[32]
+      value: 
+      objectReference: {fileID: 8300000, guid: 843eb95aa07b8004d9d48fce5592b51e, type: 3}
     - target: {fileID: 1368472693, guid: d48691d86e6dea28888725c1f5d67fb9, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -29.496979
@@ -7459,6 +7475,56 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 749039678716180228, guid: d48691d86e6dea28888725c1f5d67fb9,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 913988880913134191, guid: d48691d86e6dea28888725c1f5d67fb9,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 913988880913134191, guid: d48691d86e6dea28888725c1f5d67fb9,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3591456479342770172, guid: d48691d86e6dea28888725c1f5d67fb9,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3591456479342770172, guid: d48691d86e6dea28888725c1f5d67fb9,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5655684157904405781, guid: d48691d86e6dea28888725c1f5d67fb9,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5655684157904405781, guid: d48691d86e6dea28888725c1f5d67fb9,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6116347116614363841, guid: d48691d86e6dea28888725c1f5d67fb9,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6116347116614363841, guid: d48691d86e6dea28888725c1f5d67fb9,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6536229738343593891, guid: d48691d86e6dea28888725c1f5d67fb9,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6536229738343593891, guid: d48691d86e6dea28888725c1f5d67fb9,
         type: 3}
       propertyPath: m_sharedMaterial
       value: 
@@ -7809,6 +7875,8 @@ MonoBehaviour:
   bottomLeft: {fileID: 243179610}
   topRight: {fileID: 1542229354}
   scrolling: 0
+  followObject: {fileID: 0}
+  hitBoundsRight: 0
 --- !u!1 &2003116064
 GameObject:
   m_ObjectHideFlags: 0

@@ -25,6 +25,7 @@ public class FractureLaser : Weapon {
         for (int i = 0; i < laserCount; i += 1) {
             Vector2 target = GameObject.FindObjectOfType<Player> ().transform.position;
             yield return new WaitForSeconds(laserGap);
+            AudioHelper.PlaySound("fracture_shoot");
             ShootAt(target);
         }
         yield return null;
