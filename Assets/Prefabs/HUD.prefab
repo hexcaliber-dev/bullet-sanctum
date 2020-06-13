@@ -104,6 +104,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0c725e3e5f7f13a4b95eec9ae827effd, type: 3}
   - {fileID: 8300000, guid: 5734743df007fc74ebdc7ccfa4543d60, type: 3}
   - {fileID: 8300000, guid: 8edd8c3768df9e7489ccb14fa52c9d93, type: 3}
+  - {fileID: 8300000, guid: 4d0b1ca1d868d9548a7d56d0f75a96d3, type: 3}
   walkingSource: {fileID: 5905332142308591451}
 --- !u!82 &267149234
 AudioSource:
