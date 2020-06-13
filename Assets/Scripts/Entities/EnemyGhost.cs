@@ -23,6 +23,7 @@ public class EnemyGhost : Enemy {
 
     public override void Attack () {
         player.TakeDamage (DMG);
+        AudioHelper.PlaySound("drone_hit");
         rb.AddForce (-Vector3.Normalize ((Vector2) (player.transform.position - transform.position)) * knockback);
     }
 
@@ -75,6 +76,8 @@ public class EnemyGhost : Enemy {
                 knockback.x = -knockback.x;
             }
             rb.AddForce (knockback, ForceMode2D.Impulse);
+        } else if (collision.gameObject.layer == LayerMask.NameToLayer("PlayerBullet")) {
+            AudioHelper.PlaySound("drone_hit");
         }
     }
 }
