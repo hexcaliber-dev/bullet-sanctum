@@ -454,22 +454,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 267149235, guid: d48691d86e6dea28888725c1f5d67fb9, type: 3}
-      propertyPath: audioClips.Array.size
-      value: 27
-      objectReference: {fileID: 0}
-    - target: {fileID: 267149235, guid: d48691d86e6dea28888725c1f5d67fb9, type: 3}
-      propertyPath: audioClips.Array.data[24]
-      value: 
-      objectReference: {fileID: 8300000, guid: 8669f1e607f50e446bd679f01dae5756, type: 3}
-    - target: {fileID: 267149235, guid: d48691d86e6dea28888725c1f5d67fb9, type: 3}
-      propertyPath: audioClips.Array.data[25]
-      value: 
-      objectReference: {fileID: 8300000, guid: f5f64928efa320e41af465da45d673b3, type: 3}
-    - target: {fileID: 267149235, guid: d48691d86e6dea28888725c1f5d67fb9, type: 3}
-      propertyPath: audioClips.Array.data[26]
-      value: 
-      objectReference: {fileID: 8300000, guid: 0c725e3e5f7f13a4b95eec9ae827effd, type: 3}
     - target: {fileID: 749039678716180228, guid: d48691d86e6dea28888725c1f5d67fb9,
         type: 3}
       propertyPath: m_Material
