@@ -64,22 +64,23 @@ public class EnemyWarden : Enemy {
                 rb.velocity = Vector2.zero;
             }
         }
-        base.MovePattern();
+        base.MovePattern ();
     }
 
     IEnumerator cFlip () {
         if (!isFlipping) {
             isFlipping = true;
             yield return new WaitForSeconds (flipDelay);
+            AudioHelper.PlaySound ("warden_grunt2");
             if (!isCharging) {
-                base.Flip();
+                base.Flip ();
             }
             isFlipping = false;
         }
     }
 
-    public override void Flip() {
-        StartCoroutine(cFlip());
+    public override void Flip () {
+        StartCoroutine (cFlip ());
     }
 
     IEnumerator cCharge () {
@@ -87,10 +88,12 @@ public class EnemyWarden : Enemy {
         GetComponent<Animator> ().SetBool ("moving", false);
         canCharge = false;
         isCharging = true;
+        AudioHelper.PlaySound ("warden_grunt2");
         yield return new WaitForSeconds (chargeDelay);
         GetComponent<Animator> ().SetBool ("moving", true);
         float oldSpeed = speed;
         speed = chargeSpeed;
+        AudioHelper.PlaySound ("warden_grunt");
         print ("CHARGE" + speed);
         yield return new WaitForSeconds (chargeTime);
         speed = oldSpeed;
