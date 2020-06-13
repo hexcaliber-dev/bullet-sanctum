@@ -28,12 +28,15 @@ public class EnemyShell : EnemyGhost {
             AudioHelper.PlaySound ("shell_explode");
             GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
             GetComponent<Animator> ().SetBool ("exploding", true);
+            GetComponent<Collider2D>().enabled = false;
             yield return new WaitForSeconds (explodeDelay);
             GameObject explosion = GameObject.Instantiate (explosionAnimation, transform.position, Quaternion.identity);
             if (toScaleExplosion)
                 explosion.transform.localScale = new Vector3 (transform.localScale.x * 3, transform.localScale.y * 3, transform.localScale.z * 3);
             foreach (LivingEntity entity in GameObject.FindObjectsOfType<LivingEntity> ()) {
-                if (!entity.entityName.Equals ("Shell") && Vector2.Distance (transform.position, entity.transform.position) < explodeRange) {
+                if (Vector2.Distance (transform.position, entity.transform.position) < explodeRange) {
+                    if (entity.entityName.Equals("Shell"))
+                    {entity.TakeDamage(100);}
                     print ("DAMAGE" + entity.entityName);
                     entity.TakeDamage (explodeDamage);
                 }

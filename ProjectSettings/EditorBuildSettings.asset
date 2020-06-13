@@ -59,4 +59,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameRooms/0_WineTaverns.unity
     guid: 60ec88e910eeab742a7dc8b15bbcbe60
+  - enabled: 1
+    path: Assets/Scenes/GameRooms/1_WineTaverns.unity
+    guid: 7361ca64137a4c745af86f7bdb8b42f4
   m_configObjects: {}
