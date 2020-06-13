@@ -27843,7 +27843,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 655758371}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.04, y: -2.81, z: 0}
+  m_LocalPosition: {x: -1.02, y: -2.81, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1272864919}
@@ -27980,7 +27980,7 @@ PrefabInstance:
     - target: {fileID: 4747245513625859704, guid: 5b759eafa3d4ed94599e8912afaf0bf0,
         type: 3}
       propertyPath: sceneName
-      value: 2_WineTaverns
+      value: 1_WineTaverns
       objectReference: {fileID: 0}
     - target: {fileID: 4747245513625859705, guid: 5b759eafa3d4ed94599e8912afaf0bf0,
         type: 3}
