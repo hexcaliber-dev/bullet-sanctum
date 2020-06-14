@@ -12,7 +12,8 @@ public class UltimateBoss : Enemy {
     private List<Transform> wraith_spawns;
 
     // Enemies to spawn on attack #1 (Usually Wraiths).
-    public GameObject spawnee;
+    public GameObject spawnee1;
+    public GameObject spawnee2;
 
     public override void OnSpawn() {
         rb = gameObject.GetComponent<Rigidbody2D> ();
@@ -32,8 +33,17 @@ public class UltimateBoss : Enemy {
             case 1:
                 attack1();
                 break;
+            case 2:
+                attack2();
+                break;
             default:
                 break;
+        }
+
+        attack_pattern += 1;
+
+        if (attack_pattern > 2) {
+            attack_pattern = 1;
         }
     }
 
@@ -41,8 +51,18 @@ public class UltimateBoss : Enemy {
         // Spawn Wraiths...
         attack_timr = 70;
 
-        GameObject spawnee1 = Instantiate(spawnee, transform.position, Quaternion.identity) as GameObject;
-        spawnee1.SendMessage("setTeleports", wraith_spawns);
+        GameObject spawneeObj = Instantiate(spawnee1, transform.position, Quaternion.identity) as GameObject;
+        spawneeObj.SendMessage("setTeleports", wraith_spawns);
+    }
+
+    private void attack2() {
+        // Spawn homing
+        attack_timr = 70;
+        Vector3 spawnPoint = transform.position + (Vector3.up * 3);
+        spawnPoint.z = -1;
+
+        GameObject spawneeObj = Instantiate(spawnee2, spawnPoint, Quaternion.Euler(0, 0, -90)) as GameObject;
+        spawneeObj.SendMessage("setTarget", player.transform);
     }
 
     public override void MovePattern() {

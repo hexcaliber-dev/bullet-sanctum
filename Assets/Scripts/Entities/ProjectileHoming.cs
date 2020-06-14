@@ -12,6 +12,10 @@ public class ProjectileHoming : Enemy {
 
 	public override void Attack() {}
 
+	public void setTarget(Transform t) {
+		target = t;
+	}
+
 	public override void MovePattern() {
 		rb.velocity = transform.up * speed * Time.deltaTime;
 		Vector3 targetVector = target.position - transform.position;
