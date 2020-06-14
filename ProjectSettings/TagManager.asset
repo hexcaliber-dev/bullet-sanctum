@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Bullet
   - CheckpointPillar
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX

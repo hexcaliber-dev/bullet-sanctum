@@ -188,7 +188,7 @@ public class Player : LivingEntity {
             SceneManager.LoadScene ("0_CaveOfRebirth");
         } else {
             RoomSwitch.currentId = "99";
-            SceneManager.LoadScene (Checkpoint.getCurrentCheckpoint());
+            SceneManager.LoadScene (Checkpoint.getCurrentCheckpoint ());
         }
         playerHealth = maxHealth;
     }
@@ -204,18 +204,20 @@ public class Player : LivingEntity {
     }
 
     public override void TakeDamage (int damage) {
-        StartCoroutine (FlashWhite (0.1f));
-        playerHealth -= damage;
-        if (playerHealth <= 0) {
-            OnDeath ();
-        } else {
-            if (playerHealth > maxHealth) {
-                playerHealth = maxHealth;
+        if (currState != MoveState.Strafing) {
+            StartCoroutine (FlashWhite (0.1f));
+            playerHealth -= damage;
+            if (playerHealth <= 0) {
+                OnDeath ();
             } else {
-                AudioHelper.PlaySound ("playerhurt_alt", 0.3f);
-                GameObject.FindObjectOfType<CameraUtils> ().Shake (0.25f, 0.25f);
+                if (playerHealth > maxHealth) {
+                    playerHealth = maxHealth;
+                } else {
+                    AudioHelper.PlaySound ("playerhurt_alt", 0.3f);
+                    GameObject.FindObjectOfType<CameraUtils> ().Shake (0.25f, 0.25f);
+                }
+                hud.SetHealthAmount (playerHealth);
             }
-            hud.SetHealthAmount (playerHealth);
         }
     }
 
@@ -238,7 +240,10 @@ public class Player : LivingEntity {
         if (Input.GetKey (KeyCode.S)) strafeDir += Vector2.down;
         if (Input.GetKey (KeyCode.D)) strafeDir += Vector2.right;
 
-        foreach (GameObject enemy in GameObject.FindGameObjectsWithTag ("Enemy")) {
+        List<GameObject> bulletTimeObjs = new List<GameObject> ();
+        bulletTimeObjs.AddRange (GameObject.FindGameObjectsWithTag ("Enemy"));
+        bulletTimeObjs.AddRange (GameObject.FindGameObjectsWithTag ("EnemyBullet"));
+        foreach (GameObject enemy in bulletTimeObjs) {
             // Bullet time
             if (Vector2.Distance (enemy.transform.position, transform.position) < bulletTimeDistance && !doBulletTime) {
                 Time.timeScale = bulletTimeMultiplier;
