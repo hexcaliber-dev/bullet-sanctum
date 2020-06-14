@@ -77,6 +77,7 @@ public class EnemyRanged : Enemy {
                 movingRight = true;
             }
         }
+        base.MovePattern();
     }
 
     void OnCollisionEnter2D (Collision2D collision) {
