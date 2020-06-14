@@ -14,7 +14,7 @@ public class Collectible : MonoBehaviour {
             } else if (type == CollectibleType.Fragment) {
                 GameObject.FindObjectOfType<PlayerBounty> ().CollectFragment ();
             } else if (type == CollectibleType.Scroll) {
-                GameObject.FindObjectOfType<PlayerBounty> ().CollectFragment ();
+                Shop.hasScroll = true;
             }
 
             Destroy (gameObject);
