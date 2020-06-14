@@ -266,7 +266,7 @@ public class Player : LivingEntity {
         if (currState == MoveState.Strafing) {
             currState = MoveState.Falling;
         }
-        rb2D.inertia = 0f;
+        rb2D.inertia *= 0.25f;
         rb2D.velocity = Vector2.zero;
         Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer ("Player"), LayerMask.NameToLayer ("Enemy"), false);
         Physics2D.IgnoreLayerCollision (LayerMask.NameToLayer ("Player"), LayerMask.NameToLayer ("Ghost"), false);
@@ -297,6 +297,9 @@ public class Player : LivingEntity {
             if (currState == MoveState.Ground) {
                 strafesRemaining = Math.Min (MAX_STRAFE_BARS, strafesRemaining + 1);
                 hud.SetStrafeAmount (strafesRemaining);
+                if (strafesRemaining == 3) {
+                    AudioHelper.PlaySound ("recharged");
+                }
             }
             yield return new WaitForSeconds (strafeRechargeTime);
         }
