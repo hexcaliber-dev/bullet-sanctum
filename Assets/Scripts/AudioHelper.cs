@@ -66,4 +66,11 @@ public class AudioHelper : MonoBehaviour {
     void Update () {
 
     }
+
+    IEnumerator StopPlaying(AudioSource source) {
+        if (source.clip != null) {
+            yield return new WaitForSeconds(source.clip.length);
+            source.Stop();
+        }
+    }
 }

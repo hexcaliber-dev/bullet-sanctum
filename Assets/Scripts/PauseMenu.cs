@@ -105,4 +105,8 @@ public class PauseMenu : MonoBehaviour {
     HUD GetHUD () {
         return GameObject.FindObjectOfType<HUD> ();
     }
+
+    public void StartGame() {
+        SceneManager.LoadScene("IntroScene");
+    }
 }
