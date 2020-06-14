@@ -71,11 +71,11 @@ public class EnemyGhost : Enemy {
     void OnCollisionEnter2D (Collision2D collision) {
         if (collision.gameObject.tag == "Player" && playerFound) {
             Attack();
-            Vector2 knockback = new Vector2 (8, 3);
-            if (facingRight) {
-                knockback.x = -knockback.x;
-            }
-            rb.AddForce (knockback, ForceMode2D.Impulse);
+            // Vector2 knockback = new Vector2 (8, 3);
+            // if (facingRight) {
+            //     knockback.x = -knockback.x;
+            // }
+            // rb.AddForce (knockback, ForceMode2D.Impulse);
         } else if (collision.gameObject.layer == LayerMask.NameToLayer("PlayerBullet")) {
             AudioHelper.PlaySound("drone_hit");
         }
