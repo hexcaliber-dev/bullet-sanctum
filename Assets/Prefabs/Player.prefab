@@ -334,6 +334,7 @@ MonoBehaviour:
   strafeCooldown: 0
   bulletTimeDistance: 2
   bulletTimeMultiplier: 0.5
+  invulnerabilityTime: 0.25
   currState: 0
 --- !u!50 &3592231846050750049
 Rigidbody2D:

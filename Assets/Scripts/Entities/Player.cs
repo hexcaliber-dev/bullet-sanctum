@@ -30,6 +30,8 @@ public class Player : LivingEntity {
     public int strafeCost;
     public bool strafeCooldown;
     public float bulletTimeDistance, bulletTimeMultiplier;
+    bool canTakeDamage;
+    public float invulnerabilityTime;
 
     // Move state
     public enum MoveState { Ground, Falling, Jumping, Strafing }
@@ -56,6 +58,7 @@ public class Player : LivingEntity {
         doPlayerUpdates = true;
         hud.SetHealthAmount (playerHealth);
         Time.timeScale = 1f;
+        canTakeDamage = true;
     }
 
     void FixedUpdate () {
@@ -204,8 +207,9 @@ public class Player : LivingEntity {
     }
 
     public override void TakeDamage (int damage) {
-        if (currState != MoveState.Strafing) {
+        if (canTakeDamage && currState != MoveState.Strafing) {
             StartCoroutine (FlashWhite (0.1f));
+            StartCoroutine(Invulnerability());
             playerHealth -= damage;
             if (playerHealth <= 0) {
                 OnDeath ();
@@ -219,6 +223,12 @@ public class Player : LivingEntity {
                 hud.SetHealthAmount (playerHealth);
             }
         }
+    }
+
+    IEnumerator Invulnerability() {
+        canTakeDamage = false;
+        yield return new WaitForSeconds(invulnerabilityTime);
+        canTakeDamage = true;
     }
 
     IEnumerator StartStrafe (float delay, bool inverted) {
