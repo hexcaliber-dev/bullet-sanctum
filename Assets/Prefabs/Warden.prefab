@@ -168,7 +168,7 @@ MonoBehaviour:
   entityName: Warden
   entityType: 1
   frozen: 0
-  speed: 300
+  speed: 450
   normalMaterial: {fileID: 2100000, guid: 6e99719ff47b1e14ea5997d390039c7f, type: 2}
   flashMaterial: {fileID: 2100000, guid: 08ce23b2283c36e54a9092f0fedb0b1c, type: 2}
   health: 25
