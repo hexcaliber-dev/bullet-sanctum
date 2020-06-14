@@ -4,14 +4,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class RoomSwitch : MonoBehaviour
-{
+public class RoomSwitch : MonoBehaviour {
     public static string currentId = "";
-    private static Vector3 spawnPosition = new Vector3(0.0f, 0.0f, 0f);
+    private static Vector3 spawnPosition = new Vector3 (0.0f, 0.0f, 0f);
     private static string checkpointScene;
     public float transitionSpeed;
     public Image fadeImage;
-    public GameObject player; 
+    public GameObject player;
 
     public GameObject playerSpawnPoint;
     public GameObject alternateSpawnPoint;
@@ -24,21 +23,18 @@ public class RoomSwitch : MonoBehaviour
     private bool activeSwitcher;
     public bool defaultSpawn;
 
+    // To setup spawn locations for each room, you must do the following:
+    // Make an empty object
+    // Under that have another object with this script
+    // To setup a regular spawn point, make an empty object under the object
+    // with the script, then attatch it to playerSpawnPoint variable in the script
+    // Same for alternate except it doesn't need to be a child
 
-// To setup spawn locations for each room, you must do the following:
-// Make an empty object
-// Under that have another object with this script
-// To setup a regular spawn point, make an empty object under the object
-// with the script, then attatch it to playerSpawnPoint variable in the script
-// Same for alternate except it doesn't need to be a child
-
-// NOTE: Alternate has precedence, but once it's use, the alternate bool is set to
-// false
-    
+    // NOTE: Alternate has precedence, but once it's use, the alternate bool is set to
+    // false
 
     // Start is called before the first frame update
-    void Awake()
-    {
+    void Awake () {
         switchNow = false;
         activeSwitcher = false;
 
@@ -52,128 +48,106 @@ public class RoomSwitch : MonoBehaviour
         //     StartCoroutine(fadeIn());
         // }
 
-        if (currentId == "")
-        {
-            if (defaultSpawn == true)
-            {
+        if (currentId == "") {
+            if (defaultSpawn == true) {
                 currentId = switcherID;
             }
         }
-        if (currentId == switcherID)
-        {
+        if (currentId == switcherID) {
             activeSwitcher = true;
         }
 
-        if (activeSwitcher)
-        {
-            fadeImage.color = new Color32(0, 0, 0, 255);
-            if (alternate)
-            {
+        if (activeSwitcher) {
+            fadeImage.color = new Color32 (0, 0, 0, 255);
+            if (alternate) {
                 if (alternateSpawnPoint != null)
-                    spawnPlayer(alternateSpawnPoint);
+                    spawnPlayer (alternateSpawnPoint);
                 else
-                    Debug.Log("Set Alternate SpawnPoint!");
+                    Debug.Log ("Set Alternate SpawnPoint!");
                 alternate = false;
-            }
-            else
-            {
+            } else {
                 if (playerSpawnPoint != null)
-                    spawnPlayer(playerSpawnPoint);
+                    spawnPlayer (playerSpawnPoint);
                 else
-                    Debug.Log("Set Regular SpawnPoint!");
+                    Debug.Log ("Set Regular SpawnPoint!");
             }
-            StartCoroutine(fadeIn());
+            StartCoroutine (fadeIn ());
         }
 
         activeSwitcher = false;
-        
 
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if(currentId == "death")
-        {
+    void Update () {
+        if (currentId == "death") {
             switchNow = true;
         }
-        if (switchNow)
-        {
-            loadScene();
+        if (switchNow) {
+            loadScene ();
         }
     }
 
-    void OnTriggerEnter2D(Collider2D col)
-    {
+    void OnTriggerEnter2D (Collider2D col) {
         // Debug.Log(col.gameObject.tag);
-        if (col.gameObject.tag == "Player")
-        {
-            Debug.Log("RoomSwitch Collision Detected...");
-            activateSwitch();
+        if (col.gameObject.tag == "Player") {
+            Debug.Log ("RoomSwitch Collision Detected...");
+            activateSwitch ();
         }
     }
 
-    void activateSwitch()
-    {
-        StartCoroutine(fadeOut());
+    void activateSwitch () {
+        StartCoroutine (fadeOut ());
     }
 
-    public static void OnPlayerDeath()
-    {
+    public static void OnPlayerDeath () {
         currentId = "death";
 
     }
 
-    void loadScene()
-    {
-        if(currentId == "death")
-        {
-            Debug.Log("Scene Changing to... " + Checkpoint.getCurrentCheckpoint());
-            SceneManager.LoadScene(Checkpoint.getCurrentCheckpoint());
+    void loadScene () {
+        if (currentId == "death") {
+            Debug.Log ("Scene Changing to... " + Checkpoint.getCurrentCheckpoint ());
+            SceneManager.LoadScene (Checkpoint.getCurrentCheckpoint ());
             return;
         }
         currentId = nextSwitcherID;
-        Debug.Log("Scene Changing to... " + sceneName);
-        SceneManager.LoadScene(sceneName);
+        Debug.Log ("Scene Changing to... " + sceneName);
+        SceneManager.LoadScene (sceneName);
     }
 
-    IEnumerator fadeOut()
-    {
-        Debug.Log("Fading Out... Start");
+    IEnumerator fadeOut () {
+        Debug.Log ("Fading Out... Start");
 
-        player.GetComponent<Player>().enabled = false;
-        for (float i = 0; i < 255; i += transitionSpeed)
-        {
-            fadeImage.color = new Color32(0, 0, 0, (byte)i);
+        GameObject.FindObjectOfType<Player>().doPlayerUpdates = false;
+        for (float i = 0; i < 255; i += transitionSpeed) {
+            fadeImage.color = new Color32 (0, 0, 0, (byte) i);
             yield return null;
         }
-        player.GetComponent<Player>().enabled = true;
-        
+        GameObject.FindObjectOfType<Player>().doPlayerUpdates = false;
+
         switchNow = true;
-        Debug.Log("Fading Out... End");
+        Debug.Log ("Fading Out... End");
     }
 
-    IEnumerator fadeIn()
-    {
-        Debug.Log("Fading In... Start");
+    IEnumerator fadeIn () {
+        Debug.Log ("Fading In... Start");
 
-        player.GetComponent<Player>().enabled = false;
-        for (float i = 255; i > 0; i -= transitionSpeed)
-        {
-            
-            fadeImage.color = new Color32(0, 0, 0, (byte)i);
+        player.GetComponent<Player> ().enabled = false;
+        for (float i = 255; i > 0; i -= transitionSpeed) {
+
+            fadeImage.color = new Color32 (0, 0, 0, (byte) i);
             yield return null;
         }
-        player.GetComponent<Player>().enabled = true;
-        
-        Debug.Log("Fading In... End");
+        player.GetComponent<Player> ().enabled = true;
+
+        Debug.Log ("Fading In... End");
     }
 
-    void spawnPlayer(GameObject t)
-    {
-        Debug.Log("Player Spawned");
-        GameObject sp = Instantiate(player, t.transform);
-        sp.GetComponent<Player>().enabled = true;
+    void spawnPlayer (GameObject t) {
+        Debug.Log ("Player Spawned");
+        GameObject sp = Instantiate (player, t.transform);
+        sp.GetComponent<Player> ().enabled = true;
         //setCameraTarget(sp);
 
     }
@@ -182,6 +156,5 @@ public class RoomSwitch : MonoBehaviour
     // {
     //     cameraFollower.GetComponent<CameraUtils>().SetPlayer(p);
     // }
-
 
 }
