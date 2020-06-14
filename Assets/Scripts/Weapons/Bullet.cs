@@ -38,7 +38,7 @@ public class Bullet : MonoBehaviour {
             DoCollision (collider.gameObject);
     }
 
-    void DoCollision (GameObject obj) {
+    public void DoCollision (GameObject obj) {
         LivingEntity entity = obj.GetComponent<LivingEntity> ();
         if (entity != null) {
             entity.TakeDamage (this);
