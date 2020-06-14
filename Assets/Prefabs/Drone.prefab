@@ -14,12 +14,7 @@ GameObject:
   - component: {fileID: 2661772590937968409}
   - component: {fileID: 2661772590937968390}
   - component: {fileID: 5446036168991873488}
-<<<<<<< HEAD
-  - component: {fileID: 8866615407497775321}
-  m_Layer: 16
-=======
   m_Layer: 14
->>>>>>> a02351f7339f555ed89c3b45a8eaa631546ac228
   m_Name: Drone
   m_TagString: Enemy
   m_Icon: {fileID: 0}
