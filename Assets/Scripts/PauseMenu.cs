@@ -9,6 +9,7 @@ public class PauseMenu : MonoBehaviour {
     public List<CanvasGroup> panels;
     public CanvasGroup menuPanel;
     public TMP_Text header, musicNum, effectsNum;
+    public AudioSource shootSource, musicSource;
 
     float prevTime;
 
@@ -68,7 +69,7 @@ public class PauseMenu : MonoBehaviour {
             GetPlayer ().doPlayerUpdates = false;
             GetHUD ().doCursorDraw = false;
             Cursor.visible = true;
-            SetHeaderText("");
+            SetHeaderText ("");
         }
     }
 
@@ -94,7 +95,7 @@ public class PauseMenu : MonoBehaviour {
     }
 
     public void Suicide () {
-        HideMenu();
+        HideMenu ();
         GetPlayer ().OnDeath ();
     }
 
@@ -106,7 +107,14 @@ public class PauseMenu : MonoBehaviour {
         return GameObject.FindObjectOfType<HUD> ();
     }
 
-    public void StartGame() {
-        SceneManager.LoadScene("IntroScene");
+    public void StartGame () {
+        shootSource.Play ();
+        StartCoroutine(DelaySwitch());
+    }
+
+    IEnumerator DelaySwitch () {
+        musicSource.Stop();
+        yield return new WaitForSeconds(0.5f);
+        SceneManager.LoadScene ("IntroScene");
     }
 }
