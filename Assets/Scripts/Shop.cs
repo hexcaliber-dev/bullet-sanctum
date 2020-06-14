@@ -12,6 +12,8 @@ public class Shop : Interactible {
     public List<int> pistolCosts, shotCosts;
     public List<Image> pistolBars, shotBars;
 
+    public static bool hasScroll;
+
     const int NUM_UPGRADES = 4; // counts the default loadout
     HUD hud;
     Player player;
@@ -109,6 +111,13 @@ public class Shop : Interactible {
             } else {
                 shotBars[i].color = new Color (0.3f, 0.3f, 0.3f, 1);
             }
+        }
+    }
+
+    public void SummonBoss() {
+        if (hasScroll) {
+            hasScroll = false;
+            // TODO teleport player to boss room
         }
     }
 }
