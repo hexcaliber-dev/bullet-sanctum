@@ -2217,7 +2217,7 @@ PrefabInstance:
         type: 3}
       propertyPath: text
       value: 
-      objectReference: {fileID: 4900000, guid: 44a5bf54864ad7e48865bc01047fb4b9, type: 3}
+      objectReference: {fileID: 4900000, guid: bf6ddcce70cdbd449b70105e470b293e, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39c7f11a945ee504ea68618f73c251ed, type: 3}
 --- !u!1 &1146435514
