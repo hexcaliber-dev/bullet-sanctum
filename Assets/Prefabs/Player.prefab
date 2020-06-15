@@ -328,7 +328,7 @@ MonoBehaviour:
   bulletTime: 0.5
   strafeStrength: 25
   strafeTime: 0.05
-  strafeCooldownTime: 0.4
+  strafeCooldownTime: 0.7
   strafeRechargeTime: 0.4
   strafeCost: 3
   strafeCooldown: 0
