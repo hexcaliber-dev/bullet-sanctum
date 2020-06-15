@@ -315,7 +315,7 @@ MonoBehaviour:
   speed: 3
   normalMaterial: {fileID: 2100000, guid: 6e99719ff47b1e14ea5997d390039c7f, type: 2}
   flashMaterial: {fileID: 2100000, guid: 08ce23b2283c36e54a9092f0fedb0b1c, type: 2}
-  health: 100
+  health: 500
   enemyType: 0
   DMG: 0
   bounty: 0
