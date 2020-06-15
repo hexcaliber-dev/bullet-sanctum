@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -324,7 +324,7 @@ Transform:
   m_Children:
   - {fileID: 161201998}
   m_Father: {fileID: 807037581}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &83052676
 BoxCollider2D:
@@ -364,11 +364,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a2f78172fa64204e9dca978ae50016f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionSpeed: 2
+  transitionSpeed: 8
   fadeImage: {fileID: 781619181}
   player: {fileID: 3592231846050750061, guid: 3b647151b76cf0645ab90ffcc21bc490, type: 3}
   playerSpawnPoint: {fileID: 161201997}
-  alternateSpawnPoint: {fileID: 568693025}
+  alternateSpawnPoint: {fileID: 0}
   switcherID: 2
   nextSwitcherID: 2
   alternate: 0
@@ -989,7 +989,7 @@ Transform:
   m_Children:
   - {fileID: 130456458}
   m_Father: {fileID: 807037581}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &448411168
 BoxCollider2D:
@@ -1029,46 +1029,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a2f78172fa64204e9dca978ae50016f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionSpeed: 2
+  transitionSpeed: 8
   fadeImage: {fileID: 781619181}
   player: {fileID: 3592231846050750061, guid: 3b647151b76cf0645ab90ffcc21bc490, type: 3}
   playerSpawnPoint: {fileID: 130456457}
-  alternateSpawnPoint: {fileID: 568693025}
+  alternateSpawnPoint: {fileID: 0}
   switcherID: 4
   nextSwitcherID: 2
   alternate: 0
   sceneName: 0_WineTaverns
   defaultSpawn: 0
---- !u!1 &568693025
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 568693026}
-  m_Layer: 0
-  m_Name: AlternateSpawnPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &568693026
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 568693025}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.71, y: 2.03, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 807037581}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &579113154
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -109984,7 +109954,7 @@ PrefabInstance:
     - target: {fileID: 4747245513625859704, guid: 5b759eafa3d4ed94599e8912afaf0bf0,
         type: 3}
       propertyPath: transitionSpeed
-      value: 2
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4747245513625859704, guid: 5b759eafa3d4ed94599e8912afaf0bf0,
         type: 3}
@@ -109995,7 +109965,7 @@ PrefabInstance:
         type: 3}
       propertyPath: alternateSpawnPoint
       value: 
-      objectReference: {fileID: 568693025}
+      objectReference: {fileID: 0}
     - target: {fileID: 4747245513625859704, guid: 5b759eafa3d4ed94599e8912afaf0bf0,
         type: 3}
       propertyPath: alternate
@@ -110175,7 +110145,7 @@ Transform:
   m_Children:
   - {fileID: 1627708734}
   m_Father: {fileID: 807037581}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1682679730
 BoxCollider2D:
@@ -110215,11 +110185,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a2f78172fa64204e9dca978ae50016f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionSpeed: 2
+  transitionSpeed: 8
   fadeImage: {fileID: 781619181}
   player: {fileID: 3592231846050750061, guid: 3b647151b76cf0645ab90ffcc21bc490, type: 3}
   playerSpawnPoint: {fileID: 1627708733}
-  alternateSpawnPoint: {fileID: 568693025}
+  alternateSpawnPoint: {fileID: 0}
   switcherID: 3
   nextSwitcherID: 3
   alternate: 0
@@ -110325,7 +110295,7 @@ Transform:
   m_Children:
   - {fileID: 1323623042}
   m_Father: {fileID: 807037581}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1824142908
 BoxCollider2D:
@@ -110365,11 +110335,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a2f78172fa64204e9dca978ae50016f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionSpeed: 2
+  transitionSpeed: 8
   fadeImage: {fileID: 781619181}
   player: {fileID: 3592231846050750061, guid: 3b647151b76cf0645ab90ffcc21bc490, type: 3}
   playerSpawnPoint: {fileID: 1323623041}
-  alternateSpawnPoint: {fileID: 568693025}
+  alternateSpawnPoint: {fileID: 0}
   switcherID: 0
   nextSwitcherID: 1
   alternate: 0

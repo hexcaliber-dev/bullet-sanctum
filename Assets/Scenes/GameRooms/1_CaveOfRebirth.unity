@@ -222,7 +222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a2f78172fa64204e9dca978ae50016f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionSpeed: 2
+  transitionSpeed: 8
   fadeImage: {fileID: 1101485510}
   player: {fileID: 3592231846050750061, guid: 3b647151b76cf0645ab90ffcc21bc490, type: 3}
   playerSpawnPoint: {fileID: 410581271}
@@ -1297,7 +1297,7 @@ PrefabInstance:
     - target: {fileID: 4747245513625859704, guid: 5b759eafa3d4ed94599e8912afaf0bf0,
         type: 3}
       propertyPath: transitionSpeed
-      value: 2
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4747245513625859704, guid: 5b759eafa3d4ed94599e8912afaf0bf0,
         type: 3}
