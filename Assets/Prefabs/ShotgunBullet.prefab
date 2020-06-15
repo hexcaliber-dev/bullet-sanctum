@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 30
-  deleteTime: 0.2
+  deleteTime: 0.25
   damage: 5
   pierceCount: 0
   bounceCount: 0

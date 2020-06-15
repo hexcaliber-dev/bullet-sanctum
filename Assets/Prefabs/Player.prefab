@@ -114,7 +114,7 @@ MonoBehaviour:
   secondaryDelay: 0.1
   supercharged: 0
   superchargedReloadTime: 1
-  spread: 2.5
+  spread: 1.7
 --- !u!1 &3582422662884861645
 GameObject:
   m_ObjectHideFlags: 0
