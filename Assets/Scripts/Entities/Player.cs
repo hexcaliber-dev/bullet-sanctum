@@ -33,7 +33,7 @@ public class Player : LivingEntity {
     // Invulnerability
     bool canTakeDamage;
     public float invulnerabilityTime;
-    
+
     // Potions
     public int potionHealAmount;
 
@@ -170,10 +170,10 @@ public class Player : LivingEntity {
             // Potion consumption
             if (potions > 0 && Input.GetKeyDown (KeyCode.H)) {
                 potions -= 1;
-                hud.SetHealthPotions(potions);
-                playerHealth = Mathf.Clamp(playerHealth + potionHealAmount, 0, maxHealth);
-                AudioHelper.PlaySound("potion");
-                hud.SetHealthAmount(playerHealth);
+                hud.SetHealthPotions (potions);
+                playerHealth = Mathf.Clamp (playerHealth + potionHealAmount, 0, maxHealth);
+                AudioHelper.PlaySound ("potion");
+                hud.SetHealthAmount (playerHealth);
             }
         }
         AudioHelper.SetWalking (animator.GetBool ("moving"));
@@ -222,7 +222,7 @@ public class Player : LivingEntity {
     public override void TakeDamage (int damage) {
         if (canTakeDamage && currState != MoveState.Strafing) {
             StartCoroutine (FlashWhite (0.1f));
-            StartCoroutine(Invulnerability());
+            StartCoroutine (Invulnerability ());
             playerHealth -= damage;
             if (playerHealth <= 0) {
                 OnDeath ();
@@ -238,9 +238,9 @@ public class Player : LivingEntity {
         }
     }
 
-    IEnumerator Invulnerability() {
+    IEnumerator Invulnerability () {
         canTakeDamage = false;
-        yield return new WaitForSeconds(invulnerabilityTime);
+        yield return new WaitForSeconds (invulnerabilityTime);
         canTakeDamage = true;
     }
 
@@ -375,9 +375,9 @@ public class Player : LivingEntity {
         }
     }
 
-    public void GetPotion() {
+    public void GetPotion () {
         potions += 1;
-        hud.SetHealthPotions(potions);
-        AudioHelper.PlaySound("checkpoint");
+        hud.SetHealthPotions (potions);
+        AudioHelper.PlaySound ("checkpoint");
     }
 }

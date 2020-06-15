@@ -103,7 +103,7 @@ MonoBehaviour:
   flashMaterial: {fileID: 2100000, guid: 08ce23b2283c36e54a9092f0fedb0b1c, type: 2}
   health: 10
   drops: []
-  damage: 4
+  damage: 2
 --- !u!60 &7877327691138669218
 PolygonCollider2D:
   m_ObjectHideFlags: 0

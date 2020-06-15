@@ -81,8 +81,8 @@ public class EnemyFracture : Enemy {
 
     // ground smash
     private bool attack1 () {
-        AudioHelper.PlaySound ("fracture_shockwave");
-        shockwave.UseWeapon ();
+        AudioHelper.PlaySound ("fracture_rumbling");
+        StartCoroutine (MoveSpike (GameObject.Instantiate (spike, player.transform.position + (spikeDistance * Vector3.down), Quaternion.identity)));
         return true;
     }
 
@@ -94,8 +94,8 @@ public class EnemyFracture : Enemy {
 
     // spike
     private bool attack3 () {
-        AudioHelper.PlaySound ("fracture_rumbling");
-        StartCoroutine (MoveSpike (GameObject.Instantiate (spike, player.transform.position + (spikeDistance * Vector3.down), Quaternion.identity)));
+        AudioHelper.PlaySound ("fracture_shockwave");
+        shockwave.UseWeapon ();
         return true;
     }
 
