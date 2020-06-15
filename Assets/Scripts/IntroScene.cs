@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class IntroScene : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class IntroScene : MonoBehaviour
     public float dramaticStartLength;
     public float dramaticPauseLength;
     public float fadeDuration;
+    public GameObject nextSlide;
+    public bool lastSlide;
 
     private bool dramaticCalled1; // So the coroutine isn't called more than once
                                     // For th sake of performance
@@ -25,8 +28,6 @@ public class IntroScene : MonoBehaviour
         dramaticCalled2 = true;
         textToFade.CrossFadeAlpha(0, 0f, false);
         //if (startDramatically)
-            
-        
     }
 
     // Update is called once per frame
@@ -67,6 +68,10 @@ public class IntroScene : MonoBehaviour
     IEnumerator endSplash(float duration)
     {
         yield return new WaitForSeconds(duration);
+        if (lastSlide)
+            SceneManager.LoadScene("0_CaveOfRebirth");
+        else
+            nextSlide.SetActive(true);
         Destroy(splashScreen);
     }
 

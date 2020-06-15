@@ -120,6 +120,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5734743df007fc74ebdc7ccfa4543d60, type: 3}
   - {fileID: 8300000, guid: 8edd8c3768df9e7489ccb14fa52c9d93, type: 3}
   - {fileID: 8300000, guid: 4d0b1ca1d868d9548a7d56d0f75a96d3, type: 3}
+  - {fileID: 8300000, guid: 5a8f82110220ce74c85e90b9b6e8b9aa, type: 3}
+  - {fileID: 8300000, guid: a5d40d3eb426fa543ae216e0d2454f6e, type: 3}
+  - {fileID: 8300000, guid: 486e440132b2bf747be50db236e88dcc, type: 3}
+  - {fileID: 8300000, guid: 029ce93707008ab4fbb81b418ae01bf6, type: 3}
+  - {fileID: 8300000, guid: b9805c08a54fdd442b4d0c8429bcfb77, type: 3}
   walkingSource: {fileID: 5905332142308591451}
 --- !u!82 &267149234
 AudioSource:
