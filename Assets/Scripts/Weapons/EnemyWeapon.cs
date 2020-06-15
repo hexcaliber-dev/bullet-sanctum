@@ -27,6 +27,8 @@ public class EnemyWeapon : Weapon {
             if (canShoot) {
                 onCooldown = true;
                 ShootAt (GameObject.FindObjectOfType<Player> ().transform.position);
+                if (GetComponent<SpriteRenderer> ().enabled)
+                    AudioHelper.PlaySound ("ranger_shoot");
             }
             yield return new WaitForSeconds (cooldownTime);
             onCooldown = false;
