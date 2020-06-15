@@ -23,7 +23,7 @@ public abstract class Interactible : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
+    virtual protected void Update () {
         if (initialized) {
             if (Vector2.Distance (player.transform.position, transform.position) < range) {
                 if (!showingHover) {
