@@ -61,6 +61,7 @@ public class EnemyMelee : Enemy {
                 rb.velocity = Vector2.zero;
             }
         }
+        base.MovePattern();
     }
 
     void OnCollisionEnter2D (Collision2D collision) {

@@ -226,7 +226,7 @@ MonoBehaviour:
   health: 15
   enemyType: 0
   DMG: 1
-  bounty: 30
+  bounty: 15
   rb: {fileID: 0}
   initialized: 0
   teleportFrequency: 3

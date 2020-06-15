@@ -6,7 +6,7 @@ public class BountyNum : MonoBehaviour {
 
     public void ShowNumInternal(Vector3 pos, int number) {
         GameObject num = GameObject.Instantiate(numPrefab, pos, Quaternion.identity);
-        num.GetComponent<TMPro.TMP_Text>().text = "+" + number;
+        num.GetComponent<TMPro.TMP_Text>().text = "+" + (number * PlayerBounty.bountyMultiplier);
     }
 
     public static void ShowNum(Vector3 position, int number) {

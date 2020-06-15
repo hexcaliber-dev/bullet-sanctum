@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 2661772590937968409}
   - component: {fileID: 2661772590937968390}
   - component: {fileID: 5446036168991873488}
-  - component: {fileID: 8866615407497775321}
   m_Layer: 16
   m_Name: Drone
   m_TagString: Enemy
@@ -155,7 +154,7 @@ MonoBehaviour:
   health: 5
   enemyType: 0
   DMG: 3
-  bounty: 1000
+  bounty: 5
   rb: {fileID: 0}
   initialized: 0
   detectRange: 5

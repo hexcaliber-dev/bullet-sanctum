@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class RoomSwitch : MonoBehaviour
 {
-    private static string currentId = "";
+    public static string currentId = "";
     private static Vector3 spawnPosition = new Vector3(0.0f, 0.0f, 0f);
     private static string checkpointScene;
     public float transitionSpeed;
@@ -42,14 +42,15 @@ public class RoomSwitch : MonoBehaviour
         switchNow = false;
         activeSwitcher = false;
 
-        if(currentId == "death")
-        {
-            currentId = "justSpawned";
-            GameObject sp = Instantiate(new GameObject(), Checkpoint.getSpawnPosition(), Quaternion.identity);
-            // sp.transform.position = new Vector3(transform.position.x, transform.position.y, 0);
-            spawnPlayer(sp);
-            StartCoroutine(fadeIn());
-        }
+        // if(currentId == "death")
+        // {
+        //     currentId = "justSpawned";
+        //     print("PLAYER SPAWN BEGIN");
+        //     GameObject sp = GameObject.Instantiate(new GameObject("PlayerHolder"), Checkpoint.getSpawnPosition(), Quaternion.identity);
+        //     // sp.transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+        //     spawnPlayer(sp);
+        //     StartCoroutine(fadeIn());
+        // }
 
         if (currentId == "")
         {

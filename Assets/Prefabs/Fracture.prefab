@@ -258,7 +258,7 @@ MonoBehaviour:
   health: 100
   enemyType: 0
   DMG: 0
-  bounty: 0
+  bounty: 200
   rb: {fileID: 7395273576540285829}
   initialized: 0
   baseCooldown: 0
@@ -269,6 +269,8 @@ MonoBehaviour:
   spikeSpeed: 5
   spikeDistance: 5
   spikeDelay: 5
+  hasDoors: 0
+  assignedDoors: {fileID: 0}
 --- !u!95 &112880075050844685
 Animator:
   serializedVersion: 3

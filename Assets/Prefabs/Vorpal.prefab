@@ -155,7 +155,7 @@ MonoBehaviour:
   health: 10
   enemyType: 0
   DMG: 1
-  bounty: 10
+  bounty: 7
   rb: {fileID: 0}
   initialized: 0
   STEP_MAX: 3
