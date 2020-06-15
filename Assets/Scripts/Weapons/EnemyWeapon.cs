@@ -1,5 +1,5 @@
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 
 public class EnemyWeapon : Weapon {
 
@@ -7,28 +7,28 @@ public class EnemyWeapon : Weapon {
     public bool canShoot = false; // Set to true when in range
     public bool manualControl;
 
-    protected override void Start() {   
-        base.Start();
+    protected override void Start () {
+        base.Start ();
         onCooldown = false;
-        StartCoroutine(ShootLoop());
+        StartCoroutine (ShootLoop ());
     }
-    protected override void Update() {   
-        base.Update();
+    protected override void Update () {
+        base.Update ();
         // TODO
     }
 
-    public override void UseWeapon() {   
+    public override void UseWeapon () {
         if (manualControl)
-            base.UseWeapon();
+            ShootAt (GameObject.FindObjectOfType<Player> ().transform.position);
     }
 
-    IEnumerator ShootLoop() {    //cool down time
+    IEnumerator ShootLoop () { //cool down time
         while (!manualControl) {
             if (canShoot) {
                 onCooldown = true;
-                ShootAt(GameObject.FindObjectOfType<Player>().transform.position);
+                ShootAt (GameObject.FindObjectOfType<Player> ().transform.position);
             }
-            yield return new WaitForSeconds(cooldownTime);
+            yield return new WaitForSeconds (cooldownTime);
             onCooldown = false;
         }
     }
