@@ -192,7 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a2f78172fa64204e9dca978ae50016f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionSpeed: 2
+  transitionSpeed: 8
   fadeImage: {fileID: 1370642545}
   player: {fileID: 3592231846050750061, guid: 3b647151b76cf0645ab90ffcc21bc490, type: 3}
   playerSpawnPoint: {fileID: 970398133}
@@ -273,7 +273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a2f78172fa64204e9dca978ae50016f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionSpeed: 2
+  transitionSpeed: 8
   fadeImage: {fileID: 1370642545}
   player: {fileID: 3592231846050750061, guid: 3b647151b76cf0645ab90ffcc21bc490, type: 3}
   playerSpawnPoint: {fileID: 1968509560}
@@ -18180,7 +18180,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 2
-      m_TileSpriteIndex: 2
+      m_TileSpriteIndex: 17
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -28347,9 +28347,8 @@ Tilemap:
   - m_RefCount: 11
     m_Data: {fileID: -4458773999995131233, guid: 30239652a8d9b644987328d8cdcde514,
       type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 4769851075141927871, guid: 4784c05a55996184ab5a4097033446d3,
-      type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 28
     m_Data: {fileID: 4027390417215400514, guid: 4784c05a55996184ab5a4097033446d3,
       type: 3}
@@ -28389,8 +28388,9 @@ Tilemap:
       type: 3}
   - m_RefCount: 27
     m_Data: {fileID: 21300000, guid: 081191f59e17cfc4e8a1825a0fe36d12, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 4769851075141927871, guid: 4784c05a55996184ab5a4097033446d3,
+      type: 3}
   - m_RefCount: 2534
     m_Data: {fileID: 9084478500456639587, guid: 4784c05a55996184ab5a4097033446d3,
       type: 3}
@@ -28703,7 +28703,7 @@ PrefabInstance:
     - target: {fileID: 4747245513625859704, guid: 5b759eafa3d4ed94599e8912afaf0bf0,
         type: 3}
       propertyPath: transitionSpeed
-      value: 2
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4747245513625859704, guid: 5b759eafa3d4ed94599e8912afaf0bf0,
         type: 3}
@@ -29809,7 +29809,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a2f78172fa64204e9dca978ae50016f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionSpeed: 2
+  transitionSpeed: 8
   fadeImage: {fileID: 1370642545}
   player: {fileID: 3592231846050750061, guid: 3b647151b76cf0645ab90ffcc21bc490, type: 3}
   playerSpawnPoint: {fileID: 1932137828}
