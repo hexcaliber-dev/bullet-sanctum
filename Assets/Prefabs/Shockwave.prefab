@@ -99,12 +99,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  deleteTime: 0.8
+  deleteTime: 1
   damage: 3
   pierceCount: 100
   bounceCount: 0
   explodeAnim: {fileID: 0}
-  growRate: 10
+  growRate: 6
 --- !u!50 &4121765180839198331
 Rigidbody2D:
   serializedVersion: 4

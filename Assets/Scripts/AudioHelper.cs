@@ -20,7 +20,10 @@ public class AudioHelper : MonoBehaviour {
                 src.loop = isLoop;
                 src.volume = volume * masterVolume;
                 src.clip = staticClips[soundName];
-                src.Play ();
+                if (!isLoop)
+                    src.PlayOneShot(src.clip, src.volume);
+                else
+                    src.Play ();
                 return;
             }
         }
