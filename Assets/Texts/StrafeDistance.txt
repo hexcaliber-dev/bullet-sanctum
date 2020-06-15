@@ -1,0 +1,2 @@
+Press the left Shift key to perform a Light Strafe, which requires 3 units of Light Strafe energy.
+Use Light Strafe to cross otherwise infeasible distances.

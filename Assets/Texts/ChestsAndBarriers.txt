@@ -1,0 +1,1 @@
+Chests and barriers are objects that can be broken with gunfire. Upon breaking, chests can drop flasks of Holy Water and Bounty bonuses.

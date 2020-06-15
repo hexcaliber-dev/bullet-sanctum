@@ -1,0 +1,1 @@
+Press the H key to use a consumable item. Holy Water replenishes 50% of your total health upon usage. It can be found as a drop from chests, or purchased in exchange for Bounty at the Forge.

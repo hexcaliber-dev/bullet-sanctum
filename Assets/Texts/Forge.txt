@@ -1,0 +1,1 @@
+At the Forge, you can purchase upgrades and consumable items with the Bounty you've collected. The costs draw from your uncached Bounty first, and then your cached Bounty. Purchasing from the Forge does not reset your Bounty multiplier.

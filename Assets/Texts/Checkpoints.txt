@@ -1,0 +1,1 @@
+Interacting with a Checkpoint sets your newest respawn location to the current room, and caches in your collected Bounty for safekeeping. However, doing so instantly resets the Bounty multiplier, so be certain about your decision.

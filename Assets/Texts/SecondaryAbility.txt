@@ -1,0 +1,1 @@
+When your weapon has the necessary upgrade, press the Right Mouse Button to perform its secondary firing function. Secondary Fire abilities have more specialized uses, but they require longer reload times to perform.

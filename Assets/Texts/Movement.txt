@@ -1,0 +1,1 @@
+Press the A and D keys to move left or right, whether you are grounded or midair. Hold the S key to crouch.

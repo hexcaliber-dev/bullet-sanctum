@@ -1,0 +1,1 @@
+The Light Strafe's direction can be determined by holding down the WASD keys in one of 8 directions. Keep in mind that Light Strafe energy can only recharge fully when on the ground.

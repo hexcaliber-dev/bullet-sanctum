@@ -1,0 +1,1 @@
+Press the Left Mouse Button to fire your currently equipped weapon, and hold it down to continuously fire. The Pistol can fire bullets rapidly with decent effective range, but can only deal damage to single targets.

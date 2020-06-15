@@ -1,0 +1,1 @@
+Slaying an enemy grants Bounty, a currency used for purchasing upgrades and consumable items at the Forge. Killing more enemies increases the Bounty multiplier, further augmenting Bounty gains from slain enemies. Upon death, the Bounty multiplier resets, and any Bounty that isn't cached in at a Checkpoint is permanently lost.
