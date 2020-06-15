@@ -3,7 +3,7 @@ using UnityEngine;
 // Represents an item that the player can pick up.
 public class Collectible : MonoBehaviour {
 
-    public enum CollectibleType { Weapon, Fragment, Scroll }
+    public enum CollectibleType { Weapon, Fragment, Scroll, Potion }
     public CollectibleType type;
     public int collectibleWeapon; // Does not need to be assigned if this is not a weapon
 
@@ -16,7 +16,9 @@ public class Collectible : MonoBehaviour {
             } else if (type == CollectibleType.Scroll) {
                 Shop.hasScroll = true;
             }
-
+            else if (type == CollectibleType.Potion) {
+                GameObject.FindObjectOfType<Player>().GetPotion();
+            }
             Destroy (gameObject);
         }
     }

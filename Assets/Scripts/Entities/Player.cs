@@ -15,6 +15,7 @@ public class Player : LivingEntity {
     const int STARTING_HEALTH = 20;
     public static int maxHealth = STARTING_HEALTH;
     public static int playerHealth = STARTING_HEALTH;
+    public static int potions = 0;
 
     public GameObject trailObj, shoulder, arm;
     public Color trailColor;
@@ -28,8 +29,13 @@ public class Player : LivingEntity {
     public int strafeCost;
     public bool strafeCooldown;
     public float bulletTimeDistance, bulletTimeMultiplier;
+
+    // Invulnerability
     bool canTakeDamage;
     public float invulnerabilityTime;
+    
+    // Potions
+    public int potionHealAmount;
 
     // Move state
     public enum MoveState { Ground, Falling, Jumping, Strafing }
@@ -59,7 +65,7 @@ public class Player : LivingEntity {
         canTakeDamage = true;
     }
 
-    void FixedUpdate () {
+    void Update () {
         bool decel = false; // True if player is decelerating
         float newVX = rb2D.velocity.x; // New horizontal velocity value after movement calculations
 
@@ -159,6 +165,15 @@ public class Player : LivingEntity {
                         GetComponent<BoxCollider2D> ().size = new Vector2 (.18f, .4f);
                     }
                 }
+            }
+
+            // Potion consumption
+            if (potions > 0 && Input.GetKeyDown (KeyCode.H)) {
+                potions -= 1;
+                hud.SetHealthPotions(potions);
+                playerHealth = Mathf.Clamp(playerHealth + potionHealAmount, 0, maxHealth);
+                AudioHelper.PlaySound("potion");
+                hud.SetHealthAmount(playerHealth);
             }
         }
         AudioHelper.SetWalking (animator.GetBool ("moving"));
@@ -358,5 +373,11 @@ public class Player : LivingEntity {
             TakeDamage (5);
             StartCoroutine (Respawn ());
         }
+    }
+
+    public void GetPotion() {
+        potions += 1;
+        hud.SetHealthPotions(potions);
+        AudioHelper.PlaySound("checkpoint");
     }
 }

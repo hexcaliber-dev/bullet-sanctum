@@ -306,7 +306,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 11.05
+  m_fontSize: 11.75
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1971,6 +1971,7 @@ MonoBehaviour:
   - {fileID: 3756125970420437549}
   - {fileID: 3756125970005187367}
   - {fileID: 3756125970850179227}
+  potionCost: 200
 --- !u!95 &8741294723865484555
 Animator:
   serializedVersion: 3
