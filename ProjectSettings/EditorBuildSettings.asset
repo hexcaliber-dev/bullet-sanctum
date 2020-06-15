@@ -77,4 +77,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameRooms/4_WineTaverns.unity
     guid: 0509401fd39d8164cbdb793536cfa7ac
+  - enabled: 1
+    path: Assets/Scenes/GameRooms/EndSplashScreen.unity
+    guid: 37302adff7a262346b807256f3a6ffdf
   m_configObjects: {}

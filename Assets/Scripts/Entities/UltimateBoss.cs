@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class UltimateBoss : Enemy {
@@ -21,6 +22,11 @@ public class UltimateBoss : Enemy {
         foreach (Transform child in transform) {
             wraith_spawns.Add(child);
         }
+    }
+
+    public override void OnDeath()
+    {
+        SceneManager.LoadScene("EndSplashScreen");
     }
 
     public override void Attack() {
