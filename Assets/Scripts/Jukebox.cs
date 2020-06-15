@@ -24,7 +24,7 @@ public class Jukebox : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-
+        source.volume = masterVolume;
     }
 
     // IEnumerator MusicLoop () {
@@ -49,6 +49,7 @@ public class Jukebox : MonoBehaviour {
     }
 
     IEnumerator cFadeOut () {
+        print("FADE OUT MUSIC");
         for (int i = 0; i < 10; i += 1) {
             source.volume -= 0.1f;
             yield return new WaitForSeconds (fadeTime / 10f);
@@ -84,6 +85,7 @@ public class Jukebox : MonoBehaviour {
             AudioSource musicSource = GameObject.FindGameObjectWithTag("MusicSource").GetComponent<AudioSource>();
             source.clip = musicSource.clip;
             source.Play();
+            needsMusic = false;
         }
     }
 }

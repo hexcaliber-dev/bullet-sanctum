@@ -910,6 +910,7 @@ MonoBehaviour:
   switcherID: 1
   nextSwitcherID: 0
   alternate: 0
+  fadeMusic: 0
   sceneName: 1_WineTaverns
   defaultSpawn: 0
 --- !u!1 &615619539
@@ -2041,6 +2042,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Chest (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2524050181548415637, guid: e779b91383ece4376a622871ce99dfce,
+        type: 3}
+      propertyPath: id
+      value: 102
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e779b91383ece4376a622871ce99dfce, type: 3}
@@ -136171,6 +136177,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chest
       objectReference: {fileID: 0}
+    - target: {fileID: 2524050181548415637, guid: e779b91383ece4376a622871ce99dfce,
+        type: 3}
+      propertyPath: id
+      value: 101
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e779b91383ece4376a622871ce99dfce, type: 3}
 --- !u!1 &2092600360
@@ -136252,6 +136263,7 @@ MonoBehaviour:
   switcherID: 2
   nextSwitcherID: 4
   alternate: 0
+  fadeMusic: 0
   sceneName: 6_CaveOfRebirth
   defaultSpawn: 0
 --- !u!1 &2109496706
