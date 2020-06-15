@@ -335,6 +335,7 @@ MonoBehaviour:
   bulletTimeDistance: 2
   bulletTimeMultiplier: 0.5
   invulnerabilityTime: 0.25
+  potionHealAmount: 10
   currState: 0
 --- !u!50 &3592231846050750049
 Rigidbody2D:

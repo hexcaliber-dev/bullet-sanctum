@@ -12,6 +12,8 @@ public class Shop : Interactible {
     public List<int> pistolCosts, shotCosts;
     public List<Image> pistolBars, shotBars;
 
+    public int potionCost;
+
     public static bool hasScroll;
 
     const int NUM_UPGRADES = 4; // counts the default loadout
@@ -57,10 +59,10 @@ public class Shop : Interactible {
                 } else {
                     currShotUpgrade += 1;
                     GameObject.FindObjectOfType<Shotgun> ().onSecondaryCooldown = false;
-                    StartCoroutine(GameObject.FindObjectOfType<Shotgun> ().SuperchargeTimer());
+                    StartCoroutine (GameObject.FindObjectOfType<Shotgun> ().SuperchargeTimer ());
                     print ("Upgraded shotgun to " + currShotUpgrade);
                 }
-                AudioHelper.PlaySound("checkpoint");
+                AudioHelper.PlaySound ("checkpoint");
                 hud.SwitchWeapon (PlayerShoot.currWeapon);
             }
             UpdateWeaponBars ();
@@ -114,10 +116,25 @@ public class Shop : Interactible {
         }
     }
 
-    public void SummonBoss() {
+    public void SummonBoss () {
         if (hasScroll) {
             hasScroll = false;
+            hud.SetScrollAmount (0);
             // TODO teleport player to boss room
+        }
+    }
+
+    public void BuyPotion () {
+        if (PlayerBounty.savedBounty + PlayerBounty.unsavedBounty >= potionCost) {
+            int diff = Mathf.Max (PlayerBounty.unsavedBounty - potionCost, -1);
+            if (diff >= 0) {
+                PlayerBounty.unsavedBounty -= potionCost;
+            } else {
+                PlayerBounty.savedBounty -= (potionCost - PlayerBounty.unsavedBounty);
+                PlayerBounty.unsavedBounty = 0;
+            }
+            GameObject.FindObjectOfType<PlayerBounty> ().UpdateHudBounty ();
+            player.GetPotion ();
         }
     }
 }

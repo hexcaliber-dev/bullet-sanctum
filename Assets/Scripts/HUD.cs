@@ -10,7 +10,7 @@ public class HUD : MonoBehaviour {
     public Sprite overchargeReloadSprite;
     public Image strafeMeter, reloadMeter, secondaryReloadMeter, healthMeter, weaponDisplay, bountyBar, bountyMultBack, fadeImage;
     public CanvasGroup bulletTimeCanvas;
-    public TMP_Text bulletTimeText, timer, fragmentText, bountyMultiplierText, bountyText;
+    public TMP_Text bulletTimeText, timer, fragmentText, bountyMultiplierText, bountyText, potionText;
 
     public List<Texture2D> crosshairImages;
     public List<Color> bountyColors;
@@ -128,5 +128,13 @@ public class HUD : MonoBehaviour {
         bountyText.color = col;
         yield return new WaitForSeconds (0.1f);
         bountyText.color = Color.white;
+    }
+
+    public void SetScrollAmount (int amount) {
+        fragmentText.text = "x" + amount;
+    }
+
+    public void SetHealthPotions (int numPotions) {
+        potionText.text = "x" + numPotions;
     }
 }
