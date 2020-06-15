@@ -178,7 +178,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: THE DEMONS ARE TRAPPED HERE WITH YOU.
+  m_text: 'IN YOUR ABSENCE, THE RIGHTEOUS CORRIDORS OF THIS SANCTUM HAVE BEEN TAINTED.
+
+
+    IT''S
+    TIME FOR ANOTHER CRUSADE.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7252a9e05c122614e8bc98d2a6344696, type: 2}
   m_sharedMaterial: {fileID: 1340816546530970752, guid: 7252a9e05c122614e8bc98d2a6344696,
@@ -207,8 +211,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 48
-  m_fontSizeBase: 48
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -335,8 +339,8 @@ MonoBehaviour:
   startDramatically: 1
   pauseDramatically: 1
   dramaticStartLength: 1
-  dramaticPauseLength: 2
-  fadeDuration: 1
+  dramaticPauseLength: 4
+  fadeDuration: 0.3
   nextSlide: {fileID: 0}
   lastSlide: 1
 --- !u!114 &514285323
@@ -528,7 +532,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: YOU ARE NOT TRAPPED HERE WITH THE DEMONS.
+  m_text: "YOUR NAME: IRRELEVANT.\n\nYOUR LAST MISSION: \nA CATASTROPHIC FAILURE.\n\nYOUR
+    SECOND PISTOL:\nMISSING IN ACTION."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7252a9e05c122614e8bc98d2a6344696, type: 2}
   m_sharedMaterial: {fileID: 1340816546530970752, guid: 7252a9e05c122614e8bc98d2a6344696,
@@ -557,8 +562,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 48
-  m_fontSizeBase: 48
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -598,12 +603,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 996009303}
-    characterCount: 41
+    characterCount: 107
     spriteCount: 0
-    spaceCount: 7
-    wordCount: 8
+    spaceCount: 17
+    wordCount: 15
     linkCount: 0
-    lineCount: 3
+    lineCount: 7
     pageCount: 1
     materialCount: 2
   m_isUsingLegacyAnimationComponent: 0
@@ -1071,8 +1076,8 @@ MonoBehaviour:
   startDramatically: 1
   pauseDramatically: 1
   dramaticStartLength: 1
-  dramaticPauseLength: 2
-  fadeDuration: 1
+  dramaticPauseLength: 4
+  fadeDuration: 0.3
   nextSlide: {fileID: 514285320}
   lastSlide: 0
 --- !u!1 &2072664118
