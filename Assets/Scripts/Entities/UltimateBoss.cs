@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class UltimateBoss : Enemy {
 
-    private bool cameraStop = false;
     private bool attack_state = false;
     private int attack_pattern = 1;
-    private int attack_timr = 100;
-    Animator animator;
+    private int attack_timr = 75;
     private List<Transform> wraith_spawns;
 
     // Enemies to spawn on attack #1 (Usually Wraiths).
@@ -17,7 +15,6 @@ public class UltimateBoss : Enemy {
 
     public override void OnSpawn() {
         rb = gameObject.GetComponent<Rigidbody2D> ();
-        animator = GetComponent<Animator> ();
     
         wraith_spawns = new List<Transform>();
 
@@ -27,8 +24,6 @@ public class UltimateBoss : Enemy {
     }
 
     public override void Attack() {
-        animator.SetBool("attacking", true);
-
         switch (attack_pattern) {
             case 1:
                 attack1();
@@ -66,9 +61,8 @@ public class UltimateBoss : Enemy {
     }
 
     public override void MovePattern() {
-        cameraStop = Camera.main.GetComponent<CameraUtils>().hitBoundsRight;
 
-        if (!attack_state && !cameraStop) {
+        if (!attack_state) {
             transform.position += Vector3.right * speed * Time.deltaTime;
         }
 
@@ -80,10 +74,7 @@ public class UltimateBoss : Enemy {
 
                 attack_state = true;
             } else {
-                animator.SetBool("attacking", false);
-
                 attack_state = false;
-
                 attack_timr = 200;
             }
         }

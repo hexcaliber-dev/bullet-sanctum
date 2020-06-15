@@ -65,7 +65,7 @@ public class Player : LivingEntity {
         canTakeDamage = true;
     }
 
-    void Update () {
+    void FixedUpdate () {
         bool decel = false; // True if player is decelerating
         float newVX = rb2D.velocity.x; // New horizontal velocity value after movement calculations
 
