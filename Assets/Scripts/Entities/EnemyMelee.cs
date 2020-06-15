@@ -16,7 +16,7 @@ public class EnemyMelee : Enemy {
         startPos = transform.position.x;
         endPos = startPos + STEP_MAX;
         GetComponent<SpriteRenderer> ().flipX = true;
-        GetComponent<SpriteRenderer> ().size = new Vector2(3f, 3f);
+        GetComponent<SpriteRenderer> ().size = new Vector2 (3f, 3f);
     }
 
     public override void Attack () {
@@ -65,6 +65,7 @@ public class EnemyMelee : Enemy {
 
     void OnCollisionEnter2D (Collision2D collision) {
         if (collision.gameObject.tag == "Player" && playerFound) {
+            AudioHelper.PlaySound ("vorpal_hurt3");
             Vector2 knockback = new Vector2 (8, 3);
             if (facingRight) {
                 knockback.x = -knockback.x;
@@ -73,8 +74,14 @@ public class EnemyMelee : Enemy {
             Attack ();
         }
         if (collision.gameObject.tag == "Bullet") {
+            AudioHelper.PlaySound ("vorpal_hurt");
             startPos = transform.position.x;
             endPos = startPos + STEP_MAX;
         }
+    }
+
+    public override void OnDeath () {
+        AudioHelper.PlaySound ("vorpal_death");
+        base.OnDeath ();
     }
 }
