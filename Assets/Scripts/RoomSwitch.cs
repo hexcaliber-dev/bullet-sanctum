@@ -19,6 +19,7 @@ public class RoomSwitch : MonoBehaviour {
     public string nextSwitcherID;
     bool switchNow;
     public bool alternate;
+    public bool fadeMusic;
     public string sceneName;
     private bool activeSwitcher;
     public bool defaultSpawn;
@@ -118,6 +119,9 @@ public class RoomSwitch : MonoBehaviour {
 
     IEnumerator fadeOut () {
         Debug.Log ("Fading Out... Start");
+        if (fadeMusic) {
+            Jukebox.GetJukebox().FadeOut();
+        }
 
         GameObject.FindObjectOfType<Player>().doPlayerUpdates = false;
         for (float i = 0; i < 255; i += transitionSpeed) {

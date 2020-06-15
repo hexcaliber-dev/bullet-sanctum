@@ -9,6 +9,7 @@ TagManager:
   - Bullet
   - CheckpointPillar
   - EnemyBullet
+  - MusicSource
   layers:
   - Default
   - TransparentFX
