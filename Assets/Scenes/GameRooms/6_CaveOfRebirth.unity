@@ -372,6 +372,7 @@ MonoBehaviour:
   switcherID: 2
   nextSwitcherID: 2
   alternate: 0
+  fadeMusic: 0
   sceneName: 4_CaveOfRebirth
   defaultSpawn: 0
 --- !u!1001 &118534794
@@ -1037,6 +1038,7 @@ MonoBehaviour:
   switcherID: 4
   nextSwitcherID: 2
   alternate: 0
+  fadeMusic: 0
   sceneName: 0_WineTaverns
   defaultSpawn: 0
 --- !u!1001 &579113154
@@ -110193,6 +110195,7 @@ MonoBehaviour:
   switcherID: 3
   nextSwitcherID: 3
   alternate: 0
+  fadeMusic: 0
   sceneName: 4_CaveOfRebirth
   defaultSpawn: 1
 --- !u!1001 &1695178029
@@ -110343,6 +110346,7 @@ MonoBehaviour:
   switcherID: 0
   nextSwitcherID: 1
   alternate: 0
+  fadeMusic: 1
   sceneName: MiniBoss_CaveOfRebirth
   defaultSpawn: 0
 --- !u!1001 &1825422129
@@ -110672,3 +110676,72 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &8383474938549022386
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8383474938151832980, guid: d5bdebc5cf23ca14ab76fa9ea39c7b8a,
+        type: 3}
+      propertyPath: m_Name
+      value: MusicSource
+      objectReference: {fileID: 0}
+    - target: {fileID: 8383474938151832986, guid: d5bdebc5cf23ca14ab76fa9ea39c7b8a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.737394
+      objectReference: {fileID: 0}
+    - target: {fileID: 8383474938151832986, guid: d5bdebc5cf23ca14ab76fa9ea39c7b8a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -13.904812
+      objectReference: {fileID: 0}
+    - target: {fileID: 8383474938151832986, guid: d5bdebc5cf23ca14ab76fa9ea39c7b8a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6492.6562
+      objectReference: {fileID: 0}
+    - target: {fileID: 8383474938151832986, guid: d5bdebc5cf23ca14ab76fa9ea39c7b8a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8383474938151832986, guid: d5bdebc5cf23ca14ab76fa9ea39c7b8a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8383474938151832986, guid: d5bdebc5cf23ca14ab76fa9ea39c7b8a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8383474938151832986, guid: d5bdebc5cf23ca14ab76fa9ea39c7b8a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8383474938151832986, guid: d5bdebc5cf23ca14ab76fa9ea39c7b8a,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 8383474938151832986, guid: d5bdebc5cf23ca14ab76fa9ea39c7b8a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8383474938151832986, guid: d5bdebc5cf23ca14ab76fa9ea39c7b8a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8383474938151832986, guid: d5bdebc5cf23ca14ab76fa9ea39c7b8a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d5bdebc5cf23ca14ab76fa9ea39c7b8a, type: 3}
