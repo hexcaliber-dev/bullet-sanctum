@@ -11,14 +11,17 @@ public class EnemyFracture : Enemy {
     public float baseCooldown;
     public Weapon laser, shockwave;
     public Collectible shotgun;
-    public GameObject spike;
+    public GameObject spike, infoPillar;
     public float spikeSpeed, spikeDistance, spikeDelay;
     public bool hasDoors;
     public GameObject assignedDoors;
     const float GROUND = -2.5f;
-    bool died = false;
+    static bool died = false;
 
     public override void OnSpawn () {
+        if (died) {
+            OnDeath ();
+        }
         shockCounter = 3;
         attackPattern = 0;
         attackCooldown = baseCooldown;
@@ -32,8 +35,11 @@ public class EnemyFracture : Enemy {
             died = true;
             GameObject newItem = GameObject.Instantiate (shotgun, transform.position, Quaternion.identity).gameObject;
             newItem.GetComponent<Rigidbody2D> ().velocity = Vector2.up * 4f;
-            base.OnDeath ();
+        } else {
+            bounty = 0;
         }
+        infoPillar.SetActive (true);
+        base.OnDeath ();
     }
 
     public override void Attack () {
@@ -108,7 +114,7 @@ public class EnemyFracture : Enemy {
         // Destroy(spikeObj);
         yield return new WaitForSeconds (spikeDelay);
 
-        while (spikeObj.transform.position.y > GROUND - spikeDistance) {
+        while (spikeObj != null && spikeObj.transform.position.y > GROUND - spikeDistance) {
             spikeObj.transform.Translate (Vector3.down * RESOLUTION * spikeSpeed);
             yield return new WaitForSeconds (RESOLUTION);
         }
