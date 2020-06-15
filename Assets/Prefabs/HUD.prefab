@@ -4506,10 +4506,10 @@ RectTransform:
   m_Father: {fileID: 7386347514208102210}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.72169274, y: 0.051671386}
-  m_AnchorMax: {x: 0.96188086, y: 0.17801367}
-  m_AnchoredPosition: {x: 26, y: -8}
-  m_SizeDelta: {x: -186.54053, y: -66.29697}
+  m_AnchorMin: {x: 0.8153987, y: 0.082226075}
+  m_AnchorMax: {x: 0.90819937, y: 0.12245217}
+  m_AnchoredPosition: {x: 1, y: 0.9999689}
+  m_SizeDelta: {x: -2.5405273, y: -4.2969666}
   m_Pivot: {x: 0.5, y: 0.49999943}
 --- !u!222 &1261319316
 CanvasRenderer:
@@ -4567,11 +4567,11 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 24.75
+  m_fontSize: 24.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 18
+  m_fontSizeMin: 10
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_textAlignment: 257
@@ -4605,7 +4605,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 4.605957, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1261319314}
     characterCount: 2
