@@ -107,7 +107,7 @@ public class EnemyFracture : Enemy {
 
     IEnumerator MoveSpike (GameObject spikeObj) {
         const float RESOLUTION = 0.05f;
-        while (spikeObj.transform.position.y < GROUND) {
+        while (spikeObj != null && spikeObj.transform.position.y < GROUND) {
             spikeObj.transform.Translate (Vector3.up * RESOLUTION * spikeSpeed);
             yield return new WaitForSeconds (RESOLUTION);
         }
