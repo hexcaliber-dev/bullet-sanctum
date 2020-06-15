@@ -15,6 +15,7 @@ public class Collectible : MonoBehaviour {
                 GameObject.FindObjectOfType<PlayerBounty> ().CollectFragment ();
             } else if (type == CollectibleType.Scroll) {
                 Shop.hasScroll = true;
+                GameObject.FindObjectOfType<HUD>().SetScrollAmount(1);
             }
             else if (type == CollectibleType.Potion) {
                 GameObject.FindObjectOfType<Player>().GetPotion();
