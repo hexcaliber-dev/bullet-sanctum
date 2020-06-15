@@ -80,4 +80,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameRooms/EndSplashScreen.unity
     guid: 37302adff7a262346b807256f3a6ffdf
+  - enabled: 1
+    path: Assets/Scenes/GameRooms/FinalBoss.unity
+    guid: 4387b67c6291fcf49877114d89eaf3e8
   m_configObjects: {}

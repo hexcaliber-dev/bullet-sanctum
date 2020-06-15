@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Shop : Interactible {
@@ -120,7 +121,8 @@ public class Shop : Interactible {
         if (hasScroll) {
             hasScroll = false;
             hud.SetScrollAmount (0);
-            // TODO teleport player to boss room
+            Jukebox.needsMusic = true;
+            SceneManager.LoadScene ("FinalBoss");
         }
     }
 

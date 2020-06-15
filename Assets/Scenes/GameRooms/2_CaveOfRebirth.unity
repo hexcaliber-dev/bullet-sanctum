@@ -1161,7 +1161,7 @@ MonoBehaviour:
   switcherID: 1
   nextSwitcherID: 0
   alternate: 0
-  fadeMusic: 0
+  fadeMusic: 1
   sceneName: Checkpoint0
   defaultSpawn: 0
 --- !u!1 &578956573

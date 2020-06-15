@@ -201,6 +201,8 @@ public class Player : LivingEntity {
     public override void OnDeath () {
         // TODO move player to last checkpoint and reset bounty
         GetComponent<PlayerBounty> ().ResetBounty ();
+        playerHealth = maxHealth;
+        Jukebox.needsMusic = true;
         if (Checkpoint.getCurrentCheckpoint ().Equals ("")) {
             RoomSwitch.currentId = "1";
             SceneManager.LoadScene ("0_CaveOfRebirth");
@@ -208,7 +210,6 @@ public class Player : LivingEntity {
             RoomSwitch.currentId = "99";
             SceneManager.LoadScene (Checkpoint.getCurrentCheckpoint ());
         }
-        playerHealth = maxHealth;
     }
 
     public override void Attack () {

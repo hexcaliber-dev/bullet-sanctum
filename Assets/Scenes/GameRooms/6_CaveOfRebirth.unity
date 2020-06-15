@@ -110197,7 +110197,7 @@ MonoBehaviour:
   alternate: 0
   fadeMusic: 0
   sceneName: 4_CaveOfRebirth
-  defaultSpawn: 1
+  defaultSpawn: 0
 --- !u!1001 &1695178029
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -7173,6 +7173,11 @@ PrefabInstance:
       propertyPath: defaultSpawn
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4747245513625859704, guid: 5b759eafa3d4ed94599e8912afaf0bf0,
+        type: 3}
+      propertyPath: fadeMusic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4747245514922311706, guid: 5b759eafa3d4ed94599e8912afaf0bf0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7326,7 +7331,7 @@ MonoBehaviour:
   switcherID: 0
   nextSwitcherID: 1
   alternate: 0
-  fadeMusic: 0
+  fadeMusic: 1
   sceneName: 5_CaveOfRebirth
   defaultSpawn: 1
 --- !u!1 &917460710
@@ -8109,6 +8114,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MusicSource
       objectReference: {fileID: 0}
+    - target: {fileID: 8383474938151832981, guid: d5bdebc5cf23ca14ab76fa9ea39c7b8a,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: b060c24fa0facfc4eb23b9dcaa2714f7, type: 3}
     - target: {fileID: 8383474938151832986, guid: d5bdebc5cf23ca14ab76fa9ea39c7b8a,
         type: 3}
       propertyPath: m_LocalPosition.x
