@@ -11,7 +11,7 @@ public class Arena : MonoBehaviour {
     public GameObject assignedDoors;
 
     public List<Enemy> enemies;
-    public static int currWave = 0;
+    public int currWave = 0;
 
     public bool debug; // If debug, disables automatic wave spawning
     public static bool cleared = false;

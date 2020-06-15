@@ -88,4 +88,8 @@ public class Jukebox : MonoBehaviour {
             needsMusic = false;
         }
     }
+
+    public void Stop() {
+        source.Stop();
+    }
 }

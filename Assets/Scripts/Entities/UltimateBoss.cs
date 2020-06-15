@@ -26,6 +26,7 @@ public class UltimateBoss : Enemy {
 
     public override void OnDeath()
     {
+        Jukebox.GetJukebox().Stop();
         SceneManager.LoadScene("EndSplashScreen");
     }
 
