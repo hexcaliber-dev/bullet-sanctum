@@ -61,6 +61,8 @@ public class Player : LivingEntity {
         animator = GetComponent<Animator> ();
         doPlayerUpdates = true;
         hud.SetHealthAmount (playerHealth);
+        hud.SetScrollAmount((Shop.hasScroll) ? 1 : 0);
+        hud.SetHealthPotions(potions);
         Time.timeScale = 1f;
         canTakeDamage = true;
     }

@@ -379,6 +379,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chest (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2524050181548415637, guid: e779b91383ece4376a622871ce99dfce,
+        type: 3}
+      propertyPath: id
+      value: 31
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e779b91383ece4376a622871ce99dfce, type: 3}
 --- !u!1001 &558833352
@@ -790,6 +795,11 @@ PrefabInstance:
         type: 3}
       propertyPath: drops.Array.size
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2524050181548415637, guid: e779b91383ece4376a622871ce99dfce,
+        type: 3}
+      propertyPath: id
+      value: 32
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e779b91383ece4376a622871ce99dfce, type: 3}
@@ -7431,6 +7441,7 @@ MonoBehaviour:
   switcherID: 1
   nextSwitcherID: 3
   alternate: 0
+  fadeMusic: 0
   sceneName: 2_CaveOfRebirth
   defaultSpawn: 0
 --- !u!1001 &1184028517
@@ -8290,6 +8301,7 @@ MonoBehaviour:
   switcherID: 2
   nextSwitcherID: 0
   alternate: 0
+  fadeMusic: 0
   sceneName: 4_CaveOfRebirth
   defaultSpawn: 0
 --- !u!1001 &1823949024

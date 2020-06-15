@@ -1161,6 +1161,7 @@ MonoBehaviour:
   switcherID: 1
   nextSwitcherID: 0
   alternate: 0
+  fadeMusic: 0
   sceneName: Checkpoint0
   defaultSpawn: 0
 --- !u!1 &578956573
@@ -1340,6 +1341,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Chest
+      objectReference: {fileID: 0}
+    - target: {fileID: 2524050181548415637, guid: e779b91383ece4376a622871ce99dfce,
+        type: 3}
+      propertyPath: id
+      value: 22
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e779b91383ece4376a622871ce99dfce, type: 3}
@@ -1958,6 +1964,7 @@ MonoBehaviour:
   switcherID: 3
   nextSwitcherID: 1
   alternate: 0
+  fadeMusic: 0
   sceneName: 3_CaveOfRebirth
   defaultSpawn: 0
 --- !u!1001 &1150359191
@@ -2219,6 +2226,7 @@ MonoBehaviour:
   switcherID: 2
   nextSwitcherID: 0
   alternate: 0
+  fadeMusic: 0
   sceneName: 3_CaveOfRebirth
   defaultSpawn: 0
 --- !u!1001 &1347424627
@@ -3007,6 +3015,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Chest (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2524050181548415637, guid: e779b91383ece4376a622871ce99dfce,
+        type: 3}
+      propertyPath: id
+      value: 21
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e779b91383ece4376a622871ce99dfce, type: 3}
