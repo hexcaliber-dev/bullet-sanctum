@@ -200,6 +200,7 @@ GameObject:
   - component: {fileID: 322753652}
   - component: {fileID: 322753654}
   - component: {fileID: 322753653}
+  - component: {fileID: 322753655}
   m_Layer: 0
   m_Name: Oblivion
   m_TagString: Untagged
@@ -274,7 +275,7 @@ Transform:
   - {fileID: 1197910195}
   - {fileID: 1453514228}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &322753652
 Rigidbody2D:
@@ -315,7 +316,7 @@ MonoBehaviour:
   speed: 1.5
   normalMaterial: {fileID: 2100000, guid: 6e99719ff47b1e14ea5997d390039c7f, type: 2}
   flashMaterial: {fileID: 2100000, guid: 08ce23b2283c36e54a9092f0fedb0b1c, type: 2}
-  health: 1000
+  health: 750
   enemyType: 0
   DMG: 0
   bounty: 0
@@ -351,6 +352,52 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6119083, y: 0.8013801}
   m_EdgeRadius: 0
+--- !u!114 &322753655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 322753649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53e4dc5c3d69f6d44af5f771cbf6cc6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upperLimit: {fileID: 1019833003}
+  lowerLimit: {fileID: 358690758}
+  upSpeed: 2
+  downSpeed: 2
+--- !u!1 &358690757
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 358690758}
+  m_Layer: 0
+  m_Name: GameObject (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &358690758
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 358690757}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -9.216, y: -2.24, z: -5}
+  m_LocalScale: {x: 15, y: 15, z: 3.2230792}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &578643881
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4329,6 +4376,36 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 624630390}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1019833002
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1019833003}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1019833003
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019833002}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -9.216, y: 2.77, z: -5}
+  m_LocalScale: {x: 15, y: 15, z: 3.2230792}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1197910194
 GameObject:
   m_ObjectHideFlags: 0
@@ -4399,6 +4476,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1453514228}
   - component: {fileID: 1453514229}
+  - component: {fileID: 1453514230}
   m_Layer: 0
   m_Name: oblivion_spire
   m_TagString: Untagged
@@ -4470,6 +4548,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1453514230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1453514227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b25eaf9dbe98be4ca18c4f828b38258, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transcriptionSpeed: 1.5
 --- !u!1001 &1599323256
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4747,7 +4838,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dac620abc3659cd248131ae98d0d746a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smoothSpd: 5
+  smoothSpd: 100
   offset: {x: 9, y: 0.35, z: -10}
   bottomLeft: {fileID: 6855752337301442307}
   topRight: {fileID: 6855752336687073755}
@@ -5013,7 +5104,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6855752336687073754}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 76.91, y: 18.9, z: 0}
+  m_LocalPosition: {x: 76.91, y: 12.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6855752335538381401}
