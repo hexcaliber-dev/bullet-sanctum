@@ -50,7 +50,7 @@ public class PauseMenu : MonoBehaviour {
     }
 
     public void QuitToMenu () {
-        SceneManager.LoadScene ("MainMenu");
+        SceneManager.LoadScene ("Main Menu");
     }
     public void QuitToDesktop () {
         Application.Quit ();
